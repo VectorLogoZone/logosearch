@@ -4,11 +4,15 @@
     "url": "https://github.com/VectorLogoZone/github-logo-search/issues"
   },
   "dependencies": {
+    "koa": "^2.5.3"
+  },
+  "description": "Backend server for VectorLogoZone's Github logo search",
+  "devDependencies": {
+    "@types/koa": "^2.0.46",
     "@types/node": "^10.11.3",
     "nodemon": "^1.18.4",
     "typescript": "^3.1.1"
   },
-  "description": "Backend server for VectorLogoZone's Github logo search",
   "homepage": "https://github-logo-search.vectorlogo.zone/",
   "keywords": [
     "logo",
