@@ -1,8 +1,11 @@
 
 import * as Koa from 'koa';
+import * as KoaStatic from 'koa-static';
 import * as os from 'os';
 
 const app = new Koa();
+
+app.use(KoaStatic("static"));
 
 
 app.use( async (ctx: Koa.Context) => {
