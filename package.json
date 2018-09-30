@@ -4,11 +4,15 @@
     "url": "https://github.com/VectorLogoZone/github-logo-search/issues"
   },
   "dependencies": {
+    "hbs": "^4.0.1",
+    "js-yaml": "^3.12.0",
     "koa": "^2.5.3",
     "koa-static": "^5.0.0"
   },
   "description": "Backend server for VectorLogoZone's Github logo search",
   "devDependencies": {
+    "@types/hbs": "^4.0.0",
+    "@types/js-yaml": "^3.11.2",
     "@types/koa": "^2.0.46",
     "@types/koa-static": "^4.0.0",
     "@types/node": "^10.11.3",

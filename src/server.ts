@@ -1,11 +1,15 @@
-
+import * as fs from 'fs';
 import * as Koa from 'koa';
 import * as KoaStatic from 'koa-static';
 import * as os from 'os';
+import * as path from 'path';
+import * as Yaml from 'js-yaml';
 
 const app = new Koa();
 
 app.use(KoaStatic("static"));
+
+const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'))
 
 
 app.use( async (ctx: Koa.Context) => {
@@ -41,6 +45,8 @@ app.use( async (ctx: Koa.Context) => {
     retVal["process.uptime"] = process.uptime();
     retVal["process.version"] = process.version;
     retVal["process.versions"] = process.versions;
+
+    retVal["yaml"] = yamlData;
 
     sendJSON(ctx, retVal);
 });
