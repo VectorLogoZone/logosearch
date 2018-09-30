@@ -48,7 +48,7 @@ app.use( async (ctx: Koa.Context) => {
 function sendJSON(ctx: Koa.Context, data: object) {
 
     const callback = ctx.request.query['callback'];
-    if (callback) {
+    if (callback && callback.match(/^[$A-Za-z_][0-9A-Za-z_$]*$/) != null) {
         ctx.body = callback + '(' + JSON.stringify(data) + ');';
     } else {
         ctx.body = JSON.stringify(data);
