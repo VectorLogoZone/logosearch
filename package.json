@@ -1,0 +1,33 @@
+{
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/VectorLogoZone/github-logo-search/issues"
+  },
+  "dependencies": {
+    "@types/node": "^10.11.3",
+    "nodemon": "^1.18.4",
+    "typescript": "^3.1.1"
+  },
+  "description": "Backend server for VectorLogoZone's Github logo search",
+  "homepage": "https://github-logo-search.vectorlogo.zone/",
+  "keywords": [
+    "logo",
+    "logos",
+    "svg",
+    "vector"
+  ],
+  "license": "AGPL-3.0",
+  "main": "dist/server.js",
+  "name": "github-logo-search",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VectorLogoZone/github-logo-search.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "run": "nodemon",
+    "start": "node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.0"
+}
