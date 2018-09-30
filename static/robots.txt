@@ -1,0 +1,6 @@
+#
+# robots.txt for github-logo-search
+#
+
+User-Agent: *
+Disallow: /
