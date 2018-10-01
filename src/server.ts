@@ -1,17 +1,36 @@
-import * as fs from 'fs';
+//import * as fs from 'fs';
 import * as Koa from 'koa';
 import * as KoaStatic from 'koa-static';
-import * as os from 'os';
+import * as KoaViews from 'koa-views';
+//import * as os from 'os';
 import * as path from 'path';
-import * as Yaml from 'js-yaml';
+//import * as Yaml from 'js-yaml';
 
 const app = new Koa();
 
 app.use(KoaStatic("static"));
 
-const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'))
+app.use(KoaViews(path.join(__dirname, '..', 'views'), {
+    map: { hbs: 'handlebars' },
+    options: {
+        helpers: {
+
+        },
+        partials: {
+            above: path.join(__dirname, '..', 'partials', 'above'),
+            below: path.join(__dirname, '..', 'partials', 'below')
+        }
+    }
+}));
+
+//const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
 
 
+app.use( async (ctx: Koa.Context) => {
+    await ctx.render('index.hbs');
+});
+
+/*
 app.use( async (ctx: Koa.Context) => {
 
     const retVal: {[key: string]: any} = {};
@@ -60,8 +79,7 @@ function sendJSON(ctx: Koa.Context, data: object) {
         ctx.body = JSON.stringify(data);
     }
 }
-
-app.use
+*/
 
 app.listen(4000);
 
