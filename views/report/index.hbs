@@ -1,0 +1,25 @@
+{{> above}}
+<p>
+    These are the Github repositories currently indexed.
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Repository</th>
+            <th>ID</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+{{#each repos}}
+        <tr>
+            <td><a href="https://github.com/{{this.repo}}">{{this.repo}}</a></td>
+            <td><a href="{{this.id}}/">[{{this.id}}]</a></td>
+            <td></td>
+        </tr>
+{{/each}}
+    </tbody>
+</table>
+
+{{> below}}

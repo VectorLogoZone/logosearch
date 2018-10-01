@@ -7,6 +7,7 @@
     "handlebars": "^4.0.12",
     "js-yaml": "^3.12.0",
     "koa": "^2.5.3",
+    "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4"
   },
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@types/js-yaml": "^3.11.2",
     "@types/koa": "^2.0.46",
+    "@types/koa-router": "^7.0.32",
     "@types/koa-static": "^4.0.0",
     "@types/koa-views": "^2.0.3",
     "@types/node": "^10.11.3",

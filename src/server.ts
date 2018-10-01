@@ -1,9 +1,12 @@
 //import * as fs from 'fs';
 import * as Koa from 'koa';
+import * as KoaRouter from 'koa-router';
 import * as KoaStatic from 'koa-static';
 import * as KoaViews from 'koa-views';
-//import * as os from 'os';
+import * as os from 'os';
 import * as path from 'path';
+import * as reportRoutes from './report';
+
 //import * as Yaml from 'js-yaml';
 
 const app = new Koa();
@@ -25,13 +28,15 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 
 //const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
 
+app.use(reportRoutes.router.routes());
 
-app.use( async (ctx: Koa.Context) => {
+const rootRouter = new KoaRouter();
+
+rootRouter.get('/', async (ctx) => {
     await ctx.render('index.hbs');
 });
 
-/*
-app.use( async (ctx: Koa.Context) => {
+rootRouter.get( '/status.json', async (ctx: Koa.Context) => {
 
     const retVal: {[key: string]: any} = {};
 
@@ -65,8 +70,6 @@ app.use( async (ctx: Koa.Context) => {
     retVal["process.version"] = process.version;
     retVal["process.versions"] = process.versions;
 
-    retVal["yaml"] = yamlData;
-
     sendJSON(ctx, retVal);
 });
 
@@ -79,7 +82,8 @@ function sendJSON(ctx: Koa.Context, data: object) {
         ctx.body = JSON.stringify(data);
     }
 }
-*/
+
+app.use(rootRouter.routes());
 
 app.listen(4000);
 
