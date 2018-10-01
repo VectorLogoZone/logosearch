@@ -5,7 +5,7 @@ import * as KoaStatic from 'koa-static';
 import * as KoaViews from 'koa-views';
 import * as os from 'os';
 import * as path from 'path';
-import * as reportRoutes from './report';
+import * as reportRoutes from './repos';
 
 //import * as Yaml from 'js-yaml';
 
@@ -33,7 +33,7 @@ app.use(reportRoutes.router.routes());
 const rootRouter = new KoaRouter();
 
 rootRouter.get('/', async (ctx) => {
-    await ctx.render('index.hbs');
+    await ctx.render('index.hbs', { title: 'Github Logo Search' });
 });
 
 rootRouter.get( '/status.json', async (ctx: Koa.Context) => {
