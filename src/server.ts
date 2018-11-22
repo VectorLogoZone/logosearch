@@ -1,15 +1,45 @@
 //import * as fs from 'fs';
 import * as Koa from 'koa';
+import * as KoaPinoLogger from 'koa-pino-logger';
 import * as KoaRouter from 'koa-router';
 import * as KoaStatic from 'koa-static';
 import * as KoaViews from 'koa-views';
 import * as os from 'os';
 import * as path from 'path';
+import * as Pino from 'pino';
 import * as reportRoutes from './repos';
 
 //import * as Yaml from 'js-yaml';
 
 const app = new Koa();
+
+const logger = Pino();
+
+app.use(KoaPinoLogger({ logger: logger }));
+
+/*
+app.use(async(ctx, next) => {
+    const start = process.hrtime();
+
+    await next();
+
+    const duration = process.hrtime(start);
+
+    console.log(`${ctx.req.url}: ${duration[0] * 1000 + duration[1] / 1e6} ns`);
+});
+*/
+app.use(async(ctx, next) => {
+    try {
+        await next();
+        const status = ctx.status || 404;
+        if (status === 404) {
+            await ctx.render('404.hbs', { title: '404', h1: '404 - Page not found', url: ctx.req.url });
+        }
+    } catch (err) {
+        await ctx.render('500.hbs', { title: 'Server Error', message: err.message });
+    }
+    console.log("err done");
+});
 
 app.use(KoaStatic("static"));
 
@@ -26,6 +56,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     }
 }));
 
+
 //const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
 
 app.use(reportRoutes.router.routes());
@@ -33,8 +64,13 @@ app.use(reportRoutes.router.routes());
 const rootRouter = new KoaRouter();
 
 rootRouter.get('/', async (ctx) => {
-    await ctx.render('index.hbs', { title: 'Github Logo Search' });
+    await ctx.render('index.hbs', { h1: 'Github Logo Search', title: 'Home Page' });
 });
+
+rootRouter.get('/index.html', async (ctx) => {
+    await ctx.redirect('/');
+});
+
 
 rootRouter.get( '/status.json', async (ctx: Koa.Context) => {
 
@@ -85,6 +121,8 @@ function sendJSON(ctx: Koa.Context, data: object) {
 
 app.use(rootRouter.routes());
 
-app.listen(4000);
+const port = parseInt(process.env.PORT || '4000');
 
-console.log('Server running on port 4000');
+app.listen(port);
+
+logger.info({ port: port }, 'server running');

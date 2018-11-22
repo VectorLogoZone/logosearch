@@ -26,6 +26,6 @@
         <div class="col">
             <h1>
                 <a href="/"><img src="/favicon.svg" style="width:24pt;height:24pt;margin-top:-4pt;"/></a>
-                {{ title }}
+                {{#if h1}}{{h1}}{{else}}{{ title }}{{/if}}
             </h1>
             <hr/>

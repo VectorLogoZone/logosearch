@@ -7,18 +7,22 @@
     "handlebars": "^4.0.12",
     "js-yaml": "^3.12.0",
     "koa": "^2.5.3",
+    "koa-pino-logger": "^2.1.3",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "koa-views": "^6.1.4"
+    "koa-views": "^6.1.4",
+    "pino": "^5.8.0"
   },
   "description": "Backend server for VectorLogoZone's Github logo search",
   "devDependencies": {
     "@types/js-yaml": "^3.11.2",
     "@types/koa": "^2.0.46",
+    "@types/koa-pino-logger": "^2.1.2",
     "@types/koa-router": "^7.0.32",
     "@types/koa-static": "^4.0.0",
     "@types/koa-views": "^2.0.3",
     "@types/node": "^10.11.3",
+    "@types/pino": "^5.6.1",
     "nodemon": "^1.18.4",
     "typescript": "^3.1.1"
   },

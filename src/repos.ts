@@ -10,15 +10,21 @@ const repos = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "
 const router = new KoaRouter();
 
 router.get('/repo/', async (ctx) => {
+    ctx.redirect('index.html');
+});
+
+router.get('/repo/index.html', async (ctx) => {
     await ctx.render('repo/index.hbs', { repos, title: 'Repositories' });
 });
 
-router.get('/repo/:repo/', async (ctx, next) => {
+router.get('/repo/:repo/', async (ctx) => {
+    ctx.redirect('index.html');
+});
+
+router.get('/repo/:repo/index.html', async (ctx) => {
 
     const filtered = repos.filter( (repo:any) => { return repo.id == ctx.params.repo } );
-    if (filtered.length == 0) {
-        //LATER: 404
-    } else {
+    if (filtered.length === 1) {
         await ctx.render('repo/_index.hbs', {repo: filtered[0], title: 'Repository Info for ' + filtered[0].id});
     }
 });
