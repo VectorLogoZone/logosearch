@@ -4,28 +4,128 @@
     <meta charset="utf-8">
     <title>{{ title }} - Github Logo Search</title>
 
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <meta name="theme-color" content="#2c3e50" />
+    <style>
 
-        ga('create', 'UA-328425-25', 'auto');
-        ga('send', 'pageview');
+        /* faded border around logos in lists */
+        .logo-container img {
+            box-shadow: 0 0 5px #1d1d1d;
+            border: solid #ccc 1px;
+            margin: 6px;
+        }
 
-    </script>
-    <meta name="referrer" content="always" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        .card-footer {
+            background-color: inherit;
+            border-top: 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .nav-link {
+            font-weight: bold;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar-logo { height:31px;margin-top:-8px;padding-top:8px;padding-right:8px; }
+
+        h1 {
+            margin-top: 21px;
+        }
+
+        /* optional padding on visual inventory */
+        .padded { padding: 5px; }
+        .maxsize { max-width: 120px; max-height: 120px; }
+
+        /* hide outline on a clicked tab */
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+            outline: 0;
+        }
+
+        /* external nav links on logo pages */
+        .icon-link {
+            color: #888;
+            margin-top: 10px;
+            margin-right: 5px;
+            padding: 8px;
+        }
+
+        /* shareing buttons on logo pages */
+        .sharelogo {
+            margin: 6px;
+            width: 32px;
+        }
+
+        /* search buttons */
+        .searchlogo {
+            margin: 6px;
+            width: 32px;
+        }
+
+        /* seems like a Bootstrap bug (or incompatibility with FontAwesome) */
+        .carousel-control { padding-top: 25%; }
+
+        /* bootswatch ugliness */
+        .alert-info a { color: white; text-decoration: underline; }
+
+        /* share buttons need plain backgrounds */
+        .btn-share {
+            background-color: #fff;
+            border-color: #ccc;
+            border-width: 1px;
+            padding: 4px 4px 0 4px;
+            margin-left: 5px;
+        }
+        .preview-color {
+            height: 30px;
+            width: 45px;
+            display: inline-block;
+            border: 1px solid #a2a2a2;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .social-footer {
+            margin-left: 8px;
+            margin-right: 8px;
+            vertical-align:middle;
+            width:20px;
+        }
+        .copy2tip { display: none; }
+
+    </style>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script>if (window.top.location != window.location) { window.top.location.href = document.location.href; }</script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>
-                <a href="/"><img src="/favicon.svg" style="width:24pt;height:24pt;margin-top:-4pt;"/></a>
-                {{#if h1}}{{h1}}{{else}}{{ title }}{{/if}}
-            </h1>
-            <hr/>
+    <nav class="navbar navbar-expand-sm navbar-dark navbar-static-top d-print-none" style="background-color:#1d8286;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/" title="{{site.title}}"><img src="/images/vlz-logo-white.svg" alt="{{site.title}} Logo" class="navbar-logo" />- Git Logo Search</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse navbar-right" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/repo/index.html">Repos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+            </ul>
+        </div><!--/.navbar-collapse -->
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>
+                    {{#if h1}}{{h1}}{{else}}{{ title }}{{/if}}
+                </h1>
+                <hr/>

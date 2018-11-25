@@ -29,4 +29,4 @@ router.get('/repo/:repo/index.html', async (ctx) => {
     }
 });
 
-export { router };
+export { repos, router };

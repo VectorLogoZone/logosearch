@@ -33,9 +33,11 @@ app.use(async(ctx, next) => {
         await next();
         const status = ctx.status || 404;
         if (status === 404) {
+            ctx.status = 404;
             await ctx.render('404.hbs', { title: '404', h1: '404 - Page not found', url: ctx.req.url });
         }
     } catch (err) {
+        ctx.status = 500;
         await ctx.render('500.hbs', { title: 'Server Error', message: err.message });
     }
     console.log("err done");
@@ -64,13 +66,16 @@ app.use(reportRoutes.router.routes());
 const rootRouter = new KoaRouter();
 
 rootRouter.get('/', async (ctx) => {
-    await ctx.render('index.hbs', { h1: 'Github Logo Search', title: 'Home Page' });
+    await ctx.render('index.hbs', { h1: 'Git Logo Search', title: 'Search' });
 });
 
 rootRouter.get('/index.html', async (ctx) => {
     await ctx.redirect('/');
 });
 
+rootRouter.get('/about.html', async (ctx) => {
+    await ctx.render('about.hbs', { title: 'About' });
+});
 
 rootRouter.get( '/status.json', async (ctx: Koa.Context) => {
 

@@ -1,16 +1,21 @@
 {{> above}}
-<p>
-    This is the backend server for <a href="https://www.vectorlogo.zone/">VectorLogoZone</a>'s
-    <a href="https://www.vectorlogo.zone/search-github.html">Github Logo Search</a>.
-</p>
 
-<p>
-    <a class="button button-primary" href="https://www.vectorlogo.zone/search-github.html">Github Logo Search</a>
-</p>
+<form action="get" class="form-inline justify-content-center" id="site_search">
+    <div class="form-row align-items-center" style="padding-bottom:20px;">
+        <div class="col-auto">
+            <label class="sr-only" for="q">Search query</label>
+            <div class="input-group">
+                <input autocomplete="off" autofocus="autofocus" class="form-control" id="q" name="q" placeholder="Search terms" type="text"/>
+                <div class="input-group-append">
+                    <button type="submit" class="btn" style="background-color:#1d8286;color:white;font-weight:bold;">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
-<p>List of <a href="repo/">indexed repositories</a></p>
-
-<p><a href="https://github.com/VectorLogoZone/github-logo-search">Source code</a></p>
-
+<div class="row clearfix">
+    <div class="logo-container" id="search_results"></div>
+</div>
 
 {{> below}}
