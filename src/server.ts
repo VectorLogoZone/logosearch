@@ -7,7 +7,8 @@ import * as KoaViews from 'koa-views';
 import * as os from 'os';
 import * as path from 'path';
 import * as Pino from 'pino';
-import * as reportRoutes from './repos';
+import * as repoRouter from './repos';
+import * as searchRouter from './search';
 
 //import * as Yaml from 'js-yaml';
 
@@ -61,7 +62,8 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 
 //const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
 
-app.use(reportRoutes.router.routes());
+app.use(repoRouter.router.routes());
+app.use(searchRouter.router.routes());
 
 const rootRouter = new KoaRouter();
 
