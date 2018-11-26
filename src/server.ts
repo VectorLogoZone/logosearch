@@ -1,5 +1,6 @@
 //import * as fs from 'fs';
 import * as Koa from 'koa';
+import * as KoaMount from 'koa-mount';
 import * as KoaPinoLogger from 'koa-pino-logger';
 import * as KoaRouter from 'koa-router';
 import * as KoaStatic from 'koa-static';
@@ -45,6 +46,8 @@ app.use(async(ctx, next) => {
 });
 
 app.use(KoaStatic("static"));
+app.use(KoaMount('/logos', KoaStatic("logos")));
+
 
 app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     map: { hbs: 'handlebars' },

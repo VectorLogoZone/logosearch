@@ -4,8 +4,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as Yaml from 'js-yaml';
 
-const repos = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
+import { getSearchData } from './search';
 
+const repos = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
 
 const router = new KoaRouter();
 
@@ -23,10 +24,19 @@ router.get('/repo/:repo/', async (ctx) => {
 
 router.get('/repo/:repo/index.html', async (ctx) => {
 
-    const filtered = repos.filter( (repo:any) => { return repo.id == ctx.params.repo } );
+    const filtered = repos.filter( (repo:any) => { return repo.id === ctx.params.repo } );
     if (filtered.length === 1) {
-        await ctx.render('repo/_index.hbs', {repo: filtered[0], title: 'Repository Info for ' + filtered[0].id});
+        const searchData = getSearchData(filtered[0].id);
+        await ctx.render('repo/_index.hbs', {repo: filtered[0], searchData, title: 'Repository Info for ' + filtered[0].id});
     }
 });
 
+router.get('/repo/:repo/logos.html', async (ctx) => {
+
+    const filtered = repos.filter( (repo:any) => { return repo.id === ctx.params.repo } );
+    if (filtered.length === 1) {
+        const searchData = getSearchData(filtered[0].id);
+        await ctx.render('repo/_logos.hbs', {repo: filtered[0], searchData, title: 'Logos in ' + filtered[0].id});
+    }
+});
 export { repos, router };

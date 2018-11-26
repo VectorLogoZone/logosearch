@@ -1,0 +1,9 @@
+{{> above}}
+
+<div class="logo-container">
+{{#each searchData.images}}
+    <img alt="{{this.name}}" class="gitlogo" src="/logos/{{this.img}}" title="{{this.name}}"/>
+{{/each}}
+</div>
+
+{{> below}}
