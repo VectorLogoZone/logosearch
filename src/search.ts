@@ -36,6 +36,12 @@ console.log("INFO: # images=" + searchData.length);
 function getSearchData (id:string): RepoData {
     const repoData: RepoData = JSON.parse(fs.readFileSync(path.join(baseDir, id + ".json"), 'utf8'));
 
+    repoData.images.sort((left:ImageInfo, right:ImageInfo):number => {
+        if (left.name < right.name) { return -1; }
+        if (left.name > right.name) { return 1; }
+        return 0;
+    });
+
     return repoData;
 }
 

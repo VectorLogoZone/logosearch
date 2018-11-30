@@ -2,7 +2,7 @@
 
 <div class="logo-container">
 {{#each searchData.images}}
-    <img alt="{{this.name}}" class="gitlogo" src="/logos/{{this.img}}" title="{{this.name}}"/>
+    <a href="{{this.src}}"><img alt="{{this.name}}" class="gitlogo" src="/logos/{{this.img}}" title="{{this.name}}"/></a>
 {{/each}}
 </div>
 

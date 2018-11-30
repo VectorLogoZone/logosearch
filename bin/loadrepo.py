@@ -116,10 +116,16 @@ for repo_id in args.repos:
 
         shortpath = os.path.join(repo_id, str(srcpath)[len(logodir)+1:] if len(repodata["directory"]) > 0 else str(srcpath)[len(logodir):])
 
+        fixdir, fixname = os.path.split(shortpath)
+
         if pathfix is not None:
-            fixdir, fixname = os.path.split(shortpath)
             fixname = pathfix.sub("\\1", fixname)
-            shortpath = os.path.join(fixdir, fixname)
+
+        name = fixname
+
+        fixname = fixname.lower().replace(' ', '-')
+
+        shortpath = os.path.join(fixdir, fixname)
 
         dstpath = os.path.join(outputdir, shortpath)
 
@@ -134,7 +140,7 @@ for repo_id in args.repos:
         sys.stdout.write("DEBUG: repo %s copy from '%s' to '%s' (%s)\n" % (repo_id, str(srcpath), dstpath, shortpath))
 
         images.append({
-            'name': os.path.splitext(dstname)[0],
+            'name': name,
             'src': giturl + "/blob/" + repodata['branch'] + str(srcpath)[len(gitdir):],
             'img': shortpath
             })

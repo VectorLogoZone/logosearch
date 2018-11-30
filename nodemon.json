@@ -1,0 +1,8 @@
+{
+  "delay": 500,
+  "ext": "js",
+  "watch": [
+    "dist/"
+  ],
+  "verbose": true
+}
