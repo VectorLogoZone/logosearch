@@ -1,6 +1,6 @@
 {{> above}}
 
-<form action="get" class="form-inline justify-content-center" id="site_search">
+<form action="get" class="form-inline justify-content-center" id="search_form">
     <div class="form-row align-items-center" style="padding-bottom:20px;">
         <div class="col-auto">
             <label class="sr-only" for="q">Search query</label>
@@ -17,5 +17,117 @@
 <div class="row clearfix">
     <div class="logo-container" id="search_results"></div>
 </div>
+<script>
+    var doSearch = function(query)
+    {
+        if (!query || query.length == 0)
+        {
+            $("#search_results").empty();
+            return;
+        }
+        console.log("searching for " + query);
+        //$("#search_results").text("searching for " + query);
+        $.ajax({
+            data: { q: query },
+            dataType: 'json',
+            error: function(xhr, text, err) {
+                window.alert("Search API Error: " + text);
+            },
+            method: 'GET',
+            success: function(data, text, xhr) {
+                display_search_results(query, data);
+            },
+            url: '/api/search.json'
+        });
+        return false;
+    };
 
+    $("#search_form").submit(function() {
+        doSearch($("#q").val());
+        return false;
+    });
+
+    $("#q").on('input propertychange paste', function() {
+        console.log("input paste");
+        var query = $("#q").val();
+        history.pushState({ "q": query}, "", "?q=" + query);
+        doSearch(query);
+    });
+
+    $(window).on("popstate", function(event) {
+        console.log("popstate");
+        if (event.originalEvent.state)
+        {
+            var query = event.originalEvent.state["q"];
+            $("#q").val(query);
+            doSearch(query);
+        }
+        else
+        {
+            $("#q").val("");
+            $("#search_results").empty();
+        }
+    });
+
+    function getParameterByName(name) {
+        var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    }
+
+    var query = getParameterByName("q");
+    if (query && query.length)
+    {
+        $("#q").val(query);
+        doSearch(query);
+    }
+
+    function htmlEncode(value){
+        return $("<div>").text(value).html();
+    }
+
+    function display_search_results(query, data) {
+        var $search_results = $("#search_results");
+
+        if (!data || !data.success) {
+            $search_results.html('<div class="alert alert-error">Search failed! "' + htmlEncode(query) + '"</div>');
+            return;
+        }
+
+        const results = data.results;
+
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'search-github',
+            eventAction: query,
+            eventValue: results.length ? results.length : 0
+        });
+
+        // Are there any results?
+        if (results.length)
+        {
+            $search_results.empty(); // Clear any old results
+
+            if (results.length > 100) {
+                results.length = 100;
+            }
+
+            // Iterate over the results
+            results.forEach(function(result) {
+
+                // Build a snippet of HTML for this result
+                var appendString = '<a href="' + result.src + '">'
+                    + '<img class="gitlogo" title="' + result.name + '" src="/logos/' + result.img + '" />'
+                    + '</a> ';
+
+
+                // Add it to the results
+                $search_results.append(appendString);
+            });
+        }
+        else
+        {
+            $search_results.html('<div class="alert alert-warning">No results found for "' + htmlEncode(query) + '"</div>');
+        }
+    }
+</script>
 {{> below}}

@@ -2,6 +2,7 @@ import * as KoaRouter from 'koa-router';
 
 import * as fs from 'fs';
 import * as path from 'path';
+import * as lunr from 'lunr';
 
 //import repos as RepoList from './repos';
 
@@ -33,6 +34,15 @@ for (const fileName of ArrFileName) {
 }
 console.log("INFO: # images=" + searchData.length);
 
+const searchIndex = lunr(function () {
+    this.ref('index');
+    this.field('name');
+
+    for (var loop = 0; loop < searchData.length; loop++) {
+        this.add( { index: loop, name: searchData[loop].name });
+    }
+});
+
 function getSearchData (id:string): RepoData {
     const repoData: RepoData = JSON.parse(fs.readFileSync(path.join(baseDir, id + ".json"), 'utf8'));
 
@@ -52,7 +62,27 @@ router.get('/api/', async (ctx) => {
 });
 
 router.get('/api/search.json', async (ctx) => {
-    ctx.body = { success: false, message: 'Not ready yet!'} ;
+
+    let query = ctx.query['q'];
+    if (!query) {
+        ctx.body = { success: false, message: 'Missing "q" parameter' };
+        return;
+    }
+
+    try {
+        let raw = searchIndex.search(query);
+        if (raw.length == 0 && query.indexOf('*') == -1) {      //LATER: tweak lunr so this isn't necessary
+            query = query + '*';
+            raw = searchIndex.search(query);
+        }
+        const cooked:ImageInfo[] = [];
+        for (const result of raw) {
+            cooked.push(searchData[Number(result.ref)]);
+        }
+        ctx.body = {success: true, query, raw: raw, results: cooked };
+    } catch (err) {
+        ctx.body = {success: false, message: 'Not ready yet!', err};
+    }
 });
 
 export { router, getSearchData };

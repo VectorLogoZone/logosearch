@@ -12,6 +12,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
+    "lunr": "^2.3.5",
     "pino": "^5.8.0"
   },
   "description": "Backend server for VectorLogoZone's Github logo search",
@@ -23,9 +24,11 @@
     "@types/koa-router": "^7.0.32",
     "@types/koa-static": "^4.0.0",
     "@types/koa-views": "^2.0.3",
+    "@types/lunr": "^2.3.0",
     "@types/node": "^10.11.3",
     "@types/pino": "^5.6.1",
     "nodemon": "^1.18.4",
+    "ts-node": "^7.0.1",
     "typescript": "^3.1.1"
   },
   "homepage": "https://github-logo-search.vectorlogo.zone/",
