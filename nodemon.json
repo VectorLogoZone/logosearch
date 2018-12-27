@@ -1,8 +1,20 @@
 {
-  "delay": 500,
-  "ext": "js",
-  "watch": [
-    "dist/"
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules",
+    "tmp"
   ],
-  "verbose": true
+  "verbose": true,
+  "watch": [
+    "data/",
+    "partials/",
+    "src/",
+    "views/"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "exec": "ts-node src/server.ts",
+  "ext": "csv,hbs,json,ts,yaml"
 }
