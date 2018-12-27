@@ -1,5 +1,5 @@
 
-# Github Logo Search [<img alt="VectorLogoZone Logo" src="https://metamaker.vectorlogo.zone/favicon.svg" height="90" align="right" />](https://www.vectorlogo.zone/search-github.html)
+# VLZ Search [<img alt="VectorLogoZone Logo" src="https://metamaker.vectorlogo.zone/favicon.svg" height="90" align="right" />](https://www.vectorlogo.zone/search-github.html)
 
 This is the backend for [VectorLogoZone's Github Logo Search](https://www.vectorlogo.zone/search-github.html).
 
