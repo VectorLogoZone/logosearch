@@ -69,7 +69,7 @@
   directory: images/svg
 
 - id: file-icons
-  repo: file-icons/sourcei
+  repo: file-icons/source
   branch: master
   directory: svg
 
@@ -285,7 +285,7 @@
   directory: svg
 
 - id: picons
-  repo: VectorLogoZone/picons-source
+  repo: VectorLogoZone/picons
   branch: master
   directory: build-source/logos
 
