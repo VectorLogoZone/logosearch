@@ -1,28 +1,11 @@
 # To Do
 
- - [ ] loadrepo.py
- - [ ] /logos/*
- - [ ] /api/search.json
+ - [ ] favicon to use tile
+ - [ ] about page: no hotlinking, check parent for license
+ - [ ] init script
  - [ ] cron job
- - [ ] router.param()
- - [x] /repo/:repo/index.html
- - [ ] /repo/:repo/clone
- - [ ] /repo/:repo/pull
- - [ ] /repo/:repo/link (with option to delete current)
- - [ ] /repo/:repo/list.html
- - [ ] /repo/:repo/purge
- - [ ] /repo/:repo/clone
- - [x] 404 page
- - [x] 500 page
- - [x] logging
- - [ ] flash messages
- - [x] h1 override
- - [ ] reuse repo for icon search
- - [ ] fancier logging
  - [ ] check for moved repos
- - [ ] font-blast support
- - [ ] /data/README.md
- - [ ] /404.html/json/svg
+ - [ ] 404: return svg if url has .svg
  
 ## Data structure
 
@@ -42,3 +25,13 @@ File are located in `/logos/<repoid>/data.json`
  - [ ] watches all repos
  - [ ] trigger reindex on email receipt
  - [ ] forks all repos in case they go away
+ 
+ 
+## Install on Ubuntu
+
+ * apt-get install git nodejs npm python3-pip
+ * mkdir /app
+ * chdir /app
+ * git clone https://github.com/VectorLogoZone/vlz-search.git
+ * ./node_modules/.bin/tsc
+ * pip3 install sh
