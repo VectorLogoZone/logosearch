@@ -8,8 +8,9 @@ import * as KoaViews from 'koa-views';
 import * as os from 'os';
 import * as path from 'path';
 import * as Pino from 'pino';
+
 import * as repoRouter from './repos';
-import * as searchRouter from './search';
+import * as search from './search';
 
 //import * as Yaml from 'js-yaml';
 
@@ -42,7 +43,6 @@ app.use(async(ctx, next) => {
         ctx.status = 500;
         await ctx.render('500.hbs', { title: 'Server Error', message: err.message });
     }
-    console.log("err done");
 });
 
 app.use(KoaStatic("static"));
@@ -66,7 +66,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 //const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
 
 app.use(repoRouter.router.routes());
-app.use(searchRouter.router.routes());
+app.use(search.router.routes());
 
 const rootRouter = new KoaRouter();
 
@@ -130,6 +130,8 @@ function sendJSON(ctx: Koa.Context, data: object) {
 }
 
 app.use(rootRouter.routes());
+
+search.load(logger);
 
 const port = parseInt(process.env.PORT || '4000');
 

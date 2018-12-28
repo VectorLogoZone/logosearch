@@ -1,10 +1,8 @@
-import * as KoaRouter from 'koa-router';
-
 import * as fs from 'fs';
-import * as path from 'path';
+import * as KoaRouter from 'koa-router';
 import * as lunr from 'lunr';
-
-//import repos as RepoList from './repos';
+import * as path from 'path';
+import * as Pino from 'pino';
 
 type ImageInfo = {
     name: string,
@@ -19,29 +17,31 @@ type RepoData = {
     images: ImageInfo[]
 }
 
-let searchData: ImageInfo[] = [];
-
 const baseDir = path.join(__dirname, "..", "logos");
+let searchData: ImageInfo[] = [];
+let searchIndex: lunr.Index;
 
-const ArrFileName = fs.readdirSync(baseDir);
-for (const fileName of ArrFileName) {
-    if (fileName.endsWith(".json") == false) {
-        continue;
+function load(logger:Pino.Logger) {
+
+    const ArrFileName = fs.readdirSync(baseDir);
+    for (const fileName of ArrFileName) {
+        if (fileName.endsWith(".json") == false) {
+            continue;
+        }
+        const repoData: RepoData = JSON.parse(fs.readFileSync(path.join(baseDir, fileName), 'utf8'));
+        searchData = searchData.concat(repoData.images);
     }
-    const repoData: RepoData = JSON.parse(fs.readFileSync(path.join(baseDir, fileName), 'utf8'));
-    searchData = searchData.concat(repoData.images);
-    console.log("INFO: repodata for " + fileName);
+    logger.info({ imagecount: searchData.length }, "Search data loaded");
+
+    searchIndex = lunr(function () {
+        this.ref('index');
+        this.field('name');
+
+        for (var loop = 0; loop < searchData.length; loop++) {
+            this.add({index: loop, name: searchData[loop].name});
+        }
+    });
 }
-console.log("INFO: # images=" + searchData.length);
-
-const searchIndex = lunr(function () {
-    this.ref('index');
-    this.field('name');
-
-    for (var loop = 0; loop < searchData.length; loop++) {
-        this.add( { index: loop, name: searchData[loop].name });
-    }
-});
 
 function getSearchData (id:string): RepoData {
     const repoData: RepoData = JSON.parse(fs.readFileSync(path.join(baseDir, id + ".json"), 'utf8'));
@@ -85,4 +85,4 @@ router.get('/api/search.json', async (ctx) => {
     }
 });
 
-export { router, getSearchData };
+export { load, router, getSearchData };
