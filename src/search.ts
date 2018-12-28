@@ -37,10 +37,14 @@ function load(logger:Pino.Logger) {
         this.ref('index');
         this.field('name');
 
-        for (var loop = 0; loop < searchData.length; loop++) {
+        for (let loop = 0; loop < searchData.length; loop++) {
             this.add({index: loop, name: searchData[loop].name});
         }
     });
+}
+
+function getImageCount(): number {
+    return searchData.length;
 }
 
 function getSearchData (id:string): RepoData {
@@ -85,4 +89,4 @@ router.get('/api/search.json', async (ctx) => {
     }
 });
 
-export { load, router, getSearchData };
+export { getImageCount, load, router, getSearchData };

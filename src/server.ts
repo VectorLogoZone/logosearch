@@ -9,7 +9,7 @@ import * as os from 'os';
 import * as path from 'path';
 import * as Pino from 'pino';
 
-import * as repoRouter from './repos';
+import * as repo from './repos';
 import * as search from './search';
 
 //import * as Yaml from 'js-yaml';
@@ -65,7 +65,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 
 //const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
 
-app.use(repoRouter.router.routes());
+app.use(repo.router.routes());
 app.use(search.router.routes());
 
 const rootRouter = new KoaRouter();
@@ -91,6 +91,8 @@ rootRouter.get( '/status.json', async (ctx: Koa.Context) => {
     retVal["timestamp"] = new Date().toISOString();
     retVal["lastmod"] = process.env.LASTMOD || null;
     retVal["commit"] = process.env.COMMIT || null;
+    retVal["repocount"] = repo.getRepoCount();
+    retVal["imagecount"] = search.getImageCount();
     retVal["__dirname"] = __dirname;
     retVal["__filename"] = __filename;
     retVal["os.hostname"] = os.hostname();

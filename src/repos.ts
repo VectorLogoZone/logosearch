@@ -39,4 +39,9 @@ router.get('/repo/:repo/logos.html', async (ctx) => {
         await ctx.render('repo/_logos.hbs', {repo: filtered[0], searchData, title: 'Logos in ' + filtered[0].id});
     }
 });
-export { repos, router };
+
+function getRepoCount() {
+    return repos.length;
+}
+
+export { getRepoCount, repos, router };
