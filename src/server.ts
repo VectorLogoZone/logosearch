@@ -71,7 +71,7 @@ app.use(searchRouter.router.routes());
 const rootRouter = new KoaRouter();
 
 rootRouter.get('/', async (ctx) => {
-    await ctx.render('index.hbs', { h1: 'Search', title: 'Logo Search' });
+    await ctx.render('index.hbs', { h1: 'Search', title: 'SVG Logo Search' });
 });
 
 rootRouter.get('/index.html', async (ctx) => {
