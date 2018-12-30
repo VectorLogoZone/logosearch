@@ -42,11 +42,11 @@
 - id: automattic-social-logos
   repo: Automattic/social-logos
   branch: master
-  directory: svg
+  directory: svg-min
 
-- id: sheildsio
+- id: shieldsio
   repo: badges/shields
-  branch: gh-pages
+  branch: master
   directory: logo
 
 - id: behdad
@@ -163,7 +163,7 @@
 - id: jimniels
   repo: jimniels/teamcolors
   branch: master
-  directory: static/img
+  directory: public/img
 
 - id: jondotsoy
   repo: JonDotsoy/Vector-Logo
@@ -272,7 +272,7 @@
 
 - id: brandicons
   repo: rdimascio/icons
-  branch:
+  branch: master
   directory: icons
 
 - id: rrzepp
