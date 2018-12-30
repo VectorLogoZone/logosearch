@@ -255,6 +255,11 @@
   branch: master
   directory: ''
 
+- id: parcel
+  repo: parcel-bundler/website
+  branch: master
+  directory: src/assets
+
 - id: pixelfusion
   repo: pixelfusion/front-end-stack
   branch: master
