@@ -1,8 +1,8 @@
 
 # SVG Logo Search [<img alt="VectorLogoZone Logo" src="https://www.vectorlogo.zone/logos/vectorlogozone/vectorlogozone-tile.svg" height="90" align="right" />](https://search.vectorlogo.zone/)
 
-[![# of repos](https://img.shields.io/badge/dynamic/json.svg?label=repos&url=https%3A%2F%2Fsearch.vectorlogo.zone%2Fstatus.json&query=%24.repocount)](https://www.vectorlogo.zone/logos/index.html)
-[![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Fsearch.vectorlogo.zone%2Fstatus.json&query=%24.imagecount)](https://www.vectorlogo.zone/logos/index.html)
+[![# of repos](https://img.shields.io/badge/dynamic/json.svg?label=repos&url=https%3A%2F%2Fsearch.vectorlogo.zone%2Fstatus.json&query=%24.repocount)](https://search.vectorlogo.zone/repo/index.html)
+[![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Fsearch.vectorlogo.zone%2Fstatus.json&query=%24.imagecount)](https://search.vectorlogo.zone/)
 
 This is the backend for [VectorLogoZone](https://www.vectorlogo.zone/)'s [SVG Logo Search](https://search.vectorlogo.zone/).
 
