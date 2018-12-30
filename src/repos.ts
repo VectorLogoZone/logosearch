@@ -44,4 +44,12 @@ function getRepoCount() {
     return repos.length;
 }
 
-export { getRepoCount, repos, router };
+function setImageCount(id: string, count:number) {
+    const filtered = repos.filter( (repo:any) => { return repo.id === id } );
+    if (filtered.length === 1) {
+        filtered[0].imageCount = count;
+    }
+
+}
+
+export { getRepoCount, repos, router, setImageCount };

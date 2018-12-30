@@ -4,6 +4,8 @@ import * as lunr from 'lunr';
 import * as path from 'path';
 import * as Pino from 'pino';
 
+import * as repos from './repos';
+
 type ImageInfo = {
     name: string,
     img: string,
@@ -30,6 +32,7 @@ function load(logger:Pino.Logger) {
         }
         const repoData: RepoData = JSON.parse(fs.readFileSync(path.join(baseDir, fileName), 'utf8'));
         searchData = searchData.concat(repoData.images);
+        repos.setImageCount(repoData.id, repoData.images.length);
     }
     logger.info({ imagecount: searchData.length }, "Search data loaded");
 
