@@ -99,7 +99,7 @@ for repo_id in args.repos:
         os.chdir(gitdir)
 
     if args.verbose:
-        print("INFO: switching to branch '%s'" % (repodata['branch']))
+        sys.stdout.write("INFO: switching to branch '%s'\n" % (repodata['branch']))
     sh.git.checkout(repodata['branch'], _err_to_out=True, _out=os.path.join(cachedir, "git-" + repo_id + ".stdout"))
 
     current_commit = sh.git("rev-parse", "HEAD")
@@ -137,7 +137,8 @@ for repo_id in args.repos:
         pathlib.Path(dstdir).mkdir(parents=True, exist_ok=True)
         shutil.copyfile(str(srcpath), dstpath)
 
-        sys.stdout.write("DEBUG: repo %s copy from '%s' to '%s' (%s)\n" % (repo_id, str(srcpath), dstpath, shortpath))
+        if args.verbose:
+            sys.stdout.write("DEBUG: repo %s copy from '%s' to '%s' (%s)\n" % (repo_id, str(srcpath), dstpath, shortpath))
 
         images.append({
             'name': name,
@@ -145,7 +146,7 @@ for repo_id in args.repos:
             'img': shortpath
             })
 
-    print("OUTPUT: %d svg files found for %s (%s)" % (len(images), repo_id, repodata['repo']))
+    sys.stdout.write("OUTPUT: %d svg files found for %s (%s)\n" % (len(images), repo_id, repodata['repo']))
     total += len(images)
 
     if len(images) == 0:
@@ -166,16 +167,5 @@ for repo_id in args.repos:
 
 os.chdir(origdir)
 
-sys.exit(1);
-
-# WTF?  why isn't there an easy way to unique sort dicts???
-data = map(lambda svg: frozenset(svg.items()), data)
-data = sorted(set(data), key=lambda svg: dict(svg)['name'])
-data = list(map(lambda svg: dict(svg), data))
-
-with open(args.output, 'w') as outfile:
-    json.dump(data, outfile, sort_keys=True, indent=2)
-    #json.dump(data, outfile, sort_keys=True, indent=2)
-
 if args.verbose:
-    print("INFO: loadrepo complete: %d logos found at %s (%d total)" % (total, datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'), len(data)))
+    sys.stdout.write("INFO: loadrepo complete: %d logos found at %s (%d total)\n" % (total, datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'), len(data)))
