@@ -36,14 +36,14 @@ function load(logger:Pino.Logger) {
     }
     logger.info({ imagecount: searchData.length }, "Search data loaded");
 
-    searchIndex = lunr(function () {
-        this.ref('index');
-        this.field('name');
+    searchIndex = new lunr.Index;
 
-        for (let loop = 0; loop < searchData.length; loop++) {
-            this.add({index: loop, name: searchData[loop].name});
-        }
-    });
+    searchIndex.ref('index');
+    searchIndex.field('name');
+
+    for (let loop = 0; loop < searchData.length; loop++) {
+        searchIndex.add({index: loop, name: searchData[loop].name});
+    }
 }
 
 function getImageCount(): number {
@@ -78,10 +78,10 @@ router.get('/api/search.json', async (ctx) => {
 
     try {
         let raw = searchIndex.search(query);
-        if (raw.length == 0 && query.indexOf('*') == -1) {      //LATER: tweak lunr so this isn't necessary
+        /*if (raw.length == 0 && query.indexOf('*') == -1) {      //LATER: tweak lunr so this isn't necessary
             query = query + '*';
             raw = searchIndex.search(query);
-        }
+        }*/
         const cooked:ImageInfo[] = [];
         for (const result of raw) {
             cooked.push(searchData[Number(result.ref)]);
