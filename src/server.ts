@@ -82,7 +82,7 @@ rootRouter.get('/about.html', async (ctx) => {
     await ctx.render('about.hbs', { title: 'About' });
 });
 
-rootRouter.get( '/status.json', async (ctx: Koa.Context) => {
+rootRouter.get('/status.json', async (ctx: Koa.Context) => {
 
     const retVal: {[key: string]: any} = {};
 
@@ -118,18 +118,16 @@ rootRouter.get( '/status.json', async (ctx: Koa.Context) => {
     retVal["process.version"] = process.version;
     retVal["process.versions"] = process.versions;
 
-    sendJSON(ctx, retVal);
-});
-
-function sendJSON(ctx: Koa.Context, data: object) {
-
     const callback = ctx.request.query['callback'];
     if (callback && callback.match(/^[$A-Za-z_][0-9A-Za-z_$]*$/) != null) {
-        ctx.body = callback + '(' + JSON.stringify(data) + ');';
+        ctx.body = callback + '(' + JSON.stringify(retVal) + ');';
     } else {
-        ctx.body = JSON.stringify(data);
+        ctx.set('Access-Control-Allow-Origin', '*');
+        ctx.set('Access-Control-Allow-Methods', 'POST, GET');
+        ctx.set('Access-Control-Max-Age', '604800');
+        ctx.body = JSON.stringify(retVal);
     }
-}
+});
 
 app.use(rootRouter.routes());
 
