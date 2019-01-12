@@ -6,6 +6,11 @@ import * as Pino from 'pino';
 
 import * as sources from './sources';
 
+type SearchHit = {
+    url: string,
+    description: string,
+    source: string
+};
 
 
 let searchData: sources.ImageInfo[] = [];
@@ -50,6 +55,22 @@ function getSearchData (id:string): RepoData {
     return repoData;
 }
 */
+
+function toBoolean(value:any):boolean {
+
+    switch (value) {
+        case true:
+        case "true":
+        case 1:
+        case "1":
+        case "on":
+        case "yes":
+            return true;
+        default:
+            return false;
+    }
+}
+
 const router = new KoaRouter();
 
 router.get('/api/', async (ctx) => {
@@ -64,23 +85,67 @@ router.get('/api/search.json', async (ctx) => {
         return;
     }
 
+    let maxResults = 100;
+    try {
+        maxResults = Number(ctx.query['max'])
+    } catch (err) {
+        // do nothing
+    }
+
+    let absoluteUrls = false;
+    try {
+        absoluteUrls = toBoolean(ctx.query['absolute'])
+    } catch (err) {
+        // do nothing
+    }
+    const prefix = absoluteUrls ? "https://search.vectorlogo.zone/logos/" : "/logos/";
+
+    let showRaw = false;
+    try {
+        showRaw = toBoolean(ctx.query['raw'])
+    } catch (err) {
+        // do nothing
+    }
     try {
         let raw = searchIndex.search(query);
         /*if (raw.length == 0 && query.indexOf('*') == -1) {      //LATER: tweak lunr so this isn't necessary
             query = query + '*';
             raw = searchIndex.search(query);
         }*/
-        const cooked:sources.ImageInfo[] = [];
-        if (raw && raw.length) {
-            const sourceData = sources.getSources();
-            for (const result of raw) {
-                const indices = result.ref.split(':');
-                cooked.push(sourceData[Number(indices[0])].images[Number(indices[1])]);
-            }
+        if (!raw || raw.length == 0) {
+            ctx.body = { success: false, message: 'No matches' };
+            return;
         }
-        ctx.body = {success: true, query, raw: raw, results: cooked };
+
+        if (raw.length > maxResults) {
+            raw = raw.slice(0, maxResults);
+        }
+
+        const cooked:SearchHit[] = [];
+        const sourceData = sources.getSources();
+        for (const result of raw) {
+            const indices = result.ref.split(':');
+            const source = sourceData[Number(indices[0])];
+            const imageInfo = source.images[Number(indices[1])];
+            let name = imageInfo.name;
+            if (name.endsWith(".svg")) {
+                name = name.slice(0, -4);
+            }
+            cooked.push({
+                url: prefix + imageInfo.img,
+                description: `${name} from ${source.name}`,
+                source: imageInfo.src
+            });
+        }
+
+        const body: any = { "success": true, "query": query, "results": cooked };
+        if (showRaw) {
+            body['raw'] = raw;
+        }
+
+        ctx.body = body;
     } catch (err) {
-        ctx.body = {success: false, message: 'Not ready yet!', err};
+        ctx.body = {success: false, message: 'Query error!', err};
     }
 });
 

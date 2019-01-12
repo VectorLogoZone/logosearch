@@ -28,7 +28,7 @@
         console.log("searching for " + query);
         //$("#search_results").text("searching for " + query);
         $.ajax({
-            data: { q: query },
+            data: { q: query, max: 10 },
             dataType: 'json',
             error: function(xhr, text, err) {
                 window.alert("Search API Error: " + text);
@@ -115,8 +115,8 @@
             results.forEach(function(result) {
 
                 // Build a snippet of HTML for this result
-                var appendString = '<a href="' + result.src + '">'
-                    + '<img class="gitlogo" title="' + result.name + '" src="/logos/' + result.img + '" />'
+                var appendString = '<a href="' + result.source + '">'
+                    + '<img class="gitlogo" title="' + result.description + '" src="' + result.url + '" />'
                     + '</a> ';
 
 
