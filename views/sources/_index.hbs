@@ -1,0 +1,36 @@
+{{> above}}
+
+<table class="table table-bordered table-striped">
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td>{{source.name}}</td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td>{{source.handle}}</td>
+        </tr>
+        <tr>
+            <td>Provider</td>
+            <td><img alt="{{source.provider}}" src="{{{source.provider_icon}}}" style="height:18pt;" title="{{source.provider}}" /> {{source.provider}}</td>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td><a href="{{source.url}}">{{source.url}}</a></td>
+        </tr>
+        <tr>
+            <td>Details</td>
+            <td><pre class="mb-0">{{toJson source.data}}</pre></td>
+        </tr>
+        <tr>
+            <td># of logos</td>
+            <td><a href="logos.html">{{source.images.length}}</a></td>
+        </tr>
+        <tr>
+            <td>Last Updated</td>
+            <td>{{source.lastmodified}}</td>
+        </tr>
+    </tbody>
+</table>
+
+{{> below}}

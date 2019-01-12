@@ -4,6 +4,7 @@
     "url": "https://github.com/VectorLogoZone/github-logo-search/issues"
   },
   "dependencies": {
+    "@types/handlebars": "^4.0.40",
     "handlebars": "^4.0.12",
     "js-yaml": "^3.12.0",
     "koa": "^2.5.3",

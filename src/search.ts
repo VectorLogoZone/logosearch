@@ -1,40 +1,21 @@
-import * as fs from 'fs';
+//import * as fs from 'fs';
 import * as KoaRouter from 'koa-router';
 import * as lunr from 'lunr';
-import * as path from 'path';
+//import * as path from 'path';
 import * as Pino from 'pino';
 
-import * as repos from './repos';
+import * as sources from './sources';
 
-type ImageInfo = {
-    name: string,
-    img: string,
-    src: string
-};
 
-type RepoData = {
-    id: string,
-    commit: string,
-    lastmodified: string,
-    images: ImageInfo[]
-}
 
-const baseDir = path.join(__dirname, "..", "logos");
-let searchData: ImageInfo[] = [];
+let searchData: sources.ImageInfo[] = [];
 let searchIndex: lunr.Index;
 
-function load(logger:Pino.Logger) {
+function init(logger:Pino.Logger) {
 
-    const ArrFileName = fs.readdirSync(baseDir);
-    for (const fileName of ArrFileName) {
-        if (fileName.endsWith(".json") == false) {
-            continue;
-        }
-        const repoData: RepoData = JSON.parse(fs.readFileSync(path.join(baseDir, fileName), 'utf8'));
-        searchData = searchData.concat(repoData.images);
-        repos.setImageCount(repoData.id, repoData.images.length);
+    for (const sourceData of sources.getSources()) {
+        searchData = searchData.concat(sourceData.images);
     }
-    logger.info({ imagecount: searchData.length }, "Search data loaded");
 
     searchIndex = new lunr.Index;
 
@@ -44,12 +25,13 @@ function load(logger:Pino.Logger) {
     for (let loop = 0; loop < searchData.length; loop++) {
         searchIndex.add({index: loop, name: searchData[loop].name});
     }
+    logger.info({ imageCount: searchData.length }, "Images indexed");
 }
 
 function getImageCount(): number {
     return searchData.length;
 }
-
+/*
 function getSearchData (id:string): RepoData {
     const repoData: RepoData = JSON.parse(fs.readFileSync(path.join(baseDir, id + ".json"), 'utf8'));
 
@@ -61,7 +43,7 @@ function getSearchData (id:string): RepoData {
 
     return repoData;
 }
-
+*/
 const router = new KoaRouter();
 
 router.get('/api/', async (ctx) => {
@@ -82,7 +64,7 @@ router.get('/api/search.json', async (ctx) => {
             query = query + '*';
             raw = searchIndex.search(query);
         }*/
-        const cooked:ImageInfo[] = [];
+        const cooked:sources.ImageInfo[] = [];
         for (const result of raw) {
             cooked.push(searchData[Number(result.ref)]);
         }
@@ -92,4 +74,4 @@ router.get('/api/search.json', async (ctx) => {
     }
 });
 
-export { getImageCount, load, router, getSearchData };
+export { getImageCount, init, router };

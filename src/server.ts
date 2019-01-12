@@ -1,4 +1,5 @@
 //import * as fs from 'fs';
+import * as Handlebars from 'handlebars'
 import * as Koa from 'koa';
 import * as KoaMount from 'koa-mount';
 import * as KoaPinoLogger from 'koa-pino-logger';
@@ -9,7 +10,7 @@ import * as os from 'os';
 import * as path from 'path';
 import * as Pino from 'pino';
 
-import * as repo from './repos';
+import * as sources from './sources';
 import * as search from './search';
 
 //import * as Yaml from 'js-yaml';
@@ -53,7 +54,18 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     map: { hbs: 'handlebars' },
     options: {
         helpers: {
-
+            toJson: function(context:any) { return JSON.stringify(context, null, 2); },
+            providerIconUrl: function(provider:string, options:Handlebars.HelperOptions) {
+                if (arguments.length < 2)
+                    throw new Error("providerIconUrl helper needs 1 parameter");
+                if (provider == 'github') {
+                    return 'https://www.vectorlogo.zone/logos/github/github-icon.svg';
+                } else if (provider == 'gitlab') {
+                    return 'https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg';
+                } else {
+                    return 'https://www.vectorlogo.zone/404.svg';
+                }
+            }
         },
         partials: {
             above: path.join(__dirname, '..', 'partials', 'above'),
@@ -65,7 +77,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 
 //const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
 
-app.use(repo.router.routes());
+app.use(sources.router.routes());
 app.use(search.router.routes());
 
 const rootRouter = new KoaRouter();
@@ -91,7 +103,7 @@ rootRouter.get('/status.json', async (ctx: Koa.Context) => {
     retVal["timestamp"] = new Date().toISOString();
     retVal["lastmod"] = process.env.LASTMOD || null;
     retVal["commit"] = process.env.COMMIT || null;
-    retVal["repocount"] = repo.getRepoCount();
+    retVal["repocount"] = sources.getSources().length;
     retVal["imagecount"] = search.getImageCount();
     retVal["__dirname"] = __dirname;
     retVal["__filename"] = __filename;
@@ -131,7 +143,8 @@ rootRouter.get('/status.json', async (ctx: Koa.Context) => {
 
 app.use(rootRouter.routes());
 
-search.load(logger);
+sources.init(logger);
+search.init(logger);
 
 const port = parseInt(process.env.PORT || '4000');
 

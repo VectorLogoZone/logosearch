@@ -18,14 +18,28 @@ No hot-linking.
 
 There are two main parts: 
 
- 1. A cron job, written in Python.  This code is in `/bin`.
+ 1. Various cron jobs that update the search data.  This code is in `/bin`.
  2. An API web server, written in TypeScript/node.js.  This code is in `/src`.
 
-The repositories are stored locally in the `/cache` directory.
+The search data is stored in the `/logos` directory.  It consists of a directory for each 
+logo source, with a `search.json` and optionally a local copy of the logos.
 
-The logos are extracted and stored in the `/logos` directory.
+The git cron job gets public git repos (stored in the `/cache` directory) and copies the svgs to `/logos`.
 
-The cron job is responsible for updating these two directories.
+## search.json
+
+```json
+{
+  "data": { "info": "provider-specific blob" },
+  "handle": "id-used-for-directories-and-urls",
+  "images": [ { "img": "local/path/to/company.svg", "name": "company", "src": "https://logos.example.com/path/to/company.svg" }]
+  "lastmodified": "2019-01-01T13:54:59Z",
+  "name":"Example"
+  "provider": "id-of-provider",
+  "provider_icon": "svg-icon-of-provider",
+  "url": "https://logos.example.com/"
+}
+```
 
 ## Contributing
 

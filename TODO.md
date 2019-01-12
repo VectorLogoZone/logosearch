@@ -1,7 +1,6 @@
 # To Do
 
- - [ ] favicon to use tile
- - [ ] about page: no hotlinking, check parent for license
+ - [ ] background select
  - [ ] init script
  - [ ] cron job
  - [ ] check for moved repos
@@ -12,9 +11,9 @@
 File are located in `/logos/<repoid>/data.json`
 
  * commit
- * created_at
- * updated_at
- * [logos]
+ * id
+ * lastmodified
+ * images
  
 ## Longer term
 
@@ -33,5 +32,6 @@ File are located in `/logos/<repoid>/data.json`
  * mkdir /app
  * chdir /app
  * git clone https://github.com/VectorLogoZone/vlz-search.git
+ * npm install
  * ./node_modules/.bin/tsc
  * pip3 install sh

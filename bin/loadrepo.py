@@ -23,7 +23,7 @@ parser.add_argument("-q", "--quiet", help="hide status messages", default=True, 
 parser.add_argument("--always", help="always process", default=False, dest='always', action="store_true")
 parser.add_argument("--branch", help="git branch (default='%s')" % default_branch, action="store", default=default_branch)
 parser.add_argument("--cache", help="location of previously downloaded repo", action="store", default="./cache")
-parser.add_argument("--input", help="YAML of potential repos", action="store", default="data/repos.yaml")
+parser.add_argument("--input", help="YAML of potential repos", action="store", default="data/gitrepos.yaml")
 parser.add_argument("--output", help="output directory", action="store", default="./logos")
 parser.add_argument("--nocleanup", help="do not erase temporary files", default=True, dest='cleanup', action="store_false")
 parser.add_argument('repos', help='repos (all if none specified)', metavar='repos', nargs='*')
@@ -39,7 +39,7 @@ fdata.close()
 
 repolist = {}
 for data in rawdata:
-    repolist[data['id']] = data
+    repolist[data['handle']] = data
 if args.verbose:
     print("INFO: %d repo definitions loaded from %s" % (len(rawdata), args.input))
 
@@ -56,21 +56,27 @@ outputdir = os.path.abspath(args.output)
 pathlib.Path(cachedir).mkdir(parents=True, exist_ok=True)
 pathlib.Path(outputdir).mkdir(parents=True, exist_ok=True)
 
-for repo_id in args.repos:
+for repo_handle in args.repos:
 
-    if repo_id not in repolist:
-        sys.stdout.write("ERROR: no repository info for id '%s'\n" % (repo_id))
+    if repo_handle not in repolist:
+        sys.stdout.write("ERROR: no repository info for handle '%s'\n" % (repo_handle))
         sys.exit(1)
 
-    repodata = repolist[repo_id]
+    repodata = repolist[repo_handle]
 
-    sys.stdout.write("OUTPUT: processing %s (%s)\n" % (repo_id, repodata["repo"]))
+    sys.stdout.write("OUTPUT: processing %s (%s)\n" % (repo_handle, repodata["repo"]))
 
-    gitdir = os.path.join(cachedir, repo_id)
+    gitdir = os.path.join(cachedir, repo_handle)
     if args.verbose:
         sys.stdout.write("INFO: git repo directory %s\n" % gitdir)
 
-    giturl = "https://github.com/" + repodata['repo']
+    if repodata['provider'] == 'github':
+        giturl = "https://github.com/" + repodata['repo']
+    elif repodata['provider'] == 'gitlab':
+        giturl = "https://gitlab.com/" + repodata['repo']
+    else:
+        sys.stderr.write("ERROR: unknown or missing provider '%s'\n" % repodata['provider'])
+        sys.exit(3)
 
     if os.path.isdir(gitdir):
         os.chdir(gitdir)
@@ -79,7 +85,7 @@ for repo_id in args.repos:
 
         if args.verbose:
             sys.stdout.write("INFO: pulling changes from git repo %s\n" % giturl)
-        sh.git.pull("--ff-only", _err_to_out=True, _out=os.path.join(cachedir, "git-" + repo_id + ".stdout"))
+        sh.git.pull("--ff-only", _err_to_out=True, _out=os.path.join(cachedir, "git-" + repo_handle + ".stdout"))
         if args.verbose:
             sys.stdout.write("INFO: pull complete\n")
 
@@ -93,14 +99,14 @@ for repo_id in args.repos:
     else:
         if args.verbose:
             sys.stdout.write("INFO: cloning git repo %s\n" % giturl)
-        sh.git.clone(giturl, gitdir, _err_to_out=True, _out=os.path.join(cachedir, "git-" + repo_id + ".stdout"))
+        sh.git.clone(giturl, gitdir, _err_to_out=True, _out=os.path.join(cachedir, "git-" + repo_handle + ".stdout"))
         if args.verbose:
             sys.stdout.write("INFO: clone complete\n")
         os.chdir(gitdir)
 
     if args.verbose:
         sys.stdout.write("INFO: switching to branch '%s'\n" % (repodata['branch']))
-    sh.git.checkout(repodata['branch'], _err_to_out=True, _out=os.path.join(cachedir, "git-" + repo_id + ".stdout"))
+    sh.git.checkout(repodata['branch'], _err_to_out=True, _out=os.path.join(cachedir, "git-" + repo_handle + ".stdout"))
 
     current_commit = sh.git("rev-parse", "HEAD")
 
@@ -114,7 +120,7 @@ for repo_id in args.repos:
 
     for srcpath in pathlib.Path(logodir).glob("**/*.svg"):
 
-        shortpath = os.path.join(repo_id, str(srcpath)[len(logodir)+1:] if len(repodata["directory"]) > 0 else str(srcpath)[len(logodir):])
+        shortpath = os.path.join(repo_handle, str(srcpath)[len(logodir)+1:] if len(repodata["directory"]) > 0 else str(srcpath)[len(logodir):])
 
         fixdir, fixname = os.path.split(shortpath)
 
@@ -138,7 +144,7 @@ for repo_id in args.repos:
         shutil.copyfile(str(srcpath), dstpath)
 
         if args.verbose:
-            sys.stdout.write("DEBUG: repo %s copy from '%s' to '%s' (%s)\n" % (repo_id, str(srcpath), dstpath, shortpath))
+            sys.stdout.write("DEBUG: repo %s copy from '%s' to '%s' (%s)\n" % (repo_handle, str(srcpath), dstpath, shortpath))
 
         images.append({
             'name': name,
@@ -146,20 +152,26 @@ for repo_id in args.repos:
             'img': shortpath
             })
 
-    sys.stdout.write("OUTPUT: %d svg files found for %s (%s)\n" % (len(images), repo_id, repodata['repo']))
+    sys.stdout.write("OUTPUT: %d svg files found for %s (%s)\n" % (len(images), repo_handle, repodata['repo']))
     total += len(images)
 
     if len(images) == 0:
         continue
 
+    repodata['commit'] = str(current_commit).strip()
+
     data = {
-        'id': repo_id,
-        'commit': str(current_commit).strip(),
+        'data': repodata,
+        'handle': repo_handle,
         'lastmodified': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
+        'name': repodata['repo'],
+        'provider': repodata['provider'],
+        'provider_icon': 'https://www.vectorlogo.zone/logos/' + repodata['provider'] + '/' + repodata['provider'] + '-icon.svg',
+        'url': giturl,
         'images': images
     }
 
-    outputpath = os.path.join(outputdir, repo_id + ".json")
+    outputpath = os.path.join(outputdir, repo_handle, "sourceData.json")
 
     outputfile = open(outputpath, 'w')
     json.dump(data, outputfile, sort_keys=True, indent=2)
