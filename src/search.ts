@@ -13,19 +13,25 @@ let searchIndex: lunr.Index;
 
 function init(logger:Pino.Logger) {
 
-    for (const sourceData of sources.getSources()) {
-        searchData = searchData.concat(sourceData.images);
-    }
 
     searchIndex = new lunr.Index;
 
     searchIndex.ref('index');
     searchIndex.field('name');
 
-    for (let loop = 0; loop < searchData.length; loop++) {
-        searchIndex.add({index: loop, name: searchData[loop].name});
+    const dataSources = sources.getSources();
+    let count = 0;
+    for (let dataLoop = 0; dataLoop < dataSources.length; dataLoop++)
+    {
+        const images = dataSources[dataLoop].images;
+
+        for (let imageLoop = 0; imageLoop < images.length; imageLoop++) {
+            searchIndex.add({index: `${dataLoop}:${imageLoop}`, name: images[imageLoop].name});
+            count += 1;
+        }
     }
-    logger.info({ imageCount: searchData.length }, "Images indexed");
+
+    logger.info({ imageCount: count }, "Images indexed");
 }
 
 function getImageCount(): number {
@@ -65,8 +71,12 @@ router.get('/api/search.json', async (ctx) => {
             raw = searchIndex.search(query);
         }*/
         const cooked:sources.ImageInfo[] = [];
-        for (const result of raw) {
-            cooked.push(searchData[Number(result.ref)]);
+        if (raw && raw.length) {
+            const sourceData = sources.getSources();
+            for (const result of raw) {
+                const indices = result.ref.split(':');
+                cooked.push(sourceData[Number(indices[0])].images[Number(indices[1])]);
+            }
         }
         ctx.body = {success: true, query, raw: raw, results: cooked };
     } catch (err) {

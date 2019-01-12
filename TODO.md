@@ -1,19 +1,15 @@
 # To Do
 
+ - [ ] API similar to api.vlz
+ - [ ] paging on logos page
+ - [ ] switch back to latest lunr (with stopwords disabled)
+ - [ ] report of repos w/nothing
+ - [ ] descriptions of sources
  - [ ] background select
  - [ ] init script
  - [ ] cron job
  - [ ] check for moved repos
  - [ ] 404: return svg if url has .svg
- 
-## Data structure
-
-File are located in `/logos/<repoid>/data.json`
-
- * commit
- * id
- * lastmodified
- * images
  
 ## Longer term
 
@@ -24,6 +20,7 @@ File are located in `/logos/<repoid>/data.json`
  - [ ] watches all repos
  - [ ] trigger reindex on email receipt
  - [ ] forks all repos in case they go away
+ - [ ] hotlink detection/prevention
  
  
 ## Install on Ubuntu
