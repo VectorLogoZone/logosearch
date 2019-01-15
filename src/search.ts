@@ -13,7 +13,7 @@ type SearchHit = {
 };
 
 
-let searchData: sources.ImageInfo[] = [];
+let imageCount = 0;
 let searchIndex: lunr.Index;
 
 function init(logger:Pino.Logger) {
@@ -25,36 +25,22 @@ function init(logger:Pino.Logger) {
     searchIndex.field('name');
 
     const dataSources = sources.getSources();
-    let count = 0;
     for (let dataLoop = 0; dataLoop < dataSources.length; dataLoop++)
     {
         const images = dataSources[dataLoop].images;
 
         for (let imageLoop = 0; imageLoop < images.length; imageLoop++) {
             searchIndex.add({index: `${dataLoop}:${imageLoop}`, name: images[imageLoop].name});
-            count += 1;
+            imageCount += 1;
         }
     }
 
-    logger.info({ imageCount: count }, "Images indexed");
+    logger.info({ imageCount }, "Images indexed");
 }
 
 function getImageCount(): number {
-    return searchData.length;
+    return imageCount;
 }
-/*
-function getSearchData (id:string): RepoData {
-    const repoData: RepoData = JSON.parse(fs.readFileSync(path.join(baseDir, id + ".json"), 'utf8'));
-
-    repoData.images.sort((left:ImageInfo, right:ImageInfo):number => {
-        if (left.name < right.name) { return -1; }
-        if (left.name > right.name) { return 1; }
-        return 0;
-    });
-
-    return repoData;
-}
-*/
 
 function toBoolean(value:any):boolean {
 
