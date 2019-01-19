@@ -14,6 +14,7 @@ import shutil
 import sys
 import tempfile
 import time
+import unidecode
 import yaml
 
 default_branch = "master"
@@ -112,11 +113,12 @@ for repo_handle in args.repos:
 
     logodir = os.path.join(gitdir, repodata['directory'])
     if args.verbose:
-        print("INFO: copying svgs from %s" % logodir)
+        sys.stdout.write("INFO: copying svgs from %s\n" % logodir)
 
     images = []
 
-    pathfix = re.compile(repodata["rename"]) if "rename" in repodata else None
+    pathfix = re.compile(repodata["rename"][0]) if "rename" in repodata else None
+    include_pattern = re.compile(repodata["include"]) if "include" in repodata else None
 
     for srcpath in pathlib.Path(logodir).glob("**/*.svg"):
 
@@ -124,10 +126,21 @@ for repo_handle in args.repos:
 
         fixdir, fixname = os.path.split(shortpath)
 
-        if pathfix is not None:
-            fixname = pathfix.sub("\\1", fixname)
+        if include_pattern:
+            if include_pattern.match(fixname) == None:
+                if args.verbose:
+                    sys.stdout.write("INFO: include filter is skipping '%s'\n" % (fixname))
+                continue
+            else:
+                if args.verbose:
+                    sys.stdout.write("INFO: include filter okay for '%s'\n" % (fixname))
 
-        name = fixname
+        if pathfix is not None:
+            fixname = pathfix.sub(repodata["rename"][1], fixname)
+
+        fixname = unidecode.unidecode(fixname)
+
+        name = os.path.splitext(fixname)[0]
 
         fixname = fixname.lower().replace(' ', '-')
 
@@ -168,6 +181,7 @@ for repo_handle in args.repos:
         'provider': repodata['provider'],
         'provider_icon': 'https://www.vectorlogo.zone/logos/' + repodata['provider'] + '/' + repodata['provider'] + '-icon.svg',
         'url': giturl,
+        'website': repodata['website'],
         'images': images
     }
 
@@ -180,4 +194,4 @@ for repo_handle in args.repos:
 os.chdir(origdir)
 
 if args.verbose:
-    sys.stdout.write("INFO: loadrepo complete: %d logos found at %s (%d total)\n" % (total, datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'), len(data)))
+    sys.stdout.write("INFO: loadrepo complete: %d logos found at %s\n" % (total, datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')))

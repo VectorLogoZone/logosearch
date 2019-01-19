@@ -3,7 +3,7 @@
   repo: adamfairhead/webicons
   branch: master
   directory: webicons
-  rename: "^webicon-(.*)$"
+  rename: [ "^webicon-(.*)$", "\\1" ]
 
 - provider: github
   handle: advocately
@@ -161,6 +161,7 @@
   repo: gilbarbara/logos
   branch: master
   directory: logos
+  website: 'https://www.svgporn.com/'
 
 - provider: github
   handle: haeckdesign
@@ -233,6 +234,7 @@
   repo: kogg/instant-logos
   branch: develop
   directory: logos
+  website: 'http://instantlogosearch.com/'
 
 - provider: github
   handle: devicon
@@ -440,9 +442,28 @@
   directory: build-source/logos
 
 - provider: github
-  handle: vlz
+  handle: vlz-ar21
   repo: VectorLogoZone/vectorlogozone
   branch: gh-pages
+  include: '^(.+)-ar21\.svg$'
+  rename: [ "^(.+)-ar21.svg$", "\\1.svg" ]
+  directory: www/logos
+  website: 'https://www.vectorlogo.zone/'
+
+- provider: github
+  handle: vlz-icon
+  repo: VectorLogoZone/vectorlogozone
+  branch: gh-pages
+  include: '^(.+)-icon\.svg$'
+  rename: [ "^(.+)-icon.svg$", "\\1.svg" ]
+  directory: www/logos
+  website: 'https://www.vectorlogo.zone/'
+
+- provider: github
+  handle: vlz-other
+  repo: VectorLogoZone/vectorlogozone
+  branch: gh-pages
+  include: '^((?!-ar21|-icon).)*$'
   directory: www/logos
 
 - provider: github
