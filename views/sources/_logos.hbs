@@ -1,9 +1,28 @@
 {{> above}}
 
+<div class="btn-toolbar d-flex justify-content-center mb-3" role="toolbar" aria-label="Paging">
+    <div class="btn-group" role="group" aria-label="Pages">
+        {{#for 1 maxPage 1}}
+            {{#isPageVisible this ../currentPage ../maxPage}}
+                <a href="?page={{../this}}" class="btn btn-outline-secondary{{#equals ../this ../../currentPage}} active{{/equals}}">{{../this}}</a>
+            {{/isPageVisible}}
+        {{/for}}
+    </div>
+</div>
+
+
 <div class="logo-container">
-{{#each source.images}}
+{{#each logos}}
     <a href="{{this.src}}"><img alt="{{this.name}}" class="gitlogo" src="/logos/{{this.img}}" title="{{this.name}}"/></a>
 {{/each}}
+</div>
+
+<div class="btn-toolbar d-flex justify-content-center mb-3" role="toolbar" aria-label="Paging">
+    <div class="btn-group" role="group" aria-label="Pages">
+        {{#for 1 maxPage 1}}
+            <a href="?page={{this}}" class="btn btn-outline-secondary{{#equals this ../currentPage}} active{{/equals}}">{{this}}</a>
+        {{/for}}
+    </div>
 </div>
 
 {{> below}}

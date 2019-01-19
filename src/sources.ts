@@ -17,7 +17,9 @@ type SourceData = {
     lastmodified: string,
     name: string,
     provider: string,
-    provider_icon: string
+    provider_icon: string,
+    url: string,
+    website?: string
 }
 
 const baseDir = path.join(__dirname, "..", "logos");
@@ -59,6 +61,11 @@ function init(logger:Pino.Logger) {
         }
 
         const sourceData: SourceData = JSON.parse(fs.readFileSync(dataName, 'utf8'));
+        sourceData.images.sort(function(a, b) {
+            if (a.name > b.name) { return 1; }
+            if (a.name < b.name) { return -1; }
+            return 0;
+        });
         sources.push(sourceData);
     }
     logger.info({ sourceCount: sources.length }, "Sources loaded");
@@ -92,9 +99,35 @@ router.get('/sources/:handle/index.html', async (ctx) => {
 router.get('/sources/:handle/logos.html', async (ctx) => {
 
     const filtered = sources.filter( (source:any) => { return source.handle === ctx.params.handle } );
-    if (filtered.length === 1) {
-        await ctx.render('sources/_logos.hbs', {source: filtered[0], title: 'Logos in ' + filtered[0].handle});
+    if (filtered.length !== 1) {
+        return;
     }
+
+    if (filtered[0].website) {
+        ctx.set('Link', '<' + filtered[0].website + '>; rel="canonical"');
+    }
+
+    const all = filtered[0].images;
+    let pageSize = 25;
+    if ("pagesize" in ctx.query) {
+        pageSize = Number(ctx.query['pagesize']);
+    }
+    let currentPage = 1;
+    if ("page" in ctx.query) {
+        currentPage = Number(ctx.query['page']);
+    }
+    let maxPage = all.length / pageSize;
+    if (all.length % pageSize > 0) {
+        maxPage += 1;
+    }
+    if (currentPage < 1) {
+        currentPage = 1;
+    }
+    if (currentPage > maxPage) {
+        currentPage = maxPage;
+    }
+    const logos = all.slice((currentPage - 1) * pageSize, (currentPage * pageSize));
+    await ctx.render('sources/_logos.hbs', {currentPage, logos, maxPage, title: 'Logos in ' + filtered[0].handle});
 });
 
 function getSources() {
