@@ -10,7 +10,7 @@ set -o nounset
 #
 # load a few so there is some data
 #
-./bin/loadrepo.py adamfairhead browser-logos bestofjs channel-logos
+./bin/loadrepo.py adamfairhead browser-logos bestofjs channel-logos vlz-icon vlz-other
 
 #
 # run in watch mode
