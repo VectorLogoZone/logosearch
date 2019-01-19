@@ -15,12 +15,12 @@
     <tbody>
 {{#each sources}}
         <tr>
-            <td class="d-none d-md-table-cell"><a href="{{this.handle}}/">{{this.handle}}</a></td>
+            <td class="d-none d-md-table-cell">{{#if this.website}}<a href="{{this.website}}/">{{this.handle}}</a>{{else}}{{this.handle}}{{/if}}</td>
             <td>
                 <img alt="{{this.provider}}" src="{{{this.provider_icon}}}" style="height:18pt;" title="{{this.provider}}" />
                 <a href="{{this.url}}">{{this.name}}</a></td>
             <td class="text-center"><a href="{{this.handle}}/logos.html">{{addCommas this.images.length}}</a></td>
-            <td class="d-none d-md-table-cell">{{this.lastmodified}}</td>
+            <td class="d-none d-md-table-cell"><a href="{{this.handle}}/">{{this.lastmodified}}</a></td>
         </tr>
 {{/each}}
     </tbody>

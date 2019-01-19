@@ -22,6 +22,7 @@
   repo: AliasIO/Wappalyzer
   branch: master
   directory: src/icons
+  website: 'https://www.wappalyzer.com/'
 
 - provider: github
   handle: browser-logos
@@ -40,12 +41,14 @@
   repo: andyfitz/logomono
   branch: gh-pages
   directory: logos
+  website: 'http://logomono.com/'
 
 - provider: github
   handle: atomiclabs
   repo: atomiclabs/cryptocurrency-icons
   branch: master
   directory: svg/color
+  website: 'http://cryptoicons.co/'
 
 - provider: github
   handle: automattic-social-logos
@@ -58,6 +61,7 @@
   repo: badges/shields
   branch: master
   directory: logo
+  website: 'https://shields.io/'
 
 - provider: github
   handle: behdad
@@ -70,12 +74,14 @@
   repo: bestofjs/bestofjs-webui
   branch: master
   directory: public/logos
+  website: 'https://bestofjs.org/'
 
 - provider: github
   handle: cncf
   repo: cncf/landscape
   branch: master
   directory: hosted_logos
+  website: 'https://landscape.cncf.io/'
 
 - provider: github
   handle: coinranking
@@ -88,12 +94,14 @@
   repo: cr0ybot/ingress-logos
   branch: master
   directory: ''
+  website: 'http://cr0ybot.github.io/ingress-logos/'
 
 - provider: github
   handle: derhuerst
   repo: derhuerst/vbb-logos
   branch: master
   directory: ''
+  website: 'https://github.com/derhuerst/vbb-logos'
 
 - provider: github
   handle: detain
@@ -106,12 +114,14 @@
   repo: DiemenDesign/LibreICONS
   branch: master
   directory: svg
+  website: 'http://diemendesign.github.io/LibreICONS/'
 
 - provider: github
   handle: libreicons-color
   repo: DiemenDesign/LibreICONS
   branch: master
   directory: svg-color
+  website: 'http://diemendesign.github.io/LibreICONS/'
 
 - provider: github
   handle: diogomachado
@@ -136,6 +146,7 @@
   repo: fizzed/font-mfizz
   branch: master
   directory: src/svg
+  website: 'http://fizzed.com/oss/font-mfizz'
 
 - provider: github
   handle: fontawesome
@@ -149,6 +160,7 @@
   repo: fontello/brandico.font
   branch: master
   directory: src/svg
+  website: 'https://fontello.github.io/brandico.font/demo.html'
 
 - provider: github
   handle: getoutreach
@@ -168,6 +180,7 @@
   repo: HaeckDesign/Get-Social-Social-Media-Font
   branch: master
   directory: images/SVG
+  website: 'https://haeckdesign.com/freebies/icons/get-social-icon-set'
 
 - provider: github
   handle: simple-svg-brand-logos
@@ -186,6 +199,7 @@
   repo: iconic/open-iconic
   branch: master
   directory: svg
+  website: 'https://useiconic.com/open'
 
 - provider: github
   handle: jaywcjlove
@@ -198,12 +212,21 @@
   repo: jimniels/teamcolors
   branch: master
   directory: public/img
+  website: 'https://teamcolors.jim-nielsen.com/'
+
+- provider: github
+  handle: kilobyte
+  repo: johan/kilobyte-svg-challenge
+  branch: master
+  directory: logos
+  website: 'http://johan.github.com/kilobyte-svg-challenge/'
 
 - provider: github
   handle: jondotsoy
   repo: JonDotsoy/Vector-Logo
   branch: master
   directory: Logos
+  website: 'https://jondotsoy.github.io/Vector-Logo/'
 
 - provider: github
   handle: jordanpapaleo
@@ -212,16 +235,11 @@
   directory: logos
 
 - provider: github
-  handle: kilobyte
-  repo: johan/kilobyte-svg-challenge
-  branch: master
-  directory: logos
-
-- provider: github
   handle: katacontainers
   repo: kata-containers/www.katacontainers.io
   branch: master
   directory: img
+  website: 'https://katacontainers.io/'
 
 - provider: github
   handle: fontisto
@@ -241,6 +259,7 @@
   repo: konpa/devicon
   branch: master
   directory: icons
+  website: 'https://konpa.github.io/devicon/'
 
 - provider: github
   handle: larsenwork
@@ -253,12 +272,14 @@
   repo: leungwensen/svg-icon
   branch: master
   directory: dist/svg/logos
+  website: 'https://leungwensen.github.io/svg-icon/'
 
 - provider: github
   handle: lipis
   repo: lipis/flag-icon-css
   branch: master
   directory: flags
+  website: 'http://flag-icon-css.lip.is/'
 
 - provider: github
   handle: font-logos
@@ -289,6 +310,7 @@
   repo: maxogden/hexbin
   branch: gh-pages
   directory: vector
+  website: 'http://hexb.in/'
 
 - provider: github
   handle: mpay24
@@ -301,6 +323,7 @@
   repo: muffinresearch/payment-icons
   branch: master
   directory: svg
+  website: 'http://muffinresear.ch/payment-icons/'
 
 - provider: github
   handle: neilorangepeel
@@ -313,6 +336,7 @@
   repo: parcel-bundler/website
   branch: master
   directory: src/assets
+  website: 'https://parceljs.org/'
 
 - provider: github
   handle: pixelfusion
@@ -326,18 +350,19 @@
   branch: master
   directory: svg
 
-  #https://gitlab.com/quantenschaum/channel-logos/tree/master/vector
 - provider: gitlab
   handle: channel-logos
-  repo: quantenschaum/channel-logos
+  repo: xmltv-se/open-source/channel-logos
   branch: master
   directory: vector
+  website: 'http://xmltv.se/'
 
 - provider: github
   handle: brandicons
   repo: rdimascio/icons
   branch: master
   directory: icons
+  website: 'https://brandicons.org/'
 
 - provider: github
   handle: rrzepp
@@ -364,22 +389,25 @@
   directory: ''
 
 - provider: github
-  handle: smcllns
-  repo: smcllns/css-social-buttons
-  branch: master
-  directory: src
-
-- provider: github
   handle: simple-icons
   repo: simple-icons/simple-icons
   branch: master
   directory: ''
+  website: 'https://simpleicons.org/'
+
+- provider: github
+  handle: smcllns
+  repo: smcllns/css-social-buttons
+  branch: master
+  directory: src
+  website: 'http://zocial.smcllns.com/'
 
 - provider: github
   handle: publicons
   repo: sortino/Publicons
   branch: master
   directory: SVG
+  website: 'http://joshuasortino.com/projects/publicons/'
 
 - provider: github
   handle: steven2358
@@ -404,18 +432,21 @@
   repo: tabler/tabler
   branch: master
   directory: src/assets/images
+  website: 'https://tabler.io/'
 
 - provider: github
   handle: tiagoporto-music
   repo: tiagoporto/svg-music-logos
   branch: master
   directory: src/logos
+  website: 'http://tiagoporto.github.io/svg-music-logos/'
 
 - provider: github
   handle: todogroup
   repo: todogroup/todogroup.github.io
   branch: master
   directory: static/img
+  website: 'https://todogroup.org/'
 
 - provider: github
   handle: uditkumar489
@@ -428,6 +459,7 @@
   repo: valohai/ml-logos
   branch: master
   directory: ''
+  website: 'https://valohai.com/'
 
 - provider: github
   handle: justvector
@@ -465,12 +497,14 @@
   branch: gh-pages
   include: '^((?!-ar21|-icon).)*$'
   directory: www/logos
+  website: 'https://www.vectorlogo.zone/'
 
 - provider: github
   handle: vorillaz
   repo: vorillaz/devicons
   branch: master
   directory: '!SVG'
+  website: 'http://vorillaz.github.io/devicons/'
 
 - provider: github
   handle: vscodeicons
@@ -483,6 +517,7 @@
   repo: xtoolkit/Micon
   branch: master
   directory: icons/webbrand
+  website: 'http://xtoolkit.github.io/Micon/'
 
 #NO: (copy of other repo) https://github.com/titpetric/iso-country-flags-svg-collection
 #NO: (pure white) https://github.com/omise/banks-logo/tree/master/th
