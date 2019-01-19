@@ -181,9 +181,10 @@ for repo_handle in args.repos:
         'provider': repodata['provider'],
         'provider_icon': 'https://www.vectorlogo.zone/logos/' + repodata['provider'] + '/' + repodata['provider'] + '-icon.svg',
         'url': giturl,
-        'website': repodata['website'],
         'images': images
     }
+    if 'website' in repodata:
+        data['website'] = repodata['website']
 
     outputpath = os.path.join(outputdir, repo_handle, "sourceData.json")
 
