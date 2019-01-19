@@ -14,8 +14,14 @@
             <td>Provider</td>
             <td><img alt="{{source.provider}}" src="{{{source.provider_icon}}}" style="height:18pt;" title="{{source.provider}}" /> {{source.provider}}</td>
         </tr>
+    {{# if source.website }}
         <tr>
-            <td>URL</td>
+            <td>Public website</td>
+            <td><a href="{{source.website}}">{{source.website}}</a></td>
+        </tr>
+    {{/if}}
+        <tr>
+            <td>Source URL</td>
             <td><a href="{{source.url}}">{{source.url}}</a></td>
         </tr>
         <tr>
