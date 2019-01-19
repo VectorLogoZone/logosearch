@@ -1,4 +1,5 @@
 //import * as fs from 'fs';
+import * as Koa from 'koa';
 import * as KoaRouter from 'koa-router';
 import * as lunr from 'lunr';
 //import * as path from 'path';
@@ -65,10 +66,25 @@ router.get('/api/', async (ctx) => {
 
 router.get('/api/search.json', async (ctx) => {
 
+    const retVal = doSearch(ctx);
+
+    const callback = ctx.request.query['callback'];
+    if (callback && callback.match(/^[$A-Za-z_][0-9A-Za-z_$]*$/) != null) {
+        ctx.body = callback + '(' + JSON.stringify(retVal) + ');';
+    } else {
+        ctx.set('Access-Control-Allow-Origin', 'www.vectorlogo.zone,localhost');
+        ctx.set('Access-Control-Allow-Methods', 'POST, GET');
+        ctx.set('Access-Control-Max-Age', '604800');
+        ctx.body = JSON.stringify(retVal);
+    }
+});
+
+function doSearch(ctx:Koa.Context):Object {
+
     let query = ctx.query['q'];
+
     if (!query) {
-        ctx.body = { success: false, message: 'Missing "q" parameter' };
-        return;
+        return { success: false, message: 'Missing "q" parameter' };
     }
 
     let maxResults = 100;
@@ -92,6 +108,8 @@ router.get('/api/search.json', async (ctx) => {
     } catch (err) {
         // do nothing
     }
+
+    let retVal:Object = {};
     try {
         let raw = searchIndex.search(query);
         /*if (raw.length == 0 && query.indexOf('*') == -1) {      //LATER: tweak lunr so this isn't necessary
@@ -99,8 +117,7 @@ router.get('/api/search.json', async (ctx) => {
             raw = searchIndex.search(query);
         }*/
         if (!raw || raw.length == 0) {
-            ctx.body = { success: false, message: 'No matches' };
-            return;
+            return { success: false, message: 'No matches' };
         }
 
         if (raw.length > maxResults) {
@@ -129,10 +146,12 @@ router.get('/api/search.json', async (ctx) => {
             body['raw'] = raw;
         }
 
-        ctx.body = body;
+        retVal = body;
     } catch (err) {
-        ctx.body = {success: false, message: 'Query error!', err};
+        retVal = {success: false, message: 'Query error!', err};
     }
-});
+
+    return retVal;
+}
 
 export { getImageCount, init, router };
