@@ -54,6 +54,9 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     map: { hbs: 'handlebars' },
     options: {
         helpers: {
+            'addCommas': function (num:number) {
+                return num.toLocaleString();
+            },
             'equals': function(a:any, b:any, block:any) {
                 return a == b ? block.fn() : '';
             },

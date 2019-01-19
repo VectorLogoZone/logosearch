@@ -19,7 +19,7 @@
             <td>
                 <img alt="{{this.provider}}" src="{{{this.provider_icon}}}" style="height:18pt;" title="{{this.provider}}" />
                 <a href="{{this.url}}">{{this.name}}</a></td>
-            <td class="text-center"><a href="{{this.handle}}/logos.html">{{this.images.length}}</a></td>
+            <td class="text-center"><a href="{{this.handle}}/logos.html">{{addCommas this.images.length}}</a></td>
             <td class="d-none d-md-table-cell">{{this.lastmodified}}</td>
         </tr>
 {{/each}}
