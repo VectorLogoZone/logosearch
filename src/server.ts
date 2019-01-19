@@ -54,6 +54,21 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     map: { hbs: 'handlebars' },
     options: {
         helpers: {
+            'equals': function(a:any, b:any, block:any) {
+                return a == b ? block.fn() : '';
+            },
+            'for': function(from:number, to:number, incr:number, block:any) {
+                let result = '';
+                for (let loop = from; loop < to; loop += incr)
+                    result += block.fn(loop);
+                return result;
+            },
+            'isPageVisible': function(page:number, currentPage:number, maxPage:number, block:any) {
+                if (page<=3 || maxPage-page<=3 || Math.abs(currentPage - page) < 3) {
+                    return block.fn();
+                }
+                return '.';
+            },
             toJson: function(context:any) { return JSON.stringify(context, null, 2); },
             providerIconUrl: function(provider:string, options:Handlebars.HelperOptions) {
                 if (arguments.length < 2)
