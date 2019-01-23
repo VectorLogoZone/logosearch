@@ -19,7 +19,8 @@ type SourceData = {
     provider: string,
     provider_icon: string,
     url: string,
-    website?: string
+    website?: string,
+    logo?: string
 }
 
 const baseDir = path.join(__dirname, "..", "logos");

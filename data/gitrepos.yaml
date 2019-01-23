@@ -174,6 +174,7 @@
   branch: master
   directory: logos
   website: 'https://www.svgporn.com/'
+  logo: 'https://www.vectorlogo.zone/logos/svgporn/svgporn-icon.svg'
 
 - provider: github
   handle: haeckdesign
@@ -355,7 +356,7 @@
   repo: xmltv-se/open-source/channel-logos
   branch: master
   directory: vector
-  website: 'http://xmltv.se/'
+  website: 'http://logos.xmltv.se/svg/'
 
 - provider: github
   handle: brandicons
@@ -481,6 +482,7 @@
   rename: [ "^(.+)-ar21.svg$", "\\1.svg" ]
   directory: www/logos
   website: 'https://www.vectorlogo.zone/'
+  logo: 'https://www.vectorlogo.zone/logos/vectorlogozone/vectorlogozone-icon.svg'
 
 - provider: github
   handle: vlz-icon

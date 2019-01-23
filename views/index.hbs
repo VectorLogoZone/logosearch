@@ -17,9 +17,9 @@
 <div class="row clearfix">
     <div class="logo-container" id="search_results">
 {{#each sources}}
-    {{#if this.website}}
+    {{#if this.logo}}
         <a href="{{this.website}}">
-        <img src="{{this.website}}favicon.ico" />
+        <img src="{{this.logo}}" style="max-height:64px;max-width:64px;"/>
         </a>
     {{/if}}
 {{/each}}

@@ -183,6 +183,8 @@ for repo_handle in args.repos:
         'url': giturl,
         'images': images
     }
+    if 'logo' in repodata:
+        data['logo'] = repodata['logo']
     if 'website' in repodata:
         data['website'] = repodata['website']
 
