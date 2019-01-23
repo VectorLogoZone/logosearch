@@ -10,6 +10,7 @@ import * as os from 'os';
 import * as path from 'path';
 import * as Pino from 'pino';
 
+import * as alternatives from './alternatives';
 import * as sources from './sources';
 import * as search from './search';
 
@@ -92,16 +93,14 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     }
 }));
 
-
-//const yamlData = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "repos.yaml"), 'utf8'));
-
 app.use(sources.router.routes());
 app.use(search.router.routes());
+app.use(alternatives.router.routes());
 
 const rootRouter = new KoaRouter();
 
 rootRouter.get('/', async (ctx) => {
-    await ctx.render('index.hbs', { h1: 'SVG Logo Search', title: 'SVG Logo Search' });
+    await ctx.render('index.hbs', { h1: 'Awesome SVG Logo Search', sources: sources.getSources(), title: 'Awesome Logos' });
 });
 
 rootRouter.get('/index.html', async (ctx) => {
@@ -164,6 +163,7 @@ app.use(rootRouter.routes());
 
 sources.init(logger);
 search.init(logger);
+alternatives.init(logger);
 
 const port = parseInt(process.env.PORT || '4000');
 

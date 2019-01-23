@@ -1,0 +1,20 @@
+{{> above}}
+<p>
+    These are the alternative websites where you can find logos, but they aren't awesome since you can't search them from Awesome Logos!
+</p>
+
+<table class="table table-striped">
+    <tbody>
+    {{#each alternatives}}
+        <tr>
+            <td class="d-none d-md-table-cell">{{#if this.website}}<a href="{{this.website}}/">{{this.name}}</a>{{else}}{{this.name}}{{/if}}</td>
+            <td class="d-none d-md-table-cell text-right">
+                {{#if this.enabled }}<a href="{{this.website}}" data-search="{{this.search}}">Search</a>{{/if}}
+                <a href="{{this.handle}}/">...</a>
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+
+{{> below}}

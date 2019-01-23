@@ -15,7 +15,15 @@
 </form>
 
 <div class="row clearfix">
-    <div class="logo-container" id="search_results"></div>
+    <div class="logo-container" id="search_results">
+{{#each sources}}
+    {{#if this.website}}
+        <a href="{{this.website}}">
+        <img src="{{this.website}}favicon.ico" />
+        </a>
+    {{/if}}
+{{/each}}
+    </div>
 </div>
 <script>
     var doSearch = function(query)

@@ -1,0 +1,78 @@
+- handle: wikipedia
+  name: Wikipedia
+  search: https://commons.wikimedia.org/w/index.php?search={query}+filemime%3Asvg
+  website: https://commons.wikimedia.org/w/index.php?search=
+  enabled: true
+
+- handle: google
+  name: Google Image Search
+  search: https://www.google.com/search?tbm=isch&tbs=ift:svg&q={query}
+  website: https://www.google.com/search?tbm=isch
+  enabled: true
+
+- handle: worldvectorlogo
+  name: WorldVectorLogo
+  search: https://worldvectorlogo.com/search/{query}
+  website: https://worldvectorlogo.com/
+  enabled: true
+
+- handle: seeklogocom
+  name: SeekLogo.com
+  search: https://seeklogo.com/search?q={query}
+  website: https://seeklogo.com/
+  note: not recommended due to popup and interstitial ads, plus a wierd downloader
+  enabled: false
+
+- handle: freepik
+  name: FreePik
+  search: https://www.freepik.com/index.php?goto=2&searchform=1&k={query}
+  website: https://www.freepik.com/
+  enabled: true
+
+- handle: instantlogosearch
+  name: Instant Logo Search
+  search: http://instantlogosearch.com/?q={query}
+  website: http://instantlogosearch.com/
+  enabled: true
+
+- handle: sleeklogos
+  name: Sleek Logos (Icons8)
+  search: https://sleeklogos.design/web-app/for/all/{query}
+  website: https://sleeklogos.design/
+  enabled: true
+
+- handle: logotypes101
+  name: logotypes101
+  search: http://www.logotypes101.com/search/{query}
+  website: http://www.logotypes101.com/
+  enabled: true
+
+- handle: seeklogonet
+  name: SeekLogo.net
+  search: https://www.seeklogo.net/?s={query}
+  website: https://www.seeklogo.net/
+  enabled: true
+
+- handle: freevectorlogo
+  name: FreeVectorLogo
+  search: http://freevectorlogo.net/?s={query}
+  website: http://freevectorlogo.net/
+  enabled: true
+
+- handle: brandeps
+  name: BrandEPS
+  search: https://www.brandeps.com/search?s={query}
+  website: https://www.brandeps.com/
+  enabled: true
+
+- handle: brandsoftheworld
+  name: Brands of the World
+  search: http://www.brandsoftheworld.com/search/logo?search_api_views_fulltext={query}
+  website: http://www.brandsoftheworld.com/
+  enabled: true
+
+- handle: wikia
+  name: Logopedia
+  search: http://logos.wikia.com/wiki/Special:Search?search={query}&fulltext=Search&ns0=1&ns14=1
+  website: http://logos.wikia.com/
+  enabled: true
