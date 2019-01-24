@@ -77,19 +77,19 @@ function init(logger:Pino.Logger) {
 
 const router = new KoaRouter();
 
-router.get('/sources/', async (ctx) => {
+router.get('/awesome/', async (ctx) => {
     ctx.redirect('index.html');
 });
 
-router.get('/sources/index.html', async (ctx) => {
-    await ctx.render('sources/index.hbs', { sources, title: 'Sources' });
+router.get('/awesome/index.html', async (ctx) => {
+    await ctx.render('sources/index.hbs', { sources, title: 'Awesome Logo Sources' });
 });
 
-router.get('/sources/:handle/', async (ctx) => {
+router.get('/awesome/:handle/', async (ctx) => {
     ctx.redirect('index.html');
 });
 
-router.get('/sources/:handle/index.html', async (ctx) => {
+router.get('/awesome/:handle/index.html', async (ctx) => {
 
     const filtered = sources.filter( (source:any) => { return source.handle === ctx.params.handle } );
     if (filtered.length === 1) {
@@ -97,7 +97,7 @@ router.get('/sources/:handle/index.html', async (ctx) => {
     }
 });
 
-router.get('/sources/:handle/logos.html', async (ctx) => {
+router.get('/awesome/:handle/logos.html', async (ctx) => {
 
     const filtered = sources.filter( (source:any) => { return source.handle === ctx.params.handle } );
     if (filtered.length !== 1) {

@@ -100,15 +100,23 @@ app.use(alternatives.router.routes());
 const rootRouter = new KoaRouter();
 
 rootRouter.get('/', async (ctx) => {
-    await ctx.render('index.hbs', { h1: 'Awesome SVG Logo Search', sources: sources.getSources(), title: 'Awesome Logos' });
+    await ctx.render('index.hbs', { h1: 'Awesome Logos', sources: sources.getSources(), title: 'Awesome Logos' });
 });
 
 rootRouter.get('/index.html', async (ctx) => {
     await ctx.redirect('/');
 });
 
+rootRouter.get('/search.html', async (ctx) => {
+    await ctx.render('index.hbs', { sources: sources.getSources(), title: 'SVG Logo Search' });
+});
+
 rootRouter.get('/about.html', async (ctx) => {
-    await ctx.render('about.hbs', { title: 'About' });
+    await ctx.redirect('/faq.html');
+});
+
+rootRouter.get('/faq.html', async (ctx) => {
+    await ctx.render('faq.hbs', { title: 'Frequently Asked Questions' });
 });
 
 rootRouter.get('/status.json', async (ctx: Koa.Context) => {

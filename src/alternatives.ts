@@ -24,15 +24,19 @@ function init(logger:Pino.Logger) {
     logger.info({ alternativeCount: alternatives.length }, "Alternatives loaded");
 }
 
+function getAlternatives() {
+    return alternatives;
+}
+
 
 const router = new KoaRouter();
 
-router.get('/alternatives/', async (ctx) => {
+router.get('/not-awesome/', async (ctx) => {
     ctx.redirect('index.html');
 });
 
-router.get('/alternatives/index.html', async (ctx) => {
-    await ctx.render('alternatives/index.hbs', { alternatives, title: 'Alternatives' });
+router.get('/not-awesome/index.html', async (ctx) => {
+    await ctx.render('alternatives/index.hbs', { alternatives, h1: 'Not-quite-so-awesome Logo Sources', title: 'Alternative Logo Sources' });
 });
 
-export { init, router };
+export { getAlternatives, init, router };
