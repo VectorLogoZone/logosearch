@@ -1,16 +1,31 @@
 
-# SVG Logo Search [<img alt="VectorLogoZone Logo" src="https://www.vectorlogo.zone/logos/vectorlogozone/vectorlogozone-tile.svg" height="90" align="right" />](https://search.vectorlogo.zone/)
+# Awesome Logos [<img alt="AwesomeLogos Logo" src="https://www.awesomelogos.org/favicon.svg" height="90" align="right" />](https://www.awesomelogos.org/)
 
-[![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Fsearch.vectorlogo.zone%2Fstatus.json&query=%24.sourcecount)](https://search.vectorlogo.zone/sources/index.html)
-[![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Fsearch.vectorlogo.zone%2Fstatus.json&query=%24.imagecount)](https://search.vectorlogo.zone/)
+[![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.sourcecount)](https://www.awesomelogos.org/sources/index.html)
+[![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.imagecount)](https://www.awesomelogos.org/)
 
-This is the server code for [VectorLogoZone](https://www.vectorlogo.zone/)'s [SVG Logo Search](https://search.vectorlogo.zone/).
+This is the source (including the data)for the [Awesome Logos](https://www.awesomelogos.org/) website.
+
+## Criteria
+
+In order to be truly awesome, a logo website has to:
+ * have SVG logos
+ * that look good
+ * that I can index
+ * and you are allowed to use
+ * without being bombarded with advertising
+ 
+## The List!
+
+Enough reading already!  Just show me the list for crying out loud!
+ 
+[Voilà](https://www.awesomelogos.org/awesome/index.html) (and the [raw data](https://github.com/VectorLogoZone/awesome-logos/blob/master/data/gitrepos.yaml)).
 
 ## Using
 
-Go to [search.vectorlogo.zone](https://search.vectorlogo.zone/) and search for something!
+Go to [www.awesomelogos.org](https://www.awesomelogos.org/) and search for something!
 
-Click on the image to go to the source.  You will need to check that license before re-using.
+Click on a logo to go to the source.  You will need to check the source's license before re-using.
 
 No hot-linking.
 
@@ -22,11 +37,13 @@ There are two main parts:
  2. A web server, written in TypeScript/node.js.  This code is in `/src`.
 
 The search data is stored in the `/logos` directory.  It consists of a directory for each 
-logo source, with a `search.json` and optionally a local copy of the logos.
+logo source, with a `sourceData.json` and optionally a local copy of the logos.
 
-The git cron job gets public git repos (stored in the `/cache` directory) and copies the svgs to `/logos`.
+The cron job gets public git repos (stored in the `/cache` directory) and copies the svgs to `/logos`.
 
-## search.json
+## sourceData.json
+
+The file is structured as follows:
 
 ```json
 {
@@ -43,7 +60,7 @@ The git cron job gets public git repos (stored in the `/cache` directory) and co
 
 ## Contributing
 
-If you want to add a repo, please submit a [github issue](https://github.com/VectorLogoZone/vlz-search/issues/new)
+If you want to add a repo, please submit a [github issue](https://github.com/VectorLogoZone/awesome-logos/issues/new)
 
 Code contributions are also welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
 
