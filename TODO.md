@@ -1,14 +1,19 @@
 # To Do
 
- - [ ] API similar to api.vlz
- - [ ] paging in sources/_logos.hbs
+ - [ ] fill out FAQ
+ - [ ] cleanup paging in sources/_logos.hbs
+ - [ ] sitemap.xml
+ - [ ] use window.location.replace() in sources/_logos.hbs
+ - [ ] alternatives/index.hbs - input box for preloading search links
  - [ ] switch back to latest lunr (with stopwords disabled)
+ - [ ] alternatives/_index.hbs
+ - [ ] contact page (or link to VLZ's?)
  - [ ] report of repos w/nothing
  - [ ] descriptions of sources
- - [ ] alternative logo search websites
+ - [ ] remote provider
  - [ ] background select
  - [ ] init script
- - [ ] cron job
+ - [ ] actual cron job
  - [ ] check for moved repos
  - [ ] 404: return svg if url has .svg
  
