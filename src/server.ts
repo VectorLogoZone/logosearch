@@ -166,7 +166,7 @@ rootRouter.get('/status.json', async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', '*');
         ctx.set('Access-Control-Allow-Methods', 'POST, GET');
         ctx.set('Access-Control-Max-Age', '604800');
-        ctx.body = JSON.stringify(retVal);
+        ctx.body = retVal;
     }
 });
 
