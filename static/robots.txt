@@ -3,4 +3,5 @@
 #
 
 User-Agent: *
-Disallow: /
+Disallow: /api/
+Allow: /

@@ -16,13 +16,7 @@
 
 <div class="row clearfix">
     <div class="logo-container" id="search_results">
-{{#each sources}}
-    {{#if this.logo}}
-        <a href="{{this.website}}">
-        <img src="{{this.logo}}" style="max-height:64px;max-width:64px;"/>
-        </a>
-    {{/if}}
-{{/each}}
+        <img src="/images/spinner.svg" style="border: 0;box-shadow: none;height:96px;width:96px;" alt="spinner" title="Please wait..." />
     </div>
 </div>
 <script>
@@ -108,10 +102,12 @@
 
         const results = data.results;
         
-        gtag('event', 'search', {
-            search_term: query,
-            event_value: results.length ? results.length : 0
-        });
+        if (window.gtag) {
+            gtag('event', 'search', {
+                search_term: query,
+                event_value: results.length ? results.length : 0
+            });
+        }
 
         // Are there any results?
         if (results.length)
@@ -124,15 +120,14 @@
 
             // Iterate over the results
             results.forEach(function(result) {
-
-                // Build a snippet of HTML for this result
-                var appendString = '<a href="' + result.source + '">'
-                    + '<img class="gitlogo" title="' + result.description + '" src="' + result.url + '" />'
-                    + '</a> ';
-
-
-                // Add it to the results
-                $search_results.append(appendString);
+                $search_results.append(
+                    $("<a>").attr("href", result.source)
+                        .append($("<img>")
+                            .attr("src", result.url)
+                            .attr("title", result.description)
+                            .addClass("awesomelogo")
+                            )
+                );
             });
         }
         else

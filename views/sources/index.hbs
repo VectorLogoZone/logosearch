@@ -1,12 +1,15 @@
 {{> above}}
-<p>
-    These are the sources currently included in the index.
-</p>
+
+<div class="alert alert-info">
+    Check out the <a class="alert-link" href="https://www.github.com/VectorLogoZone/awesome-logos#criteria">criteria</a>
+    for what makes an awesome logo source, and the list of <a class="alert-link" href="/alternatives/index.html">alternatives</a>
+    that did not make the cut!
+</div>
 
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th class="d-none d-md-table-cell">Handle</th>
+            <th class="d-none d-md-table-cell">Name</th>
             <th>Source</th>
             <th class="text-center"># Logos</th>
             <th class="d-none d-md-table-cell">Last update</th>
@@ -15,7 +18,7 @@
     <tbody>
 {{#each sources}}
         <tr>
-            <td class="d-none d-md-table-cell">{{#if this.website}}<a href="{{this.website}}/">{{this.handle}}</a>{{else}}{{this.handle}}{{/if}}</td>
+            <td class="d-none d-md-table-cell">{{#if this.website}}<a href="{{this.website}}/">{{this.name}}</a>{{else}}{{this.name}}{{/if}}</td>
             <td>
                 <img alt="{{this.provider}}" src="{{{this.provider_icon}}}" style="height:18pt;" title="{{this.provider}}" />
                 <a href="{{this.url}}">{{this.name}}</a></td>
