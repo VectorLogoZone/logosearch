@@ -1,8 +1,8 @@
-import * as KoaRouter from 'koa-router';
+import KoaRouter from 'koa-router';
 
 import * as fs from 'fs';
 import * as path from 'path';
-import * as Pino from 'pino';
+import Pino from 'pino';
 import * as Yaml from 'js-yaml';
 
 type AlternativeData = {

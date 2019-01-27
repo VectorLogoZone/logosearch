@@ -28,15 +28,16 @@
 <script>
     var doSearch = function(query)
     {
+        var url = '/api/search.json';
         if (!query || query.length == 0)
         {
-            $("#search_results").empty();
-            return;
+            url = '/api/random.json';
         }
+
         console.log("searching for " + query);
         //$("#search_results").text("searching for " + query);
         $.ajax({
-            data: { q: query, max: 10 },
+            data: { q: query, max: 48 },
             dataType: 'json',
             error: function(xhr, text, err) {
                 window.alert("Search API Error: " + text);
@@ -45,7 +46,7 @@
             success: function(data, text, xhr) {
                 display_search_results(query, data);
             },
-            url: '/api/search.json'
+            url: url
         });
         return false;
     };
@@ -58,9 +59,19 @@
     $("#q").on('input propertychange paste', function() {
         console.log("input paste");
         var query = $("#q").val();
-        history.pushState({ "q": query}, "", "?q=" + query);
+        history.replaceState({ "q": query}, "", "?q=" + query);
         doSearch(query);
     });
+
+    $(window).on("load", function(event) {
+        console.log("load", history.state);;
+        var query = getParameterByName("q");
+        //if (query && query.length)
+        {
+            $("#q").val(query);
+            doSearch(query);
+        }
+   });
 
     $(window).on("popstate", function(event) {
         console.log("popstate");
@@ -82,13 +93,7 @@
         return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
     }
 
-    var query = getParameterByName("q");
-    if (query && query.length)
-    {
-        $("#q").val(query);
-        doSearch(query);
-    }
-
+ 
     function htmlEncode(value){
         return $("<div>").text(value).html();
     }
@@ -102,12 +107,10 @@
         }
 
         const results = data.results;
-
-        ga('send', {
-            hitType: 'event',
-            eventCategory: 'search-github',
-            eventAction: query,
-            eventValue: results.length ? results.length : 0
+        
+        gtag('event', 'search', {
+            search_term: query,
+            event_value: results.length ? results.length : 0
         });
 
         // Are there any results?

@@ -1,20 +1,21 @@
 //import * as fs from 'fs';
 import * as Handlebars from 'handlebars'
-import * as Koa from 'koa';
-import * as KoaMount from 'koa-mount';
-import * as KoaPinoLogger from 'koa-pino-logger';
-import * as KoaRouter from 'koa-router';
-import * as KoaStatic from 'koa-static';
-import * as KoaViews from 'koa-views';
+import Koa from 'koa';
+import KoaMount from 'koa-mount';
+import KoaPinoLogger from 'koa-pino-logger';
+import KoaRouter from 'koa-router';
+import KoaStatic from 'koa-static';
+import KoaViews from 'koa-views';
 import * as os from 'os';
 import * as path from 'path';
-import * as Pino from 'pino';
+import Pino from 'pino';
 
 import * as alternatives from './alternatives';
 import * as sources from './sources';
 import * as search from './search';
+import * as random from './random';
 
-//import * as Yaml from 'js-yaml';
+// import * as Yaml from 'js-yaml';
 
 const app = new Koa();
 
@@ -96,6 +97,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 app.use(sources.router.routes());
 app.use(search.router.routes());
 app.use(alternatives.router.routes());
+app.use(random.router.routes());
 
 const rootRouter = new KoaRouter();
 
@@ -119,7 +121,7 @@ rootRouter.get('/faq.html', async (ctx) => {
     await ctx.render('faq.hbs', { title: 'Frequently Asked Questions' });
 });
 
-rootRouter.get('/status.json', async (ctx: Koa.Context) => {
+rootRouter.get('/status.json', async (ctx) => {
 
     const retVal: {[key: string]: any} = {};
 
@@ -172,6 +174,7 @@ app.use(rootRouter.routes());
 sources.init(logger);
 search.init(logger);
 alternatives.init(logger);
+random.init(logger, sources.getSources());
 
 const port = parseInt(process.env.PORT || '4000');
 

@@ -1,8 +1,8 @@
-import * as KoaRouter from 'koa-router';
+import KoaRouter from 'koa-router';
 
 import * as fs from 'fs';
 import * as path from 'path';
-import * as Pino from 'pino';
+import Pino from 'pino';
 
 type ImageInfo = {
     name: string,
@@ -135,4 +135,4 @@ function getSources() {
     return sources;
 }
 
-export { getSources, ImageInfo, init, router };
+export { getSources, ImageInfo, init, router, SourceData };
