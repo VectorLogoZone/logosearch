@@ -16,6 +16,7 @@
  - [ ] actual cron job
  - [ ] check for moved repos
  - [ ] 404: return svg if url has .svg
+ - [ ] way to automatically add background to white svgs (either during loadrepo or when displaying)
  
 ## Longer term
 
@@ -29,12 +30,22 @@
  - [ ] hotlink detection/prevention
  
  
-## Install on Ubuntu
+## Install on Ubuntu 18.04
 
+ * apt-get update
  * apt-get install git nodejs npm python3-pip
- * pip3 install sh
+ * pip3 install sh unidecode
  * mkdir /app
  * chdir /app
- * git clone https://github.com/VectorLogoZone/vlz-search.git
+ * git clone https://github.com/VectorLogoZone/awesome-logos.git
+ * cd awesome-logos
  * npm install
  * ./node_modules/.bin/tsc
+ * bin/loadrepo.py
+
+
+## Tips
+ * Github's [search by filename](https://help.github.com/articles/searching-code/#search-by-filename) is a good way to find logos (and then repos) with logos
+
+
+ * https://github.com/luoye-fe/sublime-icon/
