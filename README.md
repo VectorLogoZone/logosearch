@@ -3,6 +3,7 @@
 
 [![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.sourcecount)](https://www.awesomelogos.org/sources/index.html)
 [![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.imagecount)](https://www.awesomelogos.org/)
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 This is the source (including the data) for the [Awesome Logos](https://www.awesomelogos.org/) website.
 
