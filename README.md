@@ -58,9 +58,9 @@ See the [to do list](TODO.md) for a list of things that are planned.
 
 ## License
 
-Code is [GNU Affero General Public License v3.0](LICENSE.txt)
-
-Logos the property of their original owners.
+ * The list is [CC0](LICENSE-list.txt)
+ * The logos are the property of their original owners.
+ * The source code for the website is [GNU Affero General Public License v3.0](LICENSE-code.txt)
 
 ## Credits
 
