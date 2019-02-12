@@ -3,8 +3,9 @@
 
 [![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.sourcecount)](https://www.awesomelogos.org/sources/index.html)
 [![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.imagecount)](https://www.awesomelogos.org/)
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-This is the source (including the data)for the [Awesome Logos](https://www.awesomelogos.org/) website.
+This is the source (including the data) for the [Awesome Logos](https://www.awesomelogos.org/) website.
 
 ## Criteria
 
@@ -12,7 +13,7 @@ In order to be truly awesome, a logo website has to:
  * have SVG logos
  * that look good
  * that I can index
- * and you are allowed to use
+ * and you are allowed to use (and for more than just “inspiration”!)
  * without being bombarded with advertising
  
 ## The List!
@@ -28,6 +29,14 @@ Go to [www.awesomelogos.org](https://www.awesomelogos.org/) and search for somet
 Click on a logo to go to the source.  You will need to check the source's license before re-using.
 
 No hot-linking.
+
+## Contributing
+
+If you want to add a repo, please submit a [github issue](https://github.com/VectorLogoZone/awesome-logos/issues/new)
+
+Code contributions are also welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
+
+See the [to do list](TODO.md) for a list of things that are planned.
 
 ## Running
 
@@ -58,17 +67,11 @@ The file is structured as follows:
 }
 ```
 
-## Contributing
-
-If you want to add a repo, please submit a [github issue](https://github.com/VectorLogoZone/awesome-logos/issues/new)
-
-Code contributions are also welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
-
-See the [to do list](TODO.md) for a list of things that are planned.
-
 ## License
 
-[GNU Affero General Public License v3.0](LICENSE.txt)
+The server is [GNU Affero General Public License v3.0](LICENSE.txt).
+
+Logos are 
 
 ## Credits
 
