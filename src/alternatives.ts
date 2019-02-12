@@ -1,8 +1,8 @@
-import * as KoaRouter from 'koa-router';
+import KoaRouter from 'koa-router';
 
 import * as fs from 'fs';
 import * as path from 'path';
-import * as Pino from 'pino';
+import Pino from 'pino';
 import * as Yaml from 'js-yaml';
 
 type AlternativeData = {
@@ -31,11 +31,11 @@ function getAlternatives() {
 
 const router = new KoaRouter();
 
-router.get('/not-awesome/', async (ctx) => {
+router.get('/alternatives/', async (ctx) => {
     ctx.redirect('index.html');
 });
 
-router.get('/not-awesome/index.html', async (ctx) => {
+router.get('/alternatives/index.html', async (ctx) => {
     await ctx.render('alternatives/index.hbs', { alternatives, h1: 'Not-quite-so-awesome Logo Sources', title: 'Alternative Logo Sources' });
 });
 

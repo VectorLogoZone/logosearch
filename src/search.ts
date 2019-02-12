@@ -1,9 +1,9 @@
 //import * as fs from 'fs';
-import * as Koa from 'koa';
-import * as KoaRouter from 'koa-router';
+import Koa from 'koa';
+import KoaRouter from 'koa-router';
 import * as lunr from 'lunr';
 //import * as path from 'path';
-import * as Pino from 'pino';
+import Pino from 'pino';
 
 import * as sources from './sources';
 
@@ -60,10 +60,6 @@ function toBoolean(value:any):boolean {
 
 const router = new KoaRouter();
 
-router.get('/api/', async (ctx) => {
-    ctx.redirect('search.json');
-});
-
 router.get('/api/search.json', async (ctx) => {
 
     const retVal = doSearch(ctx);
@@ -75,11 +71,11 @@ router.get('/api/search.json', async (ctx) => {
         ctx.set('Access-Control-Allow-Origin', 'www.vectorlogo.zone,localhost');
         ctx.set('Access-Control-Allow-Methods', 'POST, GET');
         ctx.set('Access-Control-Max-Age', '604800');
-        ctx.body = JSON.stringify(retVal);
+        ctx.body = retVal;
     }
 });
 
-function doSearch(ctx:Koa.Context):Object {
+function doSearch(ctx:Koa.BaseContext):Object {
 
     let query = ctx.query['q'];
 
@@ -100,7 +96,7 @@ function doSearch(ctx:Koa.Context):Object {
     } catch (err) {
         // do nothing
     }
-    const prefix = absoluteUrls ? "https://search.vectorlogo.zone/logos/" : "/logos/";
+    const prefix = absoluteUrls ? "https://www.awesomelogos.org/logos/" : "/logos/";
 
     let showRaw = false;
     try {
@@ -154,4 +150,4 @@ function doSearch(ctx:Koa.Context):Object {
     return retVal;
 }
 
-export { getImageCount, init, router };
+export { getImageCount, init, router, SearchHit };

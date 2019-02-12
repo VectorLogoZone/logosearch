@@ -1,8 +1,8 @@
-import * as KoaRouter from 'koa-router';
+import KoaRouter from 'koa-router';
 
 import * as fs from 'fs';
 import * as path from 'path';
-import * as Pino from 'pino';
+import Pino from 'pino';
 
 type ImageInfo = {
     name: string,
@@ -77,19 +77,19 @@ function init(logger:Pino.Logger) {
 
 const router = new KoaRouter();
 
-router.get('/awesome/', async (ctx) => {
+router.get('/sources/', async (ctx) => {
     ctx.redirect('index.html');
 });
 
-router.get('/awesome/index.html', async (ctx) => {
-    await ctx.render('sources/index.hbs', { sources, title: 'Awesome Logo Sources' });
+router.get('/sources/index.html', async (ctx) => {
+    await ctx.render('sources/index.hbs', { sources, title: 'Awesome Logo Source List' });
 });
 
-router.get('/awesome/:handle/', async (ctx) => {
+router.get('/sources/:handle/', async (ctx) => {
     ctx.redirect('index.html');
 });
 
-router.get('/awesome/:handle/index.html', async (ctx) => {
+router.get('/sources/:handle/index.html', async (ctx) => {
 
     const filtered = sources.filter( (source:any) => { return source.handle === ctx.params.handle } );
     if (filtered.length === 1) {
@@ -97,7 +97,7 @@ router.get('/awesome/:handle/index.html', async (ctx) => {
     }
 });
 
-router.get('/awesome/:handle/logos.html', async (ctx) => {
+router.get('/sources/:handle/logos.html', async (ctx) => {
 
     const filtered = sources.filter( (source:any) => { return source.handle === ctx.params.handle } );
     if (filtered.length !== 1) {
@@ -109,10 +109,14 @@ router.get('/awesome/:handle/logos.html', async (ctx) => {
     }
 
     const all = filtered[0].images;
-    let pageSize = 25;
+    let pageSize = 180;
     if ("pagesize" in ctx.query) {
         pageSize = Number(ctx.query['pagesize']);
     }
+    if (pageSize > 720) {
+        pageSize = 720;
+    }
+
     let currentPage = 1;
     if ("page" in ctx.query) {
         currentPage = Number(ctx.query['page']);
@@ -135,4 +139,4 @@ function getSources() {
     return sources;
 }
 
-export { getSources, ImageInfo, init, router };
+export { getSources, ImageInfo, init, router, SourceData };

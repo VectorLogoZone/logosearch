@@ -16,27 +16,22 @@
 
 <div class="row clearfix">
     <div class="logo-container" id="search_results">
-{{#each sources}}
-    {{#if this.logo}}
-        <a href="{{this.website}}">
-        <img src="{{this.logo}}" style="max-height:64px;max-width:64px;"/>
-        </a>
-    {{/if}}
-{{/each}}
+        <img src="/images/spinner.svg" style="border: 0;box-shadow: none;height:96px;width:96px;" alt="spinner" title="Please wait..." />
     </div>
 </div>
 <script>
     var doSearch = function(query)
     {
+        var url = '/api/search.json';
         if (!query || query.length == 0)
         {
-            $("#search_results").empty();
-            return;
+            url = '/api/random.json';
         }
+
         console.log("searching for " + query);
         //$("#search_results").text("searching for " + query);
         $.ajax({
-            data: { q: query, max: 10 },
+            data: { q: query, max: 48 },
             dataType: 'json',
             error: function(xhr, text, err) {
                 window.alert("Search API Error: " + text);
@@ -45,7 +40,7 @@
             success: function(data, text, xhr) {
                 display_search_results(query, data);
             },
-            url: '/api/search.json'
+            url: url
         });
         return false;
     };
@@ -58,9 +53,19 @@
     $("#q").on('input propertychange paste', function() {
         console.log("input paste");
         var query = $("#q").val();
-        history.pushState({ "q": query}, "", "?q=" + query);
+        history.replaceState({ "q": query}, "", "?q=" + query);
         doSearch(query);
     });
+
+    $(window).on("load", function(event) {
+        console.log("load", history.state);;
+        var query = getParameterByName("q");
+        //if (query && query.length)
+        {
+            $("#q").val(query);
+            doSearch(query);
+        }
+   });
 
     $(window).on("popstate", function(event) {
         console.log("popstate");
@@ -82,13 +87,7 @@
         return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
     }
 
-    var query = getParameterByName("q");
-    if (query && query.length)
-    {
-        $("#q").val(query);
-        doSearch(query);
-    }
-
+ 
     function htmlEncode(value){
         return $("<div>").text(value).html();
     }
@@ -102,13 +101,13 @@
         }
 
         const results = data.results;
-
-        ga('send', {
-            hitType: 'event',
-            eventCategory: 'search-github',
-            eventAction: query,
-            eventValue: results.length ? results.length : 0
-        });
+        
+        if (window.gtag) {
+            gtag('event', 'search', {
+                search_term: query,
+                event_value: results.length ? results.length : 0
+            });
+        }
 
         // Are there any results?
         if (results.length)
@@ -121,15 +120,14 @@
 
             // Iterate over the results
             results.forEach(function(result) {
-
-                // Build a snippet of HTML for this result
-                var appendString = '<a href="' + result.source + '">'
-                    + '<img class="gitlogo" title="' + result.description + '" src="' + result.url + '" />'
-                    + '</a> ';
-
-
-                // Add it to the results
-                $search_results.append(appendString);
+                $search_results.append(
+                    $("<a>").attr("href", result.source)
+                        .append($("<img>")
+                            .attr("src", result.url)
+                            .attr("title", result.description)
+                            .addClass("awesomelogo")
+                            )
+                );
             });
         }
         else

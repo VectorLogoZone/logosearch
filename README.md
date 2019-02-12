@@ -20,11 +20,11 @@ In order to be truly awesome, a logo website has to:
 
 Enough reading already!  Just show me the list for crying out loud!
  
-[Voilà](https://www.awesomelogos.org/awesome/index.html) (and the [raw data](https://github.com/VectorLogoZone/awesome-logos/blob/master/data/gitrepos.yaml)).
+[Voilà](https://www.awesomelogos.org/sources/index.html) (and the [raw data](https://github.com/VectorLogoZone/awesome-logos/blob/master/data/gitrepos.yaml)).
 
 ## Using
 
-Go to [www.awesomelogos.org](https://www.awesomelogos.org/) and search for something!
+Go to [www.AwesomeLogos.org](https://www.awesomelogos.org/) and search for something!
 
 Click on a logo to go to the source.  You will need to check the source's license before re-using.
 
@@ -38,6 +38,13 @@ Code contributions are also welcome!  Please follow the standard Github [Fork & 
 
 See the [to do list](TODO.md) for a list of things that are planned.
 
+## API
+
+While there is an internal API, it is not meant for public consumption.  It is running on a low-end
+server and will fall down if subjected to a serious load.
+
+But feel free to run your own copy...
+
 ## Running
 
 There are two main parts: 
@@ -48,30 +55,13 @@ There are two main parts:
 The search data is stored in the `/logos` directory.  It consists of a directory for each 
 logo source, with a `sourceData.json` and optionally a local copy of the logos.
 
-The cron job gets public git repos (stored in the `/cache` directory) and copies the svgs to `/logos`.
-
-## sourceData.json
-
-The file is structured as follows:
-
-```json
-{
-  "data": { "info": "provider-specific blob" },
-  "handle": "id-used-for-directories-and-urls",
-  "images": [ { "img": "local/path/to/company.svg", "name": "company", "src": "https://logos.example.com/path/to/company.svg" }],
-  "lastmodified": "2019-01-01T13:54:59Z",
-  "name":"Example",
-  "provider": "id-of-provider",
-  "provider_icon": "svg-icon-of-provider",
-  "url": "https://logos.example.com/"
-}
-```
+The cron job gets public git repos (and stores them in the `/cache` directory) and copies the svgs to `/logos`.
 
 ## License
 
-The server is [GNU Affero General Public License v3.0](LICENSE.txt).
+Code is [GNU Affero General Public License v3.0](LICENSE.txt)
 
-Logos are 
+Logos are the property of their original owners.  All the images are linked to the original sources: see the original license there.
 
 ## Credits
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{{#if h1}}{{ title }}{{else}}{{ title }} - SVG Logo Search{{/if}}</title>
+    <title>{{#if h1}}{{ title }}{{else}}{{ title }} - Awesome Logos{{/if}}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
@@ -51,10 +51,12 @@
             padding-right: 5pt;
         }
 
-        .gitlogo {
-            max-width: 120px;
-            max-height: 60px;
+        .awesomelogo {
+            max-width: 250px;
+            max-height: 100px;
+            height: 100px;
             margin: 10px;
+            padding: 5px;
         }
 
     </style>
@@ -63,13 +65,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-328425-32"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-328425-32');
+    </script>
+    <!-- End Google Analytics -->
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark navbar-static-top d-print-none" style="background-color:#1d8286;">
         <div class="container-fluid">
             <span>
-                <a href="/"><img src="/images/w3_svg-icon.svg" alt="Awesome Logos Logo" class="navbar-logo"></a>
-                <a class="navbar-brand" href="/">Awesome Logos</a>
+                <a href="/search.html"><img src="/images/w3_svg-icon.svg" alt="Awesome Logos Logo" class="navbar-logo"></a>
+                <a class="navbar-brand" href="/search.html">Awesome Logos</a>
             </span>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -77,9 +90,10 @@
         </div>
         <div class="navbar-collapse collapse navbar-right" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="/awesome/index.html">Awesome</a></li>
-                <li class="nav-item"><a class="nav-link" href="/not-awesome/index.html">Not&nbsp;Awesome</a></li>
+                <li class="nav-item"><a class="nav-link" href="/sources/index.html">The&nbsp;List</a></li>
+                <li class="nav-item"><a class="nav-link" href="/search.html">Search</a></li>
                 <li class="nav-item"><a class="nav-link" href="/faq.html">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.github.com/VectorLogoZone/awesome-logos">Source</a></li>
             </ul>
         </div><!--/.navbar-collapse -->
     </nav>

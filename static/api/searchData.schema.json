@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://www.awesomelogos.org/api/sourceData.schema.json",
+  "title": "Search Data",
+  "description": "raw data for AwesomeLogos' search engine",
+  "type": "object",
+  "properties": {
+    "data": {
+      "description": "Additional data about this source that might be of interest (optional)",
+      "type": "object"
+    },
+    "handle": {
+      "description": "unique human-readable id for this source.  Used in directory names and urls",
+      "type": "string"
+    },
+    "icon": {
+      "description": "SVG icon URL",
+      "type": "string"
+    },
+    "images": {
+      "description": "Array of images",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "img": {
+            "description": "URL of the logo (must be hotlink-able from *.awesomelogos.org and *.vectorlogo.zone)",
+            "type": "string"
+          },
+          "name": {
+            "description": "name of the logo (this is what will be indexed for full-text search)",
+            "type": "string"
+          },
+          "src": {
+            "description": "URL of the page (at the source) for this logo",
+            "type": "string"
+          }
+        },
+        "required": [ "img", "name", "src" ]
+      },
+      "uniqueItems": true
+    },
+    "lastchecked": {
+      "description": "Timestamp of the last time this source was updated.",
+      "format": "date-time",
+      "type": "string"
+    },
+    "lastmodified": {
+      "description": "Timestamp of the last change to a logo at the source",
+      "format": "date-time",
+      "type": "string"
+    },
+    "lastupdated": {
+      "description": "Timestamp of the last time this source was updated.",
+      "format": "date-time",
+      "type": "string"
+    },
+    "name": {
+      "description": "Short name for this source.  Used on the list page and in img alt and title attributes",
+      "type": "string"
+    },
+    "provider": {
+      "description": "Short name for this source.  Used on the list page and in img alt and title attributes",
+      "enum": [ "github", "gitlab", "remote" ]
+    },
+    "url": {
+      "description": "Home page URL",
+      "type": "string"
+    }
+  },
+  "required": [ "handle", "images", "lastmodified", "name", "provider", "url" ]
+}
