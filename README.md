@@ -59,9 +59,9 @@ The cron job gets public git repos (and stores them in the `/cache` directory) a
 
 ## License
 
-Code is [GNU Affero General Public License v3.0](LICENSE.txt)
-
-Logos are the property of their original owners.  All the images are linked to the original sources: see the original license there.
+ * The list is [CC0](LICENSE-list.txt)
+ * The logos are the property of their original owners.
+ * The source code for the website is [GNU Affero General Public License v3.0](LICENSE-code.txt)
 
 ## Credits
 
@@ -70,6 +70,7 @@ Logos are the property of their original owners.  All the images are linked to t
 [![Digital Ocean](https://www.vectorlogo.zone/logos/digitalocean/digitalocean-ar21.svg)](https://www.digitalocean.com/ "Hosting")
 [![Git](https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg)](https://git-scm.com/ "Version control")
 [![Github](https://www.vectorlogo.zone/logos/github/github-ar21.svg)](https://github.com/ "Code hosting")
+[![Google Noto Emoji](https://www.vectorlogo.zone/logos/google/google-ar21.svg)](https://github.com/googlei18n/noto-emoji "Favicon")
 [![Google Analytics](https://www.vectorlogo.zone/logos/google_analytics/google_analytics-ar21.svg)](https://www.google.com/analytics "Traffic Measurement")
 [![Handlebars](https://www.vectorlogo.zone/logos/handlebarsjs/handlebarsjs-ar21.svg)](http://handlebarsjs.com/ "Templating")
 [![Koa](https://www.vectorlogo.zone/logos/koajs/koajs-ar21.svg)](https://koajs.com/ "Web framework")
