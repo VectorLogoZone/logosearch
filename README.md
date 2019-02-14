@@ -1,5 +1,5 @@
 
-# Awesome Logos [<img alt="AwesomeLogos Logo" src="static/favicon.svg" height="90" align="right" />](https://www.awesomelogos.org/)
+# Awesome Logos [<img alt="AwesomeLogos Logo" src="static/images/logo.svg" height="80" align="right" />](https://www.awesomelogos.org/)
 
 [![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.sourcecount)](https://www.awesomelogos.org/sources/index.html)
 [![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.imagecount)](https://www.awesomelogos.org/)

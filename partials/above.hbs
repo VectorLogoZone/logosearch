@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
     <meta name="theme-color" content="#2c3e50" />
+    <link href="https://fonts.googleapis.com/css?family=Racing+Sans+One" rel="stylesheet" />
     <style>
         .navbar-logo {
-            height: 30pt;
+            height: 24pt;
             margin-top: -14px;
             padding-top: 8px;
             padding-right: 8px;
@@ -21,8 +22,15 @@
             margin: 6px;
         }
 
+        /*h1 {
+            font-family: 'Racing Sans One';
+        }*/
+
         .navbar-brand {
-            font-weight: bold;
+            font-family: 'Racing Sans One';
+            font-size: 1.65rem;
+            padding-top: 0;
+            padding-bottom: 0;
         }
 
         .nav-link {
@@ -43,6 +51,17 @@
         /* hide outline on a clicked tab */
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
             outline: 0;
+        }
+
+        .navbar {
+        	background: #af0011;
+	background: -moz-linear-gradient(top, #af0011 0%, #9f0011 44%, #820011 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#af0011), color-stop(44%,#9f0011), color-stop(100%,#820011));
+	background: -webkit-linear-gradient(top, #af0011 0%,#9f0011 44%,#820011 100%);
+	background: -o-linear-gradient(top, #af0011 0%,#9f0011 44%,#820011 100%);
+	background: -ms-linear-gradient(top, #af0011 0%,#9f0011 44%,#820011 100%);
+	background: linear-gradient(to bottom, #af0011 0%,#9f0011 44%,#820011 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#af0011', endColorstr='#820011',GradientType=0 );
         }
 
         .social-footer {
@@ -78,10 +97,10 @@
     <!-- End Google Analytics -->
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark navbar-static-top d-print-none" style="background-color:#1d8286;">
+    <nav class="navbar navbar-expand-sm navbar-dark navbar-static-top d-print-none" data-style="background-color:#1d8286;">
         <div class="container-fluid">
             <span>
-                <a href="/search.html"><img src="/favicon.svg" alt="Awesome Logos Logo" class="navbar-logo"></a>
+                <a href="/search.html"><img src="/images/logo.svg" alt="Awesome Logos Logo" class="navbar-logo"></a>
                 <a class="navbar-brand" href="/search.html">Awesome Logos</a>
             </span>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
