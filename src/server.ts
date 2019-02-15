@@ -102,7 +102,6 @@ app.use(random.router.routes());
 const rootRouter = new KoaRouter();
 
 rootRouter.get('/', async (ctx) => {
-    //await ctx.render('index.hbs', { h1: 'Awesome Logos', sources: sources.getSources(), title: 'Awesome Logos' });
     await ctx.redirect('/search.html');
 });
 
@@ -111,7 +110,7 @@ rootRouter.get('/index.html', async (ctx) => {
 });
 
 rootRouter.get('/search.html', async (ctx) => {
-    await ctx.render('index.hbs', { h1: 'Awesome Logo Search', sources: sources.getSources(), title: 'Awesome Logos' });
+    await ctx.render('index.hbs', { h1: 'Logo Search', sources: sources.getSources(), title: 'Awesome Logos' });
 });
 
 rootRouter.get('/about.html', async (ctx) => {
