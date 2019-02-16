@@ -42,6 +42,7 @@
   branch: gh-pages
   directory: logos
   website: 'http://logomono.com/'
+  name: 'logomono'
 
 - provider: github
   handle: atomiclabs
@@ -62,6 +63,8 @@
   branch: master
   directory: logo
   website: 'https://shields.io/'
+  name: 'Shields.IO'
+  logo: 'https://www.vectorlogo.zone/logos/shieldsio/shieldsio-icon.svg'
 
 - provider: github
   handle: behdad
@@ -115,6 +118,7 @@
   branch: master
   directory: svg
   website: 'http://diemendesign.github.io/LibreICONS/'
+  name: 'LibreIcons (black)'
 
 - provider: github
   handle: libreicons-color
@@ -122,6 +126,7 @@
   branch: master
   directory: svg-color
   website: 'http://diemendesign.github.io/LibreICONS/'
+  name: 'LibreIcons (color)'
 
 - provider: github
   handle: diogomachado
@@ -154,6 +159,9 @@
   branch: master
   directory: svgs/brands
   license: https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt
+  name: Font Awesome
+  website: https://fontawesome.com/
+  logo: https://www.vectorlogo.zone/logos/font-awesome/font-awesome-icon.svg
 
 - provider: github
   handle: brandico
@@ -215,6 +223,8 @@
   branch: master
   directory: public/img
   website: 'https://teamcolors.jim-nielsen.com/'
+  name: 'TeamColors'
+  LATER-logo: ''
 
 - provider: github
   handle: kilobyte
@@ -242,12 +252,17 @@
   branch: master
   directory: img
   website: 'https://katacontainers.io/'
+  name: 'Kata Containers'
+  logo: 'https://www.vectorlogo.zone/logos/katacontainersio/katacontainersio-icon.svg'
 
 - provider: github
   handle: fontisto
   repo: kenangundogan/fontisto
   branch: master
   directory: icons/svg/brand
+  name: 'Fontisto'
+  website: 'https://fontisto.com/icons#brand'
+  logo: 'https://www.vectorlogo.zone/logos/fontisto/fontisto-icon.svg'
 
 - provider: github
   handle: instant-logos
@@ -255,6 +270,8 @@
   branch: develop
   directory: logos
   website: 'http://instantlogosearch.com/'
+  name: 'Instant Logo Search'
+  logo: 'https://www.vectorlogo.zone/logos/instantlogosearch/instantlogosearch-icon.svg'
 
 - provider: github
   handle: devicon
@@ -300,6 +317,7 @@
   repo: materialos/icons
   branch: master
   directory: Files
+  name: 'Material Open Source Icons'
 
 - provider: github
   handle: maxlinux
@@ -313,6 +331,8 @@
   branch: gh-pages
   directory: vector
   website: 'http://hexb.in/'
+  name: 'Hexbin'
+  LATER-logo: ''
 
 - provider: github
   handle: mpay24
@@ -396,6 +416,8 @@
   branch: master
   directory: ''
   website: 'https://simpleicons.org/'
+  logo: 'https://www.vectorlogo.zone/logos/simpleicons/simpleicons-icon.svg'
+  name: 'Simple Icons'
 
 - provider: github
   handle: smcllns
