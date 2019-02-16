@@ -175,6 +175,7 @@
   directory: logos
   website: 'https://www.svgporn.com/'
   logo: 'https://www.vectorlogo.zone/logos/svgporn/svgporn-icon.svg'
+  name: 'SVGPorn'
 
 - provider: github
   handle: haeckdesign
@@ -482,6 +483,7 @@
   rename: [ "^(.+)-ar21.svg$", "\\1.svg" ]
   directory: www/logos
   website: 'https://www.vectorlogo.zone/'
+  name: 'VectorLogoZone (rectangles)'
   logo: 'https://www.vectorlogo.zone/logos/vectorlogozone/vectorlogozone-icon.svg'
 
 - provider: github
@@ -492,6 +494,8 @@
   rename: [ "^(.+)-icon.svg$", "\\1.svg" ]
   directory: www/logos
   website: 'https://www.vectorlogo.zone/'
+  logo: 'https://www.vectorlogo.zone/logos/vectorlogozone/vectorlogozone-icon.svg'
+  name: 'VectorLogoZone (icons)'
 
 - provider: github
   handle: vlz-other
@@ -500,6 +504,8 @@
   include: '^((?!-ar21|-icon).)*$'
   directory: www/logos
   website: 'https://www.vectorlogo.zone/'
+  logo: 'https://www.vectorlogo.zone/logos/vectorlogozone/vectorlogozone-icon.svg'
+  name: 'VectorLogoZone (other)'
 
 - provider: github
   handle: vorillaz

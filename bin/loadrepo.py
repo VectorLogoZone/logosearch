@@ -177,7 +177,7 @@ for repo_handle in args.repos:
         'data': repodata,
         'handle': repo_handle,
         'lastmodified': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
-        'name': repodata['repo'],
+        'name': repodata['name'] if 'name' in repodata else repodata['repo'],
         'provider': repodata['provider'],
         'provider_icon': 'https://www.vectorlogo.zone/logos/' + repodata['provider'] + '/' + repodata['provider'] + '-icon.svg',
         'url': giturl,

@@ -6,24 +6,33 @@
     that did not make the cut!
 </div>
 
-<table class="table table-bordered table-striped">
+<table class="table table-striped">
     <thead>
         <tr>
+            <!--
             <th class="d-none d-md-table-cell">Name</th>
             <th>Source</th>
             <th class="text-center"># Logos</th>
             <th class="d-none d-md-table-cell">Last update</th>
+            -->
         </tr>
     </thead>
     <tbody>
 {{#each sources}}
         <tr>
+            <td>
+                <a href="{{#if this.website}}{{this.website}}{{else}}{{this.url}}{{/if}}"><img alt="{{this.name}}" src="{{#if this.logo}}{{{this.logo}}}{{else}}{{{this.provider_icon}}}{{/if}}" style="height:2.0em;" title="{{this.name}}" /></a>
+                <a class="ml-2" href="{{this.handle}}/index.html">{{this.name}}</a>
+                <a href="{{this.handle}}/logos.html"><div class="mt-2 badge badge-primary float-right">{{addCommas this.images.length}}</div></a>
+            </td>
+            <!--
             <td class="d-none d-md-table-cell">{{#if this.website}}<a href="{{this.website}}/">{{this.name}}</a>{{else}}{{this.name}}{{/if}}</td>
             <td>
                 <img alt="{{this.provider}}" src="{{{this.provider_icon}}}" style="height:18pt;" title="{{this.provider}}" />
                 <a href="{{this.url}}">{{this.name}}</a></td>
             <td class="text-center"><a href="{{this.handle}}/logos.html">{{addCommas this.images.length}}</a></td>
             <td class="d-none d-md-table-cell"><a href="{{this.handle}}/">{{this.lastmodified}}</a></td>
+            -->
         </tr>
 {{/each}}
     </tbody>
