@@ -1,5 +1,5 @@
 
-# Awesome Logos [<img alt="AwesomeLogos Logo" src="https://www.awesomelogos.org/favicon.svg" height="90" align="right" />](https://www.awesomelogos.org/)
+# Awesome Logos [<img alt="AwesomeLogos Logo" src="static/images/logo.svg" height="80" align="right" />](https://www.awesomelogos.org/)
 
 [![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.sourcecount)](https://www.awesomelogos.org/sources/index.html)
 [![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.imagecount)](https://www.awesomelogos.org/)
@@ -13,7 +13,8 @@ In order to be truly awesome, a logo website has to:
  * have SVG logos
  * that look good
  * that I can index
- * and you are allowed to use
+ * and you are allowed to use (and for more than just “inspiration”!)
+ * without being bombarded with advertising
  
 ## The List!
 
@@ -28,6 +29,14 @@ Go to [www.AwesomeLogos.org](https://www.awesomelogos.org/) and search for somet
 Click on a logo to go to the source.  You will need to check the source's license before re-using.
 
 No hot-linking.
+
+## Contributing
+
+If you want to add a repo, please submit a [github issue](https://github.com/VectorLogoZone/awesome-logos/issues/new)
+
+Code contributions are also welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
+
+See the [to do list](TODO.md) for a list of things that are planned.
 
 ## API
 
@@ -47,14 +56,6 @@ The search data is stored in the `/logos` directory.  It consists of a directory
 logo source, with a `sourceData.json` and optionally a local copy of the logos.
 
 The cron job gets public git repos (and stores them in the `/cache` directory) and copies the svgs to `/logos`.
-
-## Contributing
-
-If you want to add a repo, please submit a [github issue](https://github.com/VectorLogoZone/awesome-logos/issues/new)
-
-Code contributions are also welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
-
-See the [to do list](TODO.md) for a list of things that are planned.
 
 ## License
 

@@ -82,7 +82,7 @@ router.get('/sources/', async (ctx) => {
 });
 
 router.get('/sources/index.html', async (ctx) => {
-    await ctx.render('sources/index.hbs', { h1: 'Awesome Logo Source List<a href="https://awesome.re"><img alt="awesome badge" class="float-right pt-2" src="https://awesome.re/badge.svg" title="More Awesome lists"/></a>', sources, title: 'Awesome Logo Source List' });
+    await ctx.render('sources/index.hbs', { h1: '<img src="/images/logo.svg" alt="Awesome Logos Logo" class="navbar-logo pr-3" />Awesome Logo Sources<a href="https://awesome.re"><img alt="awesome badge" class="float-right pt-2" src="https://awesome.re/badge.svg" title="More Awesome lists"/></a>', sources, title: 'Awesome Logo Source List' });
 });
 
 router.get('/sources/:handle/', async (ctx) => {
