@@ -645,7 +645,7 @@
   branch: master
   directory: svgs
 
-- provider: github.com
+- provider: github
   handle: wondergryphon-gateway
   repo: wondergryphon/payment-gateway-logos
   branch: master

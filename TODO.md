@@ -30,13 +30,13 @@
  - [ ] hotlink detection/prevention
  
  
-## Install on Ubuntu 18.04
+## Install on Ubuntu 18.10
 
  * apt-get update
- * apt-get install git nodejs npm python3-pip
+ * apt-get install nodejs npm python3-pip
  * pip3 install sh unidecode
  * mkdir /app
- * chdir /app
+ * cd /app
  * git clone https://github.com/VectorLogoZone/awesome-logos.git
  * cd awesome-logos
  * npm install
