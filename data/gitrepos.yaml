@@ -1,4 +1,16 @@
 - provider: github
+  handle: aaronfagan
+  repo: aaronfagan/svg-credit-card-payment-icons
+  branch: master
+  directory: ''
+
+- provider: github
+  handle: abranhe
+  repo: abranhe/programming-languages-logos
+  branch: master
+  directory: src
+
+- provider: github
   handle: adamfairhead
   repo: adamfairhead/webicons
   branch: master
@@ -79,8 +91,27 @@
   directory: public/logos
   website: 'https://bestofjs.org/'
 
+- provider: gitlab
+  handle: celebdor
+  repo: celebdor/design
+  branch: master
+  directory: logos
+
 - provider: github
-  handle: cncf
+  handle: chloi
+  repo: chloi/preprocessor-logos
+  branch: master
+  directory: ''
+  
+- provider: github
+  handle: cncf-artwork
+  repo: cncf/artwork
+  branch: master
+  directory: ''
+  website: 'https://www.cncf.io/'
+
+- provider: github
+  handle: cncf-landscape
   repo: cncf/landscape
   branch: master
   directory: hosted_logos
@@ -143,6 +174,18 @@
 - provider: github
   handle: file-icons
   repo: file-icons/source
+  branch: master
+  directory: svg
+
+- provider: github
+  handle: devopicons
+  repo: file-icons/DevOpicons
+  branch: master
+  directory: svg
+
+- provider: github
+  handle: mfixx
+  repo: file-icons/MFixx
   branch: master
   directory: svg
 
@@ -216,6 +259,12 @@
   repo: jaywcjlove/logo
   branch: master
   directory: img
+
+- provider: github
+  handle: fontos
+  repo: JeyKeu/font-os
+  branch: master
+  directory: vectors
 
 - provider: github
   handle: jimniels
@@ -334,6 +383,12 @@
   name: 'Hexbin'
   LATER-logo: ''
 
+- provider: gitlab
+  handle: monopolies
+  repo: monopolies/monopolies.net
+  branch: master
+  directory: logos
+
 - provider: github
   handle: mpay24
   repo: mpay24/payment-logos
@@ -353,6 +408,18 @@
   branch: master
   directory: ''
 
+- provider: gitlab
+  handle: omniait
+  repo: omniait/developer-logos
+  branch: master
+  directory: logos
+
+- provider: github
+  handle: openwebicons
+  repo: openwebicons/cc-icons
+  branch: gh-pages
+  directory: svg
+
 - provider: github
   handle: parcel
   repo: parcel-bundler/website
@@ -365,6 +432,12 @@
   repo: pixelfusion/front-end-stack
   branch: master
   directory: static/icons/social
+
+- provider: gitlab
+  handle: prismbreak
+  repo: prism-break/prism-break
+  branch: master
+  directory: source/assets/logos
 
 - provider: github
   handle: prplx
@@ -459,11 +532,29 @@
   website: 'https://tabler.io/'
 
 - provider: github
+  handle: focialmix
+  repo: TheEssemCraft/FocialMix
+  branch: dev
+  directory: src
+
+- provider: github
   handle: tiagoporto-music
   repo: tiagoporto/svg-music-logos
   branch: master
   directory: src/logos
   website: 'http://tiagoporto.github.io/svg-music-logos/'
+
+- provider: github
+  handle: tlezotte
+  repo: tlezotte/brand-icons
+  branch: master
+  directory: src/svg
+
+- provider: github
+  handle: tlezotte-victr
+  repo: tlezotte/victr-icons
+  branch: master
+  directory: src/SVG
 
 - provider: github
   handle: todogroup
@@ -478,6 +569,12 @@
   branch: master
   directory: 'Social media'
 
+- provider: github
+  handle: uiwjs
+  repo: uiwjs/file-icons
+  branch: master
+  directory: icon
+  
 - provider: github
   handle: valohai
   repo: valohai/ml-logos
@@ -541,6 +638,18 @@
   repo: vscode-icons/vscode-icons
   branch: master
   directory: icons
+
+- provider: github
+  handle: wondergryphon-crypto
+  repo: wondergryphon/cryptocurrency-logos
+  branch: master
+  directory: svgs
+
+- provider: github.com
+  handle: wondergryphon-gateway
+  repo: wondergryphon/payment-gateway-logos
+  branch: master
+  directory: svgs
 
 - provider: github
   handle: xtoolkit
