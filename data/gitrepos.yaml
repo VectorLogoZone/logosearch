@@ -296,6 +296,12 @@
   directory: logos
 
 - provider: github
+  handle: fontfamous
+  repo: jsdelivr/FontFamous
+  branch: master
+  directory: src/logos
+
+- provider: github
   handle: katacontainers
   repo: kata-containers/www.katacontainers.io
   branch: master
