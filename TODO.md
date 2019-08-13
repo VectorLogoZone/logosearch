@@ -1,5 +1,6 @@
 # To Do
 
+ - [ ] pm2
  - [ ] fill out FAQ
  - [ ] cleanup paging in sources/_logos.hbs
  - [ ] sitemap.xml
@@ -49,3 +50,6 @@
 
 
  * https://github.com/luoye-fe/sublime-icon/
+
+ https://github.com/qseksolutions/coinlistadmin/tree/9a4fd00bc16e9864837fd1b23131d8adc11aab2f/src/assets/currency-svg
+ https://github.com/nshanthappa/azure-pipelines/tree/ab1b8766492d184397edf634774e2496ff6ce066/templates/icons/svg
