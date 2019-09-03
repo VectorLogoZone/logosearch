@@ -20,7 +20,7 @@ In order to be truly awesome, a logo website has to:
 
 Enough reading already!  Just show me the list for crying out loud!
  
-[Voilà](https://www.awesomelogos.org/sources/index.html) (and the [raw data](https://github.com/VectorLogoZone/awesome-logos/blob/master/data/gitrepos.yaml)).
+[Voilà](https://www.awesomelogos.org/sources/index.html) (and the [raw data](https://github.com/AwesomeLogos/awesome-logos/blob/master/data/gitrepos.yaml)).
 
 ## Using
 
@@ -32,7 +32,7 @@ No hot-linking.
 
 ## Contributing
 
-If you want to add a repo, please submit a [github issue](https://github.com/VectorLogoZone/awesome-logos/issues/new)
+If you want to add a repo, please submit a [github issue](https://github.com/AwesomeLogos/awesome-logos/issues/new)
 
 Code contributions are also welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
 

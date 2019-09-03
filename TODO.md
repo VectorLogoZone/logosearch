@@ -38,7 +38,7 @@
  * pip3 install sh unidecode
  * mkdir /app
  * cd /app
- * git clone https://github.com/VectorLogoZone/awesome-logos.git
+ * git clone https://github.com/AwesomeLogos/awesome-logos.git
  * cd awesome-logos
  * npm install
  * ./node_modules/.bin/tsc

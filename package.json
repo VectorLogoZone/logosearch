@@ -1,7 +1,7 @@
 {
   "author": "",
   "bugs": {
-    "url": "https://github.com/VectorLogoZone/github-logo-search/issues"
+    "url": "https://github.com/AwesomeLogos/github-logo-search/issues"
   },
   "dependencies": {
     "handlebars": "^4.1.2",
@@ -15,7 +15,7 @@
     "lunr": "^1.0.0",
     "pino": "^5.8.0"
   },
-  "description": "Backend server for VectorLogoZone's Github logo search",
+  "description": "Backend server for AwesomeLogos",
   "devDependencies": {
     "@types/handlebars": "^4.0.40",
     "@types/js-yaml": "^3.11.2",
@@ -34,7 +34,7 @@
     "ts-node": "^7.0.1",
     "typescript": "^3.1.1"
   },
-  "homepage": "https://github-logo-search.vectorlogo.zone/",
+  "homepage": "https://www.awesomelogos.org/",
   "keywords": [
     "logo",
     "logos",
@@ -43,10 +43,10 @@
   ],
   "license": "AGPL-3.0",
   "main": "dist/server.js",
-  "name": "github-logo-search",
+  "name": "awesome-logos",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VectorLogoZone/github-logo-search.git"
+    "url": "git+https://github.com/AwesomeLogos/awesome-logos.git"
   },
   "scripts": {
     "build": "tsc",
