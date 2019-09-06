@@ -590,13 +590,13 @@
 
 - provider: github
   handle: justvector
-  repo: VectorLogoZone/JustVector-Social-Icons
+  repo: AwesomeLogos/JustVector-Social-Icons
   branch: master
   directory: svg
 
 - provider: github
   handle: picons
-  repo: VectorLogoZone/picons
+  repo: AwesomeLogos/picons
   branch: master
   directory: build-source/logos
 
