@@ -10,16 +10,17 @@ This is the source (including the data) for the [Awesome Logos](https://www.awes
 ## Criteria
 
 In order to be truly awesome, a logo website has to:
- * have SVG logos
- * that look good
- * that I can index
- * and you are allowed to use (and for more than just “inspiration”!)
- * without being bombarded with advertising
- 
-## The List!
+
+* have SVG logos
+* that look good
+* that I can index
+* and you are allowed to use (and for more than just “inspiration”!)
+* without being bombarded with advertising
+
+## The List
 
 Enough reading already!  Just show me the list for crying out loud!
- 
+
 [Voilà](https://www.awesomelogos.org/sources/index.html) (and the [raw data](https://github.com/AwesomeLogos/awesome-logos/blob/master/data/sources.yaml)).
 
 ## Using
@@ -47,21 +48,21 @@ But feel free to run your own copy...
 
 ## Running
 
-There are two main parts: 
+There are two main parts:
 
- 1. Various cron jobs that update the search data.  This code is in `/bin`.  Currently the only one is a git repo loader.
- 2. A web server, written in TypeScript/node.js.  This code is in `/src`.
+ 1. Various cron jobs that update the search data.  This code is in `./bin`.  Currently the only one is a git repo loader.
+ 2. A web server, written in TypeScript/node.js.  This code is in `./src`.
 
-The search data is stored in the `/logos` directory.  It consists of a directory for each 
+The search data is stored in the `./logos` directory.  It consists of a directory for each
 logo source, with a `sourceData.json` and optionally a local copy of the logos.
 
-The cron job gets public git repos (and stores them in the `/cache` directory) and copies the svgs to `/logos`.
+The cron job gets public git repos (and stores them in the `./cache` directory) and copies the svgs to `./logos`.
 
 ## License
 
- * The list is [CC0](LICENSE-list.txt)
- * The logos are the property of their original owners.
- * The source code for the website is [GNU Affero General Public License v3.0](LICENSE-code.txt)
+* The sources list is [CC0](LICENSE-list.txt)
+* The logos are the property of their original owners.
+* The source code for the website is [GNU Affero General Public License v3.0](LICENSE-code.txt)
 
 ## Credits
 
@@ -80,4 +81,3 @@ The cron job gets public git repos (and stores them in the `/cache` directory) a
 [![pino](https://www.vectorlogo.zone/logos/getpinoio/getpinoio-ar21.svg)](https://www.getpino.io/ "Logging")
 [![Python](https://www.vectorlogo.zone/logos/python/python-ar21.svg)](https://www.python.org/ "data load script")
 [![TypeScript](https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-ar21.svg)](https://www.typescriptlang.org/ "Programming Language")
-
