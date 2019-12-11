@@ -20,7 +20,7 @@ In order to be truly awesome, a logo website has to:
 
 Enough reading already!  Just show me the list for crying out loud!
  
-[Voilà](https://www.awesomelogos.org/sources/index.html) (and the [raw data](https://github.com/AwesomeLogos/awesome-logos/blob/master/data/gitrepos.yaml)).
+[Voilà](https://www.awesomelogos.org/sources/index.html) (and the [raw data](https://github.com/AwesomeLogos/awesome-logos/blob/master/data/sources.yaml)).
 
 ## Using
 

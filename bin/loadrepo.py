@@ -24,7 +24,7 @@ parser.add_argument("-q", "--quiet", help="hide status messages", default=True, 
 parser.add_argument("--always", help="always process", default=False, dest='always', action="store_true")
 parser.add_argument("--branch", help="git branch (default='%s')" % default_branch, action="store", default=default_branch)
 parser.add_argument("--cache", help="location of previously downloaded repo", action="store", default="./cache")
-parser.add_argument("--input", help="YAML of potential repos", action="store", default="data/gitrepos.yaml")
+parser.add_argument("--input", help="YAML of potential repos", action="store", default="data/sources.yaml")
 parser.add_argument("--output", help="output directory", action="store", default="./logos")
 parser.add_argument("--nocleanup", help="do not erase temporary files", default=True, dest='cleanup', action="store_false")
 parser.add_argument('repos', help='repos (all if none specified)', metavar='repos', nargs='*')

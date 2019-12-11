@@ -33,6 +33,13 @@ function getRandomInt(max:number): number {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
+function getRandomLogo(): Sources.ImageInfo {
+    const theSource = randomSources[getRandomInt(randomSources.length)];
+    const theImageInfo = theSource.images[getRandomInt(theSource.images.length)];
+
+    return theImageInfo;
+}
+
 router.get('/api/random.json', async (ctx) => {
 
     const absoluteUrls = false; //LATER: blech!
@@ -57,4 +64,4 @@ router.get('/api/random.json', async (ctx) => {
     ctx.body = { "success": true, "query": "*", "results": Array.from(results) };
 });
 
-export { init, router };
+export { getRandomLogo, init, router };

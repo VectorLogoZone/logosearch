@@ -73,7 +73,7 @@ function init(logger:Pino.Logger) {
 }
 
 //import * as Yaml from 'js-yaml';
-//const repos = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "gitrepos.yaml"), 'utf8'));
+//const repos = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "sources.yaml"), 'utf8'));
 
 const router = new KoaRouter();
 
