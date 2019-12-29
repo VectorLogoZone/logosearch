@@ -4,7 +4,7 @@
     "url": "https://github.com/AwesomeLogos/github-logo-search/issues"
   },
   "dependencies": {
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.3.0",
     "js-yaml": "^3.13.1",
     "koa": "^2.5.3",
     "koa-mount": "^4.0.0",
