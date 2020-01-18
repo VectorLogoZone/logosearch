@@ -131,6 +131,12 @@
   website: 'http://cr0ybot.github.io/ingress-logos/'
 
 - provider: github
+  handle: cryptocoins
+  repo: AllienWorks/cryptocoins
+  branch: master
+  directory: SVG
+
+- provider: github
   handle: derhuerst
   repo: derhuerst/vbb-logos
   branch: master
@@ -336,6 +342,13 @@
   website: 'https://konpa.github.io/devicon/'
 
 - provider: github
+  handle: vexillo
+  repo: kreativekorp/vexillo
+  branch: master
+  directory: artwork/vexillo/sma360
+  website: 'http://www.kreativekorp.com/app/vexillo/'
+
+- provider: github
   handle: larsenwork
   repo: larsenwork/web.svg.min
   branch: master
@@ -360,6 +373,12 @@
   repo: lukas-w/font-logos
   branch: master
   directory: vectors
+
+- provider: github
+  handle: flagkit
+  repo: madebybowtie/FlagKit
+  branch: master
+  directory: Assets/SVG
 
 - provider: github
   handle: manuelbieh
@@ -432,6 +451,13 @@
   branch: master
   directory: src/assets
   website: 'https://parceljs.org/'
+
+- provider: github
+  handle: nigerialogos
+  repo: PaystackHQ/nigerialogos
+  branch: master
+  directory: logos
+  website: 'https://nigerialogos.com/'
 
 - provider: github
   handle: pixelfusion
@@ -511,6 +537,12 @@
   branch: master
   directory: SVG
   website: 'http://joshuasortino.com/projects/publicons/'
+
+- provider: github
+  handle: starter-workflows
+  repo: actions/starter-workflows
+  branch: master
+  directory: icons
 
 - provider: github
   handle: steven2358
@@ -594,9 +626,9 @@
   branch: master
   directory: svg
 
-- provider: github
+- provider: gitlab
   handle: picons
-  repo: AwesomeLogos/picons
+  repo: golodhrim/picons
   branch: master
   directory: build-source/logos
 
