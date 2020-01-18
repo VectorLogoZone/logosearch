@@ -13,7 +13,8 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
     "lunr": "^1.0.0",
-    "pino": "^5.8.0"
+    "pino": "^5.8.0",
+    "pm2": "^4.2.1"
   },
   "description": "Backend server for AwesomeLogos",
   "devDependencies": {
