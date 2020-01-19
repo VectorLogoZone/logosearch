@@ -458,12 +458,7 @@
   branch: master
   directory: logos
   website: 'https://nigerialogos.com/'
-
-- provider: github
-  handle: pixelfusion
-  repo: pixelfusion/front-end-stack
-  branch: master
-  directory: static/icons/social
+  logo: 'https://nigerialogos.com/logos/paystack/paystack.svg'
 
 - provider: gitlab
   handle: prismbreak
@@ -476,13 +471,6 @@
   repo: prplx/svg-logos
   branch: master
   directory: svg
-
-- provider: gitlab
-  handle: channel-logos
-  repo: xmltv-se/open-source/channel-logos
-  branch: master
-  directory: vector
-  website: 'http://logos.xmltv.se/svg/'
 
 - provider: github
   handle: brandicons
@@ -688,6 +676,13 @@
   repo: wondergryphon/payment-gateway-logos
   branch: master
   directory: svgs
+
+- provider: gitlab
+  handle: channel-logos
+  repo: xmltv-se/open-source/channel-logos
+  branch: master
+  directory: vector
+  website: 'http://logos.xmltv.se/svg/'
 
 - provider: github
   handle: xtoolkit
