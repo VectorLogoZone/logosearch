@@ -1,4 +1,4 @@
-//import * as fs from 'fs';
+import * as fs from 'fs';
 import * as Handlebars from 'handlebars'
 import Koa from 'koa';
 import KoaMount from 'koa-mount';
@@ -40,7 +40,14 @@ app.use(async(ctx, next) => {
         const status = ctx.status || 404;
         if (status === 404) {
             ctx.status = 404;
-            await ctx.render('404.hbs', { title: '404', h1: '404 - Page not found', url: ctx.req.url });
+            if (ctx.path.endsWith('.json')) {
+                ctx.body = { message: '404: invalid url', success: false, url: ctx.url };
+            } else if (ctx.path.endsWith('.svg')) {
+                ctx.type = 'image/svg+xml';
+                ctx.body = fs.createReadStream(path.join(__dirname, '..', 'static/images/404.svg'));
+            } else {
+                await ctx.render('404.hbs', { title: '404', h1: '404 - Page not found', url: ctx.req.url });
+            }
         }
     } catch (err) {
         ctx.status = 500;
