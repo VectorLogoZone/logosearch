@@ -68,6 +68,7 @@ router.get('/api/search.json', async (ctx) => {
     const callback = ctx.request.query['callback'];
     if (callback && callback.match(/^[$A-Za-z_][0-9A-Za-z_$]*$/) != null) {
         ctx.body = callback + '(' + JSON.stringify(retVal) + ');';
+        ctx.set('Content-Type', 'text/javascript');
     } else {
         ctx.set('Access-Control-Allow-Origin', 'www.vectorlogo.zone,localhost');
         ctx.set('Access-Control-Allow-Methods', 'POST, GET');
