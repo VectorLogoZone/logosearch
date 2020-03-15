@@ -122,6 +122,10 @@ for repo_handle in args.repos:
 
     for srcpath in pathlib.Path(logodir).glob("**/*.svg"):
 
+        if (os.path.islink(srcpath)):
+            sys.stdout.write("INFO: skipping symlink %s\n" % srcpath)
+            continue
+
         shortpath = os.path.join(repo_handle, str(srcpath)[len(logodir)+1:] if len(repodata["directory"]) > 0 else str(srcpath)[len(logodir):])
 
         fixdir, fixname = os.path.split(shortpath)
