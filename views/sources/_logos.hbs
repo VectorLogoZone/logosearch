@@ -20,7 +20,7 @@
 <div class="btn-toolbar d-flex justify-content-center mb-3" role="toolbar" aria-label="Paging">
     <div class="btn-group" role="group" aria-label="Pages">
         {{#for 1 maxPage 1}}
-            <a href="?page={{this}}" class="btn btn-outline-secondary{{#equals this ../currentPage}} active{{/equals}}">{{this}}</a>
+            <a href="?page={{this}}" class="btn btn-outline-secondary{{#equals this ../currentPage}} active{{/equals}}" rel="nofollow">{{this}}</a>
         {{/for}}
     </div>
 </div>

@@ -82,11 +82,11 @@ router.get('/sources/', async (ctx) => {
 });
 
 router.get('/sources/index.html', async (ctx) => {
-    await ctx.render('sources/index.hbs', { 
-        h1: '<img src="/images/logo.svg" alt="Awesome Logos Logo" class="navbar-logo pr-3" />Awesome Logo Sources<a href="https://awesome.re"><img alt="awesome badge" class="float-right pt-2" src="https://awesome.re/badge.svg" title="More Awesome lists"/></a>', 
-        sources, 
+    await ctx.render('sources/index.hbs', {
+        h1: '<img src="/images/logo.svg" alt="Awesome Logos Logo" class="navbar-logo pr-3" />Awesome Logo Sources<a href="https://awesome.re"><img alt="awesome badge" class="float-right pt-2" src="https://awesome.re/badge.svg" title="More Awesome lists"/></a>',
+        sources,
         total: sources.reduce((total, source) => total + source.images.length, 0),
-        title: 'Awesome Logo Source List' 
+        title: 'Awesome Logo Source List'
     });
 });
 
@@ -137,7 +137,7 @@ router.get('/sources/:handle/logos.html', async (ctx) => {
         currentPage = maxPage;
     }
     const logos = all.slice((currentPage - 1) * pageSize, (currentPage * pageSize));
-    await ctx.render('sources/_logos.hbs', {currentPage, logos, maxPage, title: 'Logos in ' + filtered[0].handle});
+    await ctx.render('sources/_logos.hbs', {noindex: true, currentPage, logos, maxPage, title: 'Logos in ' + filtered[0].handle});
 });
 
 function getSources() {
