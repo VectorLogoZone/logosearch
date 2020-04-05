@@ -11,6 +11,14 @@
             <td>{{source.handle}}</td>
         </tr>
         <tr>
+            <td>Logo</td>
+            <td>
+                {{#if source.logo}}
+                <img alt="{{source.name}}" src="{{{source.logo}}}" style="height:18pt;" title="{{source.name}}" />
+                {{else}}<i>(not specified)</i>{{/if}}
+            </td>
+        </tr>
+        <tr>
             <td>Provider</td>
             <td><img alt="{{source.provider}}" src="{{{source.provider_icon}}}" style="height:18pt;" title="{{source.provider}}" /> {{source.provider}}</td>
         </tr>
@@ -25,10 +33,6 @@
             <td><a href="{{source.url}}">{{source.url}}</a></td>
         </tr>
         <tr>
-            <td>Details</td>
-            <td><pre class="mb-0">{{toJson source.data}}</pre></td>
-        </tr>
-        <tr>
             <td># of logos</td>
             <td><a href="logos.html" rel="nofollow">{{addCommas source.images.length}}</a></td>
         </tr>
@@ -39,4 +43,10 @@
     </tbody>
 </table>
 
+{{#if robot}}{{else}}
+<details>
+    <summary>Raw data</summary>
+    <pre class="">{{toJson source.data}}</pre>
+</details>
+{{/if}}
 {{> below}}
