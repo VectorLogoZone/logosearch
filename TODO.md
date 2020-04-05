@@ -25,6 +25,7 @@
 - [ ] font blast for repos with no svgs
 - [ ] log storage and viewing
 
+- [ ] hbs local variable for robots
 - [ ] separate github user account
 - [ ] watches all repos
 - [ ] trigger reindex on email receipt

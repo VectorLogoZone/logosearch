@@ -11,6 +11,7 @@ import * as path from 'path';
 import Pino from 'pino';
 
 import * as alternatives from './alternatives';
+import * as commonRouter from './commonRouter';
 import * as sources from './sources';
 import * as search from './search';
 import * as random from './random';
@@ -51,6 +52,8 @@ app.use(async(ctx, next) => {
         }
     } catch (err) {
         ctx.status = 500;
+        logger.error( { err, path: ctx.request.path }, '500');
+        //LATER: content-type aware
         await ctx.render('500.hbs', { title: 'Server Error', message: err.message });
     }
 });
@@ -105,6 +108,7 @@ app.use(sources.router.routes());
 app.use(search.router.routes());
 app.use(alternatives.router.routes());
 app.use(random.router.routes());
+app.use(commonRouter.router.routes());
 
 const rootRouter = new KoaRouter();
 
@@ -182,6 +186,7 @@ sources.init(logger);
 search.init(logger);
 alternatives.init(logger);
 random.init(logger, sources.getSources());
+commonRouter.init(logger);
 
 const port = parseInt(process.env.PORT || '4000');
 
