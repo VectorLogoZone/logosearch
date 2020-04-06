@@ -23,6 +23,8 @@ function compareLogoDetail(a: LogoDetail, b:LogoDetail): number {
 }
 
 const logoMap: Map<string, LogoDetail> = new Map();
+const top1K:LogoDetail[] = [];
+let singleSourceCount:number = -1;
 
 async function init(logger:Pino.Logger):Promise<void> {
 
@@ -43,7 +45,11 @@ async function init(logger:Pino.Logger):Promise<void> {
             logoDetail.images.push(image);
         }
     }
-    logger.info( { uniqueCount: logoMap.size }, 'Logo map initialized')
+    const values = Array.from(logoMap.values()).sort(compareLogoDetail);
+    top1K.push(...values.slice(0,1000));
+    singleSourceCount = values.filter( ld => ld.images.length == 1).length,
+
+    logger.info( { singleSourceCount, uniqueCount: logoMap.size }, 'Logo map initialized')
 }
 
 router.get('/common/', async (ctx) => {
@@ -55,10 +61,10 @@ router.get('/common/index.html', async (ctx) => {
     values.sort(compareLogoDetail);
 
     await ctx.render('common/index.hbs', {
-        singleSourceCount: values.filter( ld => ld.images.length == 1).length,
+        singleSourceCount,
         title: 'Most common names',
-        uniqueCount: values.length,
-        values: values.slice(0, 1000),
+        uniqueCount: logoMap.size,
+        values: top1K,
     });
 });
 
@@ -75,7 +81,20 @@ router.get('/common/:name/index.html', async (ctx) => {
     });
 });
 
+function getUrls():string[] {
+    const retVal:string[] = [];
+
+    retVal.push("/common/index.html");
+
+    for (const logoDetail of top1K) {
+        retVal.push(`/common/${encodeURIComponent(logoDetail.name)}/index.html`);
+    }
+
+    return retVal;
+}
+
 export {
+    getUrls,
     init,
     router,
     compareLogoDetail,

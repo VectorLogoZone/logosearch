@@ -144,4 +144,23 @@ function getSources() {
     return sources;
 }
 
-export { getSources, ImageInfo, init, router, SourceData };
+function getUrls():string[] {
+    const retVal:string[] = [];
+
+    retVal.push("/sources/index.html");
+
+    for (const source of sources) {
+        retVal.push(`/sources/${encodeURIComponent(source.handle)}/index.html`);
+    }
+
+    return retVal;
+}
+
+export {
+    getSources,
+    getUrls,
+    ImageInfo,
+    init,
+    router,
+    SourceData
+};

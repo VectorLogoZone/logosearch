@@ -15,6 +15,7 @@ import * as commonRouter from './commonRouter';
 import * as sources from './sources';
 import * as search from './search';
 import * as random from './random';
+import { sitemap } from './sitemap';
 
 // import * as Yaml from 'js-yaml';
 
@@ -131,6 +132,8 @@ rootRouter.get('/about.html', async (ctx) => {
 rootRouter.get('/faq.html', async (ctx) => {
     await ctx.render('faq.hbs', { title: 'Frequently Asked Questions' });
 });
+
+rootRouter.get('/sitemap.xml', sitemap);
 
 rootRouter.get('/status.json', async (ctx) => {
 
