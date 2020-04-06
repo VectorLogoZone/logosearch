@@ -4,6 +4,8 @@
     "url": "https://github.com/AwesomeLogos/github-logo-search/issues"
   },
   "dependencies": {
+    "@types/convict": "^4.2.1",
+    "convict": "^5.2.0",
     "handlebars": "^4.3.0",
     "js-yaml": "^3.13.1",
     "koa": "^2.5.3",

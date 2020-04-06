@@ -2,6 +2,7 @@ import KoaRouter from 'koa-router';
 
 import Pino from 'pino';
 
+import { config } from './config';
 import * as Sources from './sources';
 import { SearchHit } from './search';
 
@@ -42,7 +43,7 @@ function getRandomLogo(): Sources.ImageInfo {
 
 router.get('/api/random.json', async (ctx) => {
 
-    const prefix = "https://cdn.awesomelogos.org/cache/";
+    const prefix = config.get('cdnPrefix');
 
     const results = new Set<SearchHit>();
     while (results.size < 48) {

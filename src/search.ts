@@ -5,6 +5,7 @@ import * as lunr from 'lunr';
 //import * as path from 'path';
 import Pino from 'pino';
 
+import { config } from './config';
 import * as sources from './sources';
 
 type SearchHit = {
@@ -90,7 +91,7 @@ function doSearch(ctx:Koa.BaseContext):Object {
         // do nothing
     }
 
-    const prefix = "https://cdn.awesomelogos.org/cache/";
+    const prefix = config.get('cdnPrefix');
 
     let showRaw = false;
     try {

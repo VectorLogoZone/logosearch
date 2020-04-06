@@ -11,6 +11,7 @@ import * as path from 'path';
 import Pino from 'pino';
 
 import * as alternatives from './alternatives';
+import { config } from './config';
 import * as logoRouter from './logoRouter';
 import * as sources from './sources';
 import * as search from './search';
@@ -108,6 +109,13 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     }
 }));
 
+app.use(async(ctx, next) => {
+
+    ctx.state.cdn_prefix = config.get("cdnPrefix");
+
+    await next();
+});
+
 app.use(sources.router.routes());
 app.use(search.router.routes());
 app.use(alternatives.router.routes());
@@ -194,7 +202,7 @@ alternatives.init(logger);
 random.init(logger, sources.getSources());
 logoRouter.init(logger);
 
-const port = parseInt(process.env.PORT || '4000');
+const port = config.get('port');
 
 app.listen(port);
 
