@@ -3,13 +3,22 @@
     These are the alternative websites where you can find logos, but they aren't awesome since you can't search them from Awesome Logos!
 </p>
 
+<form action="get" class="form-inline justify-content-center" id="search_form">
+    <div class="form-group row align-items-center" style="padding-bottom:20px;">
+        <label class="mr-3" for="q">Search query:</label>
+        <div class="input-group">
+            <input autocomplete="off" autofocus="autofocus" class="form-control" id="q" name="q" placeholder="" type="text"/>
+        </div>
+    </div>
+</form>
+
 <table class="table table-striped">
     <tbody>
     {{#each alternatives}}
         <tr>
             <td class="d-none d-md-table-cell">{{#if this.website}}<a href="{{this.website}}/">{{this.name}}</a>{{else}}{{this.name}}{{/if}}</td>
             <td class="d-none d-md-table-cell text-right">
-                {{#if this.enabled }}<a href="{{this.website}}" data-search="{{this.search}}">Search</a>{{/if}}
+                {{#if this.enabled }}<a class="has-search-param" href="{{this.website}}" data-search="{{this.search}}">Search</a>{{/if}}
                 <!--<a href="{{this.handle}}/index.html">...</a>-->
             </td>
         </tr>
@@ -20,5 +29,20 @@
 <p>
     {{addCommas alternatives.length}} alternatives
 </p>
-
+<script>
+$(function() {
+    $(".has-search-param").on('click', function(evt) {
+        console.log("clicked");
+        console.log(evt);
+        const q = $("#q").val();
+        const target = $(evt.target).attr("data-search");
+        if (q && target) {
+            const url = target.replace("{query}", encodeURIComponent(q));
+            console.log(url);
+            window.location = url;
+            return false;
+        }
+    })
+});
+</script>
 {{> below}}
