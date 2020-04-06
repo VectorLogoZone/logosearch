@@ -90,13 +90,7 @@ function doSearch(ctx:Koa.BaseContext):Object {
         // do nothing
     }
 
-    let absoluteUrls = false;
-    try {
-        absoluteUrls = toBoolean(ctx.query['absolute'])
-    } catch (err) {
-        // do nothing
-    }
-    const prefix = absoluteUrls ? "https://www.awesomelogos.org/logos/" : "/logos/";
+    const prefix = "https://cdn.awesomelogos.org/cache/";
 
     let showRaw = false;
     try {

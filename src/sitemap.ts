@@ -1,11 +1,11 @@
-import * as commonRouter from './commonRouter';
+import * as logoRouter from './logoRouter';
 import * as sources from './sources';
 
 async function sitemap(ctx:any) {
 
     let urls:string[] = [];
 
-    urls.push(...commonRouter.getUrls());
+    urls.push(...logoRouter.getUrls());
     urls.push(...sources.getUrls());
 
     // hard-coded to avoid circular dependencies

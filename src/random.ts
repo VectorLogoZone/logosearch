@@ -15,7 +15,7 @@ function init(logger:Pino.Logger, sources: Sources.SourceData[]) {
             randomSources.push(theSource);
         }
     }
-    
+
     logger.info({ randomSourceCount: randomSources.length }, "Random sources found");
 }
 
@@ -42,8 +42,7 @@ function getRandomLogo(): Sources.ImageInfo {
 
 router.get('/api/random.json', async (ctx) => {
 
-    const absoluteUrls = false; //LATER: blech!
-    const prefix = absoluteUrls ? "https://www.awesomelogos.org/logos/" : "/logos/";    //LATER: blech!
+    const prefix = "https://cdn.awesomelogos.org/cache/";
 
     const results = new Set<SearchHit>();
     while (results.size < 48) {

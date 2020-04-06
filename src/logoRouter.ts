@@ -1,6 +1,7 @@
 import KoaRouter from 'koa-router';
 import Pino from 'pino';
 
+import * as search from './search';
 import * as sources from './sources';
 
 const router = new KoaRouter();
@@ -52,30 +53,34 @@ async function init(logger:Pino.Logger):Promise<void> {
     logger.info( { singleSourceCount, uniqueCount: logoMap.size }, 'Logo map initialized')
 }
 
-router.get('/common/', async (ctx) => {
+router.get('/logos/', async (ctx) => {
     ctx.redirect('index.html');
 });
 
-router.get('/common/index.html', async (ctx) => {
+router.get('/logos/index.html', async (ctx) => {
     const values = Array.from(logoMap.values());
     values.sort(compareLogoDetail);
 
-    await ctx.render('common/index.hbs', {
+    const sourceList = sources.getSources();
+
+    await ctx.render('logos/index.hbs', {
+        imageCount: search.getImageCount(),
         singleSourceCount,
-        title: 'Most common names',
+        sourceCount: sourceList.length,
+        title: 'Most Common Logo Names',
         uniqueCount: logoMap.size,
         values: top1K,
     });
 });
 
-router.get('/common/:name/index.html', async (ctx) => {
+router.get('/logos/:name/index.html', async (ctx) => {
 
     const logoDetail = logoMap.get(ctx.params.name);
     if (!logoDetail) {
         return ctx.next();
     }
 
-    await ctx.render('common/_index.hbs', {
+    await ctx.render('logos/_index.hbs', {
         logoDetail,
         title: `${ctx.params.name} Logos`,
     });
@@ -84,10 +89,10 @@ router.get('/common/:name/index.html', async (ctx) => {
 function getUrls():string[] {
     const retVal:string[] = [];
 
-    retVal.push("/common/index.html");
+    retVal.push("/logos/index.html");
 
     for (const logoDetail of top1K) {
-        retVal.push(`/common/${encodeURIComponent(logoDetail.name)}/index.html`);
+        retVal.push(`/logos/${encodeURIComponent(logoDetail.name)}/index.html`);
     }
 
     return retVal;

@@ -1,12 +1,13 @@
 # To Do
 
+- [ ] load sources from remote
+- [ ] use cdn URL for logos
+- [ ] use icons to make responsive navbar
 - [ ] pm2
 - [ ] fill out FAQ
 - [ ] fix problems with non-ASCII filenames in loadrepos.py (make sure filenames are slugified)
 - [ ] cleanup paging in sources/_logos.hbs
-- [ ] sitemap.xml
 - [ ] use window.location.replace() when paging in sources/_logos.hbs
-- [ ] alternatives/index.hbs - input box for preloading search links
 - [ ] switch back to latest lunr (with stopwords disabled)
 - [ ] alternatives/_index.hbs
 - [ ] contact page (or link to VLZ's?)

@@ -11,7 +11,7 @@ import * as path from 'path';
 import Pino from 'pino';
 
 import * as alternatives from './alternatives';
-import * as commonRouter from './commonRouter';
+import * as logoRouter from './logoRouter';
 import * as sources from './sources';
 import * as search from './search';
 import * as random from './random';
@@ -60,7 +60,7 @@ app.use(async(ctx, next) => {
 });
 
 app.use(KoaStatic("static", { maxage: 24 * 60 * 60 * 1000 }));
-app.use(KoaMount('/logos', KoaStatic("logos", { maxage: 24 * 60 * 60 * 1000 })));
+app.use(KoaMount('/cache', KoaStatic("logos", { maxage: 24 * 60 * 60 * 1000 })));
 
 
 app.use(KoaViews(path.join(__dirname, '..', 'views'), {
@@ -68,6 +68,9 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     options: {
         helpers: {
             'addCommas': function (num:number) {
+                if (!num) {
+                    num = 0;
+                }
                 return num.toLocaleString();
             },
             'equals': function(a:any, b:any, block:any) {
@@ -109,7 +112,7 @@ app.use(sources.router.routes());
 app.use(search.router.routes());
 app.use(alternatives.router.routes());
 app.use(random.router.routes());
-app.use(commonRouter.router.routes());
+app.use(logoRouter.router.routes());
 
 const rootRouter = new KoaRouter();
 
@@ -189,7 +192,7 @@ sources.init(logger);
 search.init(logger);
 alternatives.init(logger);
 random.init(logger, sources.getSources());
-commonRouter.init(logger);
+logoRouter.init(logger);
 
 const port = parseInt(process.env.PORT || '4000');
 
