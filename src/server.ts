@@ -136,11 +136,11 @@ rootRouter.get('/search.html', async (ctx) => {
     await ctx.render('index.hbs', { h1: 'Logo Search', sources: sources.getSources(), title: 'Awesome Logos' });
 });
 
-rootRouter.get('/about.html', async (ctx) => {
+rootRouter.get('/about.html', async (ctx:Koa.ExtendableContext) => {
     await ctx.redirect('/faq.html');
 });
 
-rootRouter.get('/faq.html', async (ctx) => {
+rootRouter.get('/faq.html', async (ctx:Koa.ExtendableContext) => {
     await ctx.render('faq.hbs', { title: 'Frequently Asked Questions' });
 });
 

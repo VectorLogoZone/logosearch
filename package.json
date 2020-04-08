@@ -4,7 +4,6 @@
     "url": "https://github.com/AwesomeLogos/github-logo-search/issues"
   },
   "dependencies": {
-    "@types/convict": "^4.2.1",
     "convict": "^5.2.0",
     "handlebars": "^4.3.0",
     "js-yaml": "^3.13.1",
@@ -19,7 +18,7 @@
   },
   "description": "Backend server for AwesomeLogos",
   "devDependencies": {
-    "@types/handlebars": "^4.0.40",
+    "@types/convict": "^4.2.1",
     "@types/js-yaml": "^3.11.2",
     "@types/koa": "^2.0.46",
     "@types/koa-mount": "^3.0.1",

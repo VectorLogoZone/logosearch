@@ -77,7 +77,7 @@ router.get('/logos/:name/index.html', async (ctx) => {
 
     const logoDetail = logoMap.get(ctx.params.name);
     if (!logoDetail) {
-        return ctx.next();
+        return;
     }
 
     await ctx.render('logos/_index.hbs', {
