@@ -145,6 +145,13 @@ rootRouter.get('/faq.html', async (ctx:Koa.ExtendableContext) => {
     await ctx.render('faq.hbs', { title: 'Frequently Asked Questions' });
 });
 
+rootRouter.get('/robots.txt', async (ctx: Koa.ExtendableContext) => {
+    await ctx.render('robots.hbs', { 
+        sources: sources.getSources()
+    });
+    ctx.set('Content-Type', 'text/plain; charset=UTF-8');
+});
+
 rootRouter.get('/sitemap.xml', sitemap);
 
 rootRouter.get('/status.json', async (ctx) => {

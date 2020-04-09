@@ -1,0 +1,10 @@
+#
+# robots.txt for awesomelogos
+#
+
+User-Agent: *
+Disallow: /api/
+{{#each sources}}
+Disallow: /sources/{{this.handle}}/logos.html
+{{/each}}
+Allow: /
