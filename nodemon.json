@@ -9,12 +9,11 @@
   "watch": [
     "data/",
     "partials/",
-    "src/",
-    "views/"
+    "src/"
   ],
   "env": {
     "NODE_ENV": "development"
   },
   "exec": "tsc && node dist/server.js",
-  "ext": "csv,json,ts,yaml"
+  "ext": "csv,hbs,json,ts,yaml"
 }

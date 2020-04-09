@@ -89,6 +89,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/48de122c1b.js" crossorigin="anonymous"></script>
     <!-- Google Analytics -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-328425-32"></script>
@@ -102,24 +103,17 @@
     <!-- End Google Analytics -->
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark navbar-static-top d-print-none" data-style="background-color:#1d8286;">
-        <div class="container-fluid">
-            <span>
-                <a href="/search.html"><img src="/images/logo-white.svg" alt="Awesome Logos Logo" class="navbar-logo"></a>
-                <a class="navbar-brand" href="/search.html">Awesome Logos</a>
-            </span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse navbar-right" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="/search.html">Search</a></li>
-                <li class="nav-item"><a class="nav-link" href="/logos/index.html">Logos</a></li>
-                <li class="nav-item"><a class="nav-link" href="/sources/index.html">Sources</a></li>
-                <li class="nav-item"><a class="nav-link" href="/faq.html">FAQ</a></li>
-            </ul>
-        </div><!--/.navbar-collapse -->
+    <nav class="navbar navbar-expand-sm navbar-dark navbar-static-top d-flex justify-content-between d-print-none" data-style="background-color:#1d8286;">
+        <a class="navbar-brand" href="/search.html">
+            <span class=""><img alt="Awesome Logos Logo" class="navbar-logo d-none d-md-inline" src="/images/logo-white.svg"></span>
+            <span class=""">Awesome Logos</span>
+        </a>
+        <ul class="navbar-nav d-flex flex-row justify-content-end">
+            <li class="nav-item"><a class="nav-link text-nowrap" href="/search.html"><i class="fas fa-search d-md-none mr-3"></i><span class="d-none d-md-inline">Search</span></a></li>
+            <li class="nav-item"><a class="nav-link text-nowrap" href="/logos/index.html"><i class="far fa-file-image d-md-none mr-3"></i><span class="d-none d-md-inline">Logos</a></span></li>
+            <li class="nav-item"><a class="nav-link text-nowrap" href="/sources/index.html"><i class="far fa-code-branch d-md-none mr-3"></i><span class="d-none d-md-inline">Sources</span></a></li>
+            <li class="nav-item"><a class="nav-link text-nowrap" href="/faq.html"><i class="far fa-info-circle d-md-none"></i><span class="d-none d-md-inline">FAQ</span></a></li>
+        </ul>
     </nav>
 
     <div class="container">
