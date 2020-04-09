@@ -1,0 +1,48 @@
+{{> above}}
+<div class="alert alert-info">
+
+    These are the {{addCommas values.length}} most common logo names.
+
+    <ul class="mt-3">
+        <li>
+            {{addCommas imageCount}} logos
+        </li>
+        <li>
+            {{addCommas sourceCount}} different sources
+        </li>
+        <li>
+            {{addCommas uniqueCount}} distinct names
+        </li>
+        <li>
+            {{addCommas singleSourceCount}} names appear in only one source.
+        </li>
+    </ul>
+
+    With all these logos, I strongly recommend using the <a class="alert-link" href="/search.html">Search page</a> to find a logo!
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th class="text-right"># Sources</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#each values}}
+        <tr>
+            <td class="">
+                <a href="{{this.name}}/index.html">{{this.name}}</a>
+            </td>
+            <td class="text-right">
+                <a href="{{this.name}}/index.html">{{this.images.length}}</a>
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+
+<p>
+</p>
+
+{{> below}}
