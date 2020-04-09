@@ -4,6 +4,9 @@
 - [ ] use cdn URL for logos
 - [ ] use icons to make responsive navbar
 - [ ] pm2
+
+## Content
+
 - [ ] fill out FAQ
 - [ ] fix problems with non-ASCII filenames in loadrepos.py (make sure filenames are slugified)
 - [ ] cleanup paging in sources/_logos.hbs
@@ -20,6 +23,13 @@
 - [ ] check for moved repos
 - [ ] 404: return svg if url has .svg
 - [ ] way to automatically add background to white svgs (either during loadrepo or when displaying)
+
+## Deploy
+- [ ] tf: pass on env vars
+- [ ] pm2: load env vars
+- [ ] tf: add DNS entry
+- [ ] tf: set firewall
+- [ ] tf: purge old instance
 
 ## Longer term
 
