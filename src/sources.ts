@@ -5,12 +5,14 @@ import * as path from 'path';
 import Pino from 'pino';
 
 type ImageInfo = {
+    css?: string,
     name: string,
     img: string,
     src: string
 };
 
 type SourceData = {
+    css?: string,
     data: any,
     handle: string,
     images: ImageInfo[]
@@ -67,6 +69,9 @@ function init(logger:Pino.Logger) {
             if (a.name < b.name) { return -1; }
             return 0;
         });
+        if (sourceData.data.css) {
+            sourceData.images.forEach((theImageData) => { theImageData.css = sourceData.data.css;} )
+        }
         sources.push(sourceData);
     }
     logger.info({ sourceCount: sources.length }, "Sources loaded");
@@ -137,7 +142,13 @@ router.get('/sources/:handle/logos.html', async (ctx) => {
         currentPage = maxPage;
     }
     const logos = all.slice((currentPage - 1) * pageSize, (currentPage * pageSize));
-    await ctx.render('sources/_logos.hbs', {noindex: true, currentPage, logos, maxPage, title: 'Logos in ' + filtered[0].handle});
+    await ctx.render('sources/_logos.hbs', {
+        currentPage,
+        logos,
+        maxPage,
+        noindex: true,
+        title: 'Logos in ' + filtered[0].handle
+    });
 });
 
 function getSources() {

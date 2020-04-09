@@ -111,6 +111,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 
 app.use(async(ctx, next) => {
 
+    console.log(`DEBUG: ${config.toString()}`)
     ctx.state.cdn_prefix = config.get("cdnPrefix");
 
     await next();

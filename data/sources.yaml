@@ -102,7 +102,8 @@
   repo: chloi/preprocessor-logos
   branch: master
   directory: ''
-  
+  css: gridbg
+
 - provider: github
   handle: cncf-artwork
   repo: cncf/artwork
@@ -478,6 +479,7 @@
   branch: master
   directory: icons
   website: 'https://brandicons.org/'
+  css: gridbg
 
 - provider: github
   handle: rrzepp
@@ -525,6 +527,7 @@
   branch: master
   directory: SVG
   website: 'http://joshuasortino.com/projects/publicons/'
+  css: gridbg
 
 - provider: github
   handle: starter-workflows
@@ -600,7 +603,7 @@
   repo: uiwjs/file-icons
   branch: master
   directory: icon
-  
+
 - provider: github
   handle: valohai
   repo: valohai/ml-logos
