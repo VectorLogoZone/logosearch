@@ -4,6 +4,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import Pino from 'pino';
 
+import { isNameUnique } from './logoRouter';
+
 type ImageInfo = {
     css?: string,
     name: string,
@@ -103,11 +105,21 @@ router.get('/sources/:handle/index.html', async (ctx) => {
 
     const filtered = sources.filter( (source:any) => { return source.handle === ctx.params.handle } );
     if (filtered.length === 1) {
-        await ctx.render('sources/_index.hbs', {source: filtered[0], title: 'Source Info for ' + filtered[0].handle});
+        const source = filtered[0];
+        await ctx.render('sources/_index.hbs', {
+            source,
+            title: `Source Info for ${filtered[0].handle}`,
+            uniqueCount: source.images.filter( (ii) => isNameUnique(ii.name) ).length
+        });
     }
 });
 
-router.get('/sources/:handle/logos.html', async (ctx) => {
+router.get('/sources/:handle/logos.html', async (ctx) => { await logosPage(ctx, false); });
+
+router.get('/sources/:handle/unique.html', async (ctx) => { await logosPage(ctx, true); });
+
+
+async function logosPage(ctx:any, unique:boolean) {
 
     const filtered = sources.filter( (source:any) => { return source.handle === ctx.params.handle } );
     if (filtered.length !== 1) {
@@ -118,7 +130,10 @@ router.get('/sources/:handle/logos.html', async (ctx) => {
         ctx.set('Link', '<' + filtered[0].website + '>; rel="canonical"');
     }
 
-    const all = filtered[0].images;
+    let all = filtered[0].images;
+    if (unique) {
+        all = all.filter((ii) => isNameUnique(ii.name));
+    }
     let pageSize = 180;
     if ("pagesize" in ctx.query) {
         pageSize = Number(ctx.query['pagesize']);
@@ -131,7 +146,7 @@ router.get('/sources/:handle/logos.html', async (ctx) => {
     if ("page" in ctx.query) {
         currentPage = Number(ctx.query['page']);
     }
-    let maxPage = all.length / pageSize;
+    let maxPage = Math.trunc(all.length / pageSize);
     if (all.length % pageSize > 0) {
         maxPage += 1;
     }
@@ -147,9 +162,10 @@ router.get('/sources/:handle/logos.html', async (ctx) => {
         logos,
         maxPage,
         noindex: true,
-        title: 'Logos in ' + filtered[0].handle
+        paging: maxPage > 1,
+        title: `${unique ? "Unique " : "" }Logos in ${filtered[0].handle}`
     });
-});
+}
 
 function getSources() {
     return sources;

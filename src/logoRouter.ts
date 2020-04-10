@@ -35,13 +35,14 @@ async function init(logger:Pino.Logger):Promise<void> {
                 logger.warn( { source: source.handle }, 'Invalid image name');
                 continue;
             }
-            let logoDetail = logoMap.get(image.name);
+            const slugName = slugify(image.name);
+            let logoDetail = logoMap.get(slugName);
             if (!logoDetail) {
                 logoDetail = {
-                    name: image.name,
+                    name: slugName,
                     images: []
                 }
-                logoMap.set(image.name, logoDetail);
+                logoMap.set(slugName, logoDetail);
             }
             logoDetail.images.push(image);
         }
@@ -51,6 +52,15 @@ async function init(logger:Pino.Logger):Promise<void> {
     singleSourceCount = values.filter( ld => ld.images.length == 1).length,
 
     logger.info( { singleSourceCount, uniqueCount: logoMap.size }, 'Logo map initialized')
+}
+
+function isNameUnique(name:string): boolean {
+
+    const theDetail = logoMap.get(slugify(name));
+    if (theDetail && theDetail.images.length == 1) {
+        return true;
+    }
+    return false;
 }
 
 router.get('/logos/', async (ctx) => {
@@ -77,6 +87,11 @@ router.get('/logos/:name/index.html', async (ctx) => {
 
     const logoDetail = logoMap.get(ctx.params.name);
     if (!logoDetail) {
+        if (logoMap.get(slugify(ctx.params.name))) {
+            // prevent 404s from old links
+            ctx.redirect(`/logos/${slugify(ctx.params.name)}/index.html`);
+            return;
+        }
         return;
     }
 
@@ -92,15 +107,21 @@ function getUrls():string[] {
     retVal.push("/logos/index.html");
 
     for (const logoDetail of top1K) {
-        retVal.push(`/logos/${encodeURIComponent(logoDetail.name)}/index.html`);
+        retVal.push(`/logos/${encodeURIComponent(slugify(logoDetail.name))}/index.html`);
     }
 
     return retVal;
 }
 
+function slugify(target:string):string {
+    //LATER: any other transforms needed?
+    return target.toLowerCase();
+}
+
 export {
     getUrls,
     init,
+    isNameUnique,
     router,
     compareLogoDetail,
 };

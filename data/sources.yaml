@@ -460,6 +460,7 @@
   directory: logos
   website: 'https://nigerialogos.com/'
   logo: 'https://nigerialogos.com/logos/paystack/paystack.svg'
+  name: NigeriaLogos
 
 - provider: gitlab
   handle: prismbreak
@@ -480,6 +481,7 @@
   directory: icons
   website: 'https://brandicons.org/'
   css: gridbg
+  name: BrandIcons
 
 - provider: github
   handle: rrzepp

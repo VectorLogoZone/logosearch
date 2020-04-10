@@ -1,5 +1,6 @@
 {{> above}}
 
+{{#if paging}}
 <div class="btn-toolbar d-flex justify-content-center mb-3" role="toolbar" aria-label="Paging">
     <div class="btn-group" role="group" aria-label="Pages">
         {{#for 1 maxPage 1}}
@@ -9,7 +10,7 @@
         {{/for}}
     </div>
 </div>
-
+{{/if}}
 
 <div class="logo-container">
 {{#each logos}}
@@ -22,12 +23,15 @@
 {{/each}}
 </div>
 
-<div class="btn-toolbar d-flex justify-content-center mb-3" role="toolbar" aria-label="Paging">
+{{# if paging}}
+<div class="btn-toolbar d-flex justify-content-center mt-3" role="toolbar" aria-label="Paging">
     <div class="btn-group" role="group" aria-label="Pages">
         {{#for 1 maxPage 1}}
-            <a href="?page={{this}}" class="btn btn-outline-secondary{{#equals this ../currentPage}} active{{/equals}}" rel="nofollow">{{this}}</a>
+            {{#isPageVisible this ../currentPage ../maxPage}}
+                <a href="?page={{../this}}" class="btn btn-outline-secondary{{#equals ../this ../../currentPage}} active{{/equals}}">{{../this}}</a>
+            {{/isPageVisible}}
         {{/for}}
     </div>
 </div>
-
+{{/if}}
 {{> below}}

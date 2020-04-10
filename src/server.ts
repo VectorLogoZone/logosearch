@@ -111,7 +111,6 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 
 app.use(async(ctx, next) => {
 
-    console.log(`DEBUG: ${config.toString()}`)
     ctx.state.cdn_prefix = config.get("cdnPrefix");
 
     await next();
@@ -126,19 +125,22 @@ app.use(logoRouter.router.routes());
 const rootRouter = new KoaRouter();
 
 rootRouter.get('/', async (ctx) => {
-    await ctx.redirect('/search.html');
+    ctx.redirect('/search.html');
 });
 
 rootRouter.get('/index.html', async (ctx) => {
-    await ctx.redirect('/search.html');
+    ctx.redirect('/search.html');
 });
 
 rootRouter.get('/search.html', async (ctx) => {
-    await ctx.render('index.hbs', { h1: 'Logo Search', sources: sources.getSources(), title: 'Awesome Logos' });
+    await ctx.render('index.hbs', {
+        h1: 'Search',
+        title: 'Awesome Logos'
+    });
 });
 
 rootRouter.get('/about.html', async (ctx:Koa.ExtendableContext) => {
-    await ctx.redirect('/faq.html');
+    ctx.redirect('/faq.html');
 });
 
 rootRouter.get('/faq.html', async (ctx:Koa.ExtendableContext) => {
@@ -146,7 +148,7 @@ rootRouter.get('/faq.html', async (ctx:Koa.ExtendableContext) => {
 });
 
 rootRouter.get('/robots.txt', async (ctx: Koa.ExtendableContext) => {
-    await ctx.render('robots.hbs', { 
+    await ctx.render('robots.hbs', {
         sources: sources.getSources()
     });
     ctx.set('Content-Type', 'text/plain; charset=UTF-8');
