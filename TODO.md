@@ -3,6 +3,7 @@
 - [ ] load sources from remote
 - [ ] use cdn URL for logos
 - [ ] use icons to make responsive navbar
+- [ ] github social preview image
 - [ ] pm2
 
 ## Content
@@ -25,6 +26,7 @@
 - [ ] way to automatically add background to white svgs (either during loadrepo or when displaying)
 
 ## Deploy
+
 - [ ] tf: pass on env vars
 - [ ] pm2: load env vars
 - [ ] tf: add DNS entry
