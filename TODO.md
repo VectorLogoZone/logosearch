@@ -1,10 +1,7 @@
 # To Do
 
-- [ ] load sources from remote
-- [ ] use cdn URL for logos
-- [ ] use icons to make responsive navbar
-- [ ] github social preview image
-- [ ] pm2
+- [ ] sign cdn URLs
+- [ ] fix logger, obey log levels
 
 ## Content
 

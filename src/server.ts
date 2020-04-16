@@ -1,3 +1,5 @@
+require('source-map-support').install(); // Required for using source-maps with logging
+
 import * as fs from 'fs';
 import * as Handlebars from 'handlebars'
 import Koa from 'koa';
@@ -22,7 +24,11 @@ import { sitemap } from './sitemap';
 
 const app = new Koa();
 
-const logger = Pino();
+const logger = Pino( { 
+    level: config.get('logLevel'),
+    name: process.env.npm_package_name,
+    timestamp: () => `,"time":"${new Date().toISOString()}"`
+});
 
 app.use(KoaPinoLogger({ logger: logger }));
 
@@ -206,14 +212,18 @@ rootRouter.get('/status.json', async (ctx) => {
 
 app.use(rootRouter.routes());
 
-sources.init(logger);
-search.init(logger);
-alternatives.init(logger);
-random.init(logger, sources.getSources());
-logoRouter.init(logger);
+async function main() { 
+    await sources.init(logger);
+    search.init(logger);
+    alternatives.init(logger);
+    random.init(logger, sources.getSources());
+    logoRouter.init(logger);
 
-const port = config.get('port');
+    const port = config.get('port');
 
-app.listen(port);
+    app.listen(port);
 
-logger.info({ port: port }, 'server running');
+    logger.info({ port: port }, 'server running');
+}
+
+main();

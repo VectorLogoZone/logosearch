@@ -2,10 +2,43 @@ import { default as convict } from 'convict';
 
 const config = convict({
   cdnPrefix: {
-    default: '/cache/',
-    doc: 'Prefix (possibly including hostname) where images are stored',
+    default: 'http://localhost:4001/',
+    doc: 'Prefix (possibly including hostname) where images are stored, including trailing slash',
     env: 'CDN_PREFIX',
     format: String
+  },
+  minio: {
+    accessKey: {
+      doc: 'Minio accessKey',
+      env: 'MINIO_ACCESSKEY',
+      format: String
+    },
+    bucket: {
+      doc: 'Minio bucket',
+      env: 'MINIO_BUCKET',
+      format: String
+    },
+    enabled: {
+      default: false,
+      doc: 'use Minio to created signed URLs',
+      env: 'MINIO_ENABLED',
+      format: 'Boolean'
+    },
+    endPoint: {
+      doc: 'Minio endpoint',
+      env: 'MINIO_ENDPOINT',
+      format: String
+    },
+    secretKey: {
+      doc: 'Minio secretKey',
+      env: 'MINIO_ENDPOINT',
+      format: String
+    },
+    port: {
+      doc: 'Minio port',
+      env: 'MINIO_PORT',
+      format: 'int'
+    }
   },
   logLevel: {
     default: 'debug',
@@ -25,6 +58,12 @@ const config = convict({
     env: 'SESSION_KEY',
     format: String,
     sensitive: true,
+  },
+  indexPath: {
+    default: "sourceData.tgz",
+    doc: 'path of logo index (on CDN, not including the leading slash)',
+    env: 'INDEX_PATH',
+    format: String,
   },
 });
 

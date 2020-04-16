@@ -1,10 +1,13 @@
+import * as axios from 'axios';
+//import * as fs from 'fs';
 import KoaRouter from 'koa-router';
-
-import * as fs from 'fs';
-import * as path from 'path';
+//import * as path from 'path';
 import Pino from 'pino';
 
+import { config } from './config';
+import * as util from './util';
 import { isNameUnique } from './logoRouter';
+import * as remoteStorage from './remoteStorage';
 
 type ImageInfo = {
     css?: string,
@@ -27,8 +30,9 @@ type SourceData = {
     logo?: string
 }
 
+let sources: SourceData[] = [];
+/*
 const baseDir = path.join(__dirname, "..", "logos");
-let sources:SourceData[] = [];
 
 function is_dir(path:string) {
     try {
@@ -49,9 +53,46 @@ function is_file(path:string) {
         return false;
     }
 }
+*/
 
-function init(logger:Pino.Logger) {
+async function init(logger:Pino.Logger) {
 
+    const startTime = process.hrtime.bigint();
+
+    const indexUrl = await remoteStorage.getSignedUrl(config.get('indexPath'))
+    logger.info({ url: indexUrl}, 'Index URL');
+
+    const response = await axios.default.get(indexUrl, {
+        responseType: 'stream'
+    });
+
+    return new Promise( (resolve, reject) => {
+        util.processTar(response.data, (name, buf) => {
+            if (!buf) {
+                logger.info({ 
+                    millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString(),
+                    sourceCount: sources.length }, "Sources loaded");
+                resolve();
+            }
+            if (!buf) { return; }
+            const sourceData: SourceData = JSON.parse(buf.toString());
+            sourceData.images.sort(function (a, b) {
+                if (a.name > b.name) { return 1; }
+                if (a.name < b.name) { return -1; }
+                return 0;
+            });
+            if (sourceData.data.css) {
+                sourceData.images.forEach((theImageData) => { theImageData.css = sourceData.data.css; })
+            }
+            sources.push(sourceData);
+            logger.trace( { 
+                    bytes: buf ? buf.length : '-1', 
+                    imageCount: sourceData.images.length,
+                    name, 
+                }, 'Single source loaded');
+        });
+    });
+/*
     const ArrFileName = fs.readdirSync(baseDir);
     for (const fileName of ArrFileName) {
         if (is_dir(path.join(baseDir, fileName)) == false) {
@@ -77,6 +118,7 @@ function init(logger:Pino.Logger) {
         sources.push(sourceData);
     }
     logger.info({ sourceCount: sources.length }, "Sources loaded");
+    */
 }
 
 //import * as Yaml from 'js-yaml';

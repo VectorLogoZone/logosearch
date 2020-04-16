@@ -17,12 +17,12 @@ if [ -f "${ENV_FILE}" ]; then
 fi
 
 #
-# load a few so there is some data
+# LATER: test to make sure local logo server is running
 #
-./bin/loadrepo.py adamfairhead brandicons bestofjs vlz-ar21 svgporn
 
 #
 # run in watch mode
-npx nodemon dist/server.js
+#
+npx nodemon
 
 

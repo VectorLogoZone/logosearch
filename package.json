@@ -4,7 +4,9 @@
     "url": "https://github.com/AwesomeLogos/github-logo-search/issues"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "convict": "^5.2.0",
+    "gunzip-maybe": "^1.4.1",
     "handlebars": "^4.3.0",
     "js-yaml": "^3.13.1",
     "koa": "^2.5.3",
@@ -14,11 +16,16 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
     "lunr": "^1.0.0",
-    "pino": "^5.8.0"
+    "minio": "^7.0.15",
+    "pino": "^5.8.0",
+    "source-map-support": "^0.5.16",
+    "tar-stream": "^2.1.2"
   },
   "description": "Backend server for AwesomeLogos",
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/convict": "^4.2.1",
+    "@types/gunzip-maybe": "^1.4.0",
     "@types/js-yaml": "^3.11.2",
     "@types/koa": "^2.0.46",
     "@types/koa-mount": "^3.0.1",
@@ -27,12 +34,14 @@
     "@types/koa-static": "^4.0.0",
     "@types/koa-views": "^2.0.3",
     "@types/lunr": "^0.5.31",
+    "@types/minio": "^7.0.5",
     "@types/node": "^10.11.3",
     "@types/pino": "^5.6.1",
     "@types/pino-http": "^4.0.1",
     "@types/sonic-boom": "^0.6.2",
+    "@types/tar-stream": "^2.1.0",
     "nodemon": "^1.18.4",
-    "ts-node": "^7.0.1",
+    "ts-node": "^8.8.2",
     "typescript": "^3.1.1"
   },
   "homepage": "https://www.awesomelogos.org/",
