@@ -120,13 +120,15 @@
 
             // Iterate over the results
             results.forEach(function(result) {
+                const img = $("<img>")
+                    .attr("src", result.url)
+                    .attr("title", result.description)
+                    .addClass("awesomelogo");
+                if (result.css) {
+                    img.addClass(result.css);
+                }
                 $search_results.append(
-                    $("<a>").attr("href", result.source)
-                        .append($("<img>")
-                            .attr("src", result.url)
-                            .attr("title", result.description)
-                            .addClass("awesomelogo")
-                            )
+                    $("<a>").attr("href", result.source).append(img)
                 );
             });
         }

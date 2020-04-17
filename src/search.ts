@@ -9,6 +9,7 @@ import { config } from './config';
 import * as sources from './sources';
 
 type SearchHit = {
+    css?: string,
     url: string,
     description: string,
     source: string
@@ -127,6 +128,7 @@ function doSearch(ctx:Koa.BaseContext):Object {
                 name = name.slice(0, -4);
             }
             cooked.push({
+                css: imageInfo.css,
                 url: prefix + imageInfo.img,
                 description: `${name} from ${source.name}`,
                 source: imageInfo.src

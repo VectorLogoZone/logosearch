@@ -1,7 +1,7 @@
 {
   "author": "",
   "bugs": {
-    "url": "https://github.com/AwesomeLogos/github-logo-search/issues"
+    "url": "https://github.com/AwesomeLogos/awesomelogos/issues"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -53,10 +53,10 @@
   ],
   "license": "AGPL-3.0",
   "main": "dist/server.js",
-  "name": "awesome-logos",
+  "name": "awesomelogos",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AwesomeLogos/awesome-logos.git"
+    "url": "git+https://github.com/AwesomeLogos/awesomelogos.git"
   },
   "scripts": {
     "build": "tsc",
@@ -64,5 +64,5 @@
     "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "0.1.0"
+  "version": "1.0.0"
 }
