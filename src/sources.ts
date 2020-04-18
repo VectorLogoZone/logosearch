@@ -92,7 +92,7 @@ async function init(logger:Pino.Logger) {
             logger.trace( { 
                     bytes: buf ? buf.length : '-1', 
                     imageCount: sourceData.images.length,
-                    name, 
+                    fileNameInTar: name, 
                 }, 'Single source loaded');
         });
     });

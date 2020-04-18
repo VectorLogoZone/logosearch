@@ -70,7 +70,7 @@ app.use(CustomPinoLogger({
         if (responseTime > fastResponseMillis) {
             return "warn";
         }
-        return "info";
+        return "trace";
     }
 }));
 
