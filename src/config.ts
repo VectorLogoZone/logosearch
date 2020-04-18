@@ -7,6 +7,12 @@ const config = convict({
     env: 'CDN_PREFIX',
     format: String
   },
+  fastResponseMillis: {
+    default: 100,
+    doc: 'responses that take longer than this are logged as "warn" (in millis)',
+    env: 'FAST_RESPONSE_MILLIS',
+    format: 'int'
+  },
   minio: {
     accessKey: {
       doc: 'Minio accessKey',

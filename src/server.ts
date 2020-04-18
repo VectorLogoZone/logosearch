@@ -3,14 +3,13 @@ require('source-map-support').install(); // Required for using source-maps with 
 import * as fs from 'fs';
 import * as Handlebars from 'handlebars'
 import Koa from 'koa';
-import KoaMount from 'koa-mount';
-import KoaPinoLogger from 'koa-pino-logger';
 import KoaRouter from 'koa-router';
 import KoaStatic from 'koa-static';
 import KoaViews from 'koa-views';
 import * as os from 'os';
 import * as path from 'path';
 import Pino from 'pino';
+import pinoHttp from 'pino-http';
 
 import * as alternatives from './alternatives';
 import { config } from './config';
@@ -30,7 +29,51 @@ const logger = Pino( {
     timestamp: () => `,"time":"${new Date().toISOString()}"`
 });
 
-app.use(KoaPinoLogger({ logger: logger }));
+logger.info( { config: JSON.parse(config.toString()) }, 'configuration loaded');
+
+/*
+ * hacked in directly from koa-pino-logger
+ *
+ * necessary since koa-pino-logger depends on an outdated version of pinoHttp
+ */
+function CustomPinoLogger(opts:pinoHttp.Options):any {
+    var wrap:any = pinoHttp(opts)
+    function pino(ctx:any, next:any) {
+        wrap(ctx.req, ctx.res)
+        ctx.log = ctx.request.log = ctx.response.log = ctx.req.log
+        return next().catch(function (e:any) {
+            ctx.log.error({
+                res: ctx.res,
+                err: {
+                    type: e.constructor.name,
+                    message: e.message,
+                    stack: e.stack
+                },
+                responseTime: ctx.res.responseTime
+            }, 'request errored')
+            throw e
+        })
+    }
+    pino.logger = wrap.logger
+    return pino
+}
+
+const fastResponseMillis = config.get('fastResponseMillis');
+
+app.use(CustomPinoLogger({ 
+    logger,
+    customLogLevel: function(res:any, err) {
+        if (err) { return "error"; }
+        const symbolOwner:any = pinoHttp;
+        const startTime = res[symbolOwner.startTime];
+        const responseTime = Date.now() - startTime;
+        console.log("DEBUG: ", startTime, responseTime); //, res['responseTime'], JSON.stringify(res));
+        if (responseTime > fastResponseMillis) {
+            return "warn";
+        }
+        return "info";
+    }
+}));
 
 /*
 app.use(async(ctx, next) => {
@@ -67,8 +110,6 @@ app.use(async(ctx, next) => {
 });
 
 app.use(KoaStatic("static", { maxage: 24 * 60 * 60 * 1000 }));
-app.use(KoaMount('/cache', KoaStatic("logos", { maxage: 24 * 60 * 60 * 1000 })));
-
 
 app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     map: { hbs: 'handlebars' },

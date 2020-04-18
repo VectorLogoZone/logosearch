@@ -11,7 +11,6 @@ function processTar(tarStream: Readable, callback: (name:string, buf: Buffer|nul
         // stream is the content body (might be an empty stream)
         // call next when you are done with this entry
         streamToBuffer(stream).then((buf) => {
-            console.log(`${header.name} size=${buf.length}`)
             callback(header.name, buf);
             next();
         });
