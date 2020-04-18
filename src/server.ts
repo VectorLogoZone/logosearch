@@ -67,8 +67,8 @@ app.use(CustomPinoLogger({
         const symbolOwner:any = pinoHttp;
         const startTime = res[symbolOwner.startTime];
         const responseTime = Date.now() - startTime;
-        console.log("DEBUG: ", startTime, responseTime); //, res['responseTime'], JSON.stringify(res));
         if (responseTime > fastResponseMillis) {
+            console.log(`DEBUG: ${responseTime}`);
             return "warn";
         }
         return "info";
@@ -76,16 +76,20 @@ app.use(CustomPinoLogger({
 }));
 
 /*
+ * hack because Google Cloud Viewer isn't the greatest.  Numbers are a bit lower than what pino thinks
+ */
 app.use(async(ctx, next) => {
-    const start = process.hrtime();
+    const start = process.hrtime.bigint();
 
     await next();
 
-    const duration = process.hrtime(start);
+    const duration = (process.hrtime.bigint() - start) / 1000000n;
 
-    console.log(`${ctx.req.url}: ${duration[0] * 1000 + duration[1] / 1e6} ns`);
+    if (duration > fastResponseMillis) {
+        console.log(`WARNING: slow response for ${ctx.req.url}: ${duration}ms`);
+    }
 });
-*/
+
 app.use(async(ctx, next) => {
     try {
         await next();

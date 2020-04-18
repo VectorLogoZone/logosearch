@@ -1,0 +1,10 @@
+dist/*
+*.env
+.git/
+.github/
+.idea/
+node_modules/*
+nodemon.json
+*.sh
+tmp/
+*.md
