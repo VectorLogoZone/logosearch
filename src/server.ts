@@ -68,7 +68,6 @@ app.use(CustomPinoLogger({
         const startTime = res[symbolOwner.startTime];
         const responseTime = Date.now() - startTime;
         if (responseTime > fastResponseMillis) {
-            console.log(`DEBUG: ${responseTime}`);
             return "warn";
         }
         return "info";

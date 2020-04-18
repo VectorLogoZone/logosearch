@@ -32,6 +32,8 @@ type SourceData = {
 }
 
 let sources: SourceData[] = [];
+const sourceMap: Map<string, SourceData> = new Map();
+
 /*
 const baseDir = path.join(__dirname, "..", "logos");
 
@@ -70,6 +72,7 @@ async function init(logger:Pino.Logger) {
     return new Promise( (resolve, reject) => {
         util.processTar(response.data, (name, buf) => {
             if (!buf) {
+                sources.forEach( (source) => { sourceMap.set(source.handle, source); });
                 logger.info({ 
                     millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString(),
                     sourceCount: sources.length }, "Sources loaded");
@@ -146,12 +149,11 @@ router.get('/sources/:handle/', async (ctx) => {
 
 router.get('/sources/:handle/index.html', async (ctx) => {
 
-    const filtered = sources.filter( (source:any) => { return source.handle === ctx.params.handle } );
-    if (filtered.length === 1) {
-        const source = filtered[0];
+    const source = sourceMap.get(ctx.params.handle);
+    if (source) {
         await ctx.render('sources/_index.hbs', {
             source,
-            title: `Source Info for ${filtered[0].handle}`,
+            title: `Source Info for ${source.handle}`,
             uniqueCount: source.images.filter( (ii) => isUnique(ii) ).length
         });
     }
@@ -164,16 +166,16 @@ router.get('/sources/:handle/unique.html', async (ctx) => { await logosPage(ctx,
 
 async function logosPage(ctx:any, unique:boolean) {
 
-    const filtered = sources.filter( (source:any) => { return source.handle === ctx.params.handle } );
-    if (filtered.length !== 1) {
+    const source = sourceMap.get(ctx.params.handle);
+    if (!source) {
         return;
     }
 
-    if (filtered[0].website) {
-        ctx.set('Link', '<' + filtered[0].website + '>; rel="canonical"');
+    if (source.website) {
+        ctx.set('Link', '<' + source.website + '>; rel="canonical"');
     }
 
-    let all = filtered[0].images;
+    let all = source.images;
     if (unique) {
         all = all.filter((ii) => isUnique(ii));
     }
@@ -206,8 +208,12 @@ async function logosPage(ctx:any, unique:boolean) {
         maxPage,
         noindex: true,
         paging: maxPage > 1,
-        title: new Handlebars.SafeString(`${unique ? "Unique " : "" }Logos in <a class="text-secondary" href="index.html">${filtered[0].handle}</a>`)
+        title: new Handlebars.SafeString(`${unique ? "Unique " : "" }Logos in <a class="text-secondary" href="index.html">${source.handle}</a>`)
     });
+}
+
+function getSource(handle:string): SourceData|undefined {
+    return sourceMap.get(handle);
 }
 
 function getSources() {
@@ -227,6 +233,7 @@ function getUrls():string[] {
 }
 
 export {
+    getSource,
     getSources,
     getUrls,
     ImageInfo,

@@ -96,7 +96,7 @@
         var $search_results = $("#search_results");
 
         if (!data || !data.success) {
-            $search_results.html('<div class="alert alert-error">Search failed! "' + htmlEncode(query) + '"</div>');
+            $search_results.html(`<div class="alert alert-warning">${data.message}</div>`);
             return;
         }
 

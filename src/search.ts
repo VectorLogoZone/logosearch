@@ -45,21 +45,6 @@ function getImageCount(): number {
     return imageCount;
 }
 
-function toBoolean(value:any):boolean {
-
-    switch (value) {
-        case true:
-        case "true":
-        case 1:
-        case "1":
-        case "on":
-        case "yes":
-            return true;
-        default:
-            return false;
-    }
-}
-
 const router = new KoaRouter();
 
 router.get('/api/search.json', async (ctx) => {
@@ -78,6 +63,68 @@ router.get('/api/search.json', async (ctx) => {
     }
 });
 
+
+
+function doLunrSearch(ctx: Koa.BaseContext, query:string, maxResults:number):SearchHit[] {
+    const cooked:SearchHit[] = [];
+    let raw = searchIndex.search(query);
+    /*if (raw.length == 0 && query.indexOf('*') == -1) {      //LATER: tweak lunr so this isn't necessary
+        query = query + '*';
+        raw = searchIndex.search(query);
+    }*/
+    if (!raw || raw.length == 0) {
+        return cooked;
+    }
+
+    if (raw.length > maxResults) {
+        raw = raw.slice(0, maxResults);
+    }
+
+    const sourceData = sources.getSources();
+    for (const result of raw) {
+        const indices = result.ref.split(':');
+        const source = sourceData[Number(indices[0])];
+        const imageInfo = source.images[Number(indices[1])];
+        let name = imageInfo.name;
+        if (name.endsWith(".svg")) {
+            name = name.slice(0, -4);
+        }
+        cooked.push({
+            css: imageInfo.css,
+            url: config.get('cdnPrefix') + imageInfo.img,
+            description: `${name} from ${source.name}`,
+            source: imageInfo.src
+        });
+    }
+
+    return cooked;
+}
+
+function doSimpleSearch(ctx: Koa.BaseContext, query: string, maxResults: number): SearchHit[] {
+    const cooked: SearchHit[] = [];
+
+    const source = sources.getSource("vlz-ar21");
+    if (!source) {
+        return cooked;
+    }
+
+    for (const imageInfo of source.images) {
+        if (imageInfo.name.startsWith(query)) {
+            cooked.push({
+                css: imageInfo.css,
+                description: `${imageInfo.name} from ${source.name}`,
+                source: imageInfo.src,
+                url: config.get('cdnPrefix') + imageInfo.img,
+            });
+        }
+        if (cooked.length >= maxResults) {
+            break;
+        }
+    }
+
+    return cooked;
+}
+
 function doSearch(ctx:Koa.BaseContext):Object {
 
     let query = ctx.query['q'];
@@ -93,56 +140,24 @@ function doSearch(ctx:Koa.BaseContext):Object {
         // do nothing
     }
 
-    const prefix = config.get('cdnPrefix');
-
-    let showRaw = false;
-    try {
-        showRaw = toBoolean(ctx.query['raw'])
-    } catch (err) {
-        // do nothing
-    }
-
     let retVal:Object = {};
     try {
-        let raw = searchIndex.search(query);
-        /*if (raw.length == 0 && query.indexOf('*') == -1) {      //LATER: tweak lunr so this isn't necessary
-            query = query + '*';
-            raw = searchIndex.search(query);
-        }*/
-        if (!raw || raw.length == 0) {
-            return { success: false, message: 'No matches' };
+
+        const cooked = /^[1a-z]$/i.test(query) 
+            ? doSimpleSearch(ctx, query, maxResults)
+            : doLunrSearch(ctx, query, maxResults)
+            ;
+
+        if (!cooked || cooked.length == 0) {
+            return { success: false, message: `No matches for '${query}'` };
         }
 
-        if (raw.length > maxResults) {
-            raw = raw.slice(0, maxResults);
-        }
-
-        const cooked:SearchHit[] = [];
-        const sourceData = sources.getSources();
-        for (const result of raw) {
-            const indices = result.ref.split(':');
-            const source = sourceData[Number(indices[0])];
-            const imageInfo = source.images[Number(indices[1])];
-            let name = imageInfo.name;
-            if (name.endsWith(".svg")) {
-                name = name.slice(0, -4);
-            }
-            cooked.push({
-                css: imageInfo.css,
-                url: prefix + imageInfo.img,
-                description: `${name} from ${source.name}`,
-                source: imageInfo.src
-            });
-        }
-
+ 
         const body: any = { "success": true, "query": query, "results": cooked };
-        if (showRaw) {
-            body['raw'] = raw;
-        }
 
         retVal = body;
     } catch (err) {
-        retVal = {success: false, message: 'Query error!', err};
+        retVal = {success: false, message: `Query error ${err.message}`, err};
     }
 
     return retVal;
