@@ -4,14 +4,15 @@
 root = true
 
 [*]
-end_of_line = lf
 charset = utf-8
-indent_size = 4
-indent_style = space
-
-[*.yaml]
-indent_size = 2
+end_of_line = lf
+indent_size = tab
+insert_final_newline = true
+tab_width = 4
+trim_trailing_whitespace = true
 
 [*.json]
 indent_size = 2
 
+[*.yaml]
+indent_size = 2

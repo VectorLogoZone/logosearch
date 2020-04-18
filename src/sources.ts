@@ -1,12 +1,13 @@
 import * as axios from 'axios';
 //import * as fs from 'fs';
+import * as Handlebars from 'handlebars'
 import KoaRouter from 'koa-router';
 //import * as path from 'path';
 import Pino from 'pino';
 
 import { config } from './config';
 import * as util from './util';
-import { isNameUnique } from './logoRouter';
+import { isUnique } from './logoRouter';
 import * as remoteStorage from './remoteStorage';
 
 type ImageInfo = {
@@ -151,7 +152,7 @@ router.get('/sources/:handle/index.html', async (ctx) => {
         await ctx.render('sources/_index.hbs', {
             source,
             title: `Source Info for ${filtered[0].handle}`,
-            uniqueCount: source.images.filter( (ii) => isNameUnique(ii.name) ).length
+            uniqueCount: source.images.filter( (ii) => isUnique(ii) ).length
         });
     }
 });
@@ -174,7 +175,7 @@ async function logosPage(ctx:any, unique:boolean) {
 
     let all = filtered[0].images;
     if (unique) {
-        all = all.filter((ii) => isNameUnique(ii.name));
+        all = all.filter((ii) => isUnique(ii));
     }
     let pageSize = 180;
     if ("pagesize" in ctx.query) {
@@ -205,7 +206,7 @@ async function logosPage(ctx:any, unique:boolean) {
         maxPage,
         noindex: true,
         paging: maxPage > 1,
-        title: `${unique ? "Unique " : "" }Logos in ${filtered[0].handle}`
+        title: new Handlebars.SafeString(`${unique ? "Unique " : "" }Logos in <a class="text-secondary" href="index.html">${filtered[0].handle}</a>`)
     });
 }
 

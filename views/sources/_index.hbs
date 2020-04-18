@@ -12,10 +12,10 @@
         </tr>
         <tr>
             <td>Logo</td>
-            <td>
-                {{#if source.logo}}
+            <td>{{#if source.logo}}
                 <img alt="{{source.name}}" src="{{{source.logo}}}" style="height:18pt;" title="{{source.name}}" />
-                {{else}}<i>(not specified)</i>{{/if}}
+                {{else}}<i>(not specified)</i>
+                {{/if}}
             </td>
         </tr>
         <tr>
@@ -38,7 +38,10 @@
         </tr>
         <tr>
             <td># of unique logos</td>
-            <td><a href="unique.html" rel="nofollow">{{addCommas uniqueCount}}</a></td>
+            <td>{{#if uniqueCount}}
+                <a href="unique.html" rel="nofollow">{{addCommas uniqueCount}}</a>
+                {{else}}0{{/if}}
+            </td>
         </tr>
         <tr>
             <td>Last Updated</td>
