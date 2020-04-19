@@ -7,6 +7,7 @@ import Pino from 'pino';
 
 import { config } from './config';
 import * as sources from './sources';
+import { raw } from 'body-parser';
 
 type SearchHit = {
     css?: string,
@@ -100,13 +101,15 @@ function doLunrSearch(ctx: Koa.BaseContext, query:string, maxResults:number):Sea
     return cooked;
 }
 
-function doSimpleSearch(ctx: Koa.BaseContext, query: string, maxResults: number): SearchHit[] {
+function doSimpleSearch(ctx: Koa.BaseContext, rawQuery: string, maxResults: number): SearchHit[] {
     const cooked: SearchHit[] = [];
 
     const source = sources.getSource("vlz-ar21");
     if (!source) {
         return cooked;
     }
+
+    const query = rawQuery.toLowerCase();
 
     for (const imageInfo of source.images) {
         if (imageInfo.name.startsWith(query)) {

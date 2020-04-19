@@ -1,7 +1,9 @@
 # To Do
 
 - [ ] sign cdn URLs
-- [ ] fix logger, obey log levels
+- [ ] json schema
+- [ ] endpoint for json schema
+- [ ] git clone script
 
 ## Content
 
