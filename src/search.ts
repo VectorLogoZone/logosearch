@@ -7,7 +7,6 @@ import Pino from 'pino';
 
 import { config } from './config';
 import * as sources from './sources';
-import { raw } from 'body-parser';
 
 type SearchHit = {
     css?: string,
