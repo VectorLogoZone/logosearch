@@ -1,15 +1,15 @@
 
-# Awesome Logos [<img alt="AwesomeLogos Logo" src="static/images/logo.svg" height="50" align="right" />](https://www.awesomelogos.org/)
+# LogoSear.ch [<img alt="LogoSearch Logo" src="static/favicon.svg" height="50" align="right" />](https://logosear.ch/)
 
-[![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.sourcecount)](https://www.awesomelogos.org/sources/index.html)
-[![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Fwww.awesomelogos.org%2Fstatus.json&query=%24.imagecount)](https://www.awesomelogos.org/)
+[![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.sourcecount)](https://logosear.ch/sources/index.html)
+[![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.imagecount)](https://logosear.ch/)
 [![30 day uptime](https://img.shields.io/nodeping/uptime/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n.svg?label=30-day%20uptime&style=flat)](https://nodeping.com/reports/checks/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n)
 
-This is the source for the [Awesome Logos](https://www.awesomelogos.org/) website.
+This is the source for the [LogoSear.ch](https://logosear.ch/) website.
 
 ## Using
 
-Go to [www.AwesomeLogos.org](https://www.awesomelogos.org/) and search for something!
+Go to [LogoSear.ch](https://logosear.ch/) and search for something!
 
 Click on a logo to go to the original source.  You will need to check the source's license before re-using.
 
@@ -21,7 +21,7 @@ Contributions are welcome!  Please follow the standard Github [Fork & Pull Reque
 
 See the [to do list](TODO.md) for a list of things that are planned.
 
-If you want to add another source of SVG logos, please submit a [github issue](https://github.com/AwesomeLogos/git-svg-logos/issues/new) on the [git-svg-logos](https://github.com/AwesomeLogos/git-svg-logos) repo.
+If you want to add another source of SVG logos, please submit a [github issue](https://github.com/VectorLogoZone/git-svg-logos/issues/new) on the [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos) repo.
 
 ## API
 
@@ -34,7 +34,7 @@ But feel free to run your own copy...
 
 There are two main parts:
 
- 1. A job that updates the search data.  This code is in [git-svg-logos](https://github.com/AwesomeLogos/git-svg-logos) repo, along with the list of target repos.
+ 1. A job that updates the search data.  This code is in [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos) repo, along with the list of target repos.
  2. A web server, written in TypeScript/node.js.  This code is in `./src`.
 
 The search data is stored in the `./logos` directory.  It consists of a directory for each
@@ -58,6 +58,7 @@ The logos are the property of their original owners.
 [![Digital Ocean](https://www.vectorlogo.zone/logos/digitalocean/digitalocean-ar21.svg)](https://www.digitalocean.com/ "Hosting")
 [![Git](https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg)](https://git-scm.com/ "Version control")
 [![Github](https://www.vectorlogo.zone/logos/github/github-ar21.svg)](https://github.com/ "Code hosting")
+[![Google Noto Emoji](https://www.vectorlogo.zone/logos/google/google-ar21.svg)](https://github.com/googlefonts/noto-emoji/blob/master/svg/emoji_u1f99a.svg "Logo/Favicon")
 [![Google Analytics](https://www.vectorlogo.zone/logos/google_analytics/google_analytics-ar21.svg)](https://www.google.com/analytics "Traffic Measurement")
 [![Handlebars](https://www.vectorlogo.zone/logos/handlebarsjs/handlebarsjs-ar21.svg)](https://handlebarsjs.com/ "Templating")
 [![Koa](https://www.vectorlogo.zone/logos/koajs/koajs-ar21.svg)](https://koajs.com/ "Web framework")

@@ -38,7 +38,6 @@ router.get('/alternatives/', async (ctx) => {
 router.get('/alternatives/index.html', async (ctx) => {
     await ctx.render('alternatives/index.hbs', { 
         alternatives, 
-        h1: 'Not-quite-so-awesome Logo Sources', 
         title: 'Alternative Logo Sources' });
 });
 

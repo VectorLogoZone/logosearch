@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://www.awesomelogos.org/api/sourceData.schema.json",
+  "$id": "http://logosear.ch/api/sourceData.schema.json",
   "title": "Search Data",
-  "description": "raw data for AwesomeLogos' search engine",
+  "description": "raw data for LogoSearch",
   "type": "object",
   "properties": {
     "data": {
@@ -24,7 +24,7 @@
         "type": "object",
         "properties": {
           "img": {
-            "description": "URL of the logo (must be hotlink-able from *.awesomelogos.org and *.vectorlogo.zone)",
+            "description": "URL of the logo (must be hotlink-able from *.logosear.ch and *.vectorlogo.zone)",
             "type": "string"
           },
           "name": {

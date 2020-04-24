@@ -1,6 +1,6 @@
 ---
 name: Add a site
-about: Suggest an awesome logo site that you would like us to add
+about: Suggest a logo source that you would like us to add
 title: ''
 labels: ''
 assignees: ''

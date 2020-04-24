@@ -179,7 +179,7 @@ rootRouter.get('/index.html', async (ctx) => {
 rootRouter.get('/search.html', async (ctx) => {
     await ctx.render('index.hbs', {
         h1: 'Search',
-        title: 'Awesome Logos'
+        title: 'LogoSear.ch'
     });
 });
 

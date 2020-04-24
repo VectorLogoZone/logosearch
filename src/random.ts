@@ -23,11 +23,11 @@ function init(logger:Pino.Logger, sources: Sources.SourceData[]) {
 const router = new KoaRouter();
 
 router.get('/api/', async (ctx) => {
-    ctx.redirect('https://github.com/AwesomeLogos/awesome-logos#api');
+    ctx.redirect('https://github.com/VectorLogoZone/logosearch#api');
 });
 
 router.get('/api/index.html', async (ctx) => {
-    ctx.redirect('https://github.com/AwesomeLogos/awesome-logos#api');
+    ctx.redirect('https://github.com/VectorLogoZone/logosearch#api');
 });
 
 function getRandomInt(max:number): number {

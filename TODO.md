@@ -46,24 +46,6 @@
 - [ ] forks all repos in case they go away
 - [ ] hotlink detection/prevention
 
-## Install on Ubuntu 18.10
-
-```bash
-apt-get update
-apt-get install nodejs npm python3-pip
-pip3 install sh unidecode
-mkdir /app
-cd /app
-git clone https://github.com/AwesomeLogos/awesome-logos.git
-cd awesome-logos
-npm install -g yarn
-yarn install
-./node_modules/.bin/tsc
-bin/loadrepo.py
-node_modules/.bin/pm2 start dist/server.js --name awesomelogos -i max
-pm2 startup --service-name awesomelogos
-```
-
 ## Tips
 
 - Github's [search by filename](https://help.github.com/articles/searching-code/#search-by-filename) is a good way to find logos (and then repos) with logos
