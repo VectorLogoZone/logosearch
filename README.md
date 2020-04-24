@@ -1,5 +1,4 @@
-
-# LogoSear.ch [<img alt="LogoSearch Logo" src="static/favicon.svg" height="50" align="right" />](https://logosear.ch/)
+# LogoSear.ch [<img alt="LogoSearch Logo" src="static/favicon.svg" height="80" align="right" />](https://logosear.ch/)
 
 [![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.sourcecount)](https://logosear.ch/sources/index.html)
 [![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.imagecount)](https://logosear.ch/)
@@ -34,16 +33,10 @@ But feel free to run your own copy...
 
 There are two main parts:
 
- 1. A job that updates the search data.  This code is in [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos) repo, along with the list of target repos.
+ 1. The search data:  This code is in [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos) repo.  You need to have this running separately. Do _NOT_ use my copy!
  2. A web server, written in TypeScript/node.js.  This code is in `./src`.
 
-The search data is stored in the `./logos` directory.  It consists of a directory for each
-logo source, with a `sourceData.json` and optionally a local copy of the logos.
-
-The cron job gets public git repos (and stores them in the `./cache` directory) and copies the svgs to `./logos`.
-
-Note: if you want to run this in a container, make sure the `./cache` and `./logos` directories are using persistent storage.  You do not want
-to run the cron job every time a container starts.
+See [config.ts](https://github.com/VectorLogoZone/logosearch/blob/master/src/config.ts) for details about the required environment variables.
 
 ## License
 
@@ -55,9 +48,9 @@ The logos are the property of their original owners.
 
 [![Bootstrap](https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg)](https://getbootstrap.com/ "HTML/CSS Framework")
 [![Cloudflare](https://www.vectorlogo.zone/logos/cloudflare/cloudflare-ar21.svg)](https://www.cloudflare.com/ "CDN")
-[![Digital Ocean](https://www.vectorlogo.zone/logos/digitalocean/digitalocean-ar21.svg)](https://www.digitalocean.com/ "Hosting")
 [![Git](https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg)](https://git-scm.com/ "Version control")
 [![Github](https://www.vectorlogo.zone/logos/github/github-ar21.svg)](https://github.com/ "Code hosting")
+[![Google Cloud Run](https://www.vectorlogo.zone/logos/google/google-ar21.svg)](https://cloud.google.com/run/ "Hosting")
 [![Google Noto Emoji](https://www.vectorlogo.zone/logos/google/google-ar21.svg)](https://github.com/googlefonts/noto-emoji/blob/master/svg/emoji_u1f99a.svg "Logo/Favicon")
 [![Google Analytics](https://www.vectorlogo.zone/logos/google_analytics/google_analytics-ar21.svg)](https://www.google.com/analytics "Traffic Measurement")
 [![Handlebars](https://www.vectorlogo.zone/logos/handlebarsjs/handlebarsjs-ar21.svg)](https://handlebarsjs.com/ "Templating")
@@ -65,7 +58,5 @@ The logos are the property of their original owners.
 [![lunr.js](https://www.vectorlogo.zone/logos/lunrjs/lunrjs-ar21.svg)](https://lunrjs.com/ "Full-text search")
 [![Node.js](https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.svg)](https://nodejs.org/ "Application Server")
 [![pino](https://www.vectorlogo.zone/logos/getpinoio/getpinoio-ar21.svg)](https://www.getpino.io/ "Logging")
-[![pm2](https://www.vectorlogo.zone/logos/pm2io/pm2io-ar21.svg)](https://pm2.io/ "NodeJS process management")
 [![TypeScript](https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-ar21.svg)](https://www.typescriptlang.org/ "Programming Language")
-[![Ubuntu](https://www.vectorlogo.zone/logos/ubuntu/ubuntu-ar21.svg)](https://ubuntu.com/ "Server OS")
 [![yarn](https://www.vectorlogo.zone/logos/yarnpkg/yarnpkg-ar21.svg)](https://yarnpkg.com/en/ "JS Package Management")

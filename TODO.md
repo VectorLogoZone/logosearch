@@ -1,44 +1,23 @@
 # To Do
 
 - [ ] sign cdn URLs
-- [ ] json schema
 - [ ] endpoint for json schema
-- [ ] git clone script
-- [ ] server-side search
+- [ ] test page for json schema
+- [ ] server-side search directly in search.html (maybe?)
 - [ ] exact matches first in search results
 
 ## Content
 
 - [ ] fill out FAQ
-- [ ] fix problems with non-ASCII filenames in loadrepos.py (make sure filenames are slugified)
 - [ ] cleanup paging in sources/_logos.hbs
 - [ ] use window.location.replace() when paging in sources/_logos.hbs
 - [ ] switch back to latest lunr (with stopwords disabled)
 - [ ] alternatives/_index.hbs
 - [ ] contact page (or link to VLZ's?)
-- [ ] report of repos w/nothing
-- [ ] descriptions of sources
-- [ ] remote provider
-- [ ] background select
-- [ ] init script
-- [ ] actual cron job
-- [ ] check for moved repos
-- [ ] 404: return svg if url has .svg
-- [ ] way to automatically add background to white svgs (either during loadrepo or when displaying)
-
-## Deploy
-
-- [ ] tf: pass on env vars
-- [ ] pm2: load env vars
-- [ ] tf: add DNS entry
-- [ ] tf: set firewall
-- [ ] tf: purge old instance
 
 ## Longer term
 
 - [ ] font blast for repos with no svgs
-- [ ] log storage and viewing
-
 - [ ] hbs local variable for robots
 - [ ] separate github user account
 - [ ] watches all repos
