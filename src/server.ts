@@ -8,11 +8,11 @@ import KoaStatic from 'koa-static';
 import KoaViews from 'koa-views';
 import * as os from 'os';
 import * as path from 'path';
-import Pino from 'pino';
 import pinoHttp from 'pino-http';
 
 import * as alternatives from './alternatives';
 import { config } from './config';
+import { logger } from './logger';
 import * as logoRouter from './logoRouter';
 import * as sources from './sources';
 import * as search from './search';
@@ -22,12 +22,6 @@ import { sitemap } from './sitemap';
 // import * as Yaml from 'js-yaml';
 
 const app = new Koa();
-
-const logger = Pino( { 
-    level: config.get('logLevel'),
-    name: process.env.npm_package_name,
-    timestamp: () => `,"time":"${new Date().toISOString()}"`
-});
 
 logger.info( { config: JSON.parse(config.toString()) }, 'configuration loaded');
 

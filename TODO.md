@@ -4,6 +4,8 @@
 - [ ] json schema
 - [ ] endpoint for json schema
 - [ ] git clone script
+- [ ] server-side search
+- [ ] exact matches first in search results
 
 ## Content
 

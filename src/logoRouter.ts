@@ -3,6 +3,7 @@ import Pino from 'pino';
 
 import * as search from './search';
 import * as sources from './sources';
+import { logger } from './logger';
 
 const router = new KoaRouter();
 
@@ -99,6 +100,32 @@ router.get('/logos/:name/index.html', async (ctx) => {
         logoDetail,
         title: `${ctx.params.name} Logos`,
     });
+});
+
+/*
+ * legacy: because the search engines are spidering these URLs
+ */
+router.get('/logos/:segment+/:name.svg', async (ctx) => {
+    logger.debug( { userAgent: ctx.request.headers['user-agent'], url: ctx.req.url }, "Legacy URL hit");
+    const segments = ctx.params.segment.split("/");
+    const theSource = sources.getSource(segments[0]);
+    if (!theSource) {
+        return;
+    }
+
+    const path = segments.join("/")
+    const name = ctx.params.name;
+
+    const localName = `${path}/${name}.svg`;
+
+    logger.debug({ segments, path, name, localName }, "old svg hit");
+
+    const theImageInfo = theSource.images.find( (theImageInfo) => { return theImageInfo.img == localName })
+    if (!theImageInfo) {
+        return;
+    }
+
+    ctx.redirect(theImageInfo.src);
 });
 
 function getUrls():string[] {
