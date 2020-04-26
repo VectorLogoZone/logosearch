@@ -5,9 +5,12 @@
     <title>{{#if h1}}{{ title }}{{else}}{{ title }} - LogoSear.ch{{/if}}</title>
     {{#if noindex}}<meta name="robots" content="noindex"/>{{/if}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
     <meta name="theme-color" content="#2c3e50" />
-    <link href="https://fonts.googleapis.com/css?family=Racing+Sans+One" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <link href="/css/style.css?{{build_id}}" rel="stylesheet" />
+    <!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    -->
     <style>
         .navbar-logo {
             height: 2.5rem;
@@ -23,11 +26,14 @@
         }
 
         h1,h2,h3 {
-            font-family: 'Racing Sans One';
+            //font-family: 'Sansita', sans-serif;
+            //font-weight: bold;
         }
 
         .navbar-brand {
-            font-family: 'Racing Sans One';
+            font-family: 'Sansita', sans-serif;
+            font-weight: 700;
+            font-style: italic;
             font-size: 1.65rem;
             padding-top: 0;
             padding-bottom: 0;
@@ -84,10 +90,10 @@
         }
         .gridbg {
             background-color: #ccc;
+            xbackground-image: url(/images/background_grid.png);
         }
 
     </style>
-    <link rel="shortcut icon" href="/favicon.ico">
     <script>if (window.top.location != window.location) { window.top.location.href = document.location.href; }</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

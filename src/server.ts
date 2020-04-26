@@ -54,7 +54,7 @@ function CustomPinoLogger(opts:pinoHttp.Options):any {
 
 const fastResponseMillis = config.get('fastResponseMillis');
 
-app.use(CustomPinoLogger({ 
+app.use(CustomPinoLogger({
     logger,
     customLogLevel: function(res:any, err) {
         if (err) { return "error"; }
@@ -156,6 +156,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 app.use(async(ctx, next) => {
 
     ctx.state.cdn_prefix = config.get("cdnPrefix");
+    ctx.state.build_id = config.get("buildId");
 
     await next();
 });
@@ -250,7 +251,7 @@ rootRouter.get('/status.json', async (ctx) => {
 
 app.use(rootRouter.routes());
 
-async function main() { 
+async function main() {
     await sources.init(logger);
     search.init(logger);
     alternatives.init(logger);
