@@ -8,7 +8,6 @@ import { Logger } from 'pino';
 declare module 'koa' {
     interface ExtendableContext {
         render(viewPath: string, locals?: any): Promise<void>;
-        //log: Logger;
-        logger: Logger;
+        log: Logger;
     }
 }

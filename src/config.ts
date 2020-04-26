@@ -58,6 +58,12 @@ const config = convict({
     env: 'LOG_LEVEL',
     format: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
   },
+  pageLogLevel: {
+    default: 'trace',
+    doc: 'log level for request logging',
+    env: 'PAGELOG_LEVEL',
+    format: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
+  },
   port: {
     default: 4000,
     doc: 'TCP port at which this service listens',

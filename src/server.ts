@@ -8,6 +8,7 @@ import KoaStatic from 'koa-static';
 import KoaViews from 'koa-views';
 import * as os from 'os';
 import * as path from 'path';
+import * as pino from 'pino';
 import pinoHttp from 'pino-http';
 
 import * as alternatives from './alternatives';
@@ -64,7 +65,7 @@ app.use(CustomPinoLogger({
         if (responseTime > fastResponseMillis) {
             return "warn";
         }
-        return "trace";
+        return config.get('pageLogLevel') as pino.Level;
     }
 }));
 
