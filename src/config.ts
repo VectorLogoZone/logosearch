@@ -1,6 +1,12 @@
 import { default as convict } from 'convict';
 
 const config = convict({
+    buildId: {
+        default: process.env.COMMIT || `local@${new Date().getTime()}`,
+        doc: 'Unique Build ID (commit hash or timestamp)',
+        env: 'BUILD_ID',
+        format: String
+      },
   cdnPrefix: {
     default: 'http://localhost:4001/',
     doc: 'Prefix (possibly including hostname) where images are stored, including trailing slash',
@@ -50,6 +56,12 @@ const config = convict({
     default: 'debug',
     doc: 'pino logging level [fatal, error, warn, info, debug, trace]',
     env: 'LOG_LEVEL',
+    format: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
+  },
+  pageLogLevel: {
+    default: 'trace',
+    doc: 'log level for request logging',
+    env: 'PAGELOG_LEVEL',
     format: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
   },
   port: {

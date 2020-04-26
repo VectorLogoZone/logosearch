@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
     "convict": "^5.2.0",
     "gunzip-maybe": "^1.4.1",
     "handlebars": "^4.3.0",
@@ -58,6 +59,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "css": "sass scss/index.scss:static/css/style.css",
     "run": "nodemon",
     "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
