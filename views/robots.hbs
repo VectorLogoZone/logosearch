@@ -1,10 +1,11 @@
 #
-# robots.txt for logosearch
+# robots.txt for logosear.ch
 #
 
 User-Agent: *
 Disallow: /api/
 {{#each sources}}
+Disallow: /logos/{{this.handle}}
 Disallow: /sources/{{this.handle}}/logos.html
 Disallow: /sources/{{this.handle}}/unique.html
 {{/each}}
