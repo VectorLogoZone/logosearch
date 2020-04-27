@@ -106,21 +106,20 @@ router.get('/logos/:name/index.html', async (ctx) => {
  * legacy: because the search engines are spidering these URLs
  */
 router.get('/logos/:segment+/:name.svg', async (ctx) => {
-    logger.debug( { userAgent: ctx.request.headers['user-agent'], url: ctx.req.url }, "Legacy URL hit");
     const segments = ctx.params.segment.split("/");
     const theSource = sources.getSource(segments[0]);
     if (!theSource) {
         return;
     }
 
-    const path = segments.join("/")
+    const path = segments.slice(1).join("/")
     const name = ctx.params.name;
 
     const localName = `${path}/${name}.svg`;
 
-    logger.debug({ segments, path, name, localName }, "old svg hit");
+    logger.debug({ userAgent: ctx.request.headers['user-agent'], url: ctx.req.url, segments, path, name, localName }, "legacy url hit");
 
-    const theImageInfo = theSource.images.find( (theImageInfo) => { return theImageInfo.img == localName })
+    const theImageInfo = theSource.images.find( (theImageInfo) => { return theImageInfo.name == name })
     if (!theImageInfo) {
         return;
     }
