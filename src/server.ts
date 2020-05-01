@@ -85,6 +85,12 @@ app.use(async(ctx, next) => {
     }
 });
 
+const errTemplate = Handlebars.compile(
+    fs.readFileSync(path.join(__dirname, '..', 'partials', 'above.hbs'), 'utf-8')
+    + fs.readFileSync(path.join(__dirname, '..', 'views', '500.hbs'), 'utf-8')
+    + fs.readFileSync(path.join(__dirname, '..', 'partials', 'below.hbs'), 'utf-8')
+)
+
 app.use(async(ctx, next) => {
     try {
         await next();
@@ -104,7 +110,7 @@ app.use(async(ctx, next) => {
         ctx.status = 500;
         logger.error( { err, path: ctx.request.path }, '500');
         //LATER: content-type aware
-        await ctx.render('500.hbs', { title: 'Server Error', message: err.message });
+        ctx.body = await errTemplate({ title: 'Server Error', message: err.message });
     }
 });
 
