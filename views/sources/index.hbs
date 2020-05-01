@@ -20,10 +20,22 @@
     <tbody>
 {{#each sources}}
         <tr>
+            <td class="text-center">
+                {{#if this.logo}}
+                <a href="{{#if this.website}}{{this.website}}{{else}}{{this.url}}{{/if}}"><img alt="{{this.name}}" src="{{{this.logo}}}" style="height:2.0em;" title="{{this.name}}" /></a>
+                {{/if}}
+            </td>
             <td>
-                <a href="{{#if this.website}}{{this.website}}{{else}}{{this.url}}{{/if}}"><img alt="{{this.name}}" src="{{#if this.logo}}{{{this.logo}}}{{else}}{{{this.provider_icon}}}{{/if}}" style="height:2.0em;" title="{{this.name}}" /></a>
                 <a class="ml-2" href="{{this.handle}}/index.html">{{this.name}}</a>
-                <a href="{{this.handle}}/logos.html"><div class="mt-2 badge badge-primary float-right">{{addCommas this.images.length}}</div></a>
+            </td>
+            <td class="d-none d-md-table-cell">
+                <a href="{{this.url}}"><img alt="{{this.provider}}" class="mr-2" src="{{{this.provider_icon}}}"
+                    style="height:2.0em;" title="{{this.provider}}" />{{this.provider}}</a>
+            </td>
+            <td>
+                <a href="{{this.handle}}/logos.html">
+                    <div class="mt-2 badge badge-primary float-right">{{addCommas this.images.length}}</div>
+                </a>
             </td>
             <!--
             <td class="d-none d-md-table-cell">{{#if this.website}}<a href="{{this.website}}/">{{this.name}}</a>{{else}}{{this.name}}{{/if}}</td>

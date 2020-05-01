@@ -2,9 +2,9 @@ import KoaRouter from 'koa-router';
 
 import Pino from 'pino';
 
-import { config } from './config';
 import * as Sources from './sources';
 import { SearchHit } from './search';
+import { expandUrl } from './util';
 
 let randomSources:Sources.SourceData[] = [];
 
@@ -43,8 +43,6 @@ function getRandomLogo(): Sources.ImageInfo {
 
 router.get('/api/random.json', async (ctx) => {
 
-    const prefix = config.get('cdnPrefix');
-
     const results = new Set<SearchHit>();
     while (results.size < 48) {
         const theSource = randomSources[getRandomInt(randomSources.length)];
@@ -54,7 +52,7 @@ router.get('/api/random.json', async (ctx) => {
             name = name.slice(0, -4);
         }
         const cooked:SearchHit = {
-            url: prefix + theImageInfo.img,
+            url: expandUrl(theImageInfo.img),
             description: `${name} from ${theSource.name}`,
             source: theImageInfo.src
         };

@@ -19,6 +19,7 @@ import * as sources from './sources';
 import * as search from './search';
 import * as random from './random';
 import { sitemap } from './sitemap';
+import { expandUrl } from './util';
 
 // import * as Yaml from 'js-yaml';
 
@@ -122,6 +123,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
             'equals': function(a:any, b:any, block:any) {
                 return a == b ? block.fn() : '';
             },
+            expandUrl,
             'for': function(from:number, to:number, incr:number, block:any) {
                 let result = '';
                 for (let loop = from; loop < to; loop += incr)
@@ -142,6 +144,8 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
                     return 'https://www.vectorlogo.zone/logos/github/github-icon.svg';
                 } else if (provider == 'gitlab') {
                     return 'https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg';
+                } else if (provider == 'remote') {
+                    return '/favicon.svg';  //LATER: better icon for remote sources
                 } else {
                     return 'https://www.vectorlogo.zone/404.svg';
                 }
@@ -156,7 +160,6 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
 
 app.use(async(ctx, next) => {
 
-    ctx.state.cdn_prefix = config.get("cdnPrefix");
     ctx.state.build_id = config.get("buildId");
 
     await next();

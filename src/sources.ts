@@ -8,7 +8,6 @@ import Pino from 'pino';
 import { config } from './config';
 import * as util from './util';
 import { isUnique } from './logoRouter';
-import * as remoteStorage from './remoteStorage';
 
 type ImageInfo = {
     css?: string,
@@ -62,7 +61,7 @@ async function init(logger:Pino.Logger) {
 
     const startTime = process.hrtime.bigint();
 
-    const indexUrl = await remoteStorage.getSignedUrl(config.get('indexPath'))
+    const indexUrl = util.expandUrl(config.get('indexPath'))
     logger.info({ url: indexUrl}, 'Index URL');
 
     const response = await axios.default.get(indexUrl, {
@@ -85,7 +84,7 @@ async function init(logger:Pino.Logger) {
                 if (a.name < b.name) { return -1; }
                 return 0;
             });
-            if (sourceData.data.css) {
+            if (sourceData.data && sourceData.data.css) {
                 sourceData.images.forEach((theImageData) => { theImageData.css = sourceData.data.css; })
             }
             sources.push(sourceData);
@@ -203,11 +202,12 @@ async function logosPage(ctx:any, unique:boolean) {
     const logos = all.slice((currentPage - 1) * pageSize, (currentPage * pageSize));
     await ctx.render('sources/_logos.hbs', {
         currentPage,
+        h1: new Handlebars.SafeString(`${unique ? "Unique " : ""}Logos in <a class="text-secondary" href="index.html">${Handlebars.escapeExpression(source.name)}</a>`),
         logos,
         maxPage,
         noindex: true,
         paging: maxPage > 1,
-        title: new Handlebars.SafeString(`${unique ? "Unique " : "" }Logos in <a class="text-secondary" href="index.html">${source.handle}</a>`)
+        title: `${unique ? "Unique " : "" }Logos in ${source.name}`
     });
 }
 

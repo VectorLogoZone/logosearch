@@ -2,6 +2,18 @@ import { Readable } from 'stream';
 import * as tar from 'tar-stream';
 import gunzip from 'gunzip-maybe';
 
+import { config } from './config';
+
+/*
+ * add website (and eventually signature) to a logo URL
+ */
+function expandUrl(url:string): string {
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+        return url;
+    }
+    return `${config.get('cdnPrefix')}${url}`;
+}
+
 function processTar(tarStream: Readable, callback: (name:string, buf: Buffer|null) => void ):void {
 
     var extract = tar.extract()
@@ -65,6 +77,7 @@ function toBoolean(value: any): boolean {
 }
 
 export {
+    expandUrl,
     processTar,
     streamToBuffer,
     toBoolean,
