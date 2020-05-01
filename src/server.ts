@@ -3,7 +3,7 @@ require('source-map-support').install(); // Required for using source-maps with 
 import * as fs from 'fs';
 import * as Handlebars from 'handlebars'
 import Koa from 'koa';
-import KoaCompress from 'koa-compress';
+//import KoaCompress from 'koa-compress';
 import KoaRouter from 'koa-router';
 import KoaStatic from 'koa-static';
 import KoaViews from 'koa-views';
@@ -115,7 +115,7 @@ app.use(async(ctx, next) => {
     }
 });
 
-app.use(KoaCompress({}));
+//app.use(KoaCompress({}));
 
 app.use(KoaStatic("static", { maxage: 24 * 60 * 60 * 1000 }));
 
