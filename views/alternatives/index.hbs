@@ -16,8 +16,8 @@
     <tbody>
     {{#each alternatives}}
         <tr>
-            <td class="d-none d-md-table-cell">{{#if this.website}}<a href="{{this.website}}/">{{this.name}}</a>{{else}}{{this.name}}{{/if}}</td>
-            <td class="d-none d-md-table-cell text-right">
+            <td class="">{{#if this.website}}<a href="{{this.website}}/">{{this.name}}</a>{{else}}{{this.name}}{{/if}}</td>
+            <td class="text-right">
                 {{#if this.enabled }}<a class="has-search-param" href="{{this.website}}" data-search="{{this.search}}">Search</a>{{/if}}
                 <!--<a href="{{this.handle}}/index.html">...</a>-->
             </td>
