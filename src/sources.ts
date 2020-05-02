@@ -60,8 +60,27 @@ function is_file(path:string) {
 async function init(logger:Pino.Logger) {
 
     const startTime = process.hrtime.bigint();
+    const indexUrls = config.get('indexUrls').split(',');
 
-    const indexUrl = util.expandUrl(config.get('indexPath'))
+    for (const indexUrl of indexUrls) {
+        await initOne(logger, util.expandUrl(indexUrl));    //LATER: load in parallel
+    }
+
+    sources.sort(function (a, b) {
+        return a.name.localeCompare(b.name, "en", { sensitivity: "base"});
+    });
+
+    logger.info({
+        indexCount: indexUrls.length,
+        millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString(),
+        sourceCount: sources.length
+    }, "All indexes loaded");
+}
+
+async function initOne(logger: Pino.Logger, indexUrl:string) {
+
+    const startTime = process.hrtime.bigint();
+
     logger.info({ url: indexUrl}, 'Index URL');
 
     const response = await axios.default.get(indexUrl, {
@@ -73,6 +92,7 @@ async function init(logger:Pino.Logger) {
             if (!buf) {
                 sources.forEach( (source) => { sourceMap.set(source.handle, source); });
                 logger.info({ 
+                    indexUrl,
                     millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString(),
                     sourceCount: sources.length }, "Sources loaded");
                 resolve();

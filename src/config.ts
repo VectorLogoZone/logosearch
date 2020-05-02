@@ -77,10 +77,10 @@ const config = convict({
     format: String,
     sensitive: true,
   },
-  indexPath: {
-    default: "sourceData.tgz",
-    doc: 'path of logo index (on CDN, not including the leading slash)',
-    env: 'INDEX_PATH',
+  indexUrls: {
+    default: "http://localhost:4001/sourceData.tgz",
+    doc: 'URLs of logo indices (comma separated)',
+    env: 'INDEX_URLS',
     format: String,
   },
 });

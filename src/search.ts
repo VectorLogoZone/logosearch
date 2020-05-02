@@ -5,8 +5,8 @@ import * as lunr from 'lunr';
 //import * as path from 'path';
 import Pino from 'pino';
 
-import { config } from './config';
 import * as sources from './sources';
+import { expandUrl } from './util';
 
 type SearchHit = {
     css?: string,
@@ -91,7 +91,7 @@ function doLunrSearch(ctx: Koa.BaseContext, query:string, maxResults:number):Sea
         }
         cooked.push({
             css: imageInfo.css,
-            url: config.get('cdnPrefix') + imageInfo.img,
+            url: expandUrl(imageInfo.img),
             description: `${name} from ${source.name}`,
             source: imageInfo.src
         });
@@ -116,7 +116,7 @@ function doSimpleSearch(ctx: Koa.BaseContext, rawQuery: string, maxResults: numb
                 css: imageInfo.css,
                 description: `${imageInfo.name} from ${source.name}`,
                 source: imageInfo.src,
-                url: config.get('cdnPrefix') + imageInfo.img,
+                url: expandUrl(imageInfo.img),
             });
         }
         if (cooked.length >= maxResults) {
