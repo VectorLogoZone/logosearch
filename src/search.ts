@@ -57,10 +57,11 @@ router.get('/api/search.json', async (ctx) => {
         ctx.set('Content-Type', 'text/javascript');
     } else {
         ctx.set('Access-Control-Allow-Origin', 'www.vectorlogo.zone,localhost');
-        ctx.set('Access-Control-Allow-Methods', 'POST, GET');
+        ctx.set('Access-Control-Allow-Methods', 'GET');
         ctx.set('Access-Control-Max-Age', '604800');
         ctx.body = retVal;
     }
+    ctx.set("Cache-Control", "max-age=3600, public");
 });
 
 
