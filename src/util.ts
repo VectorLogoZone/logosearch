@@ -1,6 +1,7 @@
 import { Readable } from 'stream';
 import * as tar from 'tar-stream';
 import gunzip from 'gunzip-maybe';
+import * as transliteration from 'transliteration';
 
 import { config } from './config';
 
@@ -61,6 +62,80 @@ function streamToBuffer(stream: Readable): Promise<Buffer> {
         });
 }
 
+const prefixesToTrim:Set<string> = new Set([
+    'de',
+    'del',
+    'du',
+    'la',
+    'logo',
+    'logotip',
+    'logotipo',
+    'logotyp',
+    'logotype',
+    'of',
+    'the',
+]);
+
+const suffixesToTrim:Set<string> = new Set([
+    '',
+    '1', '2', '3', '4', '5', '6', '7', '8', '9',    //LATER: maybe regex check instead?
+    'alt',
+    'black',
+    'color',
+    'dark',
+    'default',
+    'horizontal',
+    'icon',
+    'light',
+    'lockup',
+    'logo',
+    'official',
+    'old',
+    'original',
+    'padded',
+    'plain',
+    'rect',
+    'simple',
+    'small',
+    'sq', 'square',
+    'st',
+    'symbol',
+    'tile',
+    'type',
+    'vertical',
+    'white',
+    'wordmark',
+]);
+
+function slugify(target:string, separator:string):string {
+    //LATER: any other transforms needed?
+    const svgName = extractFileName(target);
+    const name = svgName.endsWith('.svg') ? svgName.slice(0, -4) : svgName;
+    const pureName = transliteration.slugify(name, {
+        allowedChars: 'a-zA-Z0-9',
+        lowercase: true,
+        trim: true,
+    })
+    const parts = pureName.split('-');
+    while (parts.length > 1 && suffixesToTrim.has(parts[parts.length - 1])) {
+        parts.pop();
+    }
+
+    while (parts.length > 1 && prefixesToTrim.has(parts[0])) {
+        parts.shift();
+    }
+
+    return parts.join(separator);
+}
+
+function extractFileName(imgpath:string):string {
+    const lastpart = imgpath.split('/').pop();
+    if (!lastpart) {
+        return imgpath;
+    }
+    return lastpart;
+}
+
 function toBoolean(value: any): boolean {
 
     switch (value) {
@@ -79,6 +154,7 @@ function toBoolean(value: any): boolean {
 export {
     expandUrl,
     processTar,
+    slugify,
     streamToBuffer,
     toBoolean,
 }

@@ -6,7 +6,7 @@ import * as lunr from 'lunr';
 import Pino from 'pino';
 
 import * as sources from './sources';
-import { expandUrl } from './util';
+import { expandUrl, slugify } from './util';
 
 type SearchHit = {
     css?: string,
@@ -33,7 +33,7 @@ function init(logger:Pino.Logger) {
         const images = dataSources[dataLoop].images;
 
         for (let imageLoop = 0; imageLoop < images.length; imageLoop++) {
-            searchIndex.add({index: `${dataLoop}:${imageLoop}`, name: images[imageLoop].name});
+            searchIndex.add({index: `${dataLoop}:${imageLoop}`, name: slugify(images[imageLoop].name, ' ') });
             imageCount += 1;
         }
     }
@@ -146,7 +146,7 @@ function doSearch(ctx:Koa.BaseContext):Object {
     let retVal:Object = {};
     try {
 
-        const cooked = /^[1a-z]$/i.test(query) 
+        const cooked = /^[1a-z]$/i.test(query)
             ? doSimpleSearch(ctx, query, maxResults)
             : doLunrSearch(ctx, query, maxResults)
             ;
@@ -155,7 +155,7 @@ function doSearch(ctx:Koa.BaseContext):Object {
             return { success: false, message: `No matches for '${query}'` };
         }
 
- 
+
         const body: any = { "success": true, "query": query, "results": cooked };
 
         retVal = body;

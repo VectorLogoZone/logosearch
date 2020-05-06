@@ -20,7 +20,8 @@
     "pino": "6.2.0",
     "pino-http": "^5.0.0",
     "source-map-support": "^0.5.16",
-    "tar-stream": "^2.1.2"
+    "tar-stream": "^2.1.2",
+    "transliteration": "^2.1.9"
   },
   "description": "Backend server for LogoSear.ch",
   "devDependencies": {

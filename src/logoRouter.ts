@@ -4,6 +4,7 @@ import Pino from 'pino';
 import * as search from './search';
 import * as sources from './sources';
 import { logger } from './logger';
+import { slugify } from './util';
 
 const router = new KoaRouter();
 
@@ -36,7 +37,7 @@ async function init(logger:Pino.Logger):Promise<void> {
                 logger.warn( { source: source.handle }, 'Invalid image name');
                 continue;
             }
-            const slugName = slugify(image.img);
+            const slugName = slugify(image.img, '');
             let logoDetail = logoMap.get(slugName);
             if (!logoDetail) {
                 logoDetail = {
@@ -57,7 +58,7 @@ async function init(logger:Pino.Logger):Promise<void> {
 
 function isUnique(theImage:sources.ImageInfo): boolean {
 
-    const theDetail = logoMap.get(slugify(theImage.img));
+    const theDetail = logoMap.get(slugify(theImage.img, ''));
     if (theDetail && theDetail.images.length == 1) {
         return true;
     }
@@ -88,9 +89,9 @@ router.get('/logos/:name/index.html', async (ctx) => {
 
     const logoDetail = logoMap.get(ctx.params.name);
     if (!logoDetail) {
-        if (logoMap.get(slugify(ctx.params.name))) {
+        if (logoMap.get(slugify(ctx.params.name, ''))) {
             // prevent 404s from old links
-            ctx.redirect(`/logos/${slugify(ctx.params.name)}/index.html`);
+            ctx.redirect(`/logos/${slugify(ctx.params.name, '')}/index.html`);
             return;
         }
         return;
@@ -133,57 +134,10 @@ function getUrls():string[] {
     retVal.push("/logos/index.html");
 
     for (const logoDetail of top1K) {
-        retVal.push(`/logos/${encodeURIComponent(slugify(logoDetail.name))}/index.html`);
+        retVal.push(`/logos/${encodeURIComponent(logoDetail.name)}/index.html`);
     }
 
     return retVal;
-}
-
-const suffixesToTrim:Set<string> = new Set([
-    '1', '2', '3', '4', '5', '6', '7', '8', '9',    //LATER: maybe regex check instead?
-    'alt',
-    'black',
-    'color',
-    'dark',
-    'default',
-    'horizontal',
-    'icon',
-    'light',
-    'lockup',
-    'logo',
-    'official',
-    'old',
-    'original',
-    'padded',
-    'plain',
-    'rect',
-    'simple',
-    'small',
-    'sq', 'square',
-    'symbol',
-    'tile',
-    'type',
-    'vertical',
-    'white',
-    'wordmark',
-]);
-
-function slugify(target:string):string {
-    //LATER: any other transforms needed?
-    const name = extractName(target);
-    const parts = name.split('-');
-    while (parts.length > 1 && suffixesToTrim.has(parts[parts.length - 1])) {
-        parts.pop();
-    }
-    return parts.join('')
-}
-
-function extractName(imgpath:string):string {
-    const lastpart = imgpath.split('/').pop();
-    if (!lastpart) {
-        return imgpath;
-    }
-    return lastpart.split('.')[0]
 }
 
 export {
