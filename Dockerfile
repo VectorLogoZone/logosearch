@@ -10,6 +10,10 @@ RUN yarn install && \
 	yarn run build
 
 FROM base AS run
+ARG COMMIT="(not set)"
+ARG LASTMOD="(not set)"
+ENV COMMIT=$COMMIT
+ENV LASTMOD=$LASTMOD
 WORKDIR /app
 USER appuser
 COPY --chown=appuser:appuser . .

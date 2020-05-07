@@ -35,7 +35,10 @@ jobs:
       # Build and push image to Google Container Registry
       - name: Build
         run: |
-          docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
+          docker build \
+            --build-arg COMMIT=${GITHUB_SHA:0:7} \
+            --build-arg LASTMOD=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
+            -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
 
       - name: GCloud auth to docker
         run: |
@@ -53,5 +56,4 @@ jobs:
             --image gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA \
             --platform managed \
             --project ${PROJECT_ID} \
-            --region $RUN_REGION \
-            --update-env-vars "COMMIT=${GITHUB_SHA:0:7},LASTMOD=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            --region $RUN_REGION

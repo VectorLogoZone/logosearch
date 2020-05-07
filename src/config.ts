@@ -78,7 +78,7 @@ const config = convict({
     sensitive: true,
   },
   indexUrls: {
-    default: "http://localhost:4001/sourceData.tgz",
+    default: "https://github.com/VectorLogoZone/wikipedia-svg-logos/releases/latest/download/sourceData.tgz",
     doc: 'URLs of logo indices (comma separated)',
     env: 'INDEX_URLS',
     format: String,
