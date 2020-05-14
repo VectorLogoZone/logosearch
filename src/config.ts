@@ -19,6 +19,18 @@ const config = convict({
     env: 'FAST_RESPONSE_MILLIS',
     format: 'int'
   },
+  googleAnalyticsId: {
+    default: '',
+    doc: 'Google Analytics ID (UA-XXXX-XX)',
+    env: 'GOOGLE_ANALYTICS_ID',
+    format: String,
+  },
+  logLevel: {
+    default: 'debug',
+    doc: 'pino logging level [fatal, error, warn, info, debug, trace]',
+    env: 'LOG_LEVEL',
+    format: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
+  },
   minio: {
     accessKey: {
       doc: 'Minio accessKey',
@@ -51,12 +63,6 @@ const config = convict({
       env: 'MINIO_PORT',
       format: 'int'
     }
-  },
-  logLevel: {
-    default: 'debug',
-    doc: 'pino logging level [fatal, error, warn, info, debug, trace]',
-    env: 'LOG_LEVEL',
-    format: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
   },
   pageLogLevel: {
     default: 'trace',

@@ -38,7 +38,7 @@ jobs:
           docker build \
             --build-arg COMMIT=${GITHUB_SHA:0:7} \
             --build-arg LASTMOD=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
-            -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
+            --tag gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
 
       - name: GCloud auth to docker
         run: |

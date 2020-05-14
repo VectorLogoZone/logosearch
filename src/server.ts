@@ -139,6 +139,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
                     result += block.fn(loop);
                 return result;
             },
+            google_analytics_id: () => config.get('googleAnalyticsId'),
             'isPageVisible': function(page:number, currentPage:number, maxPage:number, block:any) {
                 if (page<=3 || maxPage-page<=3 || Math.abs(currentPage - page) < 3) {
                     return block.fn();
