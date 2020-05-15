@@ -1,7 +1,6 @@
 # To Do
 
 - [ ] debounce
-- [ ] meta description in /search.html
 - [ ] process.on() trapping and logging
 - [ ] server-side tracking of hits to search.json
 - [ ] parallel loading of indices
@@ -27,6 +26,7 @@ An alternative to caching for gitlab would be to use a proxy.  The gitlab API ha
 ## Content
 
 - [ ] fill out FAQ
+- [ ] more pages with meta description
 - [ ] tags for sources (country, black/white/blue/color, hexagonal/circle/square, etc)
 - [ ] cleanup paging in sources/_logos.hbs
 - [ ] use window.location.replace() when paging in sources/_logos.hbs

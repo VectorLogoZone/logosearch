@@ -192,7 +192,8 @@ rootRouter.get('/index.html', async (ctx) => {
 });
 
 rootRouter.get('/search.html', async (ctx) => {
-    await ctx.render('index.hbs', {
+    await ctx.render('search.hbs', {
+        description: `Find vector (SVG) logos from over 100 sources!`,
         h1: 'Search',
         title: 'LogoSear.ch'
     });
