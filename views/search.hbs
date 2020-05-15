@@ -19,6 +19,7 @@
         <img src="/images/spinner.svg" style="border: 0;box-shadow: none;height:96px;width:96px;" alt="spinner" title="Please wait..." />
     </div>
 </div>
+<script type="text/javascript" src="/js/jquery.ba-throttle-debounce.js"></script>
 <script>
     var doSearch = function(query)
     {
@@ -50,12 +51,12 @@
         return false;
     });
 
-    $("#q").on('input propertychange paste', function() {
+    $("#q").on('input propertychange paste', $.debounce(100, function() {
         console.log("input paste");
         var query = $("#q").val();
         history.replaceState({ "q": query}, "", "?q=" + query);
         doSearch(query);
-    });
+    }));
 
     $(window).on("load", function(event) {
         console.log("load", history.state);;

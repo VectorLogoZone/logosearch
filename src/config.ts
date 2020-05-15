@@ -25,39 +25,6 @@ const config = convict({
     env: 'LOG_LEVEL',
     format: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
   },
-  minio: {
-    accessKey: {
-      doc: 'Minio accessKey',
-      env: 'MINIO_ACCESSKEY',
-      format: String
-    },
-    bucket: {
-      doc: 'Minio bucket',
-      env: 'MINIO_BUCKET',
-      format: String
-    },
-    enabled: {
-      default: false,
-      doc: 'use Minio to created signed URLs',
-      env: 'MINIO_ENABLED',
-      format: 'Boolean'
-    },
-    endPoint: {
-      doc: 'Minio endpoint',
-      env: 'MINIO_ENDPOINT',
-      format: String
-    },
-    secretKey: {
-      doc: 'Minio secretKey',
-      env: 'MINIO_ENDPOINT',
-      format: String
-    },
-    port: {
-      doc: 'Minio port',
-      env: 'MINIO_PORT',
-      format: 'int'
-    }
-  },
   pageLogLevel: {
     default: 'trace',
     doc: 'log level for request logging',
