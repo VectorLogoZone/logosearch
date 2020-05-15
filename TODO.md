@@ -1,8 +1,10 @@
 # To Do
 
+- [ ] debounce
 - [ ] meta description in /search.html
 - [ ] process.on() trapping and logging
 - [ ] server-side tracking of hits to search.json
+- [ ] parallel loading of indices
 - [ ] endpoint for json schema
 - [ ] test page for json schema
 - [ ] server-side search directly in search.html (maybe?)
@@ -16,7 +18,7 @@ At this point, not worth it, since only gitlab doesn't allow hotlinking.
 - [ ] config.ts: map of key_id to key_secret
 - [ ] sign URLs if key_id in sourceData
 
-## How to serve images on Gitlab 
+## How to serve images on Gitlab
 
 I couldn't find a way to hotlink images on Gitlab, so they are being cached.
 

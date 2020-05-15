@@ -1,20 +1,14 @@
 import { default as convict } from 'convict';
 
 const config = convict({
-    buildId: {
-        default: process.env.COMMIT || `local@${new Date().getTime()}`,
-        doc: 'Unique Build ID (commit hash or timestamp)',
-        env: 'BUILD_ID',
-        format: String
-      },
-  cdnPrefix: {
-    default: 'http://localhost:4001/',
-    doc: 'Prefix (possibly including hostname) where images are stored, including trailing slash',
-    env: 'CDN_PREFIX',
+  buildId: {
+    default: process.env.COMMIT || `local@${new Date().getTime()}`,
+    doc: 'Unique Build ID (commit hash or timestamp)',
+    env: 'BUILD_ID',
     format: String
   },
   fastResponseMillis: {
-    default: 100,
+    default: 250,
     doc: 'responses that take longer than this are logged as "warn" (in millis)',
     env: 'FAST_RESPONSE_MILLIS',
     format: 'int'

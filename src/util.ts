@@ -3,16 +3,18 @@ import * as tar from 'tar-stream';
 import gunzip from 'gunzip-maybe';
 import * as transliteration from 'transliteration';
 
-import { config } from './config';
+//import { config } from './config';
 
 /*
  * add website (and eventually signature) to a logo URL
+ *
+ * LATER: this should take a 'source' parameter
  */
 function expandUrl(url:string): string {
     if (url.startsWith('http://') || url.startsWith('https://')) {
         return url;
     }
-    return `${config.get('cdnPrefix')}${url}`;
+    return url; //LATER: expand with source data
 }
 
 function processTar(tarStream: Readable, callback: (name:string, buf: Buffer|null) => void ):void {
