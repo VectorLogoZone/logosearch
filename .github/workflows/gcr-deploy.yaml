@@ -1,4 +1,4 @@
-name: Build and deploy to Google Cloud Run
+name: build
 
 on:
   push:
