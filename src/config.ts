@@ -3,7 +3,7 @@ import { default as convict } from 'convict';
 const config = convict({
   buildId: {
     default: process.env.COMMIT || `local@${new Date().getTime()}`,
-    doc: 'Unique Build ID (commit hash or timestamp)',
+    doc: 'Unique Build ID (commit hash or timestamp) for cache busting',
     env: 'BUILD_ID',
     format: String
   },
@@ -15,7 +15,7 @@ const config = convict({
   },
   googleAnalyticsId: {
     default: '',
-    doc: 'Google Analytics ID (UA-XXXX-XX)',
+    doc: 'Google Analytics ID (UA-XXXXX-XX)',
     env: 'GOOGLE_ANALYTICS_ID',
     format: String,
   },
@@ -27,7 +27,7 @@ const config = convict({
   },
   pageLogLevel: {
     default: 'trace',
-    doc: 'log level for request logging',
+    doc: 'log level for request logging (since production has separate page logging)',
     env: 'PAGELOG_LEVEL',
     format: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
   },
@@ -39,13 +39,13 @@ const config = convict({
   },
   sessionKey: {
     default: 'hu0P7u9cXHsdZTJMd3riwOelHtYmZuVo',
-    doc: 'Random key for encrypting session',
+    doc: 'Random key for encrypting session (not currently used)',
     env: 'SESSION_KEY',
     format: String,
     sensitive: true,
   },
   indexUrls: {
-    default: "https://github.com/VectorLogoZone/wikipedia-svg-logos/releases/latest/download/sourceData.tgz",
+    default: "https://www.vectorlogo.zone/util/sourceData.tgz,https://github.com/VectorLogoZone/wikipedia-svg-logos/releases/latest/download/sourceData.tgz",
     doc: 'URLs of logo indices (comma separated)',
     env: 'INDEX_URLS',
     format: String,

@@ -12,15 +12,13 @@ Go to [LogoSear.ch](https://logosear.ch/) and search for something!
 
 Click on a logo to go to the original source.  You will need to check the source's license before re-using.
 
-No hot-linking.
-
 ## Contributing
 
-Contributions are welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962).
+If you want to add another git repository with SVG logos, please submit a [github issue](https://github.com/VectorLogoZone/git-svg-logos/issues/new) on the [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos) repo.
 
-See the [to do list](TODO.md) for a list of things that are planned.
+Code contributions are welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962).
 
-If you want to add another source of SVG logos, please submit a [github issue](https://github.com/VectorLogoZone/git-svg-logos/issues/new) on the [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos) repo.
+See the [to do list](TODO.md) for a list of things that are already being planned.
 
 ## API
 
@@ -31,12 +29,14 @@ But feel free to run your own copy...
 
 ## Running
 
-There are two main parts:
+It is a fairly standard node.js web app:
 
- 1. The search data:  This code is in [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos) repo.  You need to have this running separately. Do _NOT_ use my copy!
- 2. A web server, written in TypeScript/node.js.  This code is in `./src`.
+```bash
+yarn install
+yarn start
+```
 
-See [config.ts](https://github.com/VectorLogoZone/logosearch/blob/master/src/config.ts) for details about the required environment variables.
+See [config.ts](https://github.com/VectorLogoZone/logosearch/blob/master/src/config.ts) for details about configuring the environment variables.
 
 ## License
 
