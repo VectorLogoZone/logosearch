@@ -14,6 +14,7 @@ import pinoHttp from 'pino-http';
 
 import * as alternatives from './alternatives';
 import { config } from './config';
+import * as goatcounter from './goatcounter';
 import { logger } from './logger';
 import * as logoRouter from './logoRouter';
 import * as sources from './sources';
@@ -70,6 +71,8 @@ app.use(CustomPinoLogger({
         return config.get('pageLogLevel') as pino.Level;
     }
 }));
+
+app.use(goatcounter.middleware);
 
 /*
  * hack because Google Cloud Viewer isn't the greatest.  Numbers are a bit lower than what pino thinks
@@ -191,14 +194,6 @@ rootRouter.get('/index.html', async (ctx) => {
     ctx.redirect('/search.html');
 });
 
-rootRouter.get('/search.html', async (ctx) => {
-    await ctx.render('search.hbs', {
-        description: `Find vector (SVG) logos from over 100 sources!`,
-        h1: 'Search',
-        rootMeta: true,
-        title: 'LogoSear.ch'
-    });
-});
 
 rootRouter.get('/about.html', async (ctx:Koa.ExtendableContext) => {
     ctx.redirect('/faq.html');

@@ -1,27 +1,38 @@
 {{> above}}
 
-<form action="get" class="form-inline justify-content-center" id="search_form">
+<form action="/search.html" class="form-inline justify-content-center" id="search_form" method="GET">
     <div class="form-row align-items-center" style="padding-bottom:20px;">
         <div class="col-auto">
             <label class="sr-only" for="q">Search query</label>
             <div class="input-group">
-                <input autocomplete="off" autofocus="autofocus" class="form-control" id="q" name="q" placeholder="Search terms" type="text"/>
+                <input autocomplete="off" autofocus="autofocus" class="form-control" id="q" name="q" placeholder="Search terms" type="text" value="{{q}}" />
                 <div class="input-group-append">
                     <button type="submit" class="btn" style="background-color:#3e32a8;color:white;font-weight:bold;">Search</button>
                 </div>
             </div>
         </div>
     </div>
+    <input type="hidden" id="max" name="max" value="{{max}}" />
 </form>
 
 <div class="row clearfix">
     <div class="logo-container" id="search_results">
-        <img src="/images/spinner.svg" style="border: 0;box-shadow: none;height:96px;width:96px;" alt="spinner" title="Please wait..." />
+        {{#if results}}
+            {{#each results}}
+                <a href="{{this.source}}"><img class="boxedlogo{{#if this.css}} {{this.css}}{{/if}}" src="{{this.url}}" title="{{this.description}}"/></a>
+            {{/each}}
+        {{else}}
+            <div class="alert alert-warning">No results found for "{{q}}"</div>
+
+        <!--<img src="/images/spinner.svg" style="border: 0;box-shadow: none;height:96px;width:96px;" alt="spinner" title="Please wait..." />-->
+        {{/if}}
     </div>
 </div>
-<script type="text/javascript" src="/js/jquery.ba-throttle-debounce.js"></script>
+<script src="/js/jquery.ba-throttle-debounce.js"></script>
 <script>
-    var doSearch = function(query)
+    const DEFAULT_MAX = {{DEFAULT_MAX}};
+
+    var doSearch = function(query, max)
     {
         var url = '/api/search.json';
         if (!query || query.length == 0)
@@ -29,10 +40,14 @@
             url = '/api/random.json';
         }
 
-        console.log("searching for " + query);
+        if (!max) {
+            max = DEFAULT_MAX;
+        }
+
+        console.log(`searching for ${query} (max=${max})`);
         //$("#search_results").text("searching for " + query);
         $.ajax({
-            data: { q: query, max: 48 },
+            data: { q: query, max },
             dataType: 'json',
             error: function(xhr, text, err) {
                 window.alert("Search API Error: " + text);
@@ -47,38 +62,44 @@
     };
 
     $("#search_form").submit(function() {
-        doSearch($("#q").val());
+        doSearch($("#q").val(), $("#max").val());
         return false;
     });
 
     $("#q").on('input propertychange paste', $.debounce(100, function() {
         console.log("input paste");
         var query = $("#q").val();
-        history.replaceState({ "q": query}, "", "?q=" + query);
-        doSearch(query);
+        var max = $("#max").val();
+        history.replaceState({ "q": query}, "", "?q=" + query + (!max || max == DEFAULT_MAX ? "" : ("&max=" + max)));
+        doSearch(query, max);
     }));
-
+/*
     $(window).on("load", function(event) {
         console.log("load", history.state);;
         var query = getParameterByName("q");
+        var max = getParameterByName("max");
         //if (query && query.length)
         {
             $("#q").val(query);
-            doSearch(query);
+            $("#max").val(max);
+            doSearch(query, max);
         }
    });
-
+*/
     $(window).on("popstate", function(event) {
         console.log("popstate");
         if (event.originalEvent.state)
         {
             var query = event.originalEvent.state["q"];
+            var max = event.originalEvent.state["max"];
             $("#q").val(query);
-            doSearch(query);
+            $("#max").val(max);
+            doSearch(query, max);
         }
         else
         {
             $("#q").val("");
+            $("#max").val(DEFAULT_MAX);
             $("#search_results").empty();
         }
     });
@@ -88,7 +109,7 @@
         return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
     }
 
- 
+
     function htmlEncode(value){
         return $("<div>").text(value).html();
     }
@@ -102,21 +123,14 @@
         }
 
         const results = data.results;
-        
-        if (window.gtag) {
-            gtag('event', 'search', {
-                search_term: query,
-                event_value: results.length ? results.length : 0
-            });
-        }
 
         // Are there any results?
         if (results.length)
         {
             $search_results.empty(); // Clear any old results
 
-            if (results.length > 100) {
-                results.length = 100;
+            if (results.length > 250) {     // browsers tend to freeze with more
+                results.length = 250;
             }
 
             // Iterate over the results
@@ -132,6 +146,16 @@
                     $("<a>").attr("href", result.source).append(img)
                 );
             });
+
+            if (data.more && results.length < 250) {
+                const moreLink = $("<a>")
+                    .attr("href", `/search.html?q=${encodeURIComponent(query)}&max=${results.length + 50}`)
+                    .addClass("btn")
+                    .addClass("btn-outline-primary")
+                    .text("More...");
+
+                $search_results.append($("<p>").append(moreLink));
+            }
         }
         else
         {

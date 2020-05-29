@@ -6,7 +6,8 @@ import * as lunr from 'lunr';
 import Pino from 'pino';
 
 import * as sources from './sources';
-import { expandUrl, slugify } from './util';
+import { getRandomLogos } from './random';
+import { expandUrl, safeParseInt, slugify } from './util';
 
 type SearchHit = {
     css?: string,
@@ -15,6 +16,7 @@ type SearchHit = {
     source: string
 };
 
+const DEFAULT_MAX = 48;
 
 let imageCount = 0;
 let searchIndex: lunr.Index;
@@ -64,9 +66,29 @@ router.get('/api/search.json', async (ctx) => {
     ctx.set("Cache-Control", "max-age=3600, public");
 });
 
+router.get('/search.html', async (ctx) => {
+    const q = ctx.request.query.q;
+    const max = ctx.request.query.max ? safeParseInt(ctx.request.query.max, DEFAULT_MAX) : DEFAULT_MAX;
 
+    let results:SearchHit[] = [];
+    if (q) {
+        results = doSearchLow(q, max);
+    } else {
+        results = getRandomLogos(max);
+    }
+    await ctx.render('search.hbs', {
+        DEFAULT_MAX,
+        description: `Find vector (SVG) logos from over 100 sources!`,
+        h1: 'Search',
+        max,
+        q,
+        results,
+        rootMeta: true,
+        title: 'LogoSear.ch'
+    });
+});
 
-function doLunrSearch(ctx: Koa.BaseContext, query:string, maxResults:number):SearchHit[] {
+function doLunrSearch(query:string, maxResults:number):SearchHit[] {
     const cooked:SearchHit[] = [];
     let raw = searchIndex.search(query);
     /*if (raw.length == 0 && query.indexOf('*') == -1) {      //LATER: tweak lunr so this isn't necessary
@@ -101,7 +123,7 @@ function doLunrSearch(ctx: Koa.BaseContext, query:string, maxResults:number):Sea
     return cooked;
 }
 
-function doSimpleSearch(ctx: Koa.BaseContext, rawQuery: string, maxResults: number): SearchHit[] {
+function doSimpleSearch(rawQuery: string, maxResults: number): SearchHit[] {
     const cooked: SearchHit[] = [];
 
     const source = sources.getSource("vlz-ar21");
@@ -146,17 +168,20 @@ function doSearch(ctx:Koa.BaseContext):Object {
     let retVal:Object = {};
     try {
 
-        const cooked = /^[1a-z]$/i.test(query)
-            ? doSimpleSearch(ctx, query, maxResults)
-            : doLunrSearch(ctx, query, maxResults)
-            ;
+        const cooked = doSearchLow(query, maxResults+1);
+
 
         if (!cooked || cooked.length == 0) {
             return { success: false, message: `No matches for '${query}'` };
         }
+        let more = false;
+        if (cooked.length > maxResults) {
+            more = true;
+            cooked.pop();
+        }
 
 
-        const body: any = { "success": true, "query": query, "results": cooked };
+        const body: any = { "success": true, more, "query": query, "results": cooked };
 
         retVal = body;
     } catch (err) {
@@ -166,4 +191,20 @@ function doSearch(ctx:Koa.BaseContext):Object {
     return retVal;
 }
 
-export { getImageCount, init, router, SearchHit };
+function doSearchLow(query:string, maxResults: number):SearchHit[] {
+
+    const cooked = /^[1a-z]$/i.test(query)
+        ? doSimpleSearch(query, maxResults)
+        : doLunrSearch(query, maxResults)
+        ;
+
+    return cooked;
+}
+
+export {
+    DEFAULT_MAX,
+    getImageCount,
+    init,
+    router,
+    SearchHit
+};

@@ -13,6 +13,12 @@ const config = convict({
     env: 'FAST_RESPONSE_MILLIS',
     format: 'int'
   },
+  goatCounterHost: {
+    default: undefined,
+    doc: 'GoatCounter hostname',
+    env: 'GOAT_COUNTER_HOST',
+    format: String
+  },
   googleAnalyticsId: {
     default: '',
     doc: 'Google Analytics ID (UA-XXXXX-XX)',

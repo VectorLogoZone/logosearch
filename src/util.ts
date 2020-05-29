@@ -5,6 +5,10 @@ import * as transliteration from 'transliteration';
 
 //import { config } from './config';
 
+function getCurrentIP(ctx:any):string {
+    return ctx.ips.length > 0 ? ctx.ips[0] : ctx.ip;
+}
+
 /*
  * add website (and eventually signature) to a logo URL
  *
@@ -138,6 +142,14 @@ function extractFileName(imgpath:string):string {
     return lastpart;
 }
 
+function safeParseInt(str:string, def: number):number {
+    const parsed = parseInt(str, 10);
+    if (isNaN(parsed)) {
+        return def;
+    }
+    return parsed;
+}
+
 function toBoolean(value: any): boolean {
 
     switch (value) {
@@ -155,7 +167,9 @@ function toBoolean(value: any): boolean {
 
 export {
     expandUrl,
+    getCurrentIP,
     processTar,
+    safeParseInt,
     slugify,
     streamToBuffer,
     toBoolean,

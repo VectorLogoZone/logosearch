@@ -3,7 +3,7 @@ import KoaRouter from 'koa-router';
 import Pino from 'pino';
 
 import * as Sources from './sources';
-import { SearchHit } from './search';
+import { DEFAULT_MAX, SearchHit } from './search';
 import { expandUrl } from './util';
 
 let randomSources:Sources.SourceData[] = [];
@@ -41,10 +41,9 @@ function getRandomLogo(): Sources.ImageInfo {
     return theImageInfo;
 }
 
-router.get('/api/random.json', async (ctx) => {
-
+function getRandomLogos(max:number): SearchHit[] {
     const results = new Set<SearchHit>();
-    while (results.size < 48) {
+    while (results.size < max) {
         const theSource = randomSources[getRandomInt(randomSources.length)];
         const theImageInfo = theSource.images[getRandomInt(theSource.images.length)];
         let name = theImageInfo.name;
@@ -58,8 +57,11 @@ router.get('/api/random.json', async (ctx) => {
         };
         results.add(cooked);
     }
+    return Array.from(results);
+}
+router.get('/api/random.json', async (ctx) => {
 
-    ctx.body = { "success": true, "query": "*", "results": Array.from(results) };
+    ctx.body = { "success": true, "query": "*", "results": getRandomLogos(DEFAULT_MAX) };
 });
 
-export { getRandomLogo, init, router };
+export { getRandomLogo, getRandomLogos, init, router };
