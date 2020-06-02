@@ -11,11 +11,17 @@ const client = axios.create({
 });
 
 async function middleware(ctx: Koa.ParameterizedContext<Koa.DefaultState, Koa.DefaultContext>, next: Koa.Next) {
-    if (!config.get('goatCounterHost')) {
-        return;
-    }
     try {
         await next();
+        if (!config.get('goatCounterHost')) {
+            return;
+        }
+        if (ctx.path.startsWith("/images")
+            || ctx.path.startsWith("/js")
+            || ctx.path.startsWith("/css")
+            || ctx.path.startsWith("/favicon")) {
+            return;
+        }
         client.get(`https://${config.get('goatCounterHost')}/count`, {
                 params: {
                 p: ctx.path,
