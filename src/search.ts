@@ -5,6 +5,7 @@ import * as lunr from 'lunr';
 //import * as path from 'path';
 import Pino from 'pino';
 
+import * as goatcounter from './goatcounter';
 import * as sources from './sources';
 import { getRandomLogos } from './random';
 import { expandUrl, safeParseInt, slugify } from './util';
@@ -73,6 +74,7 @@ router.get('/search.html', async (ctx) => {
     let results:SearchHit[] = [];
     if (q) {
         results = doSearchLow(q, max);
+        goatcounter.track(ctx, `Search for '${q}': ${results.length} (querystring)`);
     } else {
         results = getRandomLogos(max);
     }
@@ -131,16 +133,19 @@ function doSimpleSearch(rawQuery: string, maxResults: number): SearchHit[] {
         return cooked;
     }
 
-    const query = rawQuery.toLowerCase();
+    const queryLower = rawQuery.toLowerCase();
+    const queryUpper = rawQuery.toUpperCase();
 
     for (const imageInfo of source.images) {
-        if (imageInfo.name.startsWith(query)) {
+        if (imageInfo.name.startsWith(queryLower) || imageInfo.name.startsWith(queryUpper)) {
             cooked.push({
                 css: imageInfo.css,
                 description: `${imageInfo.name} from ${source.name}`,
                 source: imageInfo.src,
                 url: expandUrl(imageInfo.img),
             });
+        } else {
+            console.log(`name=${imageInfo.name}: ${JSON.stringify(imageInfo)}`);
         }
         if (cooked.length >= maxResults) {
             break;
@@ -150,7 +155,7 @@ function doSimpleSearch(rawQuery: string, maxResults: number): SearchHit[] {
     return cooked;
 }
 
-function doSearch(ctx:Koa.BaseContext):Object {
+function doSearch(ctx: Koa.ParameterizedContext<Koa.DefaultState, Koa.DefaultContext>):Object {
 
     let query = ctx.query['q'];
 
@@ -169,6 +174,7 @@ function doSearch(ctx:Koa.BaseContext):Object {
     try {
 
         const cooked = doSearchLow(query, maxResults+1);
+        goatcounter.track(ctx, `Search for '${query}': ${cooked.length} (api)`);
 
 
         if (!cooked || cooked.length == 0) {

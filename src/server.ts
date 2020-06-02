@@ -14,7 +14,6 @@ import pinoHttp from 'pino-http';
 
 import * as alternatives from './alternatives';
 import { config } from './config';
-import * as goatcounter from './goatcounter';
 import { logger } from './logger';
 import * as logoRouter from './logoRouter';
 import * as sources from './sources';
@@ -71,8 +70,6 @@ app.use(CustomPinoLogger({
         return config.get('pageLogLevel') as pino.Level;
     }
 }));
-
-app.use(goatcounter.middleware);
 
 /*
  * hack because Google Cloud Viewer isn't the greatest.  Numbers are a bit lower than what pino thinks
