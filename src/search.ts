@@ -144,9 +144,9 @@ function doSimpleSearch(rawQuery: string, maxResults: number): SearchHit[] {
                 source: imageInfo.src,
                 url: expandUrl(imageInfo.img),
             });
-        } else {
+        } /* else {
             console.log(`name=${imageInfo.name}: ${JSON.stringify(imageInfo)}`);
-        }
+        } */
         if (cooked.length >= maxResults) {
             break;
         }
