@@ -42,7 +42,7 @@ async function track(ctx: Koa.ParameterizedContext<Koa.DefaultState, Koa.Default
                 r: ctx.headers['referrer'] || ctx.headers['referer'],
                 t: title,
             },
-            timeout: 2500,
+            timeout: 5000,
             headers: {
                 'user-agent': ctx.headers['user-agent'] || 'Mozilla/5.0 NoUserAgent/1.0',
                 'X-Forwarded-For': getCurrentIP(ctx)
@@ -52,7 +52,7 @@ async function track(ctx: Koa.ParameterizedContext<Koa.DefaultState, Koa.Default
             }
         })
         .then((response) => { logger.trace({ params: response.config.params, headers: response.headers, url: ctx.request.originalUrl, statusCode: response.status, statusText: response.statusText, responseData: response.data }, "GoatCounter hit logged"); })
-        .catch((err) => { logger.error({ err }, "GoatCounter post error"); })
+        .catch((err) => { logger.error({ err, url: ctx.request.originalUrl }, "GoatCounter post error"); })
         ;
     } catch (err) {
         logger.error( { err }, "GoatCounter track error");
