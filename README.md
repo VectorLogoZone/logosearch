@@ -64,5 +64,4 @@ The logos are the property of their original owners.
 
 - [axios](https://github.com/axios/axios)
 - [jQuery throttle/debounce](http://benalman.com/projects/jquery-throttle-debounce-plugin/)
-- [nodemon](https://nodemon.io/)
 - [transliteration](https://github.com/dzcpy/transliteration)

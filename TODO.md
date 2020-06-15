@@ -1,12 +1,12 @@
 # To Do
 
+- [ ] cancel results display if input doesn't match current query textbox
 - [ ] process.on() trapping and logging
-- [ ] server-side tracking (to ?GoatCounter?)
 - [ ] parallel loading of indices
 - [ ] endpoint for json schema
 - [ ] test page for json schema
-- [ ] server-side search directly in search.html
 - [ ] exact matches first in search results
+- [ ] preview (a lot of github links are coming up too small to see)
 
 ## Content
 
