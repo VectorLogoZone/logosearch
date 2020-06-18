@@ -191,13 +191,16 @@ rootRouter.get('/index.html', async (ctx) => {
     ctx.redirect('/search.html');
 });
 
-
 rootRouter.get('/about.html', async (ctx:Koa.ExtendableContext) => {
     ctx.redirect('/faq.html');
 });
 
 rootRouter.get('/faq.html', async (ctx:Koa.ExtendableContext) => {
     await ctx.render('faq.hbs', { title: 'Frequently Asked Questions' });
+});
+
+rootRouter.get('/contact.html', async (ctx:Koa.ExtendableContext) => {
+    await ctx.render('contact.hbs', { noindex: true, title: 'Contact' });
 });
 
 rootRouter.get('/robots.txt', async (ctx: Koa.ExtendableContext) => {
