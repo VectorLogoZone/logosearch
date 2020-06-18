@@ -91,7 +91,7 @@ async function initOne(logger: Pino.Logger, indexUrl:string) {
         util.processTar(response.data, (name, buf) => {
             if (!buf) {
                 sources.forEach( (source) => { sourceMap.set(source.handle, source); });
-                logger.info({ 
+                logger.info({
                     indexUrl,
                     millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString(),
                     sourceCount: sources.length }, "Sources loaded");
@@ -108,10 +108,10 @@ async function initOne(logger: Pino.Logger, indexUrl:string) {
                 sourceData.images.forEach((theImageData) => { theImageData.css = sourceData.data.css; })
             }
             sources.push(sourceData);
-            logger.trace( { 
-                    bytes: buf ? buf.length : '-1', 
+            logger.trace( {
+                    bytes: buf ? buf.length : '-1',
                     imageCount: sourceData.images.length,
-                    fileNameInTar: name, 
+                    fileNameInTar: name,
                 }, 'Single source loaded');
         });
     });
@@ -193,6 +193,9 @@ async function logosPage(ctx:any, unique:boolean) {
         ctx.set('Link', '<' + source.website + '>; rel="canonical"');
     }
 
+    const preconnectURL = new URL(source.images[0].src);
+    const preconnect = preconnectURL.origin;
+
     let all = source.images;
     if (unique) {
         all = all.filter((ii) => isUnique(ii));
@@ -227,6 +230,7 @@ async function logosPage(ctx:any, unique:boolean) {
         maxPage,
         noindex: true,
         paging: maxPage > 1,
+        preconnect: [ preconnect ],
         title: `${unique ? "Unique " : "" }Logos in ${source.name}`
     });
 }
@@ -260,3 +264,4 @@ export {
     router,
     SourceData
 };
+

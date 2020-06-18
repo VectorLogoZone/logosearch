@@ -83,6 +83,7 @@ router.get('/search.html', async (ctx) => {
         description: `Find vector (SVG) logos from over 100 sources!`,
         h1: 'Search',
         max,
+        preconnect: [ 'https://raw.githubusercontent.com', 'https://gitlab.svg.zone', 'https://www.vectorlogo.zone', 'https://upload.wikimedia.org' ],
         q,
         results,
         rootMeta: true,
