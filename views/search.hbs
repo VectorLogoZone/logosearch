@@ -136,9 +136,12 @@
             // Iterate over the results
             results.forEach(function(result) {
                 const img = $("<img>")
+                    .on("load", (e) => { $(e.currentTarget).removeClass("loading"); } )
+                    .on("error", (e) => { $(e.currentTarget).removeClass("loading"); } )
                     .attr("src", result.url)
                     .attr("title", result.description)
-                    .addClass("boxedlogo");
+                    .addClass("boxedlogo")
+                    .addClass("loading");
                 if (result.css) {
                     img.addClass(result.css);
                 }
