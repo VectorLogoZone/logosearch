@@ -24,6 +24,7 @@ let searchIndex: lunr.Index;
 
 function init(logger:Pino.Logger) {
 
+    const startTime = process.hrtime.bigint();
 
     searchIndex = new lunr.Index;
 
@@ -41,7 +42,10 @@ function init(logger:Pino.Logger) {
         }
     }
 
-    logger.info({ imageCount }, "Images indexed");
+    logger.info({
+        imageCount,
+        millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString()
+    }, "Images indexed");
 }
 
 function getImageCount(): number {

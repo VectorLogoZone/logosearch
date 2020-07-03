@@ -1,8 +1,8 @@
 # To Do
 
+- [ ] logos wider than max-width are getting distorted
 - [ ] cancel results display if input doesn't match current query textbox
 - [ ] process.on() trapping and logging
-- [ ] parallel loading of indices
 - [ ] endpoint for json schema
 - [ ] test page for json schema
 - [ ] exact matches first in search results

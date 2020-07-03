@@ -1,4 +1,4 @@
-import * as axios from 'axios';
+import Axios from 'axios';
 //import * as fs from 'fs';
 import * as Handlebars from 'handlebars'
 import KoaRouter from 'koa-router';
@@ -62,9 +62,15 @@ async function init(logger:Pino.Logger) {
     const startTime = process.hrtime.bigint();
     const indexUrls = config.get('indexUrls').split(',');
 
+    const promises:Promise<void>[] = [];
+
     for (const indexUrl of indexUrls) {
-        await initOne(logger, util.expandUrl(indexUrl));    //LATER: load in parallel
+        promises.push(initOne(logger, indexUrl));
     }
+
+    await Promise.all(promises);
+
+    logger.debug({ millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString() }, "index data loaded");
 
     sources.sort(function (a, b) {
         return a.name.localeCompare(b.name, "en", { sensitivity: "base"});
@@ -74,30 +80,39 @@ async function init(logger:Pino.Logger) {
         indexCount: indexUrls.length,
         millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString(),
         sourceCount: sources.length
-    }, "All indexes loaded");
+    }, "indexing complete");
 }
 
-async function initOne(logger: Pino.Logger, indexUrl:string) {
+const axiosInstance = Axios.create({
+    headers: {
+        'User-Agent': 'LogoSearch/1.0 (https://logosear.ch/)'
+    },
+    responseType: 'stream',
+    timeout: 60 * 1000,
+});
+
+
+async function initOne(logger: Pino.Logger, indexUrl:string):Promise<void> {
 
     const startTime = process.hrtime.bigint();
 
-    logger.info({ url: indexUrl}, 'Index URL');
+    logger.info({ indexUrl}, 'tar load starting');
 
-    const response = await axios.default.get(indexUrl, {
-        responseType: 'stream'
-    });
+    const response = await axiosInstance.get(indexUrl);
 
     return new Promise( (resolve, reject) => {
+        let tarCount = 0;
         util.processTar(response.data, (name, buf) => {
             if (!buf) {
                 sources.forEach( (source) => { sourceMap.set(source.handle, source); });
                 logger.info({
                     indexUrl,
                     millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString(),
-                    sourceCount: sources.length }, "Sources loaded");
+                    tarCount }, "tar loaded");
                 resolve();
+                return;
             }
-            if (!buf) { return; }
+            tarCount += 1;
             const sourceData: SourceData = JSON.parse(buf.toString());
             sourceData.images.sort(function (a, b) {
                 if (a.name > b.name) { return 1; }
@@ -112,7 +127,7 @@ async function initOne(logger: Pino.Logger, indexUrl:string) {
                     bytes: buf ? buf.length : '-1',
                     imageCount: sourceData.images.length,
                     fileNameInTar: name,
-                }, 'Single source loaded');
+                }, 'source json loaded');
         });
     });
 /*
