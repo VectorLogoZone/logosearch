@@ -7,9 +7,10 @@ on:
 
 # Environment variables available to all jobs and steps in this workflow
 env:
-  PROJECT_ID: ${{ secrets.RUN_PROJECT }}
+  RUN_PROJECT: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: ${{ secrets.RUN_REGION }}
-  SERVICE_NAME: ${{ secrets.RUN_SERVICE }}
+  RUN_SERVICE_ICONS: ${{ secrets.RUN_SERVICE_ICONS }}
+  RUN_SERVICE_LOGOS: ${{ secrets.RUN_SERVICE_LOGOS }}
 
 jobs:
   setup-build-deploy:
@@ -30,7 +31,7 @@ jobs:
       # Configure gcloud CLI
       - name: gcloud Set up
         run: |
-          gcloud config set project $PROJECT_ID
+          gcloud config set project $RUN_PROJECT
 
       # Build and push image to Google Container Registry
       - name: Build
@@ -38,7 +39,7 @@ jobs:
           docker build \
             --build-arg COMMIT=${GITHUB_SHA:0:7} \
             --build-arg LASTMOD=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
-            --tag gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
+            --tag gcr.io/$RUN_PROJECT/$RUN_SERVICE_LOGOS:$GITHUB_SHA .
 
       - name: GCloud auth to docker
         run: |
@@ -46,14 +47,22 @@ jobs:
 
       - name: Push to registry
         run: |
-          docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
+          docker push gcr.io/$RUN_PROJECT/$RUN_SERVICE_LOGOS:$GITHUB_SHA
 
-      # Deploy image to Cloud Run
-      - name: Deploy
+      - name: Deploy LogoSear.ch
         run: |
-          gcloud run deploy $SERVICE_NAME \
+          gcloud run deploy $RUN_SERVICE_LOGOS \
             --allow-unauthenticated \
-            --image gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA \
+            --image gcr.io/$RUN_PROJECT/$RUN_SERVICE_LOGOS:$GITHUB_SHA \
             --platform managed \
-            --project ${PROJECT_ID} \
+            --project ${RUN_PROJECT} \
+            --region $RUN_REGION
+
+      - name: Deploy IconSear.ch
+        run: |
+          gcloud run deploy $RUN_SERVICE_ICONS \
+            --allow-unauthenticated \
+            --image gcr.io/$RUN_PROJECT/$RUN_SERVICE_LOGOS:$GITHUB_SHA \
+            --platform managed \
+            --project ${RUN_PROJECT} \
             --region $RUN_REGION
