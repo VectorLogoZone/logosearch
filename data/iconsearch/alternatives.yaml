@@ -1,0 +1,5 @@
+- handle: glyphsearch
+  name: GlyphSearch
+  search: https://glyphsearch.com/
+  website: https://glyphsearch.com/
+  enabled: true

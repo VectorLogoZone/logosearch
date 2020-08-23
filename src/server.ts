@@ -14,6 +14,7 @@ import pinoHttp from 'pino-http';
 
 import * as alternatives from './alternatives';
 import { config } from './config';
+import * as i18n from './i18n';
 import { logger } from './logger';
 import * as logoRouter from './logoRouter';
 import * as sources from './sources';
@@ -140,6 +141,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
                     result += block.fn(loop);
                 return result;
             },
+            goat_counter_host: () => config.get('goatCounterHost'),
             google_analytics_id: () => config.get('googleAnalyticsId'),
             'isPageVisible': function(page:number, currentPage:number, maxPage:number, block:any) {
                 if (page<=3 || maxPage-page<=3 || Math.abs(currentPage - page) < 3) {
@@ -147,6 +149,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
                 }
                 return '.';
             },
+            t: i18n.t,
             toJson: function(context:any) { return JSON.stringify(context, null, 2); },
             providerIconUrl: function(provider:string, options:Handlebars.HelperOptions) {
                 if (arguments.length < 2)
@@ -264,6 +267,7 @@ rootRouter.get('/status.json', async (ctx) => {
 app.use(rootRouter.routes());
 
 async function main() {
+    i18n.init(logger);
     await sources.init(logger);
     search.init(logger);
     alternatives.init(logger);

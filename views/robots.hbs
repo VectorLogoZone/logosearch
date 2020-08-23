@@ -1,12 +1,12 @@
 #
-# robots.txt for logosear.ch
+# robots.txt for {{t "UI.WEBSITE"}}
 #
 
 User-Agent: *
 Disallow: /api/
 Disallow: /cache/
 {{#each sources}}
-Disallow: /logos/{{this.handle}}
+Disallow: /{{t "UI.IMAGE_PATH"}}/{{this.handle}}
 Disallow: /sources/{{this.handle}}/logos.html
 Disallow: /sources/{{this.handle}}/unique.html
 {{/each}}

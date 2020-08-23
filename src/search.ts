@@ -7,6 +7,7 @@ import Pino from 'pino';
 
 import { config } from './config';
 import * as goatcounter from './goatcounter';
+import { t } from './i18n';
 import * as sources from './sources';
 import { getRandomLogos } from './random';
 import { expandUrl, safeParseInt, slugify } from './util';
@@ -86,13 +87,13 @@ router.get('/search.html', async (ctx) => {
     await ctx.render('search.hbs', {
         DEFAULT_MAX,
         description: `Instant search for SVG logos with over 200,000 logos from 100+ sources.`,
-        h1: 'Search',
+        h1: t('SEARCH_PAGE.H1'),
         max,
         preconnect: [ 'https://raw.githubusercontent.com', 'https://gitlab.svg.zone', 'https://www.vectorlogo.zone', 'https://upload.wikimedia.org' ],
         q,
         results,
         rootMeta: true,
-        title: 'LogoSear.ch: Instant search for SVG logos'
+        title: t('SEARCH_PAGE.TITLE'),
     });
 });
 

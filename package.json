@@ -9,6 +9,7 @@
     "convict": "^5.2.0",
     "gunzip-maybe": "^1.4.1",
     "handlebars": "^4.3.0",
+    "i18next": "^19.7.0",
     "js-yaml": "^3.13.1",
     "koa": "^2.5.3",
     "koa-compress": "^4.0.1",

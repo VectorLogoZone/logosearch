@@ -1,0 +1,45 @@
+{
+	"en": {
+		"translation": {
+			"UI": {
+				"FONT_CSS": "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+				"IMAGE_PATH": "logos",
+				"WEBSITE": "logosear.ch"
+			},
+			"COMMON": {
+				"TITLE": "xLogoSear.ch",
+				"IMAGE_NAME_LC": "xlogo",
+				"IMAGE_NAME_LC_plural": "xlogos",
+				"IMAGE_NAME_TC": "xLogo",
+				"IMAGE_NAME_TC_plural": "xLogos"
+			},
+			"NAVBAR": {
+				"SEARCH": "xSearch",
+				"IMAGES": "xLogos",
+				"IMG_ALT": "xLogoSear.ch Logo",
+				"SOURCES": "xSources",
+				"FAQ": "xFAQ"
+			},
+			"IMAGE_PAGE": {
+				"TITLE": "x{{name}} Logos"
+			},
+			"IMAGES_PAGE": {
+				"TITLE": "xMost Common Logo Names",
+				"INFO_BOX_HTML": "xThese are the 1,000 most common logo names.<br/><br/>With this many logos, I strongly recommend using the <a class=\"alert-link\" href=\"/search.html\">Search</a> page to find an icon.",
+				"NAME_COLUMN_HEADER": "xName",
+				"SOURCES_COLUMN_HEADER": "x# of Sources"
+			},
+			"SEARCH_PAGE": {
+				"INPUT_LABEL": "Search query",
+				"INPUT_PLACEHOLDER": "xSearch terms",
+				"SEARCH_BUTTON": "xSearch",
+				"H1": "xSearch",
+				"TITLE": "xIconSear.ch: Instant search for SVG icons"
+			},
+			"SOURCES_PAGE": {
+				"TITLE": "xLogo Sources",
+				"INFO_BOX_HTML": "Also see the <a class=\"alert-link\" href=\"alternatives.html\">alternatives</a> that are not currently indexed."
+			}
+		}
+	}
+}

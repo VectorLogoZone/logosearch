@@ -4,7 +4,7 @@ import { config } from './config';
 
 const logger = Pino({
     level: config.get('logLevel'),
-    name: process.env.npm_package_name,
+    name: config.get('identity'),
     timestamp: () => `,"time":"${new Date().toISOString()}"`
 });
 

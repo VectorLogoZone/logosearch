@@ -3,11 +3,11 @@
 <form action="/search.html" class="form-inline justify-content-center" id="search_form" method="GET">
     <div class="form-row align-items-center" style="padding-bottom:20px;">
         <div class="col-auto">
-            <label class="sr-only" for="q">Search query</label>
+            <label class="sr-only" for="q">{{t "SEARCH_PAGE.INPUT_LABEL"}}</label>
             <div class="input-group">
-                <input autocomplete="off" autofocus="autofocus" class="form-control" id="q" name="q" placeholder="Search terms" type="text" value="{{q}}" />
+                <input autocomplete="off" autofocus="autofocus" class="form-control" id="q" name="q" placeholder="{{t "SEARCH_PAGE.INPUT_PLACEHOLDER"}}" type="text" value="{{q}}" />
                 <div class="input-group-append">
-                    <button type="submit" class="btn" style="background-color:#3e32a8;color:white;font-weight:bold;">Search</button>
+                    <button type="submit" class="btn" style="background-color:#3e32a8;color:white;font-weight:bold;">{{t "SEARCH_PAGE.SEARCH_BUTTON"}}</button>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                 <a href="{{this.source}}"><img class="boxedlogo{{#if this.css}} {{this.css}}{{/if}}" src="{{this.url}}" title="{{this.description}}"/></a>
             {{/each}}
         {{else}}
-            <div class="alert alert-warning">No results found for "{{q}}"</div>
+            <div class="alert alert-warning">No results found for "{{q}}"<!--LATER: translate--></div>
 
         <!--<img src="/images/spinner.svg" style="border: 0;box-shadow: none;height:96px;width:96px;" alt="spinner" title="Please wait..." />-->
         {{/if}}
@@ -162,6 +162,7 @@
         }
         else
         {
+            //LATER: translate
             $search_results.html('<div class="alert alert-warning">No results found for "' + htmlEncode(query) + '"</div>');
         }
     }

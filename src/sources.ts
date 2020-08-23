@@ -6,6 +6,7 @@ import KoaRouter from 'koa-router';
 import Pino from 'pino';
 
 import { config } from './config';
+import { t } from './i18n';
 import * as util from './util';
 import { isUnique } from './logoRouter';
 
@@ -81,11 +82,14 @@ async function init(logger:Pino.Logger) {
         millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString(),
         sourceCount: sources.length
     }, "indexing complete");
+
+    // needs to be done late so translations have been loaded
+    router.get(`/sources/:handle/${t("COMMON.IMAGE_NAME_LC_plural")}.html`, async (ctx) => { await imagesPage(ctx, false); });
 }
 
 const axiosInstance = Axios.create({
     headers: {
-        'User-Agent': 'LogoSearch/1.0 (https://logosear.ch/)'
+        'User-Agent': `LogoSearch/1.0 (https://${t("UI.WEBSITE")}/`
     },
     responseType: 'stream',
     timeout: 60 * 1000,
@@ -172,7 +176,7 @@ router.get('/sources/index.html', async (ctx) => {
     await ctx.render('sources/index.hbs', {
         sources,
         total: sources.reduce((total, source) => total + source.images.length, 0),
-        title: 'Logo Sources'
+        title: t('SOURCES_PAGE.TITLE')
     });
 });
 
@@ -192,12 +196,9 @@ router.get('/sources/:handle/index.html', async (ctx) => {
     }
 });
 
-router.get('/sources/:handle/logos.html', async (ctx) => { await logosPage(ctx, false); });
+router.get('/sources/:handle/unique.html', async (ctx) => { await imagesPage(ctx, true); });
 
-router.get('/sources/:handle/unique.html', async (ctx) => { await logosPage(ctx, true); });
-
-
-async function logosPage(ctx:any, unique:boolean) {
+async function imagesPage(ctx:any, unique:boolean) {
 
     const source = sourceMap.get(ctx.params.handle);
     if (!source) {
@@ -240,13 +241,13 @@ async function logosPage(ctx:any, unique:boolean) {
     const logos = all.slice((currentPage - 1) * pageSize, (currentPage * pageSize));
     await ctx.render('sources/_logos.hbs', {
         currentPage,
-        h1: new Handlebars.SafeString(`${unique ? "Unique " : ""}Logos in <a class="text-secondary" href="index.html">${Handlebars.escapeExpression(source.name)}</a>`),
+        h1: new Handlebars.SafeString(`${unique ? "Unique " : ""}${t("COMMON.IMAGE_NAME_TC_plural")} in <a class="text-secondary" href="index.html">${Handlebars.escapeExpression(source.name)}</a>`),
         logos,
         maxPage,
         noindex: true,
         paging: maxPage > 1,
         preconnect: [ preconnect ],
-        title: `${unique ? "Unique " : "" }Logos in ${source.name}`
+        title: `${unique ? "Unique " : "" }${t("COMMON.IMAGE_NAME_TC_plural")} in ${source.name}`
     });
 }
 

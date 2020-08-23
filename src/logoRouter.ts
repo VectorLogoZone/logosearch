@@ -1,6 +1,7 @@
 import KoaRouter from 'koa-router';
 import Pino from 'pino';
 
+import { t } from './i18n';
 import * as search from './search';
 import * as sources from './sources';
 import { logger } from './logger';
@@ -30,6 +31,8 @@ const top1K:LogoDetail[] = [];
 let singleSourceCount:number = -1;
 
 async function init(logger:Pino.Logger):Promise<void> {
+
+    router.prefix(`/${t("UI.IMAGE_PATH")}`);
 
     for (const source of sources.getSources()) {
         for (const image of source.images) {
@@ -65,11 +68,11 @@ function isUnique(theImage:sources.ImageInfo): boolean {
     return false;
 }
 
-router.get('/logos/', async (ctx) => {
+router.get('/', async (ctx) => {
     ctx.redirect('index.html');
 });
 
-router.get('/logos/index.html', async (ctx) => {
+router.get('/index.html', async (ctx) => {
     const values = Array.from(logoMap.values());
     values.sort(compareLogoDetail);
 
@@ -79,13 +82,13 @@ router.get('/logos/index.html', async (ctx) => {
         imageCount: search.getImageCount(),
         singleSourceCount,
         sourceCount: sourceList.length,
-        title: 'Most Common Logo Names',
+        title: t("IMAGES_PAGE.TITLE"),
         uniqueCount: logoMap.size,
         values: top1K,
     });
 });
 
-router.get('/logos/:name/index.html', async (ctx) => {
+router.get('/:name/index.html', async (ctx) => {
 
     const logoDetail = logoMap.get(ctx.params.name);
     if (!logoDetail) {
@@ -99,14 +102,14 @@ router.get('/logos/:name/index.html', async (ctx) => {
 
     await ctx.render('logos/_index.hbs', {
         logoDetail,
-        title: `${ctx.params.name} Logos`,
+        title: t("IMAGE_PAGE.TITLE", { name: ctx.params.name } ),
     });
 });
 
 /*
  * legacy: because the search engines are spidering these URLs
  */
-router.get('/logos/:segment+/:name.svg', async (ctx) => {
+router.get('/:segment+/:name.svg', async (ctx) => {
     const segments = ctx.params.segment.split("/");
     const theSource = sources.getSource(segments[0]);
     if (!theSource) {
@@ -131,10 +134,10 @@ router.get('/logos/:segment+/:name.svg', async (ctx) => {
 function getUrls():string[] {
     const retVal:string[] = [];
 
-    retVal.push("/logos/index.html");
+    retVal.push(`/${t("UI.IMAGE_PATH")}/index.html`);
 
     for (const logoDetail of top1K) {
-        retVal.push(`/logos/${encodeURIComponent(logoDetail.name)}/index.html`);
+        retVal.push(`/${t("UI.IMAGE_PATH")}/${encodeURIComponent(logoDetail.name)}/index.html`);
     }
 
     return retVal;

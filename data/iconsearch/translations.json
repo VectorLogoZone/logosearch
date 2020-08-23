@@ -1,0 +1,45 @@
+{
+	"en": {
+		"translation": {
+			"UI": {
+				"FONT_CSS": "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+				"IMAGE_PATH": "icons",
+				"WEBSITE": "iconsear.ch"
+			},
+			"COMMON": {
+				"TITLE": "IconSear.ch",
+				"IMAGE_NAME_LC": "icon",
+				"IMAGE_NAME_LC_plural": "icons",
+				"IMAGE_NAME_TC": "Icon",
+				"IMAGE_NAME_TC_plural": "Icons"
+			},
+			"NAVBAR": {
+				"SEARCH": "Search",
+				"IMAGES": "Icons",
+				"IMG_ALT": "IconSear.ch Logo",
+				"SOURCES": "Sources",
+				"FAQ": "FAQ"
+			},
+			"IMAGE_PAGE": {
+				"TITLE": "{{name}} Icons"
+			},
+			"IMAGES_PAGE": {
+				"TITLE": "Most Common Icons",
+				"INFO_BOX_HTML": "These are the 1,000 most common icons.<br/><br/>With this many icons, I strongly recommend using the <a class=\"alert-link\" href=\"/search.html\">Search</a> page to find an icon.",
+				"NAME_COLUMN_HEADER": "Name",
+				"SOURCES_COLUMN_HEADER": "# of Sources"
+			},
+			"SEARCH_PAGE": {
+				"INPUT_LABEL": "Search query",
+				"INPUT_PLACEHOLDER": "Search terms",
+				"SEARCH_BUTTON": "Search",
+				"H1": "Search",
+				"TITLE": "IconSear.ch: Instant search for SVG icons"
+			},
+			"SOURCES_PAGE": {
+				"TITLE": "Icon Sources",
+				"INFO_BOX_HTML": "Also see the <a class=\"alert-link\" href=\"alternatives.html\">alternatives</a> that are not currently indexed."
+			}
+		}
+	}
+}

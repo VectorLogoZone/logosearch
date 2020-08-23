@@ -1,10 +1,14 @@
-# LogoSear.ch & IconSear.ch [<img alt="LogoSearch Logo" src="static/logosearch/favicon.svg" height="80" align="right" />](https://logosear.ch/) [<img alt="IconSearch Logo" src="static/iconsearch/favicon.svg" height="80" align="right" />](https://iconsear.ch/)
+# LogoSear.ch & IconSear.ch [<img alt="IconSearch Logo" src="static/iconsearch/favicon.svg" height="80" align="right" />](https://iconsear.ch/) [<img alt="LogoSearch Logo" src="static/logosearch/favicon.svg" height="80" align="right" />](https://logosear.ch/)
 
-[![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.sourcecount)](https://logosear.ch/sources/index.html)
 [![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.imagecount)](https://logosear.ch/)
-[![30 day uptime](https://img.shields.io/nodeping/uptime/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n.svg?label=30-day%20uptime&style=flat)](https://nodeping.com/reports/checks/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n)
+[![# of logo sources](https://img.shields.io/badge/dynamic/json.svg?label=logo+sources&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.sourcecount)](https://logosear.ch/sources/index.html)
+[![LogoSear.ch 30 day uptime](https://img.shields.io/nodeping/uptime/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n.svg?label=30-day%20uptime&style=flat)](https://nodeping.com/reports/checks/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n)
 
-This is the source for the [LogoSear.ch](https://logosear.ch/) website.
+[![# of icons](https://img.shields.io/badge/dynamic/json.svg?label=icons&url=https%3A%2F%2Ficonsear.ch%2Fstatus.json&query=%24.imagecount)](https://iconsear.ch/)
+[![# of icon sources](https://img.shields.io/badge/dynamic/json.svg?label=icon+sources&url=https%3A%2F%2Ficonsear.ch%2Fstatus.json&query=%24.sourcecount)](https://iconsear.ch/sources/index.html)
+[![IconSear.ch 30 day uptime](https://img.shields.io/nodeping/uptime/nfbzxwky-g24l-48wr-842z-kk7ldz1iv881.svg?label=30-day%20uptime&style=flat)](https://nodeping.com/reports/checks/nfbzxwky-g24l-48wr-842z-kk7ldz1iv881)
+
+This is the source for the [LogoSear.ch](https://logosear.ch/) and IconSear.ch](https://iconsear.ch/) websites.
 
 ## Using
 
@@ -14,7 +18,7 @@ Click on an image to go to the original source.  You will need to check the sour
 
 ## Contributing
 
-If you want to add another git repository with SVG logos, please submit a [github issue](https://github.com/VectorLogoZone/git-svg-logos/issues/new) on the [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos) repo.
+If you want to add another git repository with SVG logos, please submit a github issue on [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos/issues/new) or [git-svg-icons](https://github.com/VectorLogoZone/git-svg-icons/issues/new) repo.
 
 Code contributions are welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962).
 
@@ -42,7 +46,7 @@ See [config.ts](https://github.com/VectorLogoZone/logosearch/blob/master/src/con
 
 [GNU Affero General Public License v3.0](LICENSE.txt)
 
-The logos are the property of their original owners.
+The images are the property of their original owners.
 
 ## Credits
 

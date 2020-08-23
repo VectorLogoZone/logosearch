@@ -5,6 +5,8 @@ import * as path from 'path';
 import Pino from 'pino';
 import * as Yaml from 'js-yaml';
 
+import { config } from './config';
+
 type AlternativeData = {
     handle: string,
     name: string,
@@ -19,7 +21,7 @@ let alternatives:AlternativeData[] = [];
 
 function init(logger:Pino.Logger) {
 
-    alternatives = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", "alternatives.yaml"), 'utf8'));
+    alternatives = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", config.get('identity'), "alternatives.yaml"), 'utf8'));
 
     logger.info({ alternativeCount: alternatives.length }, "Alternatives loaded");
 }
@@ -36,9 +38,10 @@ router.get('/alternatives/', async (ctx) => {
 });
 
 router.get('/alternatives/index.html', async (ctx) => {
-    await ctx.render('alternatives/index.hbs', { 
-        alternatives, 
+    await ctx.render('alternatives/index.hbs', {
+        alternatives,
         title: 'Alternative Logo Sources' });
 });
 
 export { getAlternatives, init, router };
+
