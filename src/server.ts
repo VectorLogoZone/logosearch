@@ -102,7 +102,7 @@ app.use(async(ctx, next) => {
                 ctx.body = { message: '404: invalid url', success: false, url: ctx.url };
             } else if (ctx.path.endsWith('.svg')) {
                 ctx.type = 'image/svg+xml';
-                ctx.body = fs.createReadStream(path.join(__dirname, '..', 'static/images/404.svg'));
+                ctx.body = fs.createReadStream(path.join(__dirname, '..', `static/common/images/404.svg`));
             } else {
                 await ctx.render('404.hbs', { title: '404', h1: '404 - Page not found', url: ctx.req.url });
             }
@@ -117,7 +117,8 @@ app.use(async(ctx, next) => {
 
 //app.use(KoaCompress({}));
 
-app.use(KoaStatic("static", { maxage: 24 * 60 * 60 * 1000 }));
+app.use(KoaStatic(`static/${config.get('identity')}`, { maxage: 24 * 60 * 60 * 1000 }));
+app.use(KoaStatic(`static/common`, { maxage: 24 * 60 * 60 * 1000 }));
 
 app.use(KoaViews(path.join(__dirname, '..', 'views'), {
     map: { hbs: 'handlebars' },

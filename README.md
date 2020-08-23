@@ -1,4 +1,4 @@
-# LogoSear.ch [<img alt="LogoSearch Logo" src="static/favicon.svg" height="80" align="right" />](https://logosear.ch/)
+# LogoSear.ch & IconSear.ch [<img alt="LogoSearch Logo" src="static/logosearch/favicon.svg" height="80" align="right" />](https://logosear.ch/) [<img alt="IconSearch Logo" src="static/iconsearch/favicon.svg" height="80" align="right" />](https://iconsear.ch/)
 
 [![# of sources](https://img.shields.io/badge/dynamic/json.svg?label=sources&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.sourcecount)](https://logosear.ch/sources/index.html)
 [![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.imagecount)](https://logosear.ch/)
@@ -8,9 +8,9 @@ This is the source for the [LogoSear.ch](https://logosear.ch/) website.
 
 ## Using
 
-Go to [LogoSear.ch](https://logosear.ch/) and search for something!
+Go to [LogoSear.ch](https://logosear.ch/search.html) or [IconSear.ch](https://iconsear.ch/search.html) and search for something!
 
-Click on a logo to go to the original source.  You will need to check the source's license before re-using.
+Click on an image to go to the original source.  You will need to check the source's license before re-using.
 
 ## Contributing
 

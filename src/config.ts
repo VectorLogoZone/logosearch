@@ -25,6 +25,12 @@ const config = convict({
     env: 'GOOGLE_ANALYTICS_ID',
     format: String,
   },
+  identity: {
+    default: 'logosearch',
+    doc: 'Site Identity (logosearch or iconsearch)',
+    env: 'IDENTITY',
+    format: [ 'iconsearch', 'logosearch'],
+  },
   logLevel: {
     default: 'debug',
     doc: 'pino logging level [fatal, error, warn, info, debug, trace]',
@@ -49,6 +55,12 @@ const config = convict({
     env: 'SESSION_KEY',
     format: String,
     sensitive: true,
+  },
+  simpleSearchSource: {
+    default: "vlz-ar21",
+    doc: 'Handle of source to use for single-letter searches',
+    env: 'SIMPLE_SEARCH_SOURCE',
+    format: String,
   },
   indexUrls: {
     default: "https://www.vectorlogo.zone/util/sourceData.tgz,https://github.com/VectorLogoZone/wikipedia-svg-logos/releases/latest/download/sourceData.tgz",
