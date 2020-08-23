@@ -60,7 +60,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "css": "sass scss/index.scss:static/css/style.css",
+    "css-logos": "sass scss/logosearch.scss:static/logosearch/css/style.css",
+    "css-icons": "sass scss/iconsearch.scss:static/iconsearch/css/style.css",
     "run": "nodemon",
     "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

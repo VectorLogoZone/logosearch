@@ -63,5 +63,6 @@ The logos are the property of their original owners.
 [![yarn](https://www.vectorlogo.zone/logos/yarnpkg/yarnpkg-ar21.svg)](https://yarnpkg.com/en/ "JS Package Management")
 
 - [axios](https://github.com/axios/axios)
+- [José Solé](https://jmsole.cl/) - font for IconSear.ch
 - [jQuery throttle/debounce](http://benalman.com/projects/jquery-throttle-debounce-plugin/)
 - [transliteration](https://github.com/dzcpy/transliteration)
