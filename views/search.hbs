@@ -19,7 +19,7 @@
     <div class="logo-container" id="search_results">
         {{#if results}}
             {{#each results}}
-                <a href="{{this.source}}"><img class="boxedlogo{{#if this.css}} {{this.css}}{{/if}} loading" onload="$(this).removeClass('loading');" src="{{this.url}}" title="{{this.description}}"/></a>
+                <a href="{{this.source}}"><img class="boxedlogo{{#if this.css}} {{this.css}}{{/if}} noscript-loading" onload="removeLoading(this)" src="{{this.url}}" title="{{this.description}}"/></a>
             {{/each}}
         {{else}}
             <div class="alert alert-warning">No results found for "{{q}}"<!--LATER: translate--></div>
@@ -30,6 +30,18 @@
 </div>
 <script src="/js/jquery.ba-throttle-debounce.js"></script>
 <script>
+
+    function removeLoading(e) {
+        $(e)
+            .removeClass("noscript-loading")
+            .removeClass("loading")
+            ;
+    }
+
+    $(window).on("DOMContentLoaded", function(event) {
+        $(".noscript-loading").addClass("loading");
+    });
+
     const DEFAULT_MAX = {{DEFAULT_MAX}};
 
     var doSearch = function(query, max)

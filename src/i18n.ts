@@ -10,7 +10,7 @@ function init(logger: Pino.Logger) {
     const resources = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", config.get('identity'), "translations.json"), 'utf8'));
 
     i18next.init({
-        debug: true,
+        debug: false,
         fallbackLng: 'en',
         initImmediate: false,
         lng: 'en',
