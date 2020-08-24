@@ -1,5 +1,9 @@
 # To Do
 
+- [ ] meta descriptions on home page
+- [ ] verify logosearch is still working
+- [ ] [Baidu Webmaster Tools](https://www.dragonmetrics.com/how-to-optimize-your-site-with-baidu-webmaster-tools/)
+
 - [ ] logos wider than max-width are getting distorted
 - [ ] cancel results display if input doesn't match current query textbox
 - [ ] process.on() trapping and logging
@@ -22,15 +26,7 @@
 
 ## Longer term
 
+- [ ] translations
 - [ ] hbs local variable for robots
 
-## Use for other sites
-
-Use for iconsear.ch and awesome-emoji
-
-- [ ] views/sitemap.xml - site url
-- [ ] partials/above.hbs - title element (social media link probably okay)
-- [ ] partials/below.hbs - GoatCounter tracking id
-- [ ] static/favicon.ico/svg
-- [ ] static/robots.txt - site name
-- [ ] data/alternatives.yaml
+Fonts for logo: Bitter, PT Serif, Arya,

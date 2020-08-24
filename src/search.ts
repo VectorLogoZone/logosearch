@@ -86,7 +86,7 @@ router.get('/search.html', async (ctx) => {
     }
     await ctx.render('search.hbs', {
         DEFAULT_MAX,
-        description: `Instant search for SVG logos with over 200,000 logos from 100+ sources.`,
+        description: t('SEARCH_PAGE.META_DESCRIPTION'),
         h1: t('SEARCH_PAGE.H1'),
         max,
         preconnect: [ 'https://raw.githubusercontent.com', 'https://gitlab.svg.zone', 'https://www.vectorlogo.zone', 'https://upload.wikimedia.org' ],

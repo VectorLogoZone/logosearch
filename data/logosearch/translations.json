@@ -34,7 +34,8 @@
 				"INPUT_PLACEHOLDER": "xSearch terms",
 				"SEARCH_BUTTON": "xSearch",
 				"H1": "xSearch",
-				"TITLE": "xIconSear.ch: Instant search for SVG icons"
+				"TITLE": "xIconSear.ch: Instant search for SVG icons",
+				"META_DESCRIPTION": "Instant search for SVG logos with over 200,000 logos from 100+ sources."
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "xLogo Sources",
