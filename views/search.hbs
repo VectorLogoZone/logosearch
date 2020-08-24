@@ -19,7 +19,7 @@
     <div class="logo-container" id="search_results">
         {{#if results}}
             {{#each results}}
-                <a href="{{this.source}}"><img class="boxedlogo{{#if this.css}} {{this.css}}{{/if}}" src="{{this.url}}" title="{{this.description}}"/></a>
+                <a href="{{this.source}}"><img class="boxedlogo{{#if this.css}} {{this.css}}{{/if}} loading" onload="$(this).removeClass('loading');" src="{{this.url}}" title="{{this.description}}"/></a>
             {{/each}}
         {{else}}
             <div class="alert alert-warning">No results found for "{{q}}"<!--LATER: translate--></div>

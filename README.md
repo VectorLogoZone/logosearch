@@ -1,14 +1,14 @@
 # LogoSear.ch & IconSear.ch [<img alt="IconSearch Logo" src="static/iconsearch/favicon.svg" height="80" align="right" />](https://iconsear.ch/) [<img alt="LogoSearch Logo" src="static/logosearch/favicon.svg" height="80" align="right" />](https://logosear.ch/)
 
 [![# of logos](https://img.shields.io/badge/dynamic/json.svg?label=logos&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.imagecount)](https://logosear.ch/)
-[![# of logo sources](https://img.shields.io/badge/dynamic/json.svg?label=logo+sources&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.sourcecount)](https://logosear.ch/sources/index.html)
-[![LogoSear.ch 30 day uptime](https://img.shields.io/nodeping/uptime/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n.svg?label=30-day%20uptime&style=flat)](https://nodeping.com/reports/checks/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n)
+[![# of logo sources](https://img.shields.io/badge/dynamic/json.svg?label=logo%20sources&url=https%3A%2F%2Flogosear.ch%2Fstatus.json&query=%24.sourcecount)](https://logosear.ch/sources/index.html)
+[![LogoSear.ch 30 day uptime](https://img.shields.io/nodeping/uptime/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n.svg?label=LogoSearch%2030-day%20uptime&style=flat)](https://nodeping.com/reports/checks/1q4eb7g7-qh9u-4q9p-8tfd-5glw1j16n57n)
 
 [![# of icons](https://img.shields.io/badge/dynamic/json.svg?label=icons&url=https%3A%2F%2Ficonsear.ch%2Fstatus.json&query=%24.imagecount)](https://iconsear.ch/)
-[![# of icon sources](https://img.shields.io/badge/dynamic/json.svg?label=icon+sources&url=https%3A%2F%2Ficonsear.ch%2Fstatus.json&query=%24.sourcecount)](https://iconsear.ch/sources/index.html)
-[![IconSear.ch 30 day uptime](https://img.shields.io/nodeping/uptime/nfbzxwky-g24l-48wr-842z-kk7ldz1iv881.svg?label=30-day%20uptime&style=flat)](https://nodeping.com/reports/checks/nfbzxwky-g24l-48wr-842z-kk7ldz1iv881)
+[![# of icon sources](https://img.shields.io/badge/dynamic/json.svg?label=icon%20sources&url=https%3A%2F%2Ficonsear.ch%2Fstatus.json&query=%24.sourcecount)](https://iconsear.ch/sources/index.html)
+[![IconSear.ch 30 day uptime](https://img.shields.io/nodeping/uptime/nfbzxwky-g24l-48wr-842z-kk7ldz1iv881.svg?label=IconSearch%2030-day%20uptime&style=flat)](https://nodeping.com/reports/checks/nfbzxwky-g24l-48wr-842z-kk7ldz1iv881)
 
-This is the source for the [LogoSear.ch](https://logosear.ch/) and IconSear.ch](https://iconsear.ch/) websites.
+This is the source for the [LogoSear.ch](https://logosear.ch/) and [IconSear.ch](https://iconsear.ch/) websites.
 
 ## Using
 

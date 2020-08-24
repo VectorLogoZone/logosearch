@@ -52,6 +52,7 @@ function getRandomLogos(max:number): SearchHit[] {
         }
         const cooked:SearchHit = {
             url: expandUrl(theImageInfo.img),
+            css: theImageInfo.css,
             description: `${name} from ${theSource.name}`,
             source: theImageInfo.src
         };
