@@ -1,8 +1,8 @@
 # To Do
 
-- [ ] meta descriptions on home page
 - [ ] verify logosearch is still working
 - [ ] [Baidu Webmaster Tools](https://www.dragonmetrics.com/how-to-optimize-your-site-with-baidu-webmaster-tools/)
+
 
 - [ ] logos wider than max-width are getting distorted
 - [ ] cancel results display if input doesn't match current query textbox
@@ -26,6 +26,7 @@
 
 ## Longer term
 
+- [ ] all text into translations.json
 - [ ] translations
 - [ ] hbs local variable for robots
 
