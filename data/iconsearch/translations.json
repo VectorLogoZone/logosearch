@@ -29,6 +29,12 @@
 				"NAME_COLUMN_HEADER": "Name",
 				"SOURCES_COLUMN_HEADER": "# of Sources"
 			},
+			"ALTERNATIVES_PAGE": {
+				"TITLE": "Alternative Icon Websites",
+				"INFO_BOX_HTML": "These are some other websites that you can use to find SVG icons.",
+				"SEARCH_INPUT_LABEL": "Search query",
+				"SEARCH_LINK_TEXT": "Search"
+			},
 			"SEARCH_PAGE": {
 				"INPUT_LABEL": "Search query",
 				"INPUT_PLACEHOLDER": "Search terms",

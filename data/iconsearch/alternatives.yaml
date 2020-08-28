@@ -1,5 +1,42 @@
+- handle: flaticon
+  name: flaticon
+  website: https://www.flaticon.com/
+  search: https://www.flaticon.com/search?word={query}
+  enabled: true
+
 - handle: glyphsearch
   name: GlyphSearch
-  search: https://glyphsearch.com/
+  search: https://glyphsearch.com/?query={query}
   website: https://glyphsearch.com/
   enabled: true
+
+- handle: iconfinder
+  name: IconFinder
+  search: https://www.iconfinder.com/search/?q={query}
+  website: https://www.iconfinder.com/
+  enabled: true
+
+- handle: iconify
+  name: Iconify
+  search: https://iconify.design/icon-sets/?query={query}
+  website: https://iconify.design/
+  enabled: true
+
+- handle: icons8
+  name: Icons8
+  website: https://icons8.com/icons
+  search: https://icons8.com/icons/set/{query}
+  enabled: true
+
+- handle: thenounproject
+  name: Noun Project
+  website: https://thenounproject.com/
+  enabled: true
+  search: https://thenounproject.com/search/?q={query}
+
+- handle: svgrepo
+  name: SVGRepo
+  website: https://www.svgrepo.com/
+  search: https://www.svgrepo.com/vectors/{query}/
+  enabled: true
+

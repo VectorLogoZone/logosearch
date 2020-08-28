@@ -6,6 +6,7 @@ import Pino from 'pino';
 import * as Yaml from 'js-yaml';
 
 import { config } from './config';
+import { t } from './i18n';
 
 type AlternativeData = {
     handle: string,
@@ -40,7 +41,8 @@ router.get('/alternatives/', async (ctx) => {
 router.get('/alternatives/index.html', async (ctx) => {
     await ctx.render('alternatives/index.hbs', {
         alternatives,
-        title: 'Alternative Logo Sources' });
+        title: t('ALTERNATIVES_PAGE.TITLE')
+    });
 });
 
 export { getAlternatives, init, router };

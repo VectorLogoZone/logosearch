@@ -1,11 +1,11 @@
 {{> above}}
-<p>
-    These are the alternative websites where you can find logos.
-</p>
+<div class="alert alert-info">
+    {{{t "ALTERNATIVES_PAGE.INFO_BOX_HTML"}}}
+</div>
 
 <form action="get" class="form-inline justify-content-center" id="search_form">
     <div class="form-group row align-items-center" style="padding-bottom:20px;">
-        <label class="mr-3" for="q">Search query:</label>
+        <label class="mr-3" for="q">{{t "ALTERNATIVES_PAGE.SEARCH_INPUT_LABEL"}}</label>
         <div class="input-group">
             <input autocomplete="off" autofocus="autofocus" class="form-control" id="q" name="q" placeholder="" type="text"/>
         </div>
@@ -18,8 +18,8 @@
         <tr>
             <td class="">{{#if this.website}}<a href="{{this.website}}/">{{this.name}}</a>{{else}}{{this.name}}{{/if}}</td>
             <td class="text-right">
-                {{#if this.enabled }}<a class="has-search-param" href="{{this.website}}" data-search="{{this.search}}">Search</a>{{/if}}
-                <!--<a href="{{this.handle}}/index.html">...</a>-->
+                {{#if this.enabled }}<a class="has-search-param" href="{{this.website}}" data-search="{{this.search}}">{{t "ALTERNATIVES_PAGE.SEARCH_LINK_TEXT"}}</a>{{/if}}
+                <!--LATER: detail page <a href="{{this.handle}}/index.html">...</a>-->
             </td>
         </tr>
     {{/each}}
@@ -27,7 +27,7 @@
 </table>
 
 <p>
-    {{addCommas alternatives.length}} alternatives
+    {{addCommas alternatives.length}} alternatives<!--LATER: translate -->
 </p>
 <script>
 $(function() {
