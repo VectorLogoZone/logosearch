@@ -7,7 +7,7 @@
 				"WEBSITE": "iconsear.ch"
 			},
 			"COMMON": {
-				"TITLE": "IconSear.ch",
+				"TITLE": "Icon Search",
 				"IMAGE_NAME_LC": "icon",
 				"IMAGE_NAME_LC_plural": "icons",
 				"IMAGE_NAME_TC": "Icon",
@@ -17,6 +17,7 @@
 				"SEARCH": "Search",
 				"IMAGES": "Icons",
 				"IMG_ALT": "IconSear.ch Logo",
+				"SITE_NAME": "IconSear.ch",
 				"SOURCES": "Sources",
 				"FAQ": "FAQ"
 			},
@@ -40,8 +41,8 @@
 				"INPUT_PLACEHOLDER": "Search terms",
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
-				"TITLE": "IconSear.ch: Instant search for SVG icons",
-				"META_DESCRIPTION": "Search through over 10,000 SVG icons from 20+ sources"
+				"TITLE": "IconSear.ch: Instant icon search for SVG icons",
+				"META_DESCRIPTION": "Search through over 10,000 SVG icons from 75+ sources"
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Icon Sources",

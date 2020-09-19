@@ -7,7 +7,7 @@
 				"WEBSITE": "logosear.ch"
 			},
 			"COMMON": {
-				"TITLE": "xLogoSear.ch",
+				"TITLE": "Logo Search",
 				"IMAGE_NAME_LC": "xlogo",
 				"IMAGE_NAME_LC_plural": "xlogos",
 				"IMAGE_NAME_TC": "xLogo",
@@ -17,6 +17,7 @@
 				"SEARCH": "xSearch",
 				"IMAGES": "xLogos",
 				"IMG_ALT": "xLogoSear.ch Logo",
+				"SITE_NAME": "LogoSear.ch",
 				"SOURCES": "xSources",
 				"FAQ": "xFAQ"
 			},
@@ -33,9 +34,9 @@
 				"INPUT_LABEL": "Search query",
 				"INPUT_PLACEHOLDER": "xSearch terms",
 				"SEARCH_BUTTON": "xSearch",
-				"H1": "xSearch",
-				"TITLE": "xIconSear.ch: Instant search for SVG icons",
-				"META_DESCRIPTION": "Instant search for SVG logos with over 200,000 logos from 100+ sources."
+				"H1": "Search",
+				"TITLE": "LogoSear.ch: Instant logo search for SVG logos",
+				"META_DESCRIPTION": "Instant logo search for SVG logos with over 200,000 logos from 100+ sources."
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "xLogo Sources",

@@ -91,14 +91,22 @@
     {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "image": "https://{{t "UI.WEBSITE"}}/images/hero.png"
         "logo": "https://{{t "UI.WEBSITE"}}/images/logo512.png",
         "name": "{{t "COMMON.TITLE"}}",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://{{t "UI.WEBSITE"}}/search.html?q={query}",
-            "query-input": "required name=query"
-        },
         "url": "https://{{t "UI.WEBSITE"}}/"
+    }
+    </script>
+   <script type="application/ld+json">
+   {
+       "@context": "https://schema.org",
+       "@type": "WebSite",
+       "url": "https://{{t "UI.WEBSITE"}}/search.html",
+       "potentialAction": {
+           "@type": "SearchAction",
+           "target": "https://{{t "UI.WEBSITE"}}/search.html?q={search_term_string}",
+           "query-input": "required name=search_term_string"
+       }
     }
     </script>
     <meta property="og:type" content="website" />
@@ -116,7 +124,7 @@
     <nav class="navbar navbar-expand-sm navbar-light navbar-static-top d-flex justify-content-between d-print-none">
         <a class="navbar-brand" href="/search.html">
             <img alt="{{t "NAVBAR.IMG_ALT"}}" class="navbar-logo d-none d-md-inline" src="/favicon.svg">
-            {{t "COMMON.TITLE"}}
+            {{t "NAVBAR.SITE_NAME"}}
         </a>
         <ul class="navbar-nav d-flex flex-row justify-content-end">
             <li class="nav-item"><a class="nav-link text-nowrap" href="/search.html"><i class="fas fa-search d-md-none mr-3"></i><span class="d-none d-md-inline">{{t "NAVBAR.SEARCH"}}</span></a></li>
