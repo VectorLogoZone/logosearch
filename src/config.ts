@@ -19,12 +19,6 @@ const config = convict({
     env: 'GOAT_COUNTER_HOST',
     format: String
   },
-  googleAnalyticsId: {
-    default: '',
-    doc: 'Google Analytics ID (UA-XXXXX-XX)',
-    env: 'GOOGLE_ANALYTICS_ID',
-    format: String,
-  },
   identity: {
     default: 'logosearch',
     doc: 'Site Identity (logosearch or iconsearch)',
