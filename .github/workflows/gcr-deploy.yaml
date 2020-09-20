@@ -3,7 +3,7 @@ name: build
 on:
   push:
     branches:
-    - master
+    - main
 
 # Environment variables available to all jobs and steps in this workflow
 env:

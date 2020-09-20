@@ -40,7 +40,7 @@ yarn install
 yarn start
 ```
 
-See [config.ts](https://github.com/VectorLogoZone/logosearch/blob/master/src/config.ts) for details about configuring the environment variables.
+See [config.ts](https://github.com/VectorLogoZone/logosearch/blob/main/src/config.ts) for details about configuring the environment variables.
 
 ## License
 
