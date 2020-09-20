@@ -1,3 +1,4 @@
+//import * as Handlebars from 'handlebars'
 import KoaRouter from 'koa-router';
 import Pino from 'pino';
 
@@ -69,6 +70,7 @@ function isUnique(theImage:sources.ImageInfo): boolean {
 }
 
 router.get('/', async (ctx) => {
+    ctx.status = 301;
     ctx.redirect('index.html');
 });
 
@@ -78,12 +80,17 @@ router.get('/index.html', async (ctx) => {
 
     const sourceList = sources.getSources();
 
-    await ctx.render('logos/index.hbs', {
+    const flashHtml = t("IMAGES_PAGE.INFO_BOX_HTML", {
         imageCount: search.getImageCount(),
+        numValues: top1K.length,
         singleSourceCount,
         sourceCount: sourceList.length,
-        title: t("IMAGES_PAGE.TITLE"),
         uniqueCount: logoMap.size,
+    });
+
+    await ctx.render('logos/index.hbs', {
+        flashHtml,
+        title: t("IMAGES_PAGE.TITLE"),
         values: top1K,
     });
 });

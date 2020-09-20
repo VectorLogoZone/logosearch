@@ -8,39 +8,39 @@
 			},
 			"COMMON": {
 				"TITLE": "Logo Search",
-				"IMAGE_NAME_LC": "xlogo",
-				"IMAGE_NAME_LC_plural": "xlogos",
-				"IMAGE_NAME_TC": "xLogo",
-				"IMAGE_NAME_TC_plural": "xLogos"
+				"IMAGE_NAME_LC": "logo",
+				"IMAGE_NAME_LC_plural": "logos",
+				"IMAGE_NAME_TC": "Logo",
+				"IMAGE_NAME_TC_plural": "Logos"
 			},
 			"NAVBAR": {
-				"SEARCH": "xSearch",
-				"IMAGES": "xLogos",
-				"IMG_ALT": "xLogoSear.ch Logo",
+				"SEARCH": "Search",
+				"IMAGES": "Logos",
+				"IMG_ALT": "LogoSear.ch Logo",
 				"SITE_NAME": "LogoSear.ch",
-				"SOURCES": "xSources",
-				"FAQ": "xFAQ"
+				"SOURCES": "Sources",
+				"FAQ": "FAQ"
 			},
 			"IMAGE_PAGE": {
-				"TITLE": "x{{name}} Logos"
+				"TITLE": "{{name}} Logos"
 			},
 			"IMAGES_PAGE": {
 				"TITLE": "xMost Common Logo Names",
-				"INFO_BOX_HTML": "xThese are the 1,000 most common logo names.<br/><br/>With this many logos, I strongly recommend using the <a class=\"alert-link\" href=\"/search.html\">Search</a> page to find an icon.",
-				"NAME_COLUMN_HEADER": "xName",
-				"SOURCES_COLUMN_HEADER": "x# of Sources"
+				"INFO_BOX_HTML": "These are the {{numValues, addCommas}} most common logos.<ul class=\"mt-3\"><li>{{imageCount, addCommas}} logos</li><li>{{sourceCount, addCommas}} different sources</li><li>{{uniqueCount, addCommas}} distinct names</li><li>{{singleSourceCount, addCommas}} names appear in only one source.</li></ul>With this many logos, I strongly recommend using the <a class=\"alert-link\" href=\"/search.html\">Search</a> page to find a logo.",
+				"NAME_COLUMN_HEADER": "Name",
+				"SOURCES_COLUMN_HEADER": "# of Sources"
 			},
 			"SEARCH_PAGE": {
 				"INPUT_LABEL": "Search query",
-				"INPUT_PLACEHOLDER": "xSearch terms",
-				"SEARCH_BUTTON": "xSearch",
+				"INPUT_PLACEHOLDER": "Search terms",
+				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
 				"TITLE": "LogoSear.ch: Instant logo search for SVG logos",
 				"META_DESCRIPTION": "Instant logo search for SVG logos with over 200,000 logos from 100+ sources."
 			},
 			"SOURCES_PAGE": {
-				"TITLE": "xLogo Sources",
-				"INFO_BOX_HTML": "Also see the <a class=\"alert-link\" href=\"alternatives.html\">alternatives</a> that are not currently indexed."
+				"TITLE": "Logo Sources",
+				"INFO_BOX_HTML": "Check out the <a class=\"alert-link\" href=\"https://www.github.com/VectorLogoZone/logosearch#criteria\">criteria</a> for sources, and the <a class=\"alert-link\" href=\"/alternatives/index.html\">alternatives</a> that did not make the cut!"
 			}
 		}
 	}

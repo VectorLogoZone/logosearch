@@ -13,6 +13,12 @@ function init(logger: Pino.Logger) {
         debug: false,
         fallbackLng: 'en',
         initImmediate: false,
+        interpolation: {
+            format: function(value, format, lng) {
+                if (format === 'addCommas') return Number(value).toLocaleString();
+                return value;
+            }
+        },
         lng: 'en',
         preload: [ 'en' ],
         resources,

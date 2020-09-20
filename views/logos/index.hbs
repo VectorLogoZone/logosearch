@@ -1,27 +1,5 @@
 {{> above}}
-<div class="alert alert-info">{{{t "IMAGES_PAGE.INFO_BOX_HTML"}}}</div>
-<div class="alert alert-info">
-
-    These are the {{addCommas values.length}} most common logo names.
-
-    <ul class="mt-3">
-        <li>
-            {{addCommas imageCount}} logos
-        </li>
-        <li>
-            {{addCommas sourceCount}} different sources
-        </li>
-        <li>
-            {{addCommas uniqueCount}} distinct names
-        </li>
-        <li>
-            {{addCommas singleSourceCount}} names appear in only one source.
-        </li>
-    </ul>
-
-    With all these logos, I strongly recommend using the <a class="alert-link" href="/search.html">Search page</a> to find a logo!
-</div>
-
+<div class="alert alert-info">{{{flashHtml}}}</div>
 <table class="table table-striped">
     <thead>
         <tr>

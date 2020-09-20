@@ -26,13 +26,13 @@
 			},
 			"IMAGES_PAGE": {
 				"TITLE": "Most Common Icons",
-				"INFO_BOX_HTML": "These are the 1,000 most common icons.<br/><br/>With this many icons, I strongly recommend using the <a class=\"alert-link\" href=\"/search.html\">Search</a> page to find an icon.",
+				"INFO_BOX_HTML": "These are the {{numValues, addCommas}} most common icons.<ul class=\"mt-3\"><li>{{imageCount, addCommas}} icons</li><li>{{sourceCount, addCommas}} different sources</li><li>{{uniqueCount, addCommas}} distinct names</li><li>{{singleSourceCount, addCommas}} names appear in only one source.</li></ul>With this many icons, I strongly recommend using the <a class=\"alert-link\" href=\"/search.html\">Search</a> page to find an icon.",
 				"NAME_COLUMN_HEADER": "Name",
 				"SOURCES_COLUMN_HEADER": "# of Sources"
 			},
 			"ALTERNATIVES_PAGE": {
-				"TITLE": "Alternative Icon Websites",
-				"INFO_BOX_HTML": "These are some other websites that you can use to find SVG icons.",
+				"TITLE": "Alternative Icon Search Websites",
+				"INFO_BOX_HTML": "These are some vastly inferior competitors to IconSear.ch.  Use them at your own risk!",
 				"SEARCH_INPUT_LABEL": "Search query",
 				"SEARCH_LINK_TEXT": "Search"
 			},
@@ -46,7 +46,7 @@
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Icon Sources",
-				"INFO_BOX_HTML": "Also see the <a class=\"alert-link\" href=\"alternatives.html\">alternatives</a> that are not currently indexed."
+				"INFO_BOX_HTML": "Did I miss one?  <a class=\"alert-link\" href=\"/contact.html\">Let me know</a>!  If you are technically inclined, direct <a class=\"alert-link\" href=\"https://github.com/VectorLogoZone/git-svg-icons/blob/main/CONTRIBUTING.md\">contributions</a> are welcome!"
 			}
 		}
 	}
