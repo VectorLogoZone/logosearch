@@ -86,7 +86,6 @@
     </style>
     <script>if (window.top.location != window.location) { window.top.location.href = document.location.href; }</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/48de122c1b.js" crossorigin="anonymous"></script>
     {{#if rootMeta}}<script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -128,10 +127,10 @@
             {{t "NAVBAR.SITE_NAME"}}
         </a>
         <ul class="navbar-nav d-flex flex-row justify-content-end">
-            <li class="nav-item"><a class="nav-link text-nowrap" href="/search.html"><i class="fas fa-search d-md-none mr-3"></i><span class="d-none d-md-inline">{{t "NAVBAR.SEARCH"}}</span></a></li>
-            <li class="nav-item"><a class="nav-link text-nowrap" href="/{{t "UI.IMAGE_PATH"}}/index.html"><i class="far fa-file-image d-md-none mr-3"></i><span class="d-none d-md-inline">{{t "NAVBAR.IMAGES"}}</span></a></li>
-            <li class="nav-item"><a class="nav-link text-nowrap" href="/sources/index.html"><i class="far fa-code-branch d-md-none mr-3"></i><span class="d-none d-md-inline">{{t "NAVBAR.SOURCES"}}</span></a></li>
-            <li class="nav-item"><a class="nav-link text-nowrap" href="/faq.html"><i class="far fa-info-circle d-md-none"></i><span class="d-none d-md-inline">{{t "NAVBAR.FAQ"}}</span></a></li>
+            <li class="nav-item"><a class="nav-link text-nowrap" href="/search.html"><img alt="{{t "NAVBAR.SEARCH"}}" class="d-md-none mr-3" src="/images/navbar/search-solid.svg" style="height:1rem;opacity:0.5"/><span class="d-none d-md-inline">{{t "NAVBAR.SEARCH"}}</span></a></li>
+            <li class="nav-item"><a class="nav-link text-nowrap" href="/{{t "UI.IMAGE_PATH"}}/index.html"><img alt="{{t "NAVBAR.IMAGES"}}" class="d-md-none mr-3" src="/images/navbar/file-image-regular.svg" style="height:1rem;opacity:0.5"/><span class="d-none d-md-inline">{{t "NAVBAR.IMAGES"}}</span></a></li>
+            <li class="nav-item"><a class="nav-link text-nowrap" href="/sources/index.html"><img alt="{{t "NAVBAR.SOURCES"}}" class="d-md-none mr-3" src="/images/navbar/code-branch-regular.svg" style="height:1rem;opacity:0.5"/><span class="d-none d-md-inline">{{t "NAVBAR.SOURCES"}}</span></a></li>
+            <li class="nav-item"><a class="nav-link text-nowrap" href="/faq.html"><img alt="{{t "NAVBAR.FAQ"}}" class="d-md-none mr-3" src="/images/navbar/info-circle-regular.svg" style="height:1rem;opacity:0.5"/><span class="d-none d-md-inline">{{t "NAVBAR.FAQ"}}</span></a></li>
         </ul>
     </nav>
     <div class="container">
