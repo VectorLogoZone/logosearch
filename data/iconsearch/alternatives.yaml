@@ -40,3 +40,10 @@
   search: https://www.svgrepo.com/vectors/{query}/
   enabled: true
 
+- handle: veryicon
+  name: VeryIcon
+  website: https://www.veryicon.com/
+  search: https://www.veryicon.com/search/{query}
+  enabled: true
+
+

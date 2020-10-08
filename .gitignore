@@ -4,6 +4,7 @@ cache/
 *.class
 crash.log
 dist/
+.DS_Store
 *.env
 .idea/
 .jekyll-metadata
