@@ -10,6 +10,13 @@
   website: https://glyphsearch.com/
   enabled: true
 
+- handle: icones
+  name: Icônes
+  search: https://icones.netlify.app/collection/all
+  website: https://icones.netlify.app/
+  enabled: false
+  notes: nice webapp.  Search is not hyperlink-able.
+
 - handle: iconfinder
   name: IconFinder
   search: https://www.iconfinder.com/search/?q={query}
