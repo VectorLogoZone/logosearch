@@ -28,6 +28,7 @@
 				"FAQ": "FAQ"
 			},
 			"IMAGE_PAGE": {
+				"INFO_BOX_HTML": "",
 				"META_DESCRIPTION": "{{imageCount}} SVG Logos for {{name}}",
 				"TITLE": "{{name}} Logos"
 			},

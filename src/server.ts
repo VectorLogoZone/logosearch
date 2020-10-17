@@ -16,7 +16,7 @@ import * as alternatives from './alternatives';
 import { config } from './config';
 import * as i18n from './i18n';
 import { logger } from './logger';
-import * as logoRouter from './logoRouter';
+import * as imageRouter from './imageRouter';
 import * as sources from './sources';
 import * as search from './search';
 import * as random from './random';
@@ -182,7 +182,7 @@ app.use(sources.router.routes());
 app.use(search.router.routes());
 app.use(alternatives.router.routes());
 app.use(random.router.routes());
-app.use(logoRouter.router.routes());
+app.use(imageRouter.router.routes());
 
 const rootRouter = new KoaRouter();
 
@@ -273,7 +273,7 @@ async function main() {
     search.init(logger);
     alternatives.init(logger);
     random.init(logger, sources.getSources());
-    logoRouter.init(logger);
+    imageRouter.init(logger);
 
     const port = config.get('port');
 

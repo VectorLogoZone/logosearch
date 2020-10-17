@@ -88,7 +88,7 @@ router.get('/index.html', async (ctx) => {
         uniqueCount: logoMap.size,
     });
 
-    await ctx.render('logos/index.hbs', {
+    await ctx.render('images/index.hbs', {
         flashHtml,
         title: t("IMAGES_PAGE.TITLE"),
         values: top1K,
@@ -101,13 +101,13 @@ router.get('/:name/index.html', async (ctx) => {
     if (!logoDetail) {
         if (logoMap.get(slugify(ctx.params.name, ''))) {
             // prevent 404s from old links
-            ctx.redirect(`/logos/${slugify(ctx.params.name, '')}/index.html`);
+            ctx.redirect(`/images/${slugify(ctx.params.name, '')}/index.html`);
             return;
         }
         return;
     }
 
-    await ctx.render('logos/_index.hbs', {
+    await ctx.render('images/_index.hbs', {
         description: t('IMAGE_PAGE.META_DESCRIPTION', { 
             imageCount: logoDetail.images.length,
             name: logoDetail.name

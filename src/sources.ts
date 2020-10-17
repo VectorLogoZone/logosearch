@@ -8,7 +8,7 @@ import Pino from 'pino';
 import { config } from './config';
 import { t } from './i18n';
 import * as util from './util';
-import { isUnique } from './logoRouter';
+import { isUnique } from './imageRouter';
 
 type ImageInfo = {
     css?: string,
@@ -35,30 +35,6 @@ let sources: SourceData[] = [];
 const sourceMap: Map<string, SourceData> = new Map();
 
 let imageCount = 0;
-
-/*
-const baseDir = path.join(__dirname, "..", "logos");
-
-function is_dir(path:string) {
-    try {
-        var stat = fs.lstatSync(path);
-        return stat.isDirectory();
-    } catch (e) {
-        // lstatSync throws an error if path doesn't exist
-        return false;
-    }
-}
-
-function is_file(path:string) {
-    try {
-        var stat = fs.lstatSync(path);
-        return stat.isFile();
-    } catch (e) {
-        // lstatSync throws an error if path doesn't exist
-        return false;
-    }
-}
-*/
 
 async function init(logger:Pino.Logger) {
 
@@ -94,7 +70,7 @@ async function init(logger:Pino.Logger) {
 
 const axiosInstance = Axios.create({
     headers: {
-        'User-Agent': `LogoSearch/1.0 (https://${t("UI.WEBSITE")}/`
+        'User-Agent': `${t('COMMON.TITLE')}/1.0 (https://${t("UI.WEBSITE")}/`
     },
     responseType: 'stream',
     timeout: 60 * 1000,
@@ -243,11 +219,11 @@ async function imagesPage(ctx:any, unique:boolean) {
     if (currentPage > maxPage) {
         currentPage = maxPage;
     }
-    const logos = all.slice((currentPage - 1) * pageSize, (currentPage * pageSize));
-    await ctx.render('sources/_logos.hbs', {
+    const images = all.slice((currentPage - 1) * pageSize, (currentPage * pageSize));
+    await ctx.render('sources/_images.hbs', {
         currentPage,
         h1: new Handlebars.SafeString(`${unique ? "Unique " : ""}${t("COMMON.IMAGE_NAME_TC_plural")} in <a class="text-secondary" href="index.html">${Handlebars.escapeExpression(source.name)}</a>`),
-        logos,
+        images,
         maxPage,
         noindex: true,
         paging: maxPage > 1,
