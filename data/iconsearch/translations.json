@@ -22,8 +22,10 @@
 				"FAQ": "FAQ"
 			},
 			"IMAGE_PAGE": {
+				"H1": "{{name}} Logos",
+				"INFO_BOX_HTML": "This only shows icons named exactly &ldquo;{{name}}&rdquo;.  Try <a class=\"alert-link\" href=\"/search.html?q={{name}}\">Searching</a> to find more icons with similar names.",
 				"META_DESCRIPTION": "{{imageCount}} SVG Icons for {{name}}",
-				"TITLE": "{{name}} Icons"
+				"TITLE": "{{name}} SVG Icons - Icon Search"
 			},
 			"IMAGES_PAGE": {
 				"TITLE": "Most Common Icons",

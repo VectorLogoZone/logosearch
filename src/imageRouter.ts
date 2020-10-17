@@ -112,6 +112,10 @@ router.get('/:name/index.html', async (ctx) => {
             imageCount: logoDetail.images.length,
             name: logoDetail.name
         }),
+        flashHtml: t('IMAGE_PAGE.INFO_BOX_HTML', {
+            name: logoDetail.name
+        }),
+        h1: t("IMAGE_PAGE.H1", { name: ctx.params.name }),
         logoDetail,
         title: t("IMAGE_PAGE.TITLE", { name: ctx.params.name } ),
     });
