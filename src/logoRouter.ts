@@ -108,6 +108,10 @@ router.get('/:name/index.html', async (ctx) => {
     }
 
     await ctx.render('logos/_index.hbs', {
+        description: t('IMAGE_PAGE.META_DESCRIPTION', { 
+            imageCount: logoDetail.images.length,
+            name: logoDetail.name
+        }),
         logoDetail,
         title: t("IMAGE_PAGE.TITLE", { name: ctx.params.name } ),
     });

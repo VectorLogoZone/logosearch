@@ -34,6 +34,8 @@ type SourceData = {
 let sources: SourceData[] = [];
 const sourceMap: Map<string, SourceData> = new Map();
 
+let imageCount = 0;
+
 /*
 const baseDir = path.join(__dirname, "..", "logos");
 
@@ -77,7 +79,10 @@ async function init(logger:Pino.Logger) {
         return a.name.localeCompare(b.name, "en", { sensitivity: "base"});
     });
 
+    imageCount = sources.reduce((total, source) => total + source.images.length, 0);
+
     logger.info({
+        imageCount,
         indexCount: indexUrls.length,
         millis: ((process.hrtime.bigint() - startTime) / BigInt(1e6)).toString(),
         sourceCount: sources.length
@@ -175,7 +180,7 @@ router.get('/sources/', async (ctx) => {
 router.get('/sources/index.html', async (ctx) => {
     await ctx.render('sources/index.hbs', {
         sources,
-        total: sources.reduce((total, source) => total + source.images.length, 0),
+        total: imageCount,
         title: t('SOURCES_PAGE.TITLE')
     });
 });
@@ -251,8 +256,16 @@ async function imagesPage(ctx:any, unique:boolean) {
     });
 }
 
+function getImageCount() {
+    return imageCount;
+}
+
 function getSource(handle:string): SourceData|undefined {
     return sourceMap.get(handle);
+}
+
+function getSourceCount() {
+    return sources.length;
 }
 
 function getSources() {
@@ -272,7 +285,9 @@ function getUrls():string[] {
 }
 
 export {
+    getImageCount,
     getSource,
+    getSourceCount,
     getSources,
     getUrls,
     ImageInfo,

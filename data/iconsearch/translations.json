@@ -22,6 +22,7 @@
 				"FAQ": "FAQ"
 			},
 			"IMAGE_PAGE": {
+				"META_DESCRIPTION": "{{imageCount}} SVG Icons for {{name}}",
 				"TITLE": "{{name}} Icons"
 			},
 			"IMAGES_PAGE": {
@@ -42,7 +43,7 @@
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
 				"TITLE": "IconSear.ch: Instant icon search for SVG icons",
-				"META_DESCRIPTION": "Search through over 10,000 SVG icons from 75+ sources"
+				"META_DESCRIPTION": "Search through {{imageCount, addCommas}} SVG icons from {{sourceCount}} sources"
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Icon Sources",

@@ -28,6 +28,7 @@
 				"FAQ": "FAQ"
 			},
 			"IMAGE_PAGE": {
+				"META_DESCRIPTION": "{{imageCount}} SVG Logos for {{name}}",
 				"TITLE": "{{name}} Logos"
 			},
 			"IMAGES_PAGE": {
@@ -42,7 +43,7 @@
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
 				"TITLE": "LogoSear.ch: Instant logo search for SVG logos",
-				"META_DESCRIPTION": "Instant logo search for SVG logos with over 200,000 logos from 100+ sources."
+				"META_DESCRIPTION": "Instant logo search for SVG logos with {{imageCount, addCommas}} logos from {{sourceCount, addCommas}} sources."
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Logo Sources",

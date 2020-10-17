@@ -86,7 +86,7 @@ router.get('/search.html', async (ctx) => {
     }
     await ctx.render('search.hbs', {
         DEFAULT_MAX,
-        description: t('SEARCH_PAGE.META_DESCRIPTION'),
+        description: t('SEARCH_PAGE.META_DESCRIPTION', { imageCount: sources.getImageCount(), sourceCount: sources.getSourceCount() }),
         h1: t('SEARCH_PAGE.H1'),
         max,
         preconnect: [ 'https://raw.githubusercontent.com', 'https://gitlab.svg.zone', 'https://www.vectorlogo.zone', 'https://upload.wikimedia.org' ],
