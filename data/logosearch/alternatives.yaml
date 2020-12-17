@@ -47,6 +47,12 @@
   website: http://www.logotypes101.com/
   enabled: true
 
+- handle: logowiki
+  name: LogoWiki
+  search: https://logowiki.net/search?search={query}
+  website: https://logowiki.net/
+  enabled: true
+
 - handle: seeklogonet
   name: SeekLogo.net
   search: https://www.seeklogo.net/?s={query}
