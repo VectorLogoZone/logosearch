@@ -10,6 +10,12 @@
   website: https://glyphsearch.com/
   enabled: true
 
+- handle: iconduck
+  name: IconDuck
+  search: https://iconduck.com/search?query={query}
+  website: https://iconduck.com/
+  enabled: true
+
 - handle: icones
   name: Icônes
   search: https://icones.netlify.app/collection/all
