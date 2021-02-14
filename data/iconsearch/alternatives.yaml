@@ -35,10 +35,22 @@
   website: https://iconify.design/
   enabled: true
 
+- handle: iconmonstr
+  name: IconMonstr
+  search: https://iconmonstr.com/?s={query}
+  website: https://iconmonstr.com/
+  enabled: true
+
 - handle: icons8
   name: Icons8
   website: https://icons8.com/icons
   search: https://icons8.com/icons/set/{query}
+  enabled: true
+
+- handle: reactsvg
+  name: React SVG Icons
+  website: https://reactsvgicons.com/react-svg-iconsets
+  search: https://reactsvgicons.com/search?q={query}
   enabled: true
 
 - handle: thenounproject
