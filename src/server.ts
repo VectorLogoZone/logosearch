@@ -3,6 +3,7 @@ require('source-map-support').install(); // Required for using source-maps with 
 import * as fs from 'fs';
 import * as Handlebars from 'handlebars'
 import Koa from 'koa';
+import KoaBody from 'koa-body';
 //import KoaCompress from 'koa-compress';
 import KoaRouter from 'koa-router';
 import KoaStatic from 'koa-static';
@@ -17,6 +18,7 @@ import { config } from './config';
 import * as i18n from './i18n';
 import { logger } from './logger';
 import * as imageRouter from './imageRouter';
+import * as schemaRouter from './schemaRouter';
 import * as sources from './sources';
 import * as search from './search';
 import * as random from './random';
@@ -86,6 +88,10 @@ app.use(async(ctx, next) => {
         console.log(`WARNING: slow response for ${ctx.req.url}: ${duration}ms`);
     }
 });
+
+app.use(KoaBody({
+    multipart: true,
+  }));
 
 const errTemplate = Handlebars.compile(
     fs.readFileSync(path.join(__dirname, '..', 'partials', 'above.hbs'), 'utf-8')
@@ -183,6 +189,7 @@ app.use(search.router.routes());
 app.use(alternatives.router.routes());
 app.use(random.router.routes());
 app.use(imageRouter.router.routes());
+app.use(schemaRouter.schemaRouter.routes());
 
 const rootRouter = new KoaRouter();
 

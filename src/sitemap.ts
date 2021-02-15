@@ -1,4 +1,5 @@
 import * as imageRouter from './imageRouter';
+import * as schemaRouter from './schemaRouter';
 import * as sources from './sources';
 
 async function sitemap(ctx:any) {
@@ -6,6 +7,7 @@ async function sitemap(ctx:any) {
     let urls:string[] = [];
 
     urls.push(...imageRouter.getUrls());
+    urls.push(...schemaRouter.getUrls());
     urls.push(...sources.getUrls());
 
     // hard-coded to avoid circular dependencies

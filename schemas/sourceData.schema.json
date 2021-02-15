@@ -1,0 +1,80 @@
+{
+  "id": "https://logosear.ch/schemas/sourceData.schema.json",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "handle": {
+      "description": "",
+      "type": "string"
+    },
+    "images": {
+      "description": "",
+      "type": "array",
+      "items": [
+        {
+          "description": "",
+          "type": "object",
+          "properties": {
+            "img": {
+              "description": "",
+              "type": "string"
+            },
+            "name": {
+              "description": "",
+              "type": "string"
+            },
+            "src": {
+              "description": "",
+              "type": "string"
+            }
+          },
+          "required": [
+            "img",
+            "name",
+            "src"
+          ]
+        }
+      ]
+    },
+    "lastmodified": {
+      "description": "",
+      "format": "date-time",
+      "type": "string"
+    },
+    "logo": {
+      "description": "",
+      "type": "string"
+    },
+    "name": {
+      "description": "",
+      "type": "string"
+    },
+    "provider": {
+      "description": "",
+      "type": "string"
+    },
+    "provider_icon": {
+      "description": "",
+      "type": "string"
+    },
+    "url": {
+      "description": "",
+      "type": "string"
+    },
+    "website": {
+      "description": "",
+      "type": "string"
+    }
+  },
+  "required": [
+    "handle",
+    "images",
+    "lastmodified",
+    "logo",
+    "name",
+    "provider",
+    "provider_icon",
+    "url",
+    "website"
+  ]
+}
