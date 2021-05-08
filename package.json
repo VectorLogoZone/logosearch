@@ -8,7 +8,7 @@
     "bootstrap": "^4.4.1",
     "convict": "^5.2.0",
     "gunzip-maybe": "^1.4.1",
-    "handlebars": "^4.3.0",
+    "handlebars": "^4.7.7",
     "i18next": "^19.7.0",
     "is-my-json-valid": "^2.20.5",
     "js-yaml": "^3.13.1",
