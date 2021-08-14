@@ -1,6 +1,8 @@
 # To Do
 
-- [ ] verify logosearch is still working
+
+- [ ] schema: pattern, minItems, examples, enum
+
 - [ ] [Baidu Webmaster Tools](https://www.dragonmetrics.com/how-to-optimize-your-site-with-baidu-webmaster-tools/)
 
 

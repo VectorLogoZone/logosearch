@@ -18,7 +18,9 @@ Click on an image to go to the original source.  You will need to check the sour
 
 ## Contributing
 
-If you want to add another git repository with SVG logos, please submit a github issue on [git-svg-logos](https://github.com/VectorLogoZone/git-svg-logos/issues/new) or [git-svg-icons](https://github.com/VectorLogoZone/git-svg-icons/issues/new) repo.
+If you want to add another git repository with SVG logos, please submit a github issue on [git-svg-icons](https://github.com/VectorLogoZone/git-svg-icons/issues/new) repo.
+
+Non-git sources can also be included, but it requires making an index file in the correct format.  Let me know if you are interested & I can work on documenting how to do this.
 
 Code contributions are welcome!  Please follow the standard Github [Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962).
 
