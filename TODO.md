@@ -33,3 +33,19 @@
 - [ ] hbs local variable for robots
 
 Fonts for logo: Bitter, PT Serif, Arya,
+
+https://developer.mozilla.org/en-US/docs/Web/OpenSearch
+
+<link rel="search" type="application/opensearchdescription+xml" title="Tech Interview Handbook" href="/opensearch.xml">
+
+<atom:link rel="search" ... />
+
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+<ShortName>Tech Interview Handbook</ShortName>
+<Description>Search Tech Interview Handbook</Description>
+<InputEncoding>UTF-8</InputEncoding>
+<Image width="16" height="16" type="image/x-icon">https://techinterviewhandbook.org/img/favicon.png</Image>
+<Url type="text/html" method="get" template="https://techinterviewhandbook.org/search?q={searchTerms}"/>
+<Url type="application/opensearchdescription+xml" rel="self" template="https://techinterviewhandbook.org/opensearch.xml"/>
+<moz:SearchForm>https://techinterviewhandbook.org/</moz:SearchForm>
+</OpenSearchDescription>

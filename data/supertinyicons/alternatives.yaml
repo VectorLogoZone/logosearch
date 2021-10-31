@@ -1,0 +1,74 @@
+- handle: flaticon
+  name: flaticon
+  website: https://www.flaticon.com/
+  search: https://www.flaticon.com/search?word={query}
+  enabled: true
+
+- handle: glyphsearch
+  name: GlyphSearch
+  search: https://glyphsearch.com/?query={query}
+  website: https://glyphsearch.com/
+  enabled: true
+
+- handle: iconduck
+  name: IconDuck
+  search: https://iconduck.com/search?query={query}
+  website: https://iconduck.com/
+  enabled: true
+
+- handle: icones
+  name: Icônes
+  search: https://icones.netlify.app/collection/all
+  website: https://icones.netlify.app/
+  enabled: false
+  notes: nice webapp.  Search is not hyperlink-able.
+
+- handle: iconfinder
+  name: IconFinder
+  search: https://www.iconfinder.com/search/?q={query}
+  website: https://www.iconfinder.com/
+  enabled: true
+
+- handle: iconify
+  name: Iconify
+  search: https://iconify.design/icon-sets/?query={query}
+  website: https://iconify.design/
+  enabled: true
+
+- handle: iconmonstr
+  name: IconMonstr
+  search: https://iconmonstr.com/?s={query}
+  website: https://iconmonstr.com/
+  enabled: true
+
+- handle: icons8
+  name: Icons8
+  website: https://icons8.com/icons
+  search: https://icons8.com/icons/set/{query}
+  enabled: true
+
+- handle: reactsvg
+  name: React SVG Icons
+  website: https://reactsvgicons.com/react-svg-iconsets
+  search: https://reactsvgicons.com/search?q={query}
+  enabled: true
+
+- handle: thenounproject
+  name: Noun Project
+  website: https://thenounproject.com/
+  enabled: true
+  search: https://thenounproject.com/search/?q={query}
+
+- handle: svgrepo
+  name: SVGRepo
+  website: https://www.svgrepo.com/
+  search: https://www.svgrepo.com/vectors/{query}/
+  enabled: true
+
+- handle: veryicon
+  name: VeryIcon
+  website: https://www.veryicon.com/
+  search: https://www.veryicon.com/search/{query}
+  enabled: true
+
+

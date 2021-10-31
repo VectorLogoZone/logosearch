@@ -16,7 +16,7 @@ async function sitemap(ctx:any) {
 
     urls.sort();
 
-    await ctx.render('sitemap.hbs', { urls });
+    ctx.body = await ctx.render('sitemap.hbs', { urls });
     ctx.type = "text/xml;charset=utf-8";
 }
 

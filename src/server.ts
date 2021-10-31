@@ -111,7 +111,7 @@ app.use(async(ctx, next) => {
                 ctx.type = 'image/svg+xml';
                 ctx.body = fs.createReadStream(path.join(__dirname, '..', `static/common/images/404.svg`));
             } else {
-                await ctx.render('404.hbs', { title: '404', h1: '404 - Page not found', url: ctx.req.url });
+                ctx.body = await ctx.render('404.hbs', { title: '404', h1: '404 - Page not found', url: ctx.req.url });
             }
         }
     } catch (err) {
@@ -128,6 +128,7 @@ app.use(KoaStatic(`static/${config.get('identity')}`, { maxage: 24 * 60 * 60 * 1
 app.use(KoaStatic(`static/common`, { maxage: 24 * 60 * 60 * 1000 }));
 
 app.use(KoaViews(path.join(__dirname, '..', 'views'), {
+    autoRender: false,
     map: { hbs: 'handlebars' },
     options: {
         helpers: {
@@ -208,15 +209,15 @@ rootRouter.get('/about.html', async (ctx:Koa.ExtendableContext) => {
 });
 
 rootRouter.get('/faq.html', async (ctx:Koa.ExtendableContext) => {
-    await ctx.render('faq.hbs', { title: 'Frequently Asked Questions' });
+    ctx.body = await ctx.render('faq.hbs', { title: 'Frequently Asked Questions' });
 });
 
 rootRouter.get('/contact.html', async (ctx:Koa.ExtendableContext) => {
-    await ctx.render('contact.hbs', { noindex: true, title: 'Contact' });
+    ctx.body = await ctx.render('contact.hbs', { noindex: true, title: 'Contact' });
 });
 
 rootRouter.get('/robots.txt', async (ctx: Koa.ExtendableContext) => {
-    await ctx.render('robots.hbs', {
+    ctx.body = await ctx.render('robots.hbs', {
         sources: sources.getSources()
     });
     ctx.set('Content-Type', 'text/plain; charset=UTF-8');

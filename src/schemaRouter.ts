@@ -24,7 +24,7 @@ schemaRouter.get('/schema/', async (ctx) => {
 
 schemaRouter.get('/schema/index.html', async (ctx) => {
 
-    await ctx.render('schema/index.hbs', {
+    ctx.body = await ctx.render('schema/index.hbs', {
         title: "Schema Test",
     });
 });

@@ -63,8 +63,10 @@
   },
   "scripts": {
     "build": "tsc",
-    "css-logos": "sass scss/logosearch.scss:static/logosearch/css/style.css",
     "css-icons": "sass scss/iconsearch.scss:static/iconsearch/css/style.css",
+    "css-logos": "sass scss/logosearch.scss:static/logosearch/css/style.css",
+    "css-supertinyicons": "sass scss/supertinyicons.scss:static/supertinyicons/css/style.css",
+    "css-unicode": "sass scss/unicodesearch.scss:static/unicodesearch/css/style.css",
     "run": "nodemon",
     "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,0 +1,6 @@
+- handle: wikipedia
+  name: Wikipedia
+  search: https://commons.wikimedia.org/w/index.php?search={query}+filemime%3Asvg
+  website: https://commons.wikimedia.org/w/index.php?search=
+  enabled: true
+

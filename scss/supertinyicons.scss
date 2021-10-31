@@ -1,0 +1,11 @@
+
+$enable-responsive-font-sizes: false;
+$font-family-sans-serif:      'Atkinson Hyperlegible', sans-serif;
+$headings-font-family:        'Atkinson Hyperlegible', sans-serif;
+$headings-font-weight:        700;
+
+
+
+// Bootstrap and its default variables
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "common";

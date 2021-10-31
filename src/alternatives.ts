@@ -39,7 +39,7 @@ router.get('/alternatives/', async (ctx) => {
 });
 
 router.get('/alternatives/index.html', async (ctx) => {
-    await ctx.render('alternatives/index.hbs', {
+    ctx.body = await ctx.render('alternatives/index.hbs', {
         alternatives,
         title: t('ALTERNATIVES_PAGE.TITLE')
     });

@@ -9,12 +9,10 @@ on:
 env:
   RUN_PROJECT: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: ${{ secrets.RUN_REGION }}
-  RUN_SERVICE_ICONS: ${{ secrets.RUN_SERVICE_ICONS }}
-  RUN_SERVICE_LOGOS: ${{ secrets.RUN_SERVICE_LOGOS }}
 
 jobs:
-  setup-build-deploy:
-    name: Setup, Build, and Deploy
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +36,7 @@ jobs:
           docker build \
             --build-arg COMMIT=${GITHUB_SHA:0:7} \
             --build-arg LASTMOD=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
-            --tag gcr.io/$RUN_PROJECT/$RUN_SERVICE_LOGOS:$GITHUB_SHA .
+            --tag gcr.io/$RUN_PROJECT/logosearch:$GITHUB_SHA .
 
       - name: GCloud auth to docker
         run: |
@@ -46,22 +44,35 @@ jobs:
 
       - name: Push to registry
         run: |
-          docker push gcr.io/$RUN_PROJECT/$RUN_SERVICE_LOGOS:$GITHUB_SHA
+          docker push gcr.io/$RUN_PROJECT/logosearch:$GITHUB_SHA
 
-      - name: Deploy LogoSear.ch
-        run: |
-          gcloud run deploy $RUN_SERVICE_LOGOS \
-            --allow-unauthenticated \
-            --image gcr.io/$RUN_PROJECT/$RUN_SERVICE_LOGOS:$GITHUB_SHA \
-            --platform managed \
-            --project ${RUN_PROJECT} \
-            --region $RUN_REGION
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        RUN_SERVICE: [ iconsearch, logosearch, supertinyicons, unicodesearch ]
 
-      - name: Deploy IconSear.ch
+    steps:
+      # Setup gcloud CLI
+      - uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ env.RUN_PROJECT }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+
+      # Configure gcloud CLI
+      - name: gcloud Set up
         run: |
-          gcloud run deploy $RUN_SERVICE_ICONS \
+          gcloud config set project $RUN_PROJECT
+
+      # Deploy to CloudRun
+      - name: Deploy ${{ matrix.RUN_SERVICE }}
+        run: |
+          gcloud run deploy ${{ matrix.RUN_SERVICE }} \
             --allow-unauthenticated \
-            --image gcr.io/$RUN_PROJECT/$RUN_SERVICE_LOGOS:$GITHUB_SHA \
+            --image gcr.io/$RUN_PROJECT/logosearch:$GITHUB_SHA \
             --platform managed \
             --project ${RUN_PROJECT} \
             --region $RUN_REGION

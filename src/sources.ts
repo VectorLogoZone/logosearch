@@ -154,7 +154,7 @@ router.get('/sources/', async (ctx) => {
 });
 
 router.get('/sources/index.html', async (ctx) => {
-    await ctx.render('sources/index.hbs', {
+    ctx.body = await ctx.render('sources/index.hbs', {
         sources,
         total: imageCount,
         title: t('SOURCES_PAGE.TITLE')
@@ -169,7 +169,7 @@ router.get('/sources/:handle/index.html', async (ctx) => {
 
     const source = sourceMap.get(ctx.params.handle);
     if (source) {
-        await ctx.render('sources/_index.hbs', {
+        ctx.body = await ctx.render('sources/_index.hbs', {
             source,
             title: `Source Info for ${source.handle}`,
             uniqueCount: source.images.filter( (ii) => isUnique(ii) ).length
@@ -220,7 +220,7 @@ async function imagesPage(ctx:any, unique:boolean) {
         currentPage = maxPage;
     }
     const images = all.slice((currentPage - 1) * pageSize, (currentPage * pageSize));
-    await ctx.render('sources/_images.hbs', {
+    ctx.body = await ctx.render('sources/_images.hbs', {
         currentPage,
         h1: new Handlebars.SafeString(`${unique ? "Unique " : ""}${t("COMMON.IMAGE_NAME_TC_plural")} in <a class="text-secondary" href="index.html">${Handlebars.escapeExpression(source.name)}</a>`),
         images,

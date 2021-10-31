@@ -1,0 +1,56 @@
+{
+	"en": {
+		"translation": {
+			"UI": {
+				"FONT_CSS": "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+				"IMAGE_PATH": "codepoints",
+				"WEBSITE": "unicodesear.ch"
+			},
+			"ALTERNATIVES_PAGE": {
+				"TITLE": "Unicode Resources",
+				"INFO_BOX_HTML": "These are some other websites with useful Unicode information.",
+				"SEARCH_INPUT_LABEL": "Search query",
+				"SEARCH_LINK_TEXT": "Search"
+			},
+			"COMMON": {
+				"TITLE": "Unicode Search",
+				"IMAGE_NAME_LC": "codepoint",
+				"IMAGE_NAME_LC_plural": "codepoints",
+				"IMAGE_NAME_TC": "Codepoint",
+				"IMAGE_NAME_TC_plural": "Codepoints"
+			},
+			"NAVBAR": {
+				"SEARCH": "Search",
+				"IMAGES": "Codepoints",
+				"IMG_ALT": "UnicodeSear.ch Logo",
+				"SITE_NAME": "UnicodeSear.ch",
+				"SOURCES": "Sources",
+				"FAQ": "FAQ"
+			},
+			"IMAGE_PAGE": {
+				"H1": "{{name}} Logos",
+				"INFO_BOX_HTML": "This only shows logos named exactly {{name}}.  Try <a class=\"alert-link\" href=\"/search.html?q={{name}}\">Searching</a> to find more logos with similar names.",
+				"META_DESCRIPTION": "{{imageCount}} SVG Logos for {{name}}",
+				"TITLE": "{{name}} SVG Logos - Logo Search"
+			},
+			"IMAGES_PAGE": {
+				"TITLE": "Most Common Logo Names",
+				"INFO_BOX_HTML": "These are the {{numValues, addCommas}} most common logos.<ul class=\"mt-3\"><li>{{imageCount, addCommas}} logos</li><li>{{sourceCount, addCommas}} different sources</li><li>{{uniqueCount, addCommas}} distinct names</li><li>{{singleSourceCount, addCommas}} names appear in only one source.</li></ul>With this many logos, I strongly recommend using the <a class=\"alert-link\" href=\"/search.html\">Search</a> page to find a logo.",
+				"NAME_COLUMN_HEADER": "Name",
+				"SOURCES_COLUMN_HEADER": "# of Sources"
+			},
+			"SEARCH_PAGE": {
+				"INPUT_LABEL": "Search query",
+				"INPUT_PLACEHOLDER": "Search terms",
+				"SEARCH_BUTTON": "Search",
+				"H1": "Search",
+				"TITLE": "UnicodeSear.ch: Instant search for Unicode codepoints",
+				"META_DESCRIPTION": "Instant search for Unicode codepoints with {{imageCount, addCommas}} codepoints."
+			},
+			"SOURCES_PAGE": {
+				"TITLE": "Logo Sources",
+				"INFO_BOX_HTML": "Submit additional sources on <a class=\"alert-link\" href=\"https://github.com/VectorLogoZone/git-svg-icons/blob/master/.github/ISSUE_TEMPLATE/add-a-site.md\">Github</a>., and try some <a class=\"alert-link\" href=\"/alternatives/index.html\">alternatives</a>."
+			}
+		}
+	}
+}

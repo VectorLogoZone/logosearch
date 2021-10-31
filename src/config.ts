@@ -21,9 +21,9 @@ const config = convict({
   },
   identity: {
     default: 'logosearch',
-    doc: 'Site Identity (logosearch or iconsearch)',
+    doc: 'Site Identity (iconsearch, logosearch, supertinyicons or unicodesearch)',
     env: 'IDENTITY',
-    format: [ 'iconsearch', 'logosearch'],
+    format: [ 'iconsearch', 'logosearch', 'supertinyicons', 'unicodesearch' ],
   },
   logLevel: {
     default: 'debug',

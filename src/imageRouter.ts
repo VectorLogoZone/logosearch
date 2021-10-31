@@ -88,7 +88,7 @@ router.get('/index.html', async (ctx) => {
         uniqueCount: logoMap.size,
     });
 
-    await ctx.render('images/index.hbs', {
+    ctx.body = await ctx.render('images/index.hbs', {
         flashHtml,
         title: t("IMAGES_PAGE.TITLE"),
         values: top1K,
@@ -107,8 +107,8 @@ router.get('/:name/index.html', async (ctx) => {
         return;
     }
 
-    await ctx.render('images/_index.hbs', {
-        description: t('IMAGE_PAGE.META_DESCRIPTION', { 
+    ctx.body = await ctx.render('images/_index.hbs', {
+        description: t('IMAGE_PAGE.META_DESCRIPTION', {
             imageCount: logoDetail.images.length,
             name: logoDetail.name
         }),

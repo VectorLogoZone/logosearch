@@ -84,7 +84,7 @@ router.get('/search.html', async (ctx) => {
     } else {
         results = getRandomLogos(max);
     }
-    await ctx.render('search.hbs', {
+    ctx.body = await ctx.render('search.hbs', {
         DEFAULT_MAX,
         description: t('SEARCH_PAGE.META_DESCRIPTION', { imageCount: sources.getImageCount(), sourceCount: sources.getSourceCount() }),
         h1: t('SEARCH_PAGE.H1'),
