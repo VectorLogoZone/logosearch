@@ -2,6 +2,7 @@ import KoaRouter from 'koa-router';
 
 import Pino from 'pino';
 
+import { config } from './config';
 import * as Sources from './sources';
 import { DEFAULT_MAX, SearchHit } from './search';
 import { expandUrl } from './util';
@@ -11,10 +12,26 @@ let randomSources:Sources.SourceData[] = [];
 
 function init(logger:Pino.Logger, sources: Sources.SourceData[]) {
 
-    for (const theSource of sources) {
-        if (theSource.images.length > 400) {
-            randomSources.push(theSource);
+    const randomConfig = config.get("randomSources");
+    if (randomConfig) {
+        const randomSet = new Set<string>();
+        randomConfig.split(',').forEach(x => randomSet.add(x));
+        for (const theSource of sources) {
+            if (randomSet.has(theSource.handle)) {
+                randomSources.push(theSource);
+            }
         }
+    } else {
+        for (const theSource of sources) {
+            if (theSource.images.length > 400) {
+                randomSources.push(theSource);
+            }
+        }
+    }
+
+    if (randomSources.length == 0) {
+        logger.fatal( { randomConfig }, "No random sources found");
+        process.exit(1);
     }
 
     logger.info({ randomSourceCount: randomSources.length }, "Random sources found");

@@ -155,6 +155,14 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
                 }
                 return '.';
             },
+            if_t: function(key:string, block:any) {      // if a translation exists
+                const t = i18n.t(key);
+                logger.info({ key, t }, "if_t")
+                if (t != "" && t != key) {
+                    return block.fn();
+                }
+                return block.inverse(this);
+            },
             t: i18n.t,
             toJson: function(context:any) { return JSON.stringify(context, null, 2); },
             providerIconUrl: function(provider:string, options:Handlebars.HelperOptions) {

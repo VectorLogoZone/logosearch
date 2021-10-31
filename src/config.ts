@@ -43,6 +43,12 @@ const config = convict({
     env: 'PORT',
     format: 'int',
   },
+  randomSources: {
+    default: "",
+    doc: 'Comma separated list of source to use for random list (on search page without query)',
+    env: 'RANDOM_SOURCES',
+    format: String,
+  },
   sessionKey: {
     default: 'hu0P7u9cXHsdZTJMd3riwOelHtYmZuVo',
     doc: 'Random key for encrypting session (not currently used)',

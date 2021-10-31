@@ -15,10 +15,11 @@
 			},
 			"NAVBAR": {
 				"SEARCH": "Search",
-				"IMAGES": "Icons",
+				"IMAGES": "",
 				"IMG_ALT": "SuperTinyIcons Logo",
 				"SITE_NAME": "SuperTinyIcons",
-				"SOURCES": "Sources",
+				"SOURCES": "Icons",
+				"SOURCES_URL": "/sources/super-tiny-icons/icons.html",
 				"FAQ": "FAQ"
 			},
 			"IMAGE_PAGE": {
@@ -44,8 +45,8 @@
 				"INPUT_PLACEHOLDER": "Search terms",
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
-				"TITLE": "IconSear.ch: Instant icon search for SVG icons",
-				"META_DESCRIPTION": "Search through {{imageCount, addCommas}} SVG icons from {{sourceCount}} sources"
+				"TITLE": "Super Tiny Icons: SVG Icons smaller than than 1Kb",
+				"META_DESCRIPTION": "Search through {{imageCount, addCommas}} super tiny icons"
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Icon Sources",

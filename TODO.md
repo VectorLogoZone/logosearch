@@ -31,6 +31,7 @@
 - [ ] all text into translations.json
 - [ ] translations
 - [ ] hbs local variable for robots
+- [ ] preconnect custom per identity
 
 Fonts for logo: Bitter, PT Serif, Arya,
 
