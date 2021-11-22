@@ -4,7 +4,7 @@
     "url": "https://github.com/VectorLogoZone/logosearch/issues"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^4.4.1",
     "convict": "^5.2.0",
     "gunzip-maybe": "^1.4.1",
