@@ -4,7 +4,7 @@
 			"UI": {
 				"FONT_CSS": "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;1,400;1,700&display=swap",
 				"IMAGE_PATH": "codepoints",
-				"WEBSITE": "unicodesear.ch"
+				"WEBSITE": "unicodesearch.org"
 			},
 			"ALTERNATIVES_PAGE": {
 				"TITLE": "Unicode Resources",
@@ -22,8 +22,8 @@
 			"NAVBAR": {
 				"SEARCH": "Search",
 				"IMAGES": "Codepoints",
-				"IMG_ALT": "UnicodeSear.ch Logo",
-				"SITE_NAME": "UnicodeSear.ch",
+				"IMG_ALT": "UnicodeSearch Logo",
+				"SITE_NAME": "UnicodeSearch",
 				"SOURCES": "Sources",
 				"FAQ": "FAQ"
 			},

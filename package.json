@@ -25,7 +25,7 @@
     "tar-stream": "^2.1.2",
     "transliteration": "^2.1.9"
   },
-  "description": "Backend server for LogoSear.ch",
+  "description": "Backend server for LogoSear.ch, IconSear.ch and UnicodeSearch.org",
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/convict": "^4.2.1",

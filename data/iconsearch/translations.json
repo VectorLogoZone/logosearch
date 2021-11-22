@@ -16,8 +16,8 @@
 			"NAVBAR": {
 				"SEARCH": "Search",
 				"IMAGES": "Icons",
-				"IMG_ALT": "IconSear.ch Logo",
-				"SITE_NAME": "IconSear.ch",
+				"IMG_ALT": "IconSearch Logo",
+				"SITE_NAME": "IconSearch",
 				"SOURCES": "Sources",
 				"FAQ": "FAQ"
 			},
@@ -35,7 +35,7 @@
 			},
 			"ALTERNATIVES_PAGE": {
 				"TITLE": "Alternative Icon Search Websites",
-				"INFO_BOX_HTML": "These are some vastly inferior competitors to IconSear.ch.  Use them at your own risk!",
+				"INFO_BOX_HTML": "These are some vastly inferior competitors to IconSearch.  Use them at your own risk!",
 				"SEARCH_INPUT_LABEL": "Search query",
 				"SEARCH_LINK_TEXT": "Search"
 			},
@@ -44,7 +44,7 @@
 				"INPUT_PLACEHOLDER": "Search terms",
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
-				"TITLE": "IconSear.ch: Instant icon search for SVG icons",
+				"TITLE": "IconSearch: Instant icon search for SVG icons",
 				"META_DESCRIPTION": "Search through {{imageCount, addCommas}} SVG icons from {{sourceCount}} sources"
 			},
 			"SOURCES_PAGE": {

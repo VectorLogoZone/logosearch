@@ -8,7 +8,7 @@
 			},
 			"ALTERNATIVES_PAGE": {
 				"TITLE": "Alternative Logo Websites",
-				"INFO_BOX_HTML": "These are some vastly inferior competitors to LogoSear.ch.  Use them at your own risk!",
+				"INFO_BOX_HTML": "These are some vastly inferior competitors to LogoSearch.  Use them at your own risk!",
 				"SEARCH_INPUT_LABEL": "Search query",
 				"SEARCH_LINK_TEXT": "Search"
 			},
@@ -22,8 +22,8 @@
 			"NAVBAR": {
 				"SEARCH": "Search",
 				"IMAGES": "Logos",
-				"IMG_ALT": "LogoSear.ch Logo",
-				"SITE_NAME": "LogoSear.ch",
+				"IMG_ALT": "LogoSearch Logo",
+				"SITE_NAME": "LogoSearch",
 				"SOURCES": "Sources",
 				"FAQ": "FAQ"
 			},
@@ -44,7 +44,7 @@
 				"INPUT_PLACEHOLDER": "Search terms",
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
-				"TITLE": "LogoSear.ch: Instant logo search for SVG logos",
+				"TITLE": "LogoSearch: Instant logo search for SVG logos",
 				"META_DESCRIPTION": "Instant logo search for SVG logos with {{imageCount, addCommas}} logos from {{sourceCount, addCommas}} sources."
 			},
 			"SOURCES_PAGE": {
