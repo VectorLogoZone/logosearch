@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
-    "convict": "^5.2.0",
+    "convict": "^6.2.1",
     "gunzip-maybe": "^1.4.1",
     "handlebars": "^4.3.0",
     "i18next": "^19.7.0",
@@ -27,7 +27,6 @@
   },
   "description": "Backend server for LogoSear.ch, IconSear.ch and UnicodeSearch.org",
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/convict": "^4.2.1",
     "@types/gunzip-maybe": "^1.4.0",
     "@types/js-yaml": "^3.11.2",
