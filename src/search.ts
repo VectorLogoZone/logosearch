@@ -73,7 +73,9 @@ router.get('/api/search.json', async (ctx) => {
     ctx.set("Cache-Control", "max-age=3600, public");
 });
 
-router.get('/search.html', async (ctx) => {
+router.get('/search.html', searchGet);
+
+async function searchGet(ctx: Koa.ParameterizedContext<any, KoaRouter.IRouterParamContext<any, {}>>) {
     const q = ctx.request.query.q;
     const max = ctx.request.query.max ? safeParseInt(ctx.request.query.max, DEFAULT_MAX) : DEFAULT_MAX;
 
@@ -85,6 +87,7 @@ router.get('/search.html', async (ctx) => {
         results = getRandomLogos(max);
     }
     ctx.body = await ctx.render('search.hbs', {
+        canonical: '/search.html',
         DEFAULT_MAX,
         description: t('SEARCH_PAGE.META_DESCRIPTION', { imageCount: sources.getImageCount(), sourceCount: sources.getSourceCount() }),
         h1: t('SEARCH_PAGE.H1'),
@@ -95,7 +98,7 @@ router.get('/search.html', async (ctx) => {
         rootMeta: true,
         title: t('SEARCH_PAGE.TITLE'),
     });
-});
+}
 
 function doLunrSearch(query:string, maxResults:number):SearchHit[] {
     const cooked:SearchHit[] = [];
@@ -219,5 +222,6 @@ export {
     getImageCount,
     init,
     router,
+    searchGet,
     SearchHit
 };

@@ -202,10 +202,7 @@ app.use(schemaRouter.schemaRouter.routes());
 
 const rootRouter = new KoaRouter();
 
-rootRouter.get('/', async (ctx) => {
-    ctx.status = 301;
-    ctx.redirect('/search.html');
-});
+rootRouter.get('/', search.searchGet);
 
 rootRouter.get('/index.html', async (ctx) => {
     ctx.status = 301;
