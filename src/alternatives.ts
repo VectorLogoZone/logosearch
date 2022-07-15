@@ -22,7 +22,9 @@ let alternatives:AlternativeData[] = [];
 
 function init(logger:Pino.Logger) {
 
-    alternatives = Yaml.safeLoad(fs.readFileSync(path.join(__dirname, "..", "data", config.get('identity'), "alternatives.yaml"), 'utf8'));
+    const u = Yaml.load(fs.readFileSync(path.join(__dirname, "..", "data", config.get('identity'), "alternatives.yaml"), 'utf8'));
+
+    alternatives = u as AlternativeData[];
 
     logger.info({ alternativeCount: alternatives.length }, "Alternatives loaded");
 }

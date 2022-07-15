@@ -10,7 +10,7 @@ import * as goatcounter from './goatcounter';
 import { t } from './i18n';
 import * as sources from './sources';
 import { getRandomLogos } from './random';
-import { expandUrl, safeParseInt, slugify } from './util';
+import { expandUrl, getFirst, safeParseInt, slugify } from './util';
 
 type SearchHit = {
     css?: string,
@@ -60,7 +60,7 @@ router.get('/api/search.json', async (ctx) => {
 
     const retVal = doSearch(ctx);
 
-    const callback = ctx.request.query['callback'];
+    const callback = getFirst(ctx.request.query['callback']);
     if (callback && callback.match(/^[$A-Za-z_][0-9A-Za-z_$]*$/) != null) {
         ctx.body = callback + '(' + JSON.stringify(retVal) + ');';
         ctx.set('Content-Type', 'text/javascript');
@@ -76,8 +76,8 @@ router.get('/api/search.json', async (ctx) => {
 router.get('/search.html', searchGet);
 
 async function searchGet(ctx: Koa.ParameterizedContext<any, KoaRouter.IRouterParamContext<any, {}>>) {
-    const q = ctx.request.query.q;
-    const max = ctx.request.query.max ? safeParseInt(ctx.request.query.max, DEFAULT_MAX) : DEFAULT_MAX;
+    const q = getFirst(ctx.request.query.q);
+    const max = safeParseInt(getFirst(ctx.request.query.max) || "", DEFAULT_MAX);
 
     let results:SearchHit[] = [];
     if (q) {
@@ -167,7 +167,7 @@ function doSimpleSearch(rawQuery: string, maxResults: number): SearchHit[] {
 
 function doSearch(ctx: Koa.ParameterizedContext<Koa.DefaultState, Koa.DefaultContext>):Object {
 
-    let query = ctx.query['q'];
+    let query = getFirst(ctx.query['q']);
 
     if (!query) {
         return { success: false, message: 'Missing "q" parameter' };
