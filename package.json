@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "bootstrap": "^4.4.1",
-    "convict": "^6.2.1",
+    "convict": "^6.2.4",
     "gunzip-maybe": "^1.4.1",
     "handlebars": "^4.3.0",
     "i18next": "^21.8.14",
