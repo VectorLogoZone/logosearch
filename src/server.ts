@@ -18,12 +18,12 @@ import { config } from './config';
 import * as i18n from './i18n';
 import { logger } from './logger';
 import * as imageRouter from './imageRouter';
+import * as random from './random';
 import * as schemaRouter from './schemaRouter';
 import * as sources from './sources';
 import * as search from './search';
-import * as random from './random';
 import { sitemap } from './sitemap';
-import { expandUrl } from './util';
+import { expandUrl, getFirst } from './util';
 
 // import * as Yaml from 'js-yaml';
 
@@ -36,7 +36,7 @@ logger.info( { config: JSON.parse(config.toString()) }, 'configuration loaded');
  *
  * necessary since koa-pino-logger depends on an outdated version of pinoHttp
  */
-function CustomPinoLogger(opts:pinoHttp.Options):any {
+function CustomPinoLogger(opts:any):any {
     var wrap:any = pinoHttp(opts)
     function pino(ctx:any, next:any) {
         wrap(ctx.req, ctx.res)
@@ -62,7 +62,7 @@ const fastResponseMillis = config.get('fastResponseMillis');
 
 app.use(CustomPinoLogger({
     logger,
-    customLogLevel: function(res:any, err) {
+    customLogLevel: function(res:any, err:unknown) {
         if (err) { return "error"; }
         const symbolOwner:any = pinoHttp;
         const startTime = res[symbolOwner.startTime];
@@ -267,7 +267,7 @@ rootRouter.get('/status.json', async (ctx) => {
     retVal["process.version"] = process.version;
     retVal["process.versions"] = process.versions;
 
-    const callback = ctx.request.query['callback'];
+    const callback = getFirst(ctx.request.query['callback']);
     if (callback && callback.match(/^[$A-Za-z_][0-9A-Za-z_$]*$/) != null) {
         ctx.body = callback + '(' + JSON.stringify(retVal) + ');';
     } else {

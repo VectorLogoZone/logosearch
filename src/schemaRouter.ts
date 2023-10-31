@@ -36,9 +36,9 @@ schemaRouter.post('/schema/index.html', async (ctx) => {
         throw new Error('You need to send a file to test!')
         return;
     }
-    const file = ctx.request.files.file as File;
+    const theFile = ctx.request.files.file as File;
 
-    const jsonData = await fsPromises.readFile(file.path, 'utf-8');
+    const jsonData = await fsPromises.readFile(theFile.filepath, 'utf-8');
 
     if (schema == null) {
         schema = await loadSchema(logger);

@@ -5,10 +5,6 @@ import * as transliteration from 'transliteration';
 
 //import { config } from './config';
 
-function getCurrentIP(ctx:any):string {
-    return ctx.ips.length > 0 ? ctx.ips[0] : ctx.ip;
-}
-
 /*
  * add website (and eventually signature) to a logo URL
  *
@@ -19,6 +15,23 @@ function expandUrl(url:string): string {
         return url;
     }
     return url; //LATER: expand with source data
+}
+
+function getCurrentIP(ctx:any):string {
+    return ctx.ips.length > 0 ? ctx.ips[0] : ctx.ip;
+}
+
+function getFirst(value: string | string[] | undefined): string|undefined {
+
+    if (!value) {
+        return value;
+    }
+
+    if (Array.isArray(value)) {
+        return value[0];
+    }
+
+    return value;
 }
 
 function processTar(tarStream: Readable, callback: (name:string, buf: Buffer|null) => void ):void {
@@ -168,6 +181,7 @@ function toBoolean(value: any): boolean {
 export {
     expandUrl,
     getCurrentIP,
+    getFirst,
     processTar,
     safeParseInt,
     slugify,

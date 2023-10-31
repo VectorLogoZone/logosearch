@@ -30,7 +30,7 @@ function init(logger: Pino.Logger) {
     }, 'Translations loaded');
 }
 
-function t(key:string, options?:any):string {
+function t(key:string, options?:any) {
     return i18next.t(key, options);
 }
 
