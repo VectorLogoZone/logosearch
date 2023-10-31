@@ -53,6 +53,11 @@
   website: https://logowiki.net/
   enabled: true
 
+- handle: logowine
+  name: Logo.wine
+  website: https://www.logo.wine/
+  enabled: true
+
 - handle: seeklogonet
   name: SeekLogo.net
   search: https://www.seeklogo.net/?s={query}
@@ -75,6 +80,12 @@
   name: Brands of the World
   search: http://www.brandsoftheworld.com/search/logo?search_api_views_fulltext={query}
   website: http://www.brandsoftheworld.com/
+  enabled: true
+
+- handle: vectorwiki
+  name: Vector Wiki
+  search: https://vectorwiki.com/search?q={query}
+  website: https://vectorwiki.com/
   enabled: true
 
 - handle: wikia
