@@ -8,7 +8,7 @@
 			},
 			"ALTERNATIVES_PAGE": {
 				"TITLE": "Alternative Logo Websites",
-				"INFO_BOX_HTML": "These are some vastly inferior competitors to LogoSearch.  Use them at your own risk!",
+				"INFO_BOX_HTML": "These are some vastly inferior competitors to Logo\u00a0Search.  Use them at your own risk!",
 				"SEARCH_INPUT_LABEL": "Search query",
 				"SEARCH_LINK_TEXT": "Search"
 			},
@@ -19,11 +19,16 @@
 				"IMAGE_NAME_TC": "Logo",
 				"IMAGE_NAME_TC_plural": "Logos"
 			},
+			"FOOTER": {
+				"LINK_LOGO": "https://iconsear.ch/favicon.svg",
+				"LINK_TEXT": "Icon Search",
+				"LINK_URL": "https://iconsear.ch/"
+			},
 			"NAVBAR": {
 				"SEARCH": "Search",
 				"IMAGES": "Logos",
 				"IMG_ALT": "LogoSearch Logo",
-				"SITE_NAME": "LogoSearch",
+				"SITE_NAME": "Logo\u00a0Search",
 				"SOURCES": "Sources",
 				"FAQ": "FAQ"
 			},
@@ -44,8 +49,8 @@
 				"INPUT_PLACEHOLDER": "Search terms",
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
-				"TITLE": "LogoSearch: Instant logo search for SVG logos",
-				"META_DESCRIPTION": "Instant logo search for SVG logos with {{imageCount, addCommas}} logos from {{sourceCount, addCommas}} sources."
+				"TITLE": "Logo Search: Instant search for SVG logos",
+				"META_DESCRIPTION": "Instant search for SVG logos with {{imageCount, addCommas}} logos from {{sourceCount, addCommas}} sources."
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Logo Sources",

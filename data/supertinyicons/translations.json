@@ -13,6 +13,11 @@
 				"IMAGE_NAME_TC": "Icon",
 				"IMAGE_NAME_TC_plural": "Icons"
 			},
+			"FOOTER": {
+				"LINK_LOGO": "https://logosear.ch/favicon.svg",
+				"LINK_TEXT": "Logo Search",
+				"LINK_URL": "https://logosear.ch/"
+			},
 			"NAVBAR": {
 				"SEARCH": "Search",
 				"IMAGES": "",

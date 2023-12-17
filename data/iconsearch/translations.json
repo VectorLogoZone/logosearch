@@ -13,16 +13,21 @@
 				"IMAGE_NAME_TC": "Icon",
 				"IMAGE_NAME_TC_plural": "Icons"
 			},
+			"FOOTER": {
+				"LINK_LOGO": "https://logosear.ch/favicon.svg",
+				"LINK_TEXT": "Logo Search",
+				"LINK_URL": "https://logosear.ch/"
+			},
 			"NAVBAR": {
 				"SEARCH": "Search",
 				"IMAGES": "Icons",
-				"IMG_ALT": "IconSearch Logo",
-				"SITE_NAME": "IconSearch",
+				"IMG_ALT": "Icon\u00a0Search Logo",
+				"SITE_NAME": "Icon\u00a0Search",
 				"SOURCES": "Sources",
 				"FAQ": "FAQ"
 			},
 			"IMAGE_PAGE": {
-				"H1": "{{name}} Logos",
+				"H1": "{{name}} Icons",
 				"INFO_BOX_HTML": "This only shows icons named exactly &ldquo;{{name}}&rdquo;.  Try <a class=\"alert-link\" href=\"/search.html?q={{name}}\">Searching</a> to find more icons with similar names.",
 				"META_DESCRIPTION": "{{imageCount}} SVG Icons for {{name}}",
 				"TITLE": "{{name}} SVG Icons - Icon Search"
@@ -35,7 +40,7 @@
 			},
 			"ALTERNATIVES_PAGE": {
 				"TITLE": "Alternative Icon Search Websites",
-				"INFO_BOX_HTML": "These are some vastly inferior competitors to IconSearch.  Use them at your own risk!",
+				"INFO_BOX_HTML": "These are some vastly inferior competitors to Icon\u00a0Search.  Use them at your own risk!",
 				"SEARCH_INPUT_LABEL": "Search query",
 				"SEARCH_LINK_TEXT": "Search"
 			},
@@ -44,7 +49,7 @@
 				"INPUT_PLACEHOLDER": "Search terms",
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
-				"TITLE": "IconSearch: Instant icon search for SVG icons",
+				"TITLE": "Icon\u00a0Search: Instant search for SVG icons",
 				"META_DESCRIPTION": "Search through {{imageCount, addCommas}} SVG icons from {{sourceCount}} sources"
 			},
 			"SOURCES_PAGE": {
