@@ -630,7 +630,7 @@ state the exclusion of warranty; and each file should have at least
 the "copyright" line and a pointer to where the full notice is found.
 
     LogoSear.ch - a search engine for SVG logos
-    Copyright (C) 2020 Andrew Marcuse
+    Copyright (C) 2020-2024 Andrew Marcuse
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published
