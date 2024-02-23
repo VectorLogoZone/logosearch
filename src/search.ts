@@ -89,7 +89,7 @@ async function searchGet(ctx: Koa.ParameterizedContext<any, KoaRouter.IRouterPar
     ctx.body = await ctx.render('search.hbs', {
         canonical: '/search.html',
         DEFAULT_MAX,
-        description: t('SEARCH_PAGE.META_DESCRIPTION', { imageCount: sources.getImageCount(), sourceCount: sources.getSourceCount() }),
+        description: t('SEARCH_PAGE.META_DESCRIPTION', { imageCount: sources.getImageCountRough(), imageCountExact: sources.getImageCount(), sourceCount: sources.getSourceCount() }),
         h1: t('SEARCH_PAGE.H1'),
         max,
         preconnect: [ 'https://raw.githubusercontent.com', 'https://gitlab.svg.zone', 'https://www.vectorlogo.zone', 'https://upload.wikimedia.org' ],

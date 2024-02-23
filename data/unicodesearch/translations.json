@@ -45,7 +45,7 @@
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
 				"TITLE": "UnicodeSear.ch: Instant search for Unicode codepoints",
-				"META_DESCRIPTION": "Instant search for Unicode codepoints with {{imageCount, addCommas}} codepoints."
+				"META_DESCRIPTION": "Instant search for Unicode codepoints with {{imageCountExact, addCommas}} codepoints."
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Logo Sources",

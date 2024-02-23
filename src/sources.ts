@@ -236,6 +236,10 @@ function getImageCount() {
     return imageCount;
 }
 
+function getImageCountRough() {
+    return Math.floor(imageCount / 1000) * 1000;
+}
+
 function getSource(handle:string): SourceData|undefined {
     return sourceMap.get(handle);
 }
@@ -262,6 +266,7 @@ function getUrls():string[] {
 
 export {
     getImageCount,
+    getImageCountRough,
     getSource,
     getSourceCount,
     getSources,

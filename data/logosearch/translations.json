@@ -50,7 +50,7 @@
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
 				"TITLE": "Logo Search: Instant search for SVG logos",
-				"META_DESCRIPTION": "Instant search for SVG logos with {{imageCount, addCommas}} logos from {{sourceCount, addCommas}} sources."
+				"META_DESCRIPTION": "Instant search for SVG logos with over {{imageCount, addCommas}} logos from {{sourceCount, addCommas}} sources."
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Logo Sources",

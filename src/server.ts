@@ -205,8 +205,7 @@ const rootRouter = new KoaRouter();
 rootRouter.get('/', search.searchGet);
 
 rootRouter.get('/index.html', async (ctx) => {
-    ctx.status = 301;
-    ctx.redirect('/search.html');
+    ctx.redirect('/');
 });
 
 rootRouter.get('/about.html', async (ctx:Koa.ExtendableContext) => {

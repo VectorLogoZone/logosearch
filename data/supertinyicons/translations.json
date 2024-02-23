@@ -51,7 +51,7 @@
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
 				"TITLE": "Super Tiny Icons: SVG Icons smaller than than 1Kb",
-				"META_DESCRIPTION": "Search through {{imageCount, addCommas}} super tiny icons"
+				"META_DESCRIPTION": "Search through {{imageCountExact, addCommas}} super tiny icons"
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Icon Sources",

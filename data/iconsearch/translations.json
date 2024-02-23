@@ -50,7 +50,7 @@
 				"SEARCH_BUTTON": "Search",
 				"H1": "Search",
 				"TITLE": "Icon\u00a0Search: Instant search for SVG icons",
-				"META_DESCRIPTION": "Search through {{imageCount, addCommas}} SVG icons from {{sourceCount}} sources"
+				"META_DESCRIPTION": "Search through over {{imageCount, addCommas}} SVG icons from {{sourceCount}} sources"
 			},
 			"SOURCES_PAGE": {
 				"TITLE": "Icon Sources",
