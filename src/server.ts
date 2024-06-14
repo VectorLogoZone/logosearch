@@ -23,7 +23,7 @@ import * as schemaRouter from './schemaRouter';
 import * as sources from './sources';
 import * as search from './search';
 import { sitemap } from './sitemap';
-import { expandUrl, getFirst } from './util';
+import { expandUrl, handleJsonp } from './util';
 
 // import * as Yaml from 'js-yaml';
 
@@ -138,8 +138,11 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
                 }
                 return num.toLocaleString();
             },
+            'dec': function (num:number) {
+                return num - 1;
+            },
             'equals': function(a:any, b:any, block:any) {
-                return a == b ? block.fn() : '';
+                return a == b ? block.fn() : block.inverse(this);
             },
             expandUrl,
             'for': function(from:number, to:number, incr:number, block:any) {
@@ -162,6 +165,12 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
                     return block.fn();
                 }
                 return block.inverse(this);
+            },
+            'inc': function (num:number) {
+                return num + 1;
+            },
+            'le': function(a:any, b:any, block:any) {
+                return a <= b ? block.fn() : block.inverse(this);
             },
             t: i18n.t,
             toJson: function(context:any) { return JSON.stringify(context, null, 2); },
@@ -266,15 +275,7 @@ rootRouter.get('/status.json', async (ctx) => {
     retVal["process.version"] = process.version;
     retVal["process.versions"] = process.versions;
 
-    const callback = getFirst(ctx.request.query['callback']);
-    if (callback && callback.match(/^[$A-Za-z_][0-9A-Za-z_$]*$/) != null) {
-        ctx.body = callback + '(' + JSON.stringify(retVal) + ');';
-    } else {
-        ctx.set('Access-Control-Allow-Origin', '*');
-        ctx.set('Access-Control-Allow-Methods', 'POST, GET');
-        ctx.set('Access-Control-Max-Age', '604800');
-        ctx.body = retVal;
-    }
+    handleJsonp(ctx, retVal)
 });
 
 app.use(rootRouter.routes());

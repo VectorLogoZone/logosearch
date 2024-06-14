@@ -154,6 +154,33 @@ function extractFileName(imgpath:string):string {
     }
     return lastpart;
 }
+function getJsonp(ctx:any):string|null {
+    const callback = ctx.request.query['callback'];
+    if (!callback) {
+      return null;
+    }
+
+    if (callback.match(/^[$A-Za-z_][0-9A-Za-z_$]*$/) != null) {
+      return callback;
+    }
+    return null;
+}
+
+function handleJsonp(ctx:any, retVal:any) {
+    const callback = getJsonp(ctx);
+    retVal.license = 'Free for light, non-commercial use';
+    const jsonStr = ctx.query && ctx.query.pretty ? JSON.stringify(retVal, null, 2) : JSON.stringify(retVal);
+    if (callback) {
+        ctx.body = callback + '(' + jsonStr + ');';
+        ctx.set('Content-Type', 'text/javascript');
+    } else {
+        ctx.set('Access-Control-Allow-Origin', '*');
+        ctx.set('Access-Control-Allow-Methods', 'POST, GET');
+        ctx.set('Access-Control-Max-Age', '604800');
+        ctx.body = jsonStr;
+        ctx.set('Content-Type', 'application/json; charset=utf-8');
+    }
+}
 
 function safeParseInt(str:string, def: number):number {
     const parsed = parseInt(str, 10);
@@ -182,6 +209,7 @@ export {
     expandUrl,
     getCurrentIP,
     getFirst,
+    handleJsonp,
     processTar,
     safeParseInt,
     slugify,

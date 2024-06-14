@@ -5,7 +5,7 @@ import Pino from 'pino';
 import { config } from './config';
 import * as Sources from './sources';
 import { DEFAULT_MAX, SearchHit } from './search';
-import { expandUrl } from './util';
+import { expandUrl,getFirst, handleJsonp, safeParseInt } from './util';
 
 let randomSources:Sources.SourceData[] = [];
 
@@ -79,7 +79,12 @@ function getRandomLogos(max:number): SearchHit[] {
 }
 router.get('/api/random.json', async (ctx) => {
 
-    ctx.body = { "success": true, "query": "*", "results": getRandomLogos(DEFAULT_MAX) };
+    let max = safeParseInt(getFirst(ctx.query.max) || "0", DEFAULT_MAX);
+    if (max < 1 || max > 144) {
+        max = DEFAULT_MAX;
+    }
+
+    handleJsonp( ctx, { "success": true, "query": "*", "results": getRandomLogos(max) });
 });
 
 export { getRandomLogo, getRandomLogos, init, router };
