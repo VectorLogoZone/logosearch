@@ -1,13 +1,50 @@
 {{> above}}
 
-{{#if paging}}
 <div class="btn-toolbar d-flex justify-content-center mb-3" role="toolbar" aria-label="Paging">
-    <div class="btn-group" role="group" aria-label="Pages">
-        {{#for 1 maxPage 1}}
-            {{#isPageVisible this ../currentPage ../maxPage}}
-                <a href="?page={{../this}}" class="btn btn-outline-secondary{{#equals ../this ../../currentPage}} active{{/equals}}">{{../this}}</a>
-            {{/isPageVisible}}
-        {{/for}}
+</div>
+
+{{#if paging}}
+<div class="d-flex row justify-content-between mb-3">
+    <div class="col">
+        {{#equals currentPage 1}}
+        <a class="btn btn-primary disabled" aria-disabled="true">&laquo;</a>
+        {{else}}
+        <a class="btn btn-primary" href="?page={{dec currentPage}}">&laquo;</a>
+        {{/equals}}
+    </div>
+
+    {{#le maxPage 10}}
+    <div class="col">
+        <div class="btn-toolbar d-flex justify-content-center mb-3" role="toolbar" aria-label="Paging">
+            <div class="btn-group" role="group" aria-label="Pages">
+                {{#for 1 (inc ../maxPage) 1}}
+                <a href="?page={{this}}"
+                    class="btn btn-outline-primary{{#equals this ../../currentPage}} active{{/equals}}">{{this}}</a>
+                {{/for}}
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="d-flex">
+        <form class="d-flex flex-row" method="GET"
+            action="">
+            <div class="input-group">
+                <span class="input-group-text">Page</span>
+                <input type="text" class="form-control" id="page" name="page" aria-label="jump to page"
+                    value="{{currentPage}}" />
+                <div class="input-group-text">of {{maxPage}}</div>
+                <button type="submit" class="btn btn-primary">Go</button>
+            </div>
+        </form>
+    </div>
+    {{/le}}
+
+    <div class="col float-end">
+        {{#equals currentPage maxPage}}
+        <a class="float-right btn btn-primary disabled" aria-disabled="true">&raquo;</a>
+        {{else}}
+        <a class="float-right btn btn-primary" href="?page={{inc currentPage}}">&raquo;</a>
+        {{/equals}}
     </div>
 </div>
 {{/if}}
@@ -23,15 +60,5 @@
 {{/each}}
 </div>
 
-{{# if paging}}
-<div class="btn-toolbar d-flex justify-content-center mt-3" role="toolbar" aria-label="Paging">
-    <div class="btn-group" role="group" aria-label="Pages">
-        {{#for 1 maxPage 1}}
-            {{#isPageVisible this ../currentPage ../maxPage}}
-                <a href="?page={{../this}}" class="btn btn-outline-secondary{{#equals ../this ../../currentPage}} active{{/equals}}">{{../this}}</a>
-            {{/isPageVisible}}
-        {{/for}}
-    </div>
-</div>
-{{/if}}
+
 {{> below}}

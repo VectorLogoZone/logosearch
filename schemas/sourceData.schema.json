@@ -3,8 +3,12 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "css": {
+      "description": "custom css to apply to each image (for example: a dark background if the images are white)",
+      "type": "string"
+    },
     "handle": {
-      "description": "",
+      "description": "Unique identifier for the source",
       "type": "string"
     },
     "images": {
@@ -16,15 +20,15 @@
           "type": "object",
           "properties": {
             "img": {
-              "description": "",
+              "description": "URL of the image",
               "type": "string"
             },
             "name": {
-              "description": "",
+              "description": "What this image is",
               "type": "string"
             },
             "src": {
-              "description": "",
+              "description": "URL to page where the image is hosted",
               "type": "string"
             }
           },
@@ -46,23 +50,23 @@
       "type": "string"
     },
     "name": {
-      "description": "",
+      "description": "Name of the source",
       "type": "string"
     },
     "provider": {
-      "description": "",
+      "description": "[ github | gitlab | remote ]",
       "type": "string"
     },
     "provider_icon": {
-      "description": "",
+      "description": "Icon for the provider (use git host icon or https://logosear.ch/images/remote.svg)",
       "type": "string"
     },
     "url": {
-      "description": "",
+      "description": "URL of the git source or the remote source",
       "type": "string"
     },
     "website": {
-      "description": "",
+      "description": "Website.  For remote sources, this is usually the same as URL. ",
       "type": "string"
     }
   },
@@ -74,7 +78,6 @@
     "name",
     "provider",
     "provider_icon",
-    "url",
-    "website"
+    "url"
   ]
 }

@@ -197,7 +197,7 @@ async function imagesPage(ctx:any, unique:boolean) {
     if (unique) {
         all = all.filter((ii) => isUnique(ii));
     }
-    let pageSize = 180;
+    let pageSize = 100;
     if ("pagesize" in ctx.query) {
         pageSize = Number(ctx.query['pagesize']);
     }
