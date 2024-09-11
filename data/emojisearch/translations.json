@@ -1,0 +1,62 @@
+{
+  "en": {
+    "translation": {
+      "UI": {
+        "FONT_CSS": "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+        "IMAGE_PATH": "emoji",
+        "WEBSITE": "www.emojisearch.org"
+      },
+      "COMMON": {
+        "TITLE": "Emoji Search",
+        "IMAGE_NAME_LC": "emoji",
+        "IMAGE_NAME_LC_plural": "emoji",
+        "IMAGE_NAME_TC": "Emoji",
+        "IMAGE_NAME_TC_plural": "Emoji"
+      },
+      "FOOTER": {
+        "LINK_LOGO": "https://iconsear.ch/favicon.svg",
+        "LINK_TEXT": "Icon Search",
+        "LINK_URL": "https://iconsear.ch/"
+      },
+      "NAVBAR": {
+        "SEARCH": "Search",
+        "IMAGES": "",
+        "IMG_ALT": "EmojiSearch Logo",
+        "SITE_NAME": "Emoji Search",
+        "SOURCES": "Sources",
+        "SOURCES_URL": "/sources/emoji/icons.html",
+        "FAQ": "FAQ"
+      },
+      "IMAGE_PAGE": {
+        "H1": "{{name}}",
+        "INFO_BOX_HTML": "This only shows icons named exactly &ldquo;{{name}}&rdquo;.  Try <a class=\"alert-link\" href=\"/search.html?q={{name}}\">Searching</a> to find more icons with similar names.",
+        "META_DESCRIPTION": "{{imageCount}} Images for {{name}}",
+        "TITLE": "{{name}} Emoji"
+      },
+      "IMAGES_PAGE": {
+        "TITLE": "Most Common Emoji",
+        "INFO_BOX_HTML": "These are the {{numValues, addCommas}} most common emoji.<ul class=\"mt-3\"><li>{{imageCount, addCommas}} icons</li><li>{{sourceCount, addCommas}} different sources</li><li>{{uniqueCount, addCommas}} distinct names</li><li>{{singleSourceCount, addCommas}} names appear in only one source.</li></ul>With this many icons, I strongly recommend using the <a class=\"alert-link\" href=\"/search.html\">Search</a> page to find an icon.",
+        "NAME_COLUMN_HEADER": "Name",
+        "SOURCES_COLUMN_HEADER": "# of Sources"
+      },
+      "ALTERNATIVES_PAGE": {
+        "TITLE": "Alternative Emoji Websites",
+        "INFO_BOX_HTML": "These are some vastly inferior competitors to EmojiSearch.org.  Use them at your own risk!",
+        "SEARCH_INPUT_LABEL": "Search query",
+        "SEARCH_LINK_TEXT": "Search"
+      },
+      "SEARCH_PAGE": {
+        "INPUT_LABEL": "Search query",
+        "INPUT_PLACEHOLDER": "Search terms",
+        "SEARCH_BUTTON": "Search",
+        "H1": "Search",
+        "TITLE": "Emoji Search: Search for SVG Emoji",
+        "META_DESCRIPTION": "Search through {{imageCountExact, addCommas}} super tiny icons"
+      },
+      "SOURCES_PAGE": {
+        "TITLE": "Emoji Sources",
+        "INFO_BOX_HTML": "Did I miss one?  <a class=\"alert-link\" href=\"/contact.html\">Let me know</a>!  If you are technically inclined, direct <a class=\"alert-link\" href=\"https://github.com/VectorLogoZone/git-svg-icons/blob/main/CONTRIBUTING.md\">contributions</a> are welcome!"
+      }
+    }
+  }
+}

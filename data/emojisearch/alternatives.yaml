@@ -1,0 +1,15 @@
+- handle: awesome-emoji
+  name: Awesome Emoji
+  website: https://github.com/VectorLogoZone/awesome-emoji
+  enabled: true
+
+- handle: emojipedia
+  name: Emojipedia
+  search: https://emojipedia.org/search?q={query}
+  website: https://emojipedia.org/
+  enabled: true
+
+- handle: wikipedia
+  name: Wikipedia
+  website: https://en.wikipedia.org/wiki/Emoji
+  enabled: true

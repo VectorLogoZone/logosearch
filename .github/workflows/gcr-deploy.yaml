@@ -52,7 +52,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        RUN_SERVICE: [ iconsearch, logosearch, supertinyicons, unicodesearch ]
+        RUN_SERVICE: [ emojisearch, iconsearch, logosearch, supertinyicons, unicodesearch ]
 
     steps:
       - name: GCloud auth
