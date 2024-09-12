@@ -60,6 +60,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "css-emojisearch": "sass scss/iconsearch.scss:static/emojisearch/css/style.css",
     "css-icons": "sass scss/iconsearch.scss:static/iconsearch/css/style.css",
     "css-logos": "sass scss/logosearch.scss:static/logosearch/css/style.css",
     "css-supertinyicons": "sass scss/supertinyicons.scss:static/supertinyicons/css/style.css",

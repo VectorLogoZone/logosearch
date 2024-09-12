@@ -24,7 +24,7 @@
         "IMG_ALT": "EmojiSearch Logo",
         "SITE_NAME": "Emoji Search",
         "SOURCES": "Sources",
-        "SOURCES_URL": "/sources/emoji/icons.html",
+        "SOURCES_URL": "/sources/index.html",
         "FAQ": "FAQ"
       },
       "IMAGE_PAGE": {
@@ -55,7 +55,7 @@
       },
       "SOURCES_PAGE": {
         "TITLE": "Emoji Sources",
-        "INFO_BOX_HTML": "Did I miss one?  <a class=\"alert-link\" href=\"/contact.html\">Let me know</a>!  If you are technically inclined, direct <a class=\"alert-link\" href=\"https://github.com/VectorLogoZone/git-svg-icons/blob/main/CONTRIBUTING.md\">contributions</a> are welcome!"
+        "INFO_BOX_HTML": "Submit additional sources on <a class=\"alert-link\" href=\"https://github.com/VectorLogoZone/git-svg-icons/blob/master/.github/ISSUE_TEMPLATE/add-a-site.md\">Github</a>., and try some <a class=\"alert-link\" href=\"/alternatives/index.html\">alternatives</a>."
       }
     }
   }
