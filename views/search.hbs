@@ -84,7 +84,7 @@
         console.log("input paste");
         var query = $("#q").val();
         var max = $("#max").val();
-        history.replaceState({ "q": query}, "", "?q=" + query + (!max || max == DEFAULT_MAX ? "" : ("&max=" + max)));
+        history.replaceState({ "q": query}, "", `?q=${encodeURIComponent(query)}` + (!max || max == DEFAULT_MAX ? "" : ("&max=" + max)));
         doSearch(query, max);
     }));
 /*

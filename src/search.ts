@@ -11,6 +11,7 @@ import { t } from './i18n';
 import * as sources from './sources';
 import { getRandomLogos } from './random';
 import { expandUrl, getFirst, safeParseInt, slugify } from './util';
+import { logger } from './logger';
 
 type SearchHit = {
     css?: string,
@@ -167,11 +168,15 @@ function doSimpleSearch(rawQuery: string, maxResults: number): SearchHit[] {
 
 function doSearch(ctx: Koa.ParameterizedContext<Koa.DefaultState, Koa.DefaultContext>):Object {
 
+    logger.trace({ querystring: ctx.query }, "Search query");
+
     let query = getFirst(ctx.query['q']);
 
     if (!query) {
         return { success: false, message: 'Missing "q" parameter' };
     }
+    query = decodeURIComponent(query).replace(/\+/g, " ");
+    logger.trace({ query }, "Search query");
 
     let maxResults = 100;
     try {
