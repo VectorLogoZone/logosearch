@@ -23,7 +23,7 @@ const config = convict({
     default: 'logosearch',
     doc: 'Site Identity',
     env: 'IDENTITY',
-    format: [ 'emojisearch', 'iconsearch', 'logosearch', 'supertinyicons', 'unicodesearch' ],
+    format: [ 'emojisearch', 'iconsearch', 'logosearch', 'supertinyicons' ],
   },
   logLevel: {
     default: 'debug',

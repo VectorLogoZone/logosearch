@@ -26,7 +26,7 @@
     "tar-stream": "^3.1.6",
     "transliteration": "^2.1.9"
   },
-  "description": "Backend server for LogoSear.ch, IconSear.ch and UnicodeSearch.org",
+  "description": "Backend server for LogoSear.ch and IconSear.ch",
   "devDependencies": {
     "@types/convict": "^6.1.5",
     "@types/gunzip-maybe": "^1.4.0",
@@ -64,7 +64,6 @@
     "css-icons": "sass scss/iconsearch.scss:static/iconsearch/css/style.css",
     "css-logos": "sass scss/logosearch.scss:static/logosearch/css/style.css",
     "css-supertinyicons": "sass scss/supertinyicons.scss:static/supertinyicons/css/style.css",
-    "css-unicode": "sass scss/unicodesearch.scss:static/unicodesearch/css/style.css",
     "run": "nodemon",
     "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

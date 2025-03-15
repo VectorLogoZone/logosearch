@@ -93,7 +93,7 @@ async function searchGet(ctx: Koa.ParameterizedContext<any, KoaRouter.IRouterPar
         description: t('SEARCH_PAGE.META_DESCRIPTION', { imageCount: sources.getImageCountRough(), imageCountExact: sources.getImageCount(), sourceCount: sources.getSourceCount() }),
         h1: t('SEARCH_PAGE.H1'),
         max,
-        preconnect: [ 'https://raw.githubusercontent.com', 'https://gitlab.svg.zone', 'https://www.vectorlogo.zone', 'https://upload.wikimedia.org' ],
+        preconnect: [ 'https://raw.githubusercontent.com', 'https://proxy.svg.zone', 'https://www.vectorlogo.zone', 'https://upload.wikimedia.org' ],
         q,
         results,
         rootMeta: true,
