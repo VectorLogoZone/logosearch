@@ -160,7 +160,7 @@ app.use(KoaViews(path.join(__dirname, '..', 'views'), {
             },
             if_t: function(key:string, block:any) {      // if a translation exists
                 const t = i18n.t(key);
-                logger.info({ key, t }, "if_t")
+                logger.trace({ key, t }, "if_t")
                 if (t != "" && t != key) {
                     return block.fn();
                 }
